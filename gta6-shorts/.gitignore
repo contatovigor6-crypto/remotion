@@ -1,0 +1,10 @@
+node_modules/
+.cache/
+.qc/
+out/*.mp4
+# Material da Rockstar Games: baixado por scripts/fetch-official-assets.sh
+public/img/
+public/video/
+# Gerado por scripts (synth_audio.py / tighten_pauses.py); a narração é do autor e não é publicada
+public/audio/
+public/fx/
