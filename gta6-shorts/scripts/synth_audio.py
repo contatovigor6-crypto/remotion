@@ -1,6 +1,6 @@
 """Sintetiza trilha (synthwave escuro, 120 BPM) e SFX originais — sem samples de terceiros.
 
-Uso: python3 scripts/synth_audio.py public/audio [parado|preso|phonk]
+Uso: python3 scripts/synth_audio.py public/audio [parado|preso|phonk|trap|funk]
 O arranjo segue os marcos da narração (segundos na voz já editada).
 """
 import sys, os, wave
@@ -47,6 +47,28 @@ PROFILES = {
             drums=[(10.9, 15.3, 0), (44.26, 48.6, 0), (60.2, 63.44, 0)],
             bass=[(44.26, 48.6, 0), (62.0, 63.44, 0)],
             arp=[(10.9, 15.3, 0.55), (44.26, 48.6, 0.25), (62.6, 63.44, 0)],
+        ),
+        tense=(11.0, 15.3), ticks=(44.4, 48.5), riser=(60.2, 63.44),
+    ),
+    # Trap sombrio: piano grave, 808, hats em tercina (75 BPM meio-tempo, Dó menor: Cm - Ab - Eb - G)
+    "trap": dict(
+        style="trap", bpm=150, dur=82.6, end_hit=81.45, out="music-trap.wav",
+        prog=[(36, [60, 63, 67]), (32, [56, 60, 63]), (39, [55, 58, 63]), (31, [55, 59, 62])],
+        mutes=dict(
+            drums=[(10.9, 15.3, 0), (44.26, 48.6, 0), (60.2, 63.44, 0)],
+            bass=[(44.26, 48.6, 0), (62.0, 63.44, 0)],
+            arp=[(44.26, 48.6, 0.45), (62.6, 63.44, 0)],
+        ),
+        tense=(11.0, 15.3), ticks=(44.4, 48.5), riser=(60.2, 63.44),
+    ),
+    # Funk phonk brasileiro: tamborzão, grave distorcido, lead de sintetizador (130 BPM, Mi menor)
+    "funk": dict(
+        style="funk", bpm=130, dur=82.6, end_hit=81.45, out="music-funk.wav",
+        prog=[(40, [64, 67, 71]), (36, [60, 64, 67]), (43, [62, 67, 71]), (38, [62, 66, 69])],
+        mutes=dict(
+            drums=[(10.9, 15.3, 0), (44.26, 48.6, 0), (60.2, 63.44, 0)],
+            bass=[(44.26, 48.6, 0), (62.0, 63.44, 0)],
+            arp=[(10.9, 15.3, 0.5), (44.26, 48.6, 0.3), (62.6, 63.44, 0)],
         ),
         tense=(11.0, 15.3), ticks=(44.4, 48.5), riser=(60.2, 63.44),
     ),
@@ -437,6 +459,155 @@ def music_phonk():
     return np.tanh(out * 1.3)
 
 
+def radio_chirp():
+    """Rádio policial: estalo de estática + dois bipes curtos de 'câmbio' (banda telefônica)."""
+    n = 0.75; x = np.zeros(int(n * SR))
+    st = bp_fast(rng.standard_normal(int(0.22 * SR)), 900, 3500) * np.exp(-t(0.22) * 9) * 0.55
+    x[: len(st)] += st
+    for off, f0, d in ((0.24, 1460, 0.07), (0.34, 1950, 0.09)):
+        s0 = int(off * SR); tt = t(d)
+        tone = np.sin(2 * np.pi * f0 * tt) * np.minimum(tt / 0.004, 1) * np.minimum((d - tt) / 0.006, 1)
+        x[s0:s0 + len(tone)] += tone * 0.5
+    tail = bp_fast(rng.standard_normal(int(0.2 * SR)), 1000, 3000) * np.exp(-t(0.2) * 25) * 0.4
+    x[int(0.5 * SR):int(0.5 * SR) + len(tail)] += tail
+    return np.tanh(1.8 * bp_fast(x, 400, 4000))
+
+
+def _stems():
+    n = int(DUR * SR)
+    return n, np.arange(n) / SR, np.zeros(n), np.zeros(n)
+
+
+def _gain(stem, at):
+    for a, b, v in PROFILE["mutes"].get(stem, []):
+        if a <= at < b:
+            return v
+    return 0.0 if at >= END_HIT else 1.0
+
+
+def _add(L, R, sig, at, vol=1.0, pan=0.0):
+    n = len(L); s = int(at * SR)
+    if s >= n or vol == 0:
+        return
+    m = min(len(sig), n - s)
+    L[s:s + m] += sig[:m] * vol * (1 - pan); R[s:s + m] += sig[:m] * vol * (1 + pan)
+
+
+def _common_fx(L, R):
+    for b in np.arange(*PROFILE["tense"], BEAT * 2):
+        _add(L, R, np.tanh(2 * kick(0.35, 90, 38)), b, 0.6)
+    for b in np.arange(*PROFILE["ticks"], 1.0):
+        _add(L, R, tick(), b, 0.25)
+    r0, r1 = PROFILE["riser"]
+    _add(L, R, riser(r1 - r0), r0, 0.35)
+
+
+def piano(f, n):
+    """Piano sintético: parciais levemente inarmônicas com decaimento por harmônico."""
+    tt = t(n)
+    x = sum(np.sin(2 * np.pi * f * k * (1 + 0.0004 * k * k) * tt) * np.exp(-tt * (1.2 + 0.9 * k)) / k for k in range(1, 8))
+    return x * np.minimum(tt / 0.003, 1)
+
+
+def music_trap():
+    n, tt, L, R = _stems()
+    bar = 4 * BEAT * 2  # meio-tempo: compasso = 8 batidas de 150 BPM
+    prog = PROFILE["prog"]
+    hb = BEAT  # colcheia em 75 BPM
+    for bi, b0 in enumerate(np.arange(0, DUR, bar)):
+        root = prog[bi % 4][0]
+        # kick + 808 (mesmo padrão)
+        for k in (0, 3, 5.5):
+            at = b0 + k * hb
+            if _gain("drums", at):
+                _add(L, R, np.tanh(2 * kick(0.4, 150, 42)), at, 0.75)
+            if _gain("bass", at):
+                m = 1.6 * hb; tl = t(m)
+                f = midi(root) * (1 + 0.6 * np.exp(-tl * 30))
+                sig = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.minimum(tl / 0.005, 1) * np.exp(-tl * 1.2)
+                _add(L, R, lp_fast(np.tanh(2.2 * sig), 700) * 0.6, at)
+        # caixa no tempo 3 (meio-tempo)
+        for k in (4,):
+            at = b0 + k * hb
+            if _gain("drums", at):
+                sn = hp_fast(rng.standard_normal(int(0.3 * SR)), 1500) * np.exp(-t(0.3) * 14) * 0.4
+                sn += np.sin(2 * np.pi * 185 * t(0.3)) * np.exp(-t(0.3) * 22) * 0.35
+                _add(L, R, sn, at)
+        # hats: colcheias + tercinas no fim do compasso
+        for h in range(16):
+            at = b0 + h * hb / 2
+            if not _gain("drums", at):
+                continue
+            hh = hp_fast(rng.standard_normal(int(0.035 * SR)), 8500) * np.exp(-t(0.035) * 130)
+            if h in (14, 15) and bi % 2:
+                for r in range(3):
+                    _add(L, R, hh, at + r * hb / 6, 0.09, 0.2)
+            else:
+                _add(L, R, hh, at, 0.11, 0.2)
+        # piano: arpejo grave do acorde em colcheias + nota longa no início
+        chord = prog[bi % 4][1]
+        g = _gain("arp", b0)
+        for j in range(8):
+            at = b0 + j * hb
+            note = (chord + [chord[0] + 12])[[0, 1, 2, 1, 3, 2, 1, 2][j]] - 12
+            _add(L, R, piano(midi(note), 1.4), at, 0.16 * _gain("arp", at), -0.15)
+        _add(L, R, piano(midi(chord[0] - 24), 3.0), b0, 0.18 * g, 0.1)
+        # cordas suaves (pad)
+        m = bar
+        pad = sum(saw(midi(c - 12) * d, m) for c in chord for d in (0.997, 1.003))
+        e = np.minimum(t(m) / 0.6, 1) * np.minimum((m - t(m)) / 0.4, 1)
+        _add(L, R, lp_fast(pad * e, 1100) * 0.035, b0, _gain("arp", b0) if _gain("arp", b0) < 1 else 1.0)
+    _common_fx(L, R)
+    fade = np.clip((DUR - tt) / 1.2, 0, 1)
+    return np.tanh(np.stack([L * fade, R * fade], 1) * 1.3)
+
+
+def music_funk():
+    n, tt, L, R = _stems()
+    bar = 4 * BEAT
+    sx = BEAT / 4  # semicolcheia
+    prog = PROFILE["prog"]
+    tambor = [0, 3, 6, 8, 11, 14]  # tamborzão
+    clap = [4, 12]
+    lead_motif = [0, None, 3, None, 5, 3, None, 7, 0, None, 3, None, 10, None, 7, 5]
+    for bi, b0 in enumerate(np.arange(0, DUR, bar)):
+        root, chord = prog[bi % 4]
+        for st in tambor:
+            at = b0 + st * sx
+            if _gain("drums", at):
+                tom = np.sin(2 * np.pi * np.cumsum(70 + 110 * np.exp(-t(0.3) * 25)) / SR) * np.exp(-t(0.3) * 9)
+                _add(L, R, np.tanh(2.5 * tom), at, 0.7)
+            if _gain("bass", at):
+                m = 2.5 * sx; tl = t(m)
+                sig = np.tanh(4 * np.sin(2 * np.pi * midi(root - 12) * tl)) * np.exp(-tl * 4)
+                _add(L, R, lp_fast(sig, 600) * 0.4, at)
+        for st in clap:
+            at = b0 + st * sx
+            if _gain("drums", at):
+                c = sum(np.roll(hp_fast(rng.standard_normal(int(0.25 * SR)), 1300) * np.exp(-t(0.25) * 20), int(d * SR)) for d in (0, 0.01, 0.02))
+                _add(L, R, c, at, 0.3)
+        for h in range(16):
+            at = b0 + h * sx
+            if _gain("drums", at) and h % 2 == 0:
+                hh = hp_fast(rng.standard_normal(int(0.03 * SR)), 9000) * np.exp(-t(0.03) * 140)
+                _add(L, R, hh, at, 0.1 if h % 4 else 0.13, 0.25)
+        # lead de sintetizador (pluck com leve detune)
+        for j, step in enumerate(lead_motif):
+            if step is None:
+                continue
+            at = b0 + j * sx
+            g = _gain("arp", at)
+            if not g:
+                continue
+            f = midi(chord[0] + step)
+            m = 1.8 * sx
+            pl = (saw(f, m) + saw(f * 1.006, m)) * np.exp(-t(m) * 14)
+            _add(L, R, lp_fast(pl, 2400), at, 0.11 * g, -0.2 if j % 2 else 0.2)
+    _common_fx(L, R)
+    fade = np.clip((DUR - tt) / 1.2, 0, 1)
+    return np.tanh(np.stack([L * fade, R * fade], 1) * 1.3)
+
+
 if __name__ == "__main__":
     write("sfx-impact.wav", impact())
     write("sfx-whoosh.wav", whoosh())
@@ -447,9 +618,11 @@ if __name__ == "__main__":
     write("sfx-subdrop.wav", sub_drop())
     write("sfx-typing.wav", typing())
     write("sfx-shutter.wav", shutter())
-    write(PROFILE["out"], music_phonk() if PROFILE.get("style") == "phonk" else music())
+    style = PROFILE.get("style")
+    write(PROFILE["out"], {"phonk": music_phonk, "trap": music_trap, "funk": music_funk}.get(style, music)())
     write("sfx-siren.wav", siren())
     write("sfx-cuffs.wav", cuffs())
     write("sfx-cell.wav", cell_slam())
     write("sfx-tapestop.wav", tape_stop())
+    write("sfx-radio.wav", radio_chirp())
     print("ok")

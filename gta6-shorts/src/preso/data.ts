@@ -32,7 +32,7 @@ export const SHAKES: Shake[] = [
 
 // Efeitos sonoros sintetizados (scripts/synth_audio.py ... preso) — só em eventos motivados
 export const SFX: Sfx[] = [
-	{at: 0.0, file: 'sfx-siren', vol: 0.18},
+	{at: 0.0, file: 'sfx-radio', vol: 0.3},
 	{at: 0.92, file: 'sfx-cell', vol: 0.55},
 	{at: 1.22, file: 'sfx-whoosh', vol: 0.35},
 	{at: 2.3, file: 'sfx-impact', vol: 0.55},
@@ -44,14 +44,14 @@ export const SFX: Sfx[] = [
 	{at: 11.56, file: 'sfx-cell', vol: 0.5},
 	{at: 13.52, file: 'sfx-impact', vol: 0.55},
 	{at: 15.25, file: 'sfx-whoosh-rev', vol: 0.3},
-	{at: 15.6, file: 'sfx-siren', vol: 0.15},
+	{at: 16.55, file: 'sfx-radio', vol: 0.3},
 	{at: 17.3, file: 'sfx-whoosh', vol: 0.3},
 	{at: 19.95, file: 'sfx-whoosh', vol: 0.3},
 	{at: 21.48, file: 'sfx-whoosh', vol: 0.25},
 	{at: 23.3, file: 'sfx-cell', vol: 0.55},
 	{at: 24.1, file: 'sfx-glitch', vol: 0.3},
 	{at: 25.3, file: 'sfx-pop', vol: 0.35},
-	{at: 25.9, file: 'sfx-siren', vol: 0.22},
+	{at: 25.86, file: 'sfx-radio', vol: 0.32},
 	{at: 28.94, file: 'sfx-glitch', vol: 0.3},
 	{at: 30.12, file: 'sfx-whoosh-rev', vol: 0.3},
 	{at: 32.74, file: 'sfx-cuffs', vol: 0.5},
