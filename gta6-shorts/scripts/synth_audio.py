@@ -1,6 +1,6 @@
 """Sintetiza trilha (synthwave escuro, 120 BPM) e SFX originais — sem samples de terceiros.
 
-Uso: python3 scripts/synth_audio.py public/audio
+Uso: python3 scripts/synth_audio.py public/audio [parado|preso]
 O arranjo segue os marcos da narração (segundos na voz já editada).
 """
 import sys, os, wave
@@ -11,16 +11,39 @@ OUT = sys.argv[1] if len(sys.argv) > 1 else "public/audio"
 os.makedirs(OUT, exist_ok=True)
 rng = np.random.default_rng(6)
 
-BPM = 120
+# Perfis de arranjo: marcos em segundos na narração de cada vídeo.
+# mutes: stem -> [(início, fim, ganho)]; drums = kick/caixa/hats.
+PROFILES = {
+    # "1 hora parado" (synthwave escuro, Lá menor)
+    "parado": dict(
+        bpm=120, dur=80.0, end_hit=77.95, out="music.wav",
+        prog=[(57, [57, 60, 64]), (53, [53, 57, 60]), (48, [48, 52, 55]), (55, [55, 59, 62])],
+        mutes=dict(
+            drums=[(22.0, 27.4, 0), (38.2, 41.36, 0), (58.7, 68.9, 0)],
+            bass=[(22.0, 25.95, 0), (39.7, 41.36, 0), (58.7, 61.1, 0)],
+            arp=[(22.0, 26.0, 0.35), (58.7, 61.1, 0)],
+            pad=[(58.7, 61.1, 0)],
+        ),
+        tense=(61.1, 68.9), ticks=(22.0, 25.95), riser=(38.2, 41.36),
+    ),
+    # "Preso no GTA 6?" (ação/tensão, Ré menor, mais rápido)
+    "preso": dict(
+        bpm=128, dur=82.6, end_hit=81.45, out="music-preso.wav",
+        prog=[(50, [50, 53, 57]), (46, [46, 50, 53]), (43, [43, 46, 50]), (45, [45, 49, 52])],
+        mutes=dict(
+            drums=[(10.9, 15.3, 0), (44.26, 48.6, 0), (60.2, 64.3, 0)],
+            bass=[(44.26, 48.6, 0), (62.0, 64.3, 0)],
+            arp=[(44.26, 48.6, 0.3), (62.5, 64.3, 0)],
+            pad=[(62.5, 63.4, 0.3)],
+        ),
+        tense=(11.0, 15.3), ticks=(44.4, 48.5), riser=(60.2, 63.44),
+    ),
+}
+PROFILE = PROFILES[sys.argv[2] if len(sys.argv) > 2 else "parado"]
+BPM = PROFILE["bpm"]
 BEAT = 60 / BPM
-DUR = 80.0
-
-# Marcos da narração (ver src/data/words.ts)
-CALM_START, CALM_END = 22.0, 25.95      # "No começo... nada de interessante"
-RISER_START, DROP = 38.2, 41.36         # "Agora vem a parte..." -> "E se você voltar"
-CHALLENGE_CUT = 58.7                    # "Mas aqui está o verdadeiro desafio"
-TENSE_START, TENSE_END = 61.1, 68.9     # pergunta do desafio
-END_HIT = 77.95
+DUR = PROFILE["dur"]
+END_HIT = PROFILE["end_hit"]
 
 
 def write(name, x):
@@ -168,6 +191,44 @@ def shutter():
     return a + b
 
 
+def siren(n=1.6):
+    """Sirene de duas notas (estilo viatura), distante."""
+    tt = t(n)
+    f = np.where((tt * 2.5) % 1 < 0.5, 960, 770)
+    f = lp_fast(f.astype(float), 18)
+    x = np.sin(2 * np.pi * np.cumsum(f) / SR) + 0.3 * np.sin(4 * np.pi * np.cumsum(f) / SR)
+    e = np.minimum(tt / 0.15, 1) * np.minimum((n - tt) / 0.3, 1)
+    return bp_fast(x, 500, 4000) * e
+
+
+def cuffs():
+    """Clique metálico de algema: dois estalos com ressonância."""
+    n = 0.5; x = np.zeros(int(n * SR))
+    for off, f0 in ((0.0, 3100), (0.11, 2650)):
+        s0 = int(off * SR); m = int(0.3 * SR); tt = t(0.3)
+        ring = sum(np.sin(2 * np.pi * f0 * k * tt) / k for k in (1, 2.76, 5.4)) * np.exp(-tt * 30)
+        click = hp_fast(rng.standard_normal(m), 4000) * np.exp(-tt * 300)
+        x[s0:s0 + m] += (ring * 0.6 + click)[: len(x) - s0]
+    return x
+
+
+def cell_slam():
+    """Porta de cela batendo: impacto grave + ressonância metálica."""
+    n = 2.0; tt = t(n)
+    boom = np.sin(2 * np.pi * np.cumsum(45 + 70 * np.exp(-tt * 14)) / SR) * np.exp(-tt * 3)
+    metal = sum(np.sin(2 * np.pi * f * tt + k) for k, f in enumerate((220, 331, 517, 743, 1104))) * np.exp(-tt * 2.2) * 0.12
+    hit = lp_fast(rng.standard_normal(len(tt)), 3000) * np.exp(-tt * 25) * 0.8
+    return np.tanh(1.4 * (boom + metal + hit))
+
+
+def tape_stop():
+    """Desaceleração (fita parando) para o 'Mas calma'."""
+    n = 0.7; tt = t(n)
+    f = 220 * (1 - tt / n) ** 2 + 20
+    x = (saw(f, n) + 0.5 * saw(f * 1.5, n)) * (1 - tt / n)
+    return lp_fast(x, 1800)
+
+
 # ---------------------------------------------------------------- MUSIC
 def music():
     n = int(DUR * SR); tt = np.arange(n) / SR
@@ -175,30 +236,16 @@ def music():
     beat_times = np.arange(0, DUR, BEAT)
 
     def sec_gain(name, x):
-        """Arranjo: volume de cada stem por tempo."""
+        """Arranjo: volume de cada stem por tempo (perfil)."""
         g = np.ones_like(x)
-        if name in ("kick", "hat", "snare"):
-            g[(x >= CALM_START) & (x < 27.4)] = 0
-            g[(x >= RISER_START) & (x < DROP)] = 0
-            g[(x >= CHALLENGE_CUT) & (x < TENSE_END)] = 0
-            g[x >= END_HIT] = 0
-        if name == "bass":
-            g[(x >= CALM_START) & (x < CALM_END)] = 0
-            g[(x >= RISER_START + 1.5) & (x < DROP)] = 0
-            g[(x >= CHALLENGE_CUT) & (x < TENSE_START)] = 0
-            g[x >= END_HIT] = 0
-        if name == "arp":
-            g[(x >= CALM_START) & (x < 26.0)] = 0.35
-            g[(x >= CHALLENGE_CUT) & (x < TENSE_START)] = 0
-            g[x >= END_HIT] = 0
-            g[x < 0.0] = 0
-        if name == "pad":
-            g[(x >= CHALLENGE_CUT) & (x < TENSE_START)] = 0.0
-            g[x >= END_HIT + 0.1] = 0
+        key = "drums" if name in ("kick", "hat", "snare") else name
+        for a, b, gain in PROFILE["mutes"].get(key, []):
+            g[(x >= a) & (x < b)] = gain
+        g[x >= END_HIT + (0.1 if name == "pad" else 0)] = 0
         return g
 
     # progression Am - F - C - G (1 bar = 4 beats each)
-    prog = [(57, [57, 60, 64]), (53, [53, 57, 60]), (48, [48, 52, 55]), (55, [55, 59, 62])]
+    prog = PROFILE["prog"]
     bar = 4 * BEAT
 
     # kick + snare + hats
@@ -261,18 +308,19 @@ def music():
     L += lp_fast(pad, 1400) * g; R += lp_fast(padR, 1400) * g
 
     # tense section: heartbeat-like low pulse + clock ticks
-    for b in np.arange(TENSE_START, TENSE_END, BEAT):
+    for b in np.arange(*PROFILE["tense"], BEAT):
         s = int(b * SR); k = kick(0.3, 90, 40) * 0.6
         L[s:s + len(k)] += k; R[s:s + len(k)] += k
         k2 = kick(0.25, 80, 38) * 0.35; s2 = s + int(0.18 * SR)
         L[s2:s2 + len(k2)] += k2; R[s2:s2 + len(k2)] += k2
     # calm section: ticks of a clock
-    for b in np.arange(CALM_START, CALM_END, 1.0):
+    for b in np.arange(*PROFILE["ticks"], 1.0):
         s = int(b * SR); c = tick() * 0.25
         L[s:s + len(c)] += c; R[s:s + len(c)] += c
 
     # riser into drop
-    r = riser(DROP - RISER_START); s = int(RISER_START * SR)
+    r0, r1 = PROFILE["riser"]
+    r = riser(r1 - r0); s = int(r0 * SR)
     L[s:s + len(r)] += r * 0.35; R[s:s + len(r)] += r * 0.35
 
     # fade tail
@@ -291,5 +339,9 @@ if __name__ == "__main__":
     write("sfx-subdrop.wav", sub_drop())
     write("sfx-typing.wav", typing())
     write("sfx-shutter.wav", shutter())
-    write("music.wav", music())
+    write(PROFILE["out"], music())
+    write("sfx-siren.wav", siren())
+    write("sfx-cuffs.wav", cuffs())
+    write("sfx-cell.wav", cell_slam())
+    write("sfx-tapestop.wav", tape_stop())
     print("ok")

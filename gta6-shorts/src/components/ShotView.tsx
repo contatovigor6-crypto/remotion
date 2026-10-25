@@ -91,7 +91,7 @@ export const ShotView: React.FC<{shot: Shot}> = ({shot}) => {
 	};
 
 	const media = shot.video ? (
-		<OffthreadVideo src={staticFile(shot.src)} muted style={mediaStyle} startFrom={f(shot.startFrom ?? 0)} />
+		<OffthreadVideo src={staticFile(shot.src)} muted style={mediaStyle} startFrom={f(shot.startFrom ?? 0)} playbackRate={shot.rate ?? 1} />
 	) : (
 		<Img src={staticFile(shot.src)} style={mediaStyle} />
 	);

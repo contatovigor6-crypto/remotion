@@ -6,12 +6,16 @@ words = []
 for seg in json.load(open(src)):
     for w in seg["words"]:
         words.append({"text": w["w"].strip(), "start": round(w["s"], 3), "end": round(w["e"], 3)})
+words = [w for w in words if w["text"]]
 # Revisão: "Comenta, eu teria coragem" é a frase que o espectador deve comentar.
 for i, w in enumerate(words):
     if w["text"] == "Comenta,":
         w["text"] = "Comenta"
         words[i + 1]["text"] = "“eu"
         words[i + 3]["text"] = "coragem”"
+    # Grafia oficial do nome da personagem
+    if w["text"].startswith("Lúcia"):
+        w["text"] = w["text"].replace("Lúcia", "Lucia")
     if w["text"] == "vivo" and words[i+1]["text"] == "mesmo":
         w["text"] = "vivo,"
 with open(dst, "w") as f:

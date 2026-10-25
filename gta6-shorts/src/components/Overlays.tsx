@@ -13,25 +13,25 @@ import {
 import {C, DISPLAY, GRAD, UI, f} from '../theme';
 import {fmt, gameClock} from './Hud';
 
-const At: React.FC<{from: number; to: number; children: React.ReactNode}> = ({from, to, children}) => (
+export const At: React.FC<{from: number; to: number; children: React.ReactNode}> = ({from, to, children}) => (
 	<Sequence from={f(from)} durationInFrames={f(to) - f(from)} layout="none">
 		{children}
 	</Sequence>
 );
 
-const useSpring = (delay = 0, damping = 14, stiffness = 220) => {
+export const useSpring = (delay = 0, damping = 14, stiffness = 220) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 	return spring({frame: frame - f(delay), fps, config: {damping, stiffness}});
 };
 
 /** fade-out nos últimos frames de cada elemento */
-const useOut = (dur: number, n = 5) => {
+export const useOut = (dur: number, n = 5) => {
 	const frame = useCurrentFrame();
 	return interpolate(frame, [f(dur) - n, f(dur)], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
 };
 
-const Chip: React.FC<{bg: string; color?: string; children: React.ReactNode; size?: number; style?: React.CSSProperties}> = ({
+export const Chip: React.FC<{bg: string; color?: string; children: React.ReactNode; size?: number; style?: React.CSSProperties}> = ({
 	bg,
 	color = 'white',
 	children,
@@ -100,7 +100,7 @@ const BigTimer: React.FC<{dur: number; mode: 'hook' | 'return'}> = ({dur, mode})
 	);
 };
 
-const LogoSlam: React.FC = () => {
+export const LogoSlam: React.FC = () => {
 	const s = useSpring(0, 11, 260);
 	return (
 		<AbsoluteFill style={{alignItems: 'center', justifyContent: 'center'}}>
@@ -117,7 +117,7 @@ const LogoSlam: React.FC = () => {
 	);
 };
 
-const Stamp: React.FC<{text: string; sub?: string; top: number; color?: string}> = ({text, sub, top, color = C.pink}) => {
+export const Stamp: React.FC<{text: string; sub?: string; top: number; color?: string}> = ({text, sub, top, color = C.pink}) => {
 	const s = useSpring(0, 10, 320);
 	return (
 		<AbsoluteFill style={{alignItems: 'center', top}}>
@@ -319,7 +319,7 @@ const Alert: React.FC<{dur: number}> = ({dur}) => {
 };
 
 /** Título grande revelado palavra a palavra, sincronizado com a fala */
-const TitleCard: React.FC<{lines: {text: string; at: number; big?: boolean}[]; start: number; top: number}> = ({lines, start, top}) => {
+export const TitleCard: React.FC<{lines: {text: string; at: number; big?: boolean}[]; start: number; top: number}> = ({lines, start, top}) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 	return (

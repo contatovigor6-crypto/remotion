@@ -11,6 +11,8 @@ export type Shot = {
 	to: number;
 	src: string;
 	video?: boolean;
+	/** velocidade do vídeo (0.5 = câmera lenta com clipes de 60 fps) */
+	rate?: number;
 	/** início da mídia de vídeo (s) */
 	startFrom?: number;
 	/** congela o vídeo a partir deste instante (s, tempo da timeline) */

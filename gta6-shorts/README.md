@@ -1,4 +1,16 @@
-# GTA 6 — "1 hora parado" · YouTube Shorts
+# GTA 6 · YouTube Shorts (Remotion + FFmpeg)
+
+Composições: `GTA6Parado` ("1 hora parado") e `GTA6Preso` ("Você pode ser preso de verdade?").
+
+## GTA6Preso
+
+- Narração original (ElevenLabs) usada **sem alteração** (`public/v2/voice.mp3`, ganho unitário, sem limiter).
+- Assets: `./scripts/fetch-assets-preso.sh` (clipes 60 fps e pôsteres verticais oficiais).
+- Trilha: `python3 scripts/synth_audio.py public/audio preso`.
+- Dados: `src/preso/` (plano de cortes, SFX, destaques, overlays: estrelas de procurado, sirene, grades, minimapa, ficha, enquete).
+- Export: `npx remotion render GTA6Preso out/preso-draft.mp4 && TARGET=none ./scripts/finalize.sh out/preso-draft.mp4 EXPORTADO/gta6-preso-de-verdade.mp4`.
+
+## GTA6Parado
 
 Pipeline de edição programática (Remotion + FFmpeg) para um Short vertical de alta retenção
 construído sobre a narração do autor.

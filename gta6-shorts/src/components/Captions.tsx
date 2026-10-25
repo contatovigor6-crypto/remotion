@@ -1,34 +1,18 @@
 import React, {useMemo} from 'react';
 import {AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
-import {WORDS, type Word} from '../data/words';
+import type {Word} from '../data/words';
 import {C, DISPLAY, GRAD, SAFE} from '../theme';
-
-// Palavras destacadas (seletivo: o que carrega o sentido da frase)
-const KEYWORDS = new Set([
-	'parado', 'parado,', 'gta', '6', '6.', 'hora', 'hora,', 'testes', 'curiosos', 'pula', 'final', 'experimento.',
-	'jason', 'vice', 'city,', 'andar,', 'dirigir', 'nada.', 'nada', 'cidade', 'inteira', 'carros', 'pedestres',
-	'inesperadas', 'interessante.', 'mudou,', 'personagens', 'normalmente?', 'vivo,', 'testar', 'desafio.',
-	'nenhum', 'botão,', 'realismo', 'coragem”', '“eu', 'teria', 'chegar,', 'verdade.',
-]);
-
-// Trechos em que um título grande já mostra a fala (evita duplicar texto)
-const HIDDEN: [number, number][] = [
-	[2.1, 2.8],
-	[38.2, 41.3],
-	[44.88, 45.7],
-	[58.7, 61.1],
-];
 
 type Page = {words: Word[]; start: number; end: number};
 
-const buildPages = (): Page[] => {
+const buildPages = (words: Word[]): Page[] => {
 	const pages: Page[] = [];
 	let cur: Word[] = [];
 	const flush = () => {
 		if (cur.length) pages.push({words: cur, start: cur[0].start, end: cur[cur.length - 1].end});
 		cur = [];
 	};
-	for (const w of WORDS) {
+	for (const w of words) {
 		const chars = cur.reduce((a, x) => a + x.text.length + 1, 0) + w.text.length;
 		const gap = cur.length ? w.start - cur[cur.length - 1].end : 0;
 		if (cur.length && (cur.length >= 3 || chars > 17 || gap > 0.35)) flush();
@@ -46,12 +30,18 @@ const buildPages = (): Page[] => {
 
 const norm = (s: string) => s.toLowerCase();
 
-export const Captions: React.FC = () => {
+export const Captions: React.FC<{
+	words: Word[];
+	/** palavras destacadas (minúsculas, com pontuação) — seletivo: o que carrega o sentido */
+	keywords: Set<string>;
+	/** trechos em que um título grande já mostra a fala (evita duplicar texto) */
+	hidden: [number, number][];
+}> = ({words, keywords, hidden}) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 	const t = frame / fps;
-	const pages = useMemo(buildPages, []);
-	if (HIDDEN.some(([a, b]) => t >= a && t < b)) return null;
+	const pages = useMemo(() => buildPages(words), [words]);
+	if (hidden.some(([a, b]) => t >= a && t < b)) return null;
 	const page = pages.find((p) => t >= p.start - 0.06 && t < p.end);
 	if (!page) return null;
 
@@ -78,7 +68,7 @@ export const Captions: React.FC = () => {
 				{page.words.map((w, i) => {
 					const spoken = t >= w.start - 0.04;
 					const active = t >= w.start - 0.04 && t < w.end + 0.08;
-					const key = KEYWORDS.has(norm(w.text));
+					const key = keywords.has(norm(w.text));
 					const pop = spring({frame: frame - Math.round((w.start - 0.04) * fps), fps, config: {damping: 12, stiffness: 320, mass: 0.5}});
 					const size = key ? 118 : 100;
 					const text = w.text.replace(/[,.]$/, '').toUpperCase();
