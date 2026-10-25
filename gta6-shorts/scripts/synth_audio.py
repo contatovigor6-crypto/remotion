@@ -1,6 +1,6 @@
 """Sintetiza trilha (synthwave escuro, 120 BPM) e SFX originais — sem samples de terceiros.
 
-Uso: python3 scripts/synth_audio.py public/audio [parado|preso|phonk|trap|funk]
+Uso: python3 scripts/synth_audio.py public/audio [parado|preso|phonk|trap|funk|hype|ambient]
 O arranjo segue os marcos da narração (segundos na voz já editada).
 """
 import sys, os, wave
@@ -69,6 +69,27 @@ PROFILES = {
             drums=[(10.9, 15.3, 0), (44.26, 48.6, 0), (60.2, 63.44, 0)],
             bass=[(44.26, 48.6, 0), (62.0, 63.44, 0)],
             arp=[(10.9, 15.3, 0.5), (44.26, 48.6, 0.3), (62.6, 63.44, 0)],
+        ),
+        tense=(11.0, 15.3), ticks=(44.4, 48.5), riser=(60.2, 63.44),
+    ),
+    # Empolgante: dance/trailer positivo, Fá maior (F - C - Dm - Bb), 128 BPM
+    "hype": dict(
+        style="hype", bpm=128, dur=82.6, end_hit=81.45, out="music-hype.wav",
+        prog=[(41, [65, 69, 72]), (36, [60, 64, 67]), (38, [62, 65, 69]), (34, [58, 62, 65])],
+        mutes=dict(
+            drums=[(10.9, 15.3, 0), (44.26, 48.6, 0), (60.2, 63.44, 0)],
+            bass=[(44.26, 48.6, 0), (62.0, 63.44, 0)],
+            arp=[(10.9, 15.3, 0.5), (44.26, 48.6, 0.35), (62.6, 63.44, 0)],
+        ),
+        tense=(11.0, 15.3), ticks=(44.4, 48.5), riser=(60.2, 63.44),
+    ),
+    # Ambiente: pads cinematográficos, Ré menor (Dm - Bb - F - C), sem bateria
+    "ambient": dict(
+        style="ambient", bpm=80, dur=82.6, end_hit=81.45, out="music-ambient.wav",
+        prog=[(38, [62, 65, 69]), (34, [58, 62, 65]), (41, [60, 65, 69]), (36, [60, 64, 67])],
+        mutes=dict(
+            bass=[(44.26, 48.6, 0.3), (62.0, 63.44, 0)],
+            arp=[(44.26, 48.6, 0.4), (62.6, 63.44, 0)],
         ),
         tense=(11.0, 15.3), ticks=(44.4, 48.5), riser=(60.2, 63.44),
     ),
@@ -608,6 +629,107 @@ def music_funk():
     return np.tanh(np.stack([L * fade, R * fade], 1) * 1.3)
 
 
+def supersaw(f, n, voices=5, spread=0.012):
+    return sum(saw(f * (1 + spread * (k - voices // 2) / (voices // 2)), n) for k in range(voices)) / voices
+
+
+def music_hype():
+    n, tt, L, R = _stems()
+    bar = 4 * BEAT
+    prog = PROFILE["prog"]
+    pump = np.ones(n)
+    for bt in np.arange(0, DUR, BEAT):
+        s = int(bt * SR); m = min(int(BEAT * SR), n - s)
+        pump[s:s + m] = 0.3 + 0.7 * np.clip(t(BEAT)[:m] / 0.2, 0, 1)
+    chords = np.zeros(n); chordsR = np.zeros(n); bass = np.zeros(n)
+    for bi, b0 in enumerate(np.arange(0, DUR, bar)):
+        root, chord = prog[bi % 4]
+        for k in range(4):
+            at = b0 + k * BEAT
+            if _gain("drums", at):
+                _add(L, R, np.tanh(1.8 * kick(0.38, 160, 48)), at, 0.75)
+                oh = hp_fast(rng.standard_normal(int(0.12 * SR)), 7000) * np.exp(-t(0.12) * 30)
+                _add(L, R, oh, at + BEAT / 2, 0.12, 0.2)
+                if k in (1, 3):
+                    c = sum(np.roll(hp_fast(rng.standard_normal(int(0.25 * SR)), 1200) * np.exp(-t(0.25) * 18), int(d * SR)) for d in (0, 0.009, 0.019))
+                    _add(L, R, c, at, 0.3)
+            # baixo no contratempo
+            if _gain("bass", at + BEAT / 2):
+                m = BEAT / 2 * 0.9
+                sb = saw(midi(root - 12), m) * env_ad(m, 0.004, 0.12)
+                s0 = int((at + BEAT / 2) * SR); mm = min(len(sb), n - s0)
+                if mm <= 0:
+                    continue
+                bass[s0:s0 + mm] += sb[:mm]
+        # acordes supersaw em colcheias, seguindo o "pump"
+        g = _gain("arp", b0)
+        for j in range(8):
+            at = b0 + j * BEAT / 2
+            m = BEAT / 2 * 0.95
+            seg = sum(supersaw(midi(c), m) for c in chord) * env_ad(m, 0.005, 0.25)
+            s0 = int(at * SR); mm = min(len(seg), n - s0)
+            if mm <= 0:
+                continue
+            chords[s0:s0 + mm] += seg[:mm] * _gain("arp", at)
+            seg2 = sum(supersaw(midi(c) * 1.002, m) for c in chord) * env_ad(m, 0.005, 0.25)
+            chordsR[s0:s0 + mm] += seg2[:mm] * _gain("arp", at)
+        # melodia pluck (sobe no último compasso do ciclo)
+        mel = [7, None, 4, 7, None, 9, 7, 4] if bi % 4 != 3 else [7, 9, 12, None, 12, 14, 12, 9]
+        for j, st in enumerate(mel):
+            if st is None:
+                continue
+            at = b0 + j * BEAT / 2
+            m = BEAT / 2 * 1.5
+            pl = (saw(midi(chord[0] + st), m) + saw(midi(chord[0] + st) * 1.004, m)) * np.exp(-t(m) * 10)
+            _add(L, R, lp_fast(pl, 3500), at, 0.085 * _gain("arp", at), 0.15 if j % 2 else -0.15)
+    L += lp_fast(chords, 3000) * 0.05 * pump; R += lp_fast(chordsR, 3000) * 0.05 * pump
+    b = lp_fast(bass, 450) * 0.4 * pump
+    L += b; R += b
+    _common_fx(L, R)
+    fade = np.clip((DUR - tt) / 1.2, 0, 1)
+    return np.tanh(np.stack([L * fade, R * fade], 1) * 1.2)
+
+
+def music_ambient():
+    n, tt, L, R = _stems()
+    bar = 4 * BEAT
+    prog = PROFILE["prog"]
+    padL = np.zeros(n); padR = np.zeros(n)
+    for bi, b0 in enumerate(np.arange(0, DUR, bar)):
+        root, chord = prog[bi % 4]
+        m = bar + 1.2  # sobreposição para transição suave entre acordes
+        e = np.minimum(t(m) / 1.0, 1) * np.minimum((m - t(m)) / 1.2, 1)
+        notes = chord + [chord[0] + 12]
+        sl = sum(supersaw(midi(c - 12), m, 3, 0.006) for c in notes) * e
+        sr = sum(supersaw(midi(c - 12) * 1.003, m, 3, 0.006) for c in notes) * e
+        s0 = int(b0 * SR); mm = min(len(sl), n - s0)
+        if mm <= 0:
+            continue
+        g = _gain("arp", b0)
+        padL[s0:s0 + mm] += sl[:mm] * g; padR[s0:s0 + mm] += sr[:mm] * g
+        # sub suave
+        if _gain("bass", b0):
+            sub = np.sin(2 * np.pi * midi(root - 12) * t(bar)) * np.minimum(t(bar) / 0.5, 1) * np.minimum((bar - t(bar)) / 0.5, 1)
+            _add(L, R, sub, b0, 0.22 * _gain("bass", b0))
+        # notas de piano espaçadas
+        for k, idx in ((0, 2), (1.5, 1), (2.5, 3)):
+            at = b0 + k * BEAT
+            _add(L, R, piano(midi(notes[idx] + 12), 2.5), at, 0.07 * _gain("arp", at), -0.3 if k else 0.3)
+        # pulso leve (quase imperceptível) para dar movimento
+        for k in range(4):
+            at = b0 + k * BEAT
+            if 10.9 <= at < 15.3 or 44.26 <= at < 48.6 or at >= END_HIT:
+                continue
+            _add(L, R, np.tanh(kick(0.3, 80, 40)), at, 0.18)
+    dly = int(BEAT * 0.75 * SR)
+    pl = lp_fast(padL, 1600); pr = lp_fast(padR, 1600)
+    L += (pl + np.concatenate([np.zeros(dly), pr[:-dly]]) * 0.25) * 0.08
+    R += (pr + np.concatenate([np.zeros(dly), pl[:-dly]]) * 0.25) * 0.08
+    _common_fx(L, R)
+    fade = np.clip((DUR - tt) / 1.5, 0, 1)
+    return np.tanh(np.stack([L * fade, R * fade], 1) * 1.1)
+
+
 if __name__ == "__main__":
     write("sfx-impact.wav", impact())
     write("sfx-whoosh.wav", whoosh())
@@ -619,7 +741,7 @@ if __name__ == "__main__":
     write("sfx-typing.wav", typing())
     write("sfx-shutter.wav", shutter())
     style = PROFILE.get("style")
-    write(PROFILE["out"], {"phonk": music_phonk, "trap": music_trap, "funk": music_funk}.get(style, music)())
+    write(PROFILE["out"], {"phonk": music_phonk, "trap": music_trap, "funk": music_funk, "hype": music_hype, "ambient": music_ambient}.get(style, music)())
     write("sfx-siren.wav", siren())
     write("sfx-cuffs.wav", cuffs())
     write("sfx-cell.wav", cell_slam())
