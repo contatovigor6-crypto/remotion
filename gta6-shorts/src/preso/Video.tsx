@@ -6,7 +6,7 @@ import {PresoOverlays, WantedHud} from './Overlays';
 import {SHOTS} from './shots';
 
 // Narração original (ElevenLabs) usada sem nenhuma alteração: public/v2/voice.mp3
-export const GTA6Preso: React.FC = () => (
+export const GTA6Preso: React.FC<{music: string | null; musicGain: number}> = ({music, musicGain}) => (
 	<ShortEdit
 		shots={SHOTS}
 		sfx={SFX}
@@ -15,7 +15,8 @@ export const GTA6Preso: React.FC = () => (
 		keywords={KEYWORDS}
 		hidden={HIDDEN}
 		voice="v2/voice.mp3"
-		music="audio/music-preso.wav"
+		music={music}
+		musicGain={musicGain}
 		overlays={<PresoOverlays />}
 		hud={<WantedHud />}
 	/>

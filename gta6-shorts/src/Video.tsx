@@ -27,6 +27,7 @@ export const GTA6Parado: React.FC = () => (
 		hidden={HIDDEN}
 		voice="audio/voice.wav"
 		music="audio/music.wav"
+		musicGain={1}
 		overlays={<Overlays />}
 		hud={<Hud />}
 	/>

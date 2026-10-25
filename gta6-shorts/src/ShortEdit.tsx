@@ -18,10 +18,13 @@ export const ShortEdit: React.FC<{
 	keywords: Set<string>;
 	hidden: [number, number][];
 	voice: string;
-	music: string;
+	/** null = sem trilha (ex.: para adicionar um som pelo editor do YouTube) */
+	music: string | null;
+	/** ganho extra da trilha (ajusta trilhas com mais energia na faixa da fala) */
+	musicGain: number;
 	overlays: React.ReactNode;
 	hud: React.ReactNode;
-}> = ({shots, sfx, shakes, words, keywords, hidden, voice, music, overlays, hud}) => {
+}> = ({shots, sfx, shakes, words, keywords, hidden, voice, music, musicGain, overlays, hud}) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 
@@ -59,7 +62,7 @@ export const ShortEdit: React.FC<{
 		}
 		const duck = interpolate(dist, [0, 0.25], [0.16, 0.32], {extrapolateRight: 'clamp'});
 		const intro = interpolate(t, [0, 0.4], [0.6, 1], {extrapolateRight: 'clamp'});
-		return duck * intro;
+		return duck * intro * musicGain;
 	};
 
 	return (
@@ -83,7 +86,7 @@ export const ShortEdit: React.FC<{
 			<Captions words={words} keywords={keywords} hidden={hidden} />
 
 			<Audio src={staticFile(voice)} volume={1} />
-			<Audio src={staticFile(music)} volume={(fr) => musicVolume(fr / fps)} />
+			{music === null ? null : <Audio src={staticFile(music)} volume={(fr) => musicVolume(fr / fps)} />}
 			{sfx.map((s, i) => (
 				<Sequence key={i} from={f(s.at)} layout="none" name={`sfx ${s.file}`}>
 					<Audio src={staticFile(`audio/${s.file}.wav`)} volume={s.vol} />

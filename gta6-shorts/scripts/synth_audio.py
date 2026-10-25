@@ -1,6 +1,6 @@
 """Sintetiza trilha (synthwave escuro, 120 BPM) e SFX originais — sem samples de terceiros.
 
-Uso: python3 scripts/synth_audio.py public/audio [parado|preso]
+Uso: python3 scripts/synth_audio.py public/audio [parado|preso|phonk]
 O arranjo segue os marcos da narração (segundos na voz já editada).
 """
 import sys, os, wave
@@ -35,6 +35,18 @@ PROFILES = {
             bass=[(44.26, 48.6, 0), (62.0, 64.3, 0)],
             arp=[(44.26, 48.6, 0.3), (62.5, 64.3, 0)],
             pad=[(62.5, 63.4, 0.3)],
+        ),
+        tense=(11.0, 15.3), ticks=(44.4, 48.5), riser=(60.2, 63.44),
+    ),
+    # Mesma edição de "preso", trilha no estilo drift phonk (cowbell, 808 distorcido, hats rápidos)
+    "phonk": dict(
+        style="phonk", bpm=140, dur=82.6, end_hit=81.45, out="music-phonk.wav",
+        # Fá menor: Fm - Db - Eb - C
+        prog=[(41, [65, 68, 72]), (37, [61, 65, 68]), (39, [63, 67, 70]), (36, [60, 64, 67])],
+        mutes=dict(
+            drums=[(10.9, 15.3, 0), (44.26, 48.6, 0), (60.2, 63.44, 0)],
+            bass=[(44.26, 48.6, 0), (62.0, 63.44, 0)],
+            arp=[(10.9, 15.3, 0.55), (44.26, 48.6, 0.25), (62.6, 63.44, 0)],
         ),
         tense=(11.0, 15.3), ticks=(44.4, 48.5), riser=(60.2, 63.44),
     ),
@@ -329,6 +341,102 @@ def music():
     return np.tanh(out * 1.2)
 
 
+def cowbell(f, n):
+    """Cowbell estilo 808 (duas ondas quadradas em razão ~1.48, filtradas)."""
+    tt = t(n)
+    x = np.sign(np.sin(2 * np.pi * f * tt)) + np.sign(np.sin(2 * np.pi * f * 1.482 * tt))
+    return bp_fast(x, 500, 3200) * (np.exp(-tt * 26) * 0.75 + np.exp(-tt * 7) * 0.25)
+
+
+def music_phonk():
+    n = int(DUR * SR); tt = np.arange(n) / SR
+    L = np.zeros(n); R = np.zeros(n)
+    bar = 4 * BEAT
+    prog = PROFILE["prog"]
+
+    def gain(stem, x):
+        g = np.ones_like(np.atleast_1d(x), dtype=float)
+        for a, b, v in PROFILE["mutes"].get(stem, []):
+            g[(x >= a) & (x < b)] = v
+        g[np.atleast_1d(x) >= END_HIT] = 0
+        return g
+
+    def add(sig, at, vol=1.0, pan=0.0):
+        s = int(at * SR)
+        if s >= n:
+            return
+        m = min(len(sig), n - s)
+        if sig.ndim == 2:
+            L[s:s + m] += sig[:m, 0] * vol; R[s:s + m] += sig[:m, 1] * vol
+        else:
+            L[s:s + m] += sig[:m] * vol * (1 - pan); R[s:s + m] += sig[:m] * vol * (1 + pan)
+
+    # bateria: kick com padrão trap, palma no 3º tempo (meio-tempo), hats em colcheias com rolos
+    kick_pat = [0, 1.5, 2.75]
+    for bi, b0 in enumerate(np.arange(0, DUR, bar)):
+        for k in kick_pat:
+            at = b0 + k * BEAT
+            if gain("drums", np.array([at]))[0] > 0:
+                add(np.tanh(2.2 * kick(0.4, 170, 45)), at, 0.8)
+        at = b0 + 2 * BEAT
+        if gain("drums", np.array([at]))[0] > 0:
+            clap = sum(np.roll(hp_fast(rng.standard_normal(int(0.3 * SR)), 1200) * np.exp(-t(0.3) * 16), int(d * SR)) for d in (0, 0.008, 0.017))
+            add(clap * 0.32, at)
+        for h in range(8):
+            at = b0 + h * BEAT / 2
+            if gain("drums", np.array([at]))[0] == 0:
+                continue
+            roll = 3 if (bi % 2 == 1 and h == 7) else 1
+            for r in range(roll):
+                hh = hp_fast(rng.standard_normal(int(0.04 * SR)), 8000) * np.exp(-t(0.04) * 120)
+                add(hh * (0.13 if r == 0 else 0.09), at + r * BEAT / 6, pan=0.25)
+
+    # 808 distorcido com glide para a tônica do acorde
+    b808 = np.zeros(n)
+    for bi, b0 in enumerate(np.arange(0, DUR, bar)):
+        root = prog[bi % 4][0]
+        for k, dur in ((0, 1.4), (1.5, 1.2), (2.75, 1.2)):
+            at = b0 + k * BEAT
+            if gain("bass", np.array([at]))[0] == 0:
+                continue
+            m = int(dur * BEAT * SR); tl = t(m / SR)
+            f = midi(root) * (1 + 0.5 * np.exp(-tl * 40))
+            sig = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.minimum(tl / 0.005, 1) * np.exp(-tl * 1.8)
+            s = int(at * SR); b808[s:s + m] += sig[: n - s]
+    b808 = lp_fast(np.tanh(3.0 * b808), 900) * 0.55
+    L += b808; R += b808
+
+    # melodia de cowbell (motivo original em semicolcheias) + eco
+    motif = [0, 0, 3, 0, 7, 0, 5, 3, 0, 0, 3, 0, 8, 7, 5, 3]
+    cb = np.zeros(n)
+    for j, at in enumerate(np.arange(0, DUR, BEAT / 4)):
+        bi = int(at // bar)
+        step = j % 16
+        if step in (1, 9) or gain("arp", np.array([at]))[0] == 0:
+            continue
+        root = prog[bi % 4][1][0]
+        note = root + motif[step] + (12 if (bi % 4 == 3 and step >= 12) else 0)
+        sig = cowbell(midi(note), BEAT / 4 * 1.6)
+        s = int(at * SR); m = min(len(sig), n - s)
+        cb[s:s + m] += sig[:m] * gain("arp", np.array([at]))[0]
+    dly = int(BEAT * 0.75 * SR)
+    cbL = cb + np.concatenate([np.zeros(dly), cb[:-dly]]) * 0.3
+    cbR = cb + np.concatenate([np.zeros(dly // 2), cb[:-(dly // 2)]]) * 0.3
+    L += cbL * 0.2; R += cbR * 0.2
+
+    # pulso tenso (preso × eliminado) e relógio na pausa
+    for b in np.arange(*PROFILE["tense"], BEAT * 2):
+        add(np.tanh(2 * kick(0.35, 90, 38)), b, 0.6)
+    for b in np.arange(*PROFILE["ticks"], 1.0):
+        add(tick(), b, 0.25)
+    r0, r1 = PROFILE["riser"]
+    add(riser(r1 - r0), r0, 0.35)
+
+    fade = np.clip((DUR - tt) / 1.2, 0, 1)
+    out = np.stack([L * fade, R * fade], 1)
+    return np.tanh(out * 1.3)
+
+
 if __name__ == "__main__":
     write("sfx-impact.wav", impact())
     write("sfx-whoosh.wav", whoosh())
@@ -339,7 +447,7 @@ if __name__ == "__main__":
     write("sfx-subdrop.wav", sub_drop())
     write("sfx-typing.wav", typing())
     write("sfx-shutter.wav", shutter())
-    write(PROFILE["out"], music())
+    write(PROFILE["out"], music_phonk() if PROFILE.get("style") == "phonk" else music())
     write("sfx-siren.wav", siren())
     write("sfx-cuffs.wav", cuffs())
     write("sfx-cell.wav", cell_slam())
