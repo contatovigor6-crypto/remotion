@@ -339,7 +339,7 @@ const Pause: React.FC<{dur: number; detailAt: number}> = ({dur, detailAt}) => {
 	);
 };
 
-const NotConfirmed: React.FC<{dur: number; rockstarAt: number}> = ({dur, rockstarAt}) => {
+export const NotConfirmed: React.FC<{dur: number; rockstarAt: number}> = ({dur, rockstarAt}) => {
 	const s = useSpring(0, 10, 300);
 	const r = useSpring(rockstarAt, 12, 260);
 	const out = useOut(dur);
@@ -412,7 +412,7 @@ const VerdictRow: React.FC<{label: string; value: string; ok: boolean; delay: nu
 	);
 };
 
-const Poll: React.FC<{start: number; aAt: number; bAt: number}> = ({start, aAt, bAt}) => {
+export const Poll: React.FC<{start: number; aAt: number; bAt: number; a: string; b: string}> = ({start, aAt, bAt, a: aText, b: bText}) => {
 	const frame = useCurrentFrame();
 	const s = useSpring(0, 14, 240);
 	const a = useSpring(aAt - start, 11, 280);
@@ -432,14 +432,14 @@ const Poll: React.FC<{start: number; aAt: number; bAt: number}> = ({start, aAt, 
 				<div style={{display: 'inline-block', background: C.pink, color: 'white', fontFamily: UI, fontWeight: 800, fontSize: 34, letterSpacing: 6, padding: '10px 22px', borderRadius: 10, transform: `scale(${pulse})`, transformOrigin: 'left center'}}>
 					COMENTE A OU B
 				</div>
-				{option('A', 'PRISÃO COM FUGA POSSÍVEL', a, '#1FA7C9')}
-				{option('B', 'SÓ ATRAPALHARIA A DIVERSÃO', b, C.red)}
+				{option('A', aText, a, '#1FA7C9')}
+				{option('B', bText, b, C.red)}
 			</div>
 		</AbsoluteFill>
 	);
 };
 
-const Flash: React.FC = () => {
+export const Flash: React.FC = () => {
 	const frame = useCurrentFrame();
 	return <AbsoluteFill style={{background: 'white', opacity: interpolate(frame, [0, 6], [0.75, 0], {extrapolateRight: 'clamp'})}} />;
 };
@@ -516,7 +516,7 @@ export const PresoOverlays: React.FC = () => (
 			<Verdict start={64.3} dur={8.3} />
 		</At>
 		<At from={73.3} to={82.6}>
-			<Poll start={73.3} aAt={76.6} bAt={79.2} />
+			<Poll start={73.3} aAt={76.6} bAt={79.2} a="PRISÃO COM FUGA POSSÍVEL" b="SÓ ATRAPALHARIA A DIVERSÃO" />
 		</At>
 	</AbsoluteFill>
 );

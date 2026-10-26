@@ -494,6 +494,16 @@ def radio_chirp():
     return np.tanh(1.8 * bp_fast(x, 400, 4000))
 
 
+def notify():
+    """Notificação de celular: dois 'dings' curtos e limpos."""
+    n = 0.5; x = np.zeros(int(n * SR))
+    for off, f0 in ((0.0, 1318.5), (0.11, 1760.0)):
+        s0 = int(off * SR); tt = t(0.3)
+        d = (np.sin(2 * np.pi * f0 * tt) + 0.25 * np.sin(2 * np.pi * 2 * f0 * tt)) * np.exp(-tt * 14) * np.minimum(tt / 0.002, 1)
+        x[s0:s0 + len(d)] += d[: len(x) - s0]
+    return x
+
+
 def _stems():
     n = int(DUR * SR)
     return n, np.arange(n) / SR, np.zeros(n), np.zeros(n)
@@ -747,4 +757,5 @@ if __name__ == "__main__":
     write("sfx-cell.wav", cell_slam())
     write("sfx-tapestop.wav", tape_stop())
     write("sfx-radio.wav", radio_chirp())
+    write("sfx-notify.wav", notify())
     print("ok")

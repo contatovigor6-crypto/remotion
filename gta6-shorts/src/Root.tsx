@@ -1,5 +1,7 @@
 import React from 'react';
 import {Composition} from 'remotion';
+import {GTA6Internet} from './internet/Video';
+import {DURATION_S as INTERNET_DURATION} from './internet/data';
 import {GTA6Preso} from './preso/Video';
 import {DURATION_S as PRESO_DURATION} from './preso/data';
 import {GTA6Parado} from './Video';
@@ -19,5 +21,8 @@ export const Root: React.FC = () => (
 		<Composition id="GTA6PresoInvestigations" component={GTA6Preso} defaultProps={{music: 'audio/music-investigations.wav', musicGain: 1.41}} durationInFrames={Math.round(PRESO_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Composition id="GTA6PresoHitman" component={GTA6Preso} defaultProps={{music: 'audio/music-hitman.wav', musicGain: 1.06}} durationInFrames={Math.round(PRESO_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Composition id="GTA6PresoSemMusica" component={GTA6Preso} defaultProps={{music: null, musicGain: 1}} durationInFrames={Math.round(PRESO_DURATION * FPS)} fps={FPS} width={W} height={H} />
+		{/* "Internet no GTA 6" — trilha "Investigations" (Kevin MacLeod, CC BY 4.0) */}
+		<Composition id="GTA6Internet" component={GTA6Internet} defaultProps={{music: 'audio/music-internet-investigations.wav', musicGain: 1.41}} durationInFrames={Math.round(INTERNET_DURATION * FPS)} fps={FPS} width={W} height={H} />
+		<Composition id="GTA6InternetSemMusica" component={GTA6Internet} defaultProps={{music: null, musicGain: 1}} durationInFrames={Math.round(INTERNET_DURATION * FPS)} fps={FPS} width={W} height={H} />
 	</>
 );
