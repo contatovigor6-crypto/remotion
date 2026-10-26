@@ -23,6 +23,8 @@ export const Root: React.FC = () => (
 		<Composition id="GTA6PresoSemMusica" component={GTA6Preso} defaultProps={{music: null, musicGain: 1}} durationInFrames={Math.round(PRESO_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		{/* "Internet no GTA 6" — trilha "Investigations" (Kevin MacLeod, CC BY 4.0) */}
 		<Composition id="GTA6Internet" component={GTA6Internet} defaultProps={{music: 'audio/music-internet-investigations.wav', musicGain: 1.41}} durationInFrames={Math.round(INTERNET_DURATION * FPS)} fps={FPS} width={W} height={H} />
+		<Composition id="GTA6InternetVolatile" component={GTA6Internet} defaultProps={{music: 'audio/music-internet-volatile.wav', musicGain: 0.38}} durationInFrames={Math.round(INTERNET_DURATION * FPS)} fps={FPS} width={W} height={H} />
+		<Composition id="GTA6InternetOuroboros" component={GTA6Internet} defaultProps={{music: 'audio/music-internet-ouroboros.wav', musicGain: 0.6}} durationInFrames={Math.round(INTERNET_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Composition id="GTA6InternetSemMusica" component={GTA6Internet} defaultProps={{music: null, musicGain: 1}} durationInFrames={Math.round(INTERNET_DURATION * FPS)} fps={FPS} width={W} height={H} />
 	</>
 );

@@ -7,7 +7,8 @@ cd "$(dirname "$0")/.."
 RAW=.cache/raw; mkdir -p "$RAW" public/audio
 while read -r name file offset delay dur dipA dipB; do
   [ -z "$name" ] && continue
-  [ -f "$RAW/$file" ] || curl -sfL -m 120 "https://incompetech.com/music/royalty-free/mp3-royaltyfree/${file// /%20}" -o "$RAW/$file"
+  # nomes com espaço são escritos com "_" na lista
+  [ -f "$RAW/$file" ] || curl -sfL -m 120 "https://incompetech.com/music/royalty-free/mp3-royaltyfree/${file//_/%20}" -o "$RAW/$file"
   env="volume='1-0.85*min(1,max(0,min((t-$dipA)/0.25,($dipB-t)/0.4)))':eval=frame"
   ms=$(python3 -c "print(int($delay*1000))")
   ffmpeg -nostdin -v error -y -ss "$offset" -i "$RAW/$file" \
@@ -17,4 +18,6 @@ done <<'LIST'
 investigations Investigations.mp3 0 0 82.6 44.2 48.6
 hitman Hitman.mp3 51.3 0 82.6 44.2 48.6
 internet-investigations Investigations.mp3 0 1.9 95.4 58.0 59.9
+internet-volatile Volatile_Reaction.mp3 27.9 0 95.4 58.0 59.9
+internet-ouroboros Ouroboros.mp3 66 0 95.4 58.0 59.9
 LIST
