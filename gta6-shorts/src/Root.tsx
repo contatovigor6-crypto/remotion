@@ -31,8 +31,8 @@ export const Root: React.FC = () => (
 		<Composition id="GTA6InternetOuroboros" component={GTA6Internet} defaultProps={{music: 'audio/music-internet-ouroboros.wav', musicGain: 0.6}} durationInFrames={Math.round(INTERNET_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Composition id="GTA6InternetSemMusica" component={GTA6Internet} defaultProps={{music: null, musicGain: 1}} durationInFrames={Math.round(INTERNET_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Still id="ThumbInternet" component={ThumbInternet} width={1280} height={720} />
-		{/* "GTA 6 a 60 fps no PS5?" — trilha "Volatile Reaction" (Kevin MacLeod, CC BY 4.0) */}
-		<Composition id="GTA6Fps" component={GTA6Fps} defaultProps={{music: 'audio/music-fps-volatile.wav', musicGain: 0.38}} durationInFrames={Math.round(FPS_DURATION * FPS)} fps={FPS} width={W} height={H} />
+		{/* "GTA 6 a 60 fps no PS5?" — trilha "Cyborg Ninja" (Kevin MacLeod, CC BY 4.0); músicas nunca se repetem: ver MUSICAS-USADAS.md */}
+		<Composition id="GTA6Fps" component={GTA6Fps} defaultProps={{music: 'audio/music-fps-cyborg.wav', musicGain: 0.63}} durationInFrames={Math.round(FPS_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Still id="ThumbFps" component={ThumbFps} width={1280} height={720} />
 	</>
 );
