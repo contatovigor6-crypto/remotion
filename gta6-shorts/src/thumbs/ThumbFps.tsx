@@ -3,11 +3,11 @@ import {AbsoluteFill, Img, staticFile} from 'remotion';
 import {WATERMARK} from '../brand';
 import {C, DISPLAY, GRAD, UI} from '../theme';
 
-// Thumbnail 1280×720 do Short "GTA 6 a 60 fps no PS5?": pôster oficial (Jason em neon) + texto à esquerda + logo do canal.
+// Thumbnail 1280×720 do Short "GTA 6 a 60 fps no PS5?": screenshot oficial inédito (lowrider dourado) + texto à esquerda + logo do canal.
 export const ThumbFps: React.FC = () => (
 	<AbsoluteFill style={{background: 'black', overflow: 'hidden'}}>
-		<Img src={staticFile('thumb/jason-neon.jpg')} style={{position: 'absolute', left: -40, top: -30, width: 1400, height: 788, filter: 'contrast(1.12) saturate(1.25) brightness(1.08)'}} />
-		<AbsoluteFill style={{background: 'linear-gradient(90deg, rgba(11,6,18,0.96) 0%, rgba(11,6,18,0.85) 34%, rgba(11,6,18,0) 58%)'}} />
+		<Img src={staticFile('v5/lowrider.jpg')} style={{position: 'absolute', left: 60, top: -60, width: 1500, height: 844, filter: 'contrast(1.1) saturate(1.2)'}} />
+		<AbsoluteFill style={{background: 'linear-gradient(90deg, rgba(11,6,18,0.97) 0%, rgba(11,6,18,0.9) 36%, rgba(11,6,18,0) 56%)'}} />
 		<div style={{position: 'absolute', left: 44, top: 70}}>
 			<div style={{display: 'inline-flex', alignItems: 'baseline', gap: 10}}>
 				<span style={{fontFamily: DISPLAY, fontSize: 250, lineHeight: 0.95, backgroundImage: GRAD, WebkitBackgroundClip: 'text', color: 'transparent', filter: 'drop-shadow(0 8px 0 #000)'}}>60</span>
