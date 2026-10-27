@@ -87,11 +87,11 @@ export const ShortEdit: React.FC<{
 			{hud}
 			<Captions words={words} keywords={keywords} hidden={hidden} />
 			{/* Marca-d'água: fora do container com tremor/zoom, então nunca se move nem some em cortes e transições.
-			    Canto superior direito, abaixo dos ícones de busca/menu do Shorts e longe de legendas e botões. */}
+			    Canto superior esquerdo, colado à borda (os ícones de busca/menu do Shorts ficam à direita), longe de legendas e botões. */}
 			{watermark === null ? null : (
 				<Img
 					src={staticFile(watermark)}
-					style={{position: 'absolute', top: 200, right: 48, width: 150, height: 150, objectFit: 'contain', borderRadius: 20, opacity: 0.8, boxShadow: '0 4px 14px rgba(0,0,0,0.55)'}}
+					style={{position: 'absolute', top: 56, left: 40, width: 128, height: 128, objectFit: 'contain', borderRadius: 18, opacity: 0.85, boxShadow: '0 4px 14px rgba(0,0,0,0.55)'}}
 				/>
 			)}
 
