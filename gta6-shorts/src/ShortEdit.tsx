@@ -91,7 +91,7 @@ export const ShortEdit: React.FC<{
 			{watermark === null ? null : (
 				<Img
 					src={staticFile(watermark)}
-					style={{position: 'absolute', top: 200, right: 48, width: 170, height: 170, objectFit: 'contain', objectPosition: 'right top', opacity: 0.72, filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.6))'}}
+					style={{position: 'absolute', top: 200, right: 48, width: 150, height: 150, objectFit: 'contain', borderRadius: 20, opacity: 0.8, boxShadow: '0 4px 14px rgba(0,0,0,0.55)'}}
 				/>
 			)}
 

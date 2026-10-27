@@ -653,7 +653,7 @@ const CommentBubble: React.FC<{dur: number; typeAt: number}> = ({dur, typeAt}) =
 	);
 };
 
-const LaunchDate: React.FC<{dur: number; logoAt: number}> = ({dur, logoAt}) => {
+export const LaunchDate: React.FC<{dur: number; logoAt: number}> = ({dur, logoAt}) => {
 	const l = useSpring(logoAt, 10, 260);
 	const d = useSpring(logoAt + 0.35, 14, 260);
 	const out = useOut(dur);

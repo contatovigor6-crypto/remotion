@@ -317,7 +317,7 @@ const LossRow: React.FC<{label: string; delay: number; stamp: boolean}> = ({labe
 	);
 };
 
-const Pause: React.FC<{dur: number; detailAt: number}> = ({dur, detailAt}) => {
+export const Pause: React.FC<{dur: number; detailAt: number}> = ({dur, detailAt}) => {
 	const frame = useCurrentFrame();
 	const s = useSpring(0, 10, 300);
 	const d = useSpring(detailAt, 12, 220);

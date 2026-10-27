@@ -1,6 +1,9 @@
 import React from 'react';
 import {Composition, Still} from 'remotion';
 import {ThumbInternet} from './thumbs/ThumbInternet';
+import {ThumbFps} from './thumbs/ThumbFps';
+import {GTA6Fps} from './fps/Video';
+import {DURATION_S as FPS_DURATION} from './fps/data';
 import {GTA6Internet} from './internet/Video';
 import {DURATION_S as INTERNET_DURATION} from './internet/data';
 import {GTA6Preso} from './preso/Video';
@@ -28,5 +31,8 @@ export const Root: React.FC = () => (
 		<Composition id="GTA6InternetOuroboros" component={GTA6Internet} defaultProps={{music: 'audio/music-internet-ouroboros.wav', musicGain: 0.6}} durationInFrames={Math.round(INTERNET_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Composition id="GTA6InternetSemMusica" component={GTA6Internet} defaultProps={{music: null, musicGain: 1}} durationInFrames={Math.round(INTERNET_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Still id="ThumbInternet" component={ThumbInternet} width={1280} height={720} />
+		{/* "GTA 6 a 60 fps no PS5?" — trilha "Volatile Reaction" (Kevin MacLeod, CC BY 4.0) */}
+		<Composition id="GTA6Fps" component={GTA6Fps} defaultProps={{music: 'audio/music-fps-volatile.wav', musicGain: 0.38}} durationInFrames={Math.round(FPS_DURATION * FPS)} fps={FPS} width={W} height={H} />
+		<Still id="ThumbFps" component={ThumbFps} width={1280} height={720} />
 	</>
 );
