@@ -1,5 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, Img, staticFile} from 'remotion';
+import {WATERMARK} from '../brand';
 import {C, DISPLAY, GRAD, UI} from '../theme';
 
 // Thumbnail 1280×720 do Short "Internet no GTA 6": arte oficial do Launch Trailer (Lucia segurando o celular)
@@ -49,6 +50,9 @@ export const ThumbInternet: React.FC = () => (
 				<span style={{fontFamily: DISPLAY, fontSize: 84, color: 'white', letterSpacing: 2}}>VAI SER REAL?</span>
 			</div>
 		</div>
+		{WATERMARK === null ? null : (
+			<Img src={staticFile(WATERMARK)} style={{position: 'absolute', right: 26, bottom: 26, width: 128, height: 128, borderRadius: 18, boxShadow: '0 6px 18px rgba(0,0,0,0.6)'}} />
+		)}
 		<div style={{position: 'absolute', left: 24, bottom: 18, fontFamily: UI, fontWeight: 800, fontSize: 18, color: 'rgba(255,255,255,0.75)', letterSpacing: 2}}>
 			ARTE OFICIAL: ROCKSTAR GAMES
 		</div>
