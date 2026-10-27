@@ -1,4 +1,5 @@
 import React from 'react';
+import {WATERMARK} from '../brand';
 import {WORDS} from '../data/words-preso';
 import {ShortEdit} from '../ShortEdit';
 import {HIDDEN, KEYWORDS, SFX, SHAKES} from './data';
@@ -19,5 +20,6 @@ export const GTA6Preso: React.FC<{music: string | null; musicGain: number}> = ({
 		musicGain={musicGain}
 		overlays={<PresoOverlays />}
 		hud={<WantedHud />}
+		watermark={WATERMARK}
 	/>
 );

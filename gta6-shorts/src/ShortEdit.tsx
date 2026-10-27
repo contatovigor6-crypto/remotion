@@ -24,7 +24,9 @@ export const ShortEdit: React.FC<{
 	musicGain: number;
 	overlays: React.ReactNode;
 	hud: React.ReactNode;
-}> = ({shots, sfx, shakes, words, keywords, hidden, voice, music, musicGain, overlays, hud}) => {
+	/** logo original do canal (marca-d'água fixa do 1º ao último quadro); null = ainda não fornecida */
+	watermark: string | null;
+}> = ({shots, sfx, shakes, words, keywords, hidden, voice, music, musicGain, overlays, hud, watermark}) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 
@@ -84,6 +86,14 @@ export const ShortEdit: React.FC<{
 			/>
 			{hud}
 			<Captions words={words} keywords={keywords} hidden={hidden} />
+			{/* Marca-d'água: fora do container com tremor/zoom, então nunca se move nem some em cortes e transições.
+			    Canto superior direito, abaixo dos ícones de busca/menu do Shorts e longe de legendas e botões. */}
+			{watermark === null ? null : (
+				<Img
+					src={staticFile(watermark)}
+					style={{position: 'absolute', top: 200, right: 48, width: 170, height: 170, objectFit: 'contain', objectPosition: 'right top', opacity: 0.72, filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.6))'}}
+				/>
+			)}
 
 			<Audio src={staticFile(voice)} volume={1} />
 			{music === null ? null : <Audio src={staticFile(music)} volume={(fr) => musicVolume(fr / fps)} />}

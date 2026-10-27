@@ -1,5 +1,6 @@
 import React from 'react';
-import {Composition} from 'remotion';
+import {Composition, Still} from 'remotion';
+import {ThumbInternet} from './thumbs/ThumbInternet';
 import {GTA6Internet} from './internet/Video';
 import {DURATION_S as INTERNET_DURATION} from './internet/data';
 import {GTA6Preso} from './preso/Video';
@@ -26,5 +27,6 @@ export const Root: React.FC = () => (
 		<Composition id="GTA6InternetVolatile" component={GTA6Internet} defaultProps={{music: 'audio/music-internet-volatile.wav', musicGain: 0.38}} durationInFrames={Math.round(INTERNET_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Composition id="GTA6InternetOuroboros" component={GTA6Internet} defaultProps={{music: 'audio/music-internet-ouroboros.wav', musicGain: 0.6}} durationInFrames={Math.round(INTERNET_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Composition id="GTA6InternetSemMusica" component={GTA6Internet} defaultProps={{music: null, musicGain: 1}} durationInFrames={Math.round(INTERNET_DURATION * FPS)} fps={FPS} width={W} height={H} />
+		<Still id="ThumbInternet" component={ThumbInternet} width={1280} height={720} />
 	</>
 );

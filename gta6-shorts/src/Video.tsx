@@ -1,4 +1,5 @@
 import React from 'react';
+import {WATERMARK} from './brand';
 import {Hud} from './components/Hud';
 import {Overlays} from './components/Overlays';
 import {HIDDEN, KEYWORDS} from './data/captions';
@@ -30,5 +31,6 @@ export const GTA6Parado: React.FC = () => (
 		musicGain={1}
 		overlays={<Overlays />}
 		hud={<Hud />}
+		watermark={WATERMARK}
 	/>
 );

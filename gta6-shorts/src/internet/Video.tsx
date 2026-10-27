@@ -1,4 +1,5 @@
 import React from 'react';
+import {WATERMARK} from '../brand';
 import {WORDS} from '../data/words-internet';
 import {ShortEdit} from '../ShortEdit';
 import {HIDDEN, KEYWORDS, SFX, SHAKES} from './data';
@@ -19,5 +20,6 @@ export const GTA6Internet: React.FC<{music: string | null; musicGain: number}> =
 		musicGain={musicGain}
 		overlays={<InternetOverlays />}
 		hud={null}
+		watermark={WATERMARK}
 	/>
 );
