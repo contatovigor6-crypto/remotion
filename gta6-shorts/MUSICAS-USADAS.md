@@ -9,5 +9,6 @@
 | 60 FPS no PS5 (rascunho, substituída) | Volatile Reaction | Kevin MacLeod, CC BY 4.0 |
 | **60 FPS no PS5 (final)** | **Cyborg Ninja** | Kevin MacLeod, CC BY 4.0 |
 | **Pista no dinheiro (GTA 6 × Red Dead)** | **Spy Glass** | Kevin MacLeod, CC BY 4.0 |
+| **O celular de GTA 6** | **Raving Energy** | Kevin MacLeod, CC BY 4.0 |
 
 Vetadas para próximos vídeos: todas acima.

@@ -3,6 +3,9 @@ import {Composition, Still} from 'remotion';
 import {ThumbInternet} from './thumbs/ThumbInternet';
 import {ThumbFps} from './thumbs/ThumbFps';
 import {ThumbPista} from './thumbs/ThumbPista';
+import {ThumbCelular} from './thumbs/ThumbCelular';
+import {GTA6Celular} from './celular/Video';
+import {DURATION_S as CELULAR_DURATION} from './celular/data';
 import {GTA6Pista} from './pista/Video';
 import {DURATION_S as PISTA_DURATION} from './pista/data';
 import {GTA6Fps} from './fps/Video';
@@ -40,5 +43,8 @@ export const Root: React.FC = () => (
 		{/* "A pista no dinheiro: GTA 6 × Red Dead" — trilha "Spy Glass" (Kevin MacLeod, CC BY 4.0) */}
 		<Composition id="GTA6Pista" component={GTA6Pista} defaultProps={{music: 'audio/music-pista-spyglass.wav', musicGain: 2.8}} durationInFrames={Math.round(PISTA_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Still id="ThumbPista" component={ThumbPista} width={1280} height={720} />
+		{/* "O celular de GTA 6" — trilha "Raving Energy" (Kevin MacLeod, CC BY 4.0) */}
+		<Composition id="GTA6Celular" component={GTA6Celular} defaultProps={{music: 'audio/music-celular-raving.wav', musicGain: 1}} durationInFrames={Math.round(CELULAR_DURATION * FPS)} fps={FPS} width={W} height={H} />
+		<Still id="ThumbCelular" component={ThumbCelular} width={1280} height={720} />
 	</>
 );
