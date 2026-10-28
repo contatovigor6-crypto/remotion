@@ -16,12 +16,17 @@ for i, w in enumerate(words):
     # Grafia oficial do nome da personagem
     if w["text"].startswith("Lúcia"):
         w["text"] = w["text"].replace("Lúcia", "Lucia")
+    # Grafia oficial dos presidentes fictícios de Red Dead Redemption 2
+    if w["text"] == "Fadius":
+        w["text"] = "Thaddeus"
+    if w["text"].startswith("Harden"):
+        w["text"] = w["text"].replace("Harden", "Hardin")
     if w["text"] == "vivo" and words[i+1]["text"] == "mesmo":
         w["text"] = "vivo,"
 # Nome do canal dito na narração ("Zone GTA VI") -> grafia oficial
 for i in range(len(words) - 2):
-    if words[i]["text"] == "Zone" and words[i + 1]["text"] == "GTA" and words[i + 2]["text"].rstrip(".") in ("V", "VI", "6"):
-        end = words[i + 2]["text"][-1] if words[i + 2]["text"].endswith(".") else ""
+    if words[i]["text"] == "Zone" and words[i + 1]["text"] == "GTA" and words[i + 2]["text"].rstrip(".,") in ("V", "VI", "6", "V1"):
+        end = words[i + 2]["text"][-1] if words[i + 2]["text"][-1] in ".," else ""
         words[i] = {"text": "ZoneGTAVI" + end, "start": words[i]["start"], "end": words[i + 2]["end"]}
         del words[i + 1:i + 3]
         break

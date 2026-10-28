@@ -290,7 +290,7 @@ const Compare: React.FC<{start: number; t30: number; t60: number}> = ({start, t3
 };
 
 /** Encerramento com a logo original do canal */
-const EndCard: React.FC<{start: number; subAt: number}> = ({start, subAt}) => {
+export const EndCard: React.FC<{start: number; subAt: number}> = ({start, subAt}) => {
 	const frame = useCurrentFrame();
 	const s = useSpring(0, 13, 220);
 	const b = useSpring(subAt - start, 10, 300);

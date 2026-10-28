@@ -2,6 +2,9 @@ import React from 'react';
 import {Composition, Still} from 'remotion';
 import {ThumbInternet} from './thumbs/ThumbInternet';
 import {ThumbFps} from './thumbs/ThumbFps';
+import {ThumbPista} from './thumbs/ThumbPista';
+import {GTA6Pista} from './pista/Video';
+import {DURATION_S as PISTA_DURATION} from './pista/data';
 import {GTA6Fps} from './fps/Video';
 import {DURATION_S as FPS_DURATION} from './fps/data';
 import {GTA6Internet} from './internet/Video';
@@ -34,5 +37,8 @@ export const Root: React.FC = () => (
 		{/* "GTA 6 a 60 fps no PS5?" — trilha "Cyborg Ninja" (Kevin MacLeod, CC BY 4.0); músicas nunca se repetem: ver MUSICAS-USADAS.md */}
 		<Composition id="GTA6Fps" component={GTA6Fps} defaultProps={{music: 'audio/music-fps-cyborg.wav', musicGain: 0.63}} durationInFrames={Math.round(FPS_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Still id="ThumbFps" component={ThumbFps} width={1280} height={720} />
+		{/* "A pista no dinheiro: GTA 6 × Red Dead" — trilha "Spy Glass" (Kevin MacLeod, CC BY 4.0) */}
+		<Composition id="GTA6Pista" component={GTA6Pista} defaultProps={{music: 'audio/music-pista-spyglass.wav', musicGain: 2.8}} durationInFrames={Math.round(PISTA_DURATION * FPS)} fps={FPS} width={W} height={H} />
+		<Still id="ThumbPista" component={ThumbPista} width={1280} height={720} />
 	</>
 );
