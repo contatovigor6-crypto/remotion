@@ -5,6 +5,7 @@ import {ThumbFps} from './thumbs/ThumbFps';
 import {ThumbPista} from './thumbs/ThumbPista';
 import {ThumbCelular} from './thumbs/ThumbCelular';
 import {ThumbBrian} from './thumbs/ThumbBrian';
+import {ThumbShortBrian, ThumbShortCelular, ThumbShortFps, ThumbShortPista} from './thumbs/ThumbShorts';
 import {GTA6Brian} from './brian/Video';
 import {DURATION_S as BRIAN_DURATION} from './brian/data';
 import {GTA6Celular} from './celular/Video';
@@ -52,5 +53,10 @@ export const Root: React.FC = () => (
 		{/* "Jason mora de favor (Brian Heder)" — trilha "Mistake the Getaway" (Kevin MacLeod, CC BY 4.0) */}
 		<Composition id="GTA6Brian" component={GTA6Brian} defaultProps={{music: 'audio/music-brian-getaway.wav', musicGain: 0.95}} durationInFrames={Math.round(BRIAN_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Still id="ThumbBrian" component={ThumbBrian} width={1280} height={720} />
+		{/* Thumbnails verticais (formato Shorts) — padrão atual do canal */}
+		<Still id="ThumbShortBrian" component={ThumbShortBrian} width={1080} height={1920} />
+		<Still id="ThumbShortCelular" component={ThumbShortCelular} width={1080} height={1920} />
+		<Still id="ThumbShortPista" component={ThumbShortPista} width={1080} height={1920} />
+		<Still id="ThumbShortFps" component={ThumbShortFps} width={1080} height={1920} />
 	</>
 );
