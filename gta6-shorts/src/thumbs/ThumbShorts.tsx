@@ -139,3 +139,62 @@ export const ThumbShortFps: React.FC = () => (
 		<Tag text="A VERDADE" top={830} />
 	</Frame>
 );
+
+/** "1 hora parado no GTA 6" — personagem boiando na piscina */
+export const ThumbShortParado: React.FC = () => (
+	<Frame credit="IMAGEM OFICIAL: ROCKSTAR GAMES">
+		<AbsoluteFill style={{background: 'linear-gradient(180deg, #1d0f2e, #0b0612)'}} />
+		<div style={{position: 'absolute', left: 0, right: 0, top: 1080, bottom: 0, overflow: 'hidden'}}>
+			<Bg src="img/pool-v.jpg" pos="50% 0%" />
+			<AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(11,6,18,0.85) 0%, rgba(11,6,18,0) 16%)'}} />
+		</div>
+		<Title
+			top={300}
+			lines={[
+				{text: '1 HORA', size: 260, grad: true},
+				{text: 'PARADO', size: 200},
+				{text: 'NO GTA 6', size: 140},
+			]}
+		/>
+		<Tag text="O QUE ACONTECE? ⏱️" top={960} />
+	</Frame>
+);
+
+/** "Preso no GTA 6" — Jason e Lucia mascarados (arte oficial) */
+export const ThumbShortPreso: React.FC = () => (
+	<Frame credit="ARTE OFICIAL: ROCKSTAR GAMES">
+		<AbsoluteFill style={{background: 'linear-gradient(180deg, #2a1020, #0b0612)'}} />
+		<div style={{position: 'absolute', left: 0, right: 0, top: 880, bottom: 0, overflow: 'hidden'}}>
+			<Bg src="img/masked-v.jpg" pos="50% 0%" />
+			<AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(11,6,18,0.85) 0%, rgba(11,6,18,0) 16%)'}} />
+		</div>
+		<Title
+			top={300}
+			lines={[
+				{text: 'PRESO', size: 280, color: C.red},
+				{text: 'NO GTA 6?', size: 170},
+			]}
+		/>
+		<Tag text="🚔 E AGORA?" top={800} bg={C.ink} />
+	</Frame>
+);
+
+/** "Internet no GTA 6" — arte do lançamento (Lucia com o celular) */
+export const ThumbShortInternet: React.FC = () => (
+	<Frame credit="ARTE OFICIAL: ROCKSTAR GAMES">
+		<AbsoluteFill style={{background: 'linear-gradient(180deg, #2a1440, #0b0612)'}} />
+		<div style={{position: 'absolute', left: 0, right: 0, top: 1000, bottom: 0, overflow: 'hidden'}}>
+			<Bg src="thumb/launch-poster.jpg" pos="56% 0%" />
+			<AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(11,6,18,0.85) 0%, rgba(11,6,18,0) 16%)'}} />
+		</div>
+		<Title
+			top={300}
+			lines={[
+				{text: 'A INTERNET', size: 170},
+				{text: 'DO GTA 6', size: 170},
+				{text: 'VAI SER REAL?', size: 150, grad: true},
+			]}
+		/>
+		<Tag text="🌐📱 PODE MUDAR TUDO" top={880} />
+	</Frame>
+);

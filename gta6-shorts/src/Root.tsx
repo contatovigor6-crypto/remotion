@@ -5,7 +5,7 @@ import {ThumbFps} from './thumbs/ThumbFps';
 import {ThumbPista} from './thumbs/ThumbPista';
 import {ThumbCelular} from './thumbs/ThumbCelular';
 import {ThumbBrian} from './thumbs/ThumbBrian';
-import {ThumbShortBrian, ThumbShortCelular, ThumbShortFps, ThumbShortPista} from './thumbs/ThumbShorts';
+import {ThumbShortBrian, ThumbShortCelular, ThumbShortFps, ThumbShortInternet, ThumbShortParado, ThumbShortPista, ThumbShortPreso} from './thumbs/ThumbShorts';
 import {GTA6Brian} from './brian/Video';
 import {DURATION_S as BRIAN_DURATION} from './brian/data';
 import {GTA6Celular} from './celular/Video';
@@ -58,5 +58,8 @@ export const Root: React.FC = () => (
 		<Still id="ThumbShortCelular" component={ThumbShortCelular} width={1080} height={1920} />
 		<Still id="ThumbShortPista" component={ThumbShortPista} width={1080} height={1920} />
 		<Still id="ThumbShortFps" component={ThumbShortFps} width={1080} height={1920} />
+		<Still id="ThumbShortParado" component={ThumbShortParado} width={1080} height={1920} />
+		<Still id="ThumbShortPreso" component={ThumbShortPreso} width={1080} height={1920} />
+		<Still id="ThumbShortInternet" component={ThumbShortInternet} width={1080} height={1920} />
 	</>
 );
