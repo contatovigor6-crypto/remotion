@@ -103,7 +103,7 @@ const NameCard: React.FC<{start: number; dur: number; nameAt: number}> = ({start
 					REVELADO PELA ROCKSTAR
 				</Chip>
 			</div>
-			<div style={{position: 'absolute', top: 440, left: SAFE.left, right: 140, opacity: n, transform: `translateX(${(1 - n) * -300}px)`}}>
+			<div style={{position: 'absolute', top: 760, left: SAFE.left, right: 140, opacity: n, transform: `translateX(${(1 - n) * -300}px)`}}>
 				<div style={{fontFamily: UI, fontWeight: 800, fontSize: 30, letterSpacing: 6, color: C.yellow, textShadow: '0 2px 8px #000'}}>O DONO DA CASA</div>
 				<div style={{fontFamily: DISPLAY, fontSize: 150, color: 'white', lineHeight: 1, textShadow: '0 8px 0 #000'}}>BRIAN</div>
 				<div style={{fontFamily: DISPLAY, fontSize: 150, lineHeight: 1, backgroundImage: GRAD, WebkitBackgroundClip: 'text', color: 'transparent', filter: 'drop-shadow(0 8px 0 #000)'}}>HEDER</div>

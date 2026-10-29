@@ -8,7 +8,7 @@ export const SHOTS: Shot[] = [
 	{id: 'C', from: 4.6, to: 9.58, src: 'v8/brian-dock.jpg', focus0: [0.55, 0.45], focus1: [0.62, 0.42], s0: 1.05, s1: 1.18, inT: 'glitch', look: 'dark', punches: [8.14], note: '"esse favor pode custar muito mais caro"'},
 	{id: 'D', from: 9.58, to: 15.34, src: 'v8/grass-aerial.jpg', focus0: [0.4, 0.5], focus1: [0.6, 0.5], s0: 1.1, s1: 1.2, inT: 'zoom', look: 'dark', note: '"Fica até o final... dono da casa"'},
 	// ---------- QUEM É O DONO
-	{id: 'E', from: 15.34, to: 19.46, src: 'v8/brian-art.jpg', focus0: [0.54, 0.4], s0: 1.15, s1: 1.05, inT: 'flash', note: '"propriedade de Brian Heder" — arte oficial'},
+	{id: 'E', from: 15.34, to: 19.46, src: 'v8/brian-art.jpg', focus0: [0.42, 0.4], s0: 1.15, s1: 1.05, inT: 'flash', note: '"propriedade de Brian Heder" — arte oficial'},
 	{id: 'F', from: 19.46, to: 23.04, src: 'v8/brian-car.jpg', focus0: [0.5, 0.42], s0: 1.05, s1: 1.18, inT: 'whipR', look: 'dark', note: '"criminoso experiente... tráfico de drogas"'},
 	{id: 'G', from: 23.04, to: 28.18, src: 'v8/brian-friends.jpg', focus0: [0.47, 0.4], focus1: [0.55, 0.4], s0: 1.05, s1: 1.12, inT: 'whipL', note: '"amigo que empresta o sofá... pizza"'},
 	{id: 'H', from: 28.18, to: 31.68, src: 'v8/town-night.jpg', focus0: [0.5, 0.5], s0: 1.2, s1: 1.05, inT: 'glitch', look: 'dark', punches: [30.5], note: '"Aqui a situação é um pouco diferente"'},

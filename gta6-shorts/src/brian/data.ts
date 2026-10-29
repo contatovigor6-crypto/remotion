@@ -14,6 +14,7 @@ export const KEYWORDS = new Set([
 // Trechos em que um título grande já mostra a fala
 export const HIDDEN: [number, number][] = [
 	[0, 2.3],
+	[18.3, 19.46],
 	[93.7, 98.6],
 ];
 
