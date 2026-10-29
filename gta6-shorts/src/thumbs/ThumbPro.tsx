@@ -1,0 +1,76 @@
+import React from 'react';
+import {AbsoluteFill, Img, staticFile} from 'remotion';
+import {WATERMARK} from '../brand';
+import {C, DISPLAY, GRAD, UI} from '../theme';
+
+// Thumbnail vertical "PRO" (1080×1920): logo original em destaque (selo com brilho), pergunta de curiosidade extrema,
+// palavra-chave em caixa amarela, círculo + seta apontando o detalhe, imagem oficial na metade de baixo.
+
+export type ProLine = {text: string; size: number; style?: 'white' | 'grad' | 'box' | 'red'};
+
+export const ThumbPro: React.FC<{
+	src: string;
+	pos: string;
+	imageTop: number;
+	lines: ProLine[];
+	circle: {x: number; y: number; r: number} | null;
+	credit: string;
+}> = ({src, pos, imageTop, lines, circle, credit}) => (
+	<AbsoluteFill style={{background: '#07040c', overflow: 'hidden'}}>
+		{/* fundo: textura de luz neon atrás do texto */}
+		<AbsoluteFill style={{background: 'radial-gradient(circle at 50% 18%, rgba(255,62,154,0.35), rgba(123,60,255,0.18) 35%, rgba(7,4,12,0) 60%)'}} />
+		<div style={{position: 'absolute', left: 0, right: 0, top: imageTop, bottom: 0, overflow: 'hidden'}}>
+			<Img src={staticFile(src)} style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: pos, filter: 'contrast(1.15) saturate(1.25)'}} />
+			<AbsoluteFill style={{background: 'linear-gradient(180deg, #07040c 0%, rgba(7,4,12,0) 22%, rgba(7,4,12,0) 75%, rgba(7,4,12,0.85) 100%)'}} />
+			<AbsoluteFill style={{boxShadow: 'inset 0 0 220px rgba(0,0,0,0.75)'}} />
+		</div>
+		{circle === null ? null : (
+			<>
+				<div style={{position: 'absolute', left: circle.x - circle.r, top: circle.y - circle.r, width: circle.r * 2, height: circle.r * 2, borderRadius: '50%', border: `12px solid ${C.red}`, boxShadow: `0 0 40px ${C.red}, inset 0 0 30px rgba(255,45,61,0.5)`}} />
+				<svg width={1080} height={1920} style={{position: 'absolute', left: 0, top: 0}}>
+					<path d={`M ${circle.x + circle.r + 170} ${circle.y - circle.r - 140} Q ${circle.x + circle.r + 120} ${circle.y - circle.r - 10} ${circle.x + circle.r * 0.75 + 10} ${circle.y - circle.r * 0.75 - 10}`} stroke={C.red} strokeWidth={16} fill="none" strokeLinecap="round" />
+					<polygon points={`${circle.x + circle.r * 0.75 - 22},${circle.y - circle.r * 0.75 - 40} ${circle.x + circle.r * 0.75 + 40},${circle.y - circle.r * 0.75 - 6} ${circle.x + circle.r * 0.75 - 6},${circle.y - circle.r * 0.75 + 34}`} fill={C.red} />
+				</svg>
+			</>
+		)}
+		{/* selo com a logo original — sempre bem exposta */}
+		{WATERMARK === null ? null : (
+			<div style={{position: 'absolute', top: 70, left: 0, right: 0, display: 'flex', justifyContent: 'center'}}>
+				<div style={{padding: 8, borderRadius: 44, background: GRAD, boxShadow: '0 0 60px rgba(255,62,154,0.75), 0 18px 40px rgba(0,0,0,0.7)'}}>
+					<Img src={staticFile(WATERMARK)} style={{display: 'block', width: 250, height: 250, borderRadius: 38}} />
+				</div>
+			</div>
+		)}
+		<div style={{position: 'absolute', top: 370, left: 0, right: 0, textAlign: 'center'}}>
+			{lines.map((l) => {
+				const base: React.CSSProperties = {fontFamily: DISPLAY, fontSize: l.size, lineHeight: 1.04, whiteSpace: 'nowrap', letterSpacing: 1};
+				if (l.style === 'box')
+					return (
+						<div key={l.text} style={{margin: '10px 0'}}>
+							<span style={{...base, display: 'inline-block', background: C.yellow, color: C.ink, padding: '6px 30px 0', borderRadius: 14, transform: 'rotate(-2.5deg)', boxShadow: '0 14px 0 #000, 0 0 50px rgba(255,216,74,0.5)'}}>{l.text}</span>
+						</div>
+					);
+				if (l.style === 'grad') return <div key={l.text} style={{...base, backgroundImage: GRAD, WebkitBackgroundClip: 'text', color: 'transparent', filter: 'drop-shadow(0 9px 0 #000)'}}>{l.text}</div>;
+				return <div key={l.text} style={{...base, color: l.style === 'red' ? C.red : 'white', textShadow: '0 9px 0 #000, 0 0 30px rgba(0,0,0,0.8)'}}>{l.text}</div>;
+			})}
+		</div>
+		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.7)', letterSpacing: 4}}>{credit}</div>
+	</AbsoluteFill>
+);
+
+/** Exemplo: "A polícia de GTA 6 vai ser mais inteligente que você?" */
+export const ThumbProPolicia: React.FC = () => (
+	<ThumbPro
+		src="v7/vc-police.jpg"
+		pos="0% 30%"
+		imageTop={1060}
+		lines={[
+			{text: 'A POLÍCIA DE GTA 6', size: 118},
+			{text: 'VAI SER MAIS', size: 132, style: 'grad'},
+			{text: 'INTELIGENTE', size: 168, style: 'box'},
+			{text: 'QUE VOCÊ?', size: 150},
+		]}
+		circle={{x: 180, y: 1330, r: 140}}
+		credit="IMAGEM OFICIAL: ROCKSTAR GAMES"
+	/>
+);
