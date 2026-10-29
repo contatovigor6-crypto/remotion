@@ -4,6 +4,9 @@ import {ThumbInternet} from './thumbs/ThumbInternet';
 import {ThumbFps} from './thumbs/ThumbFps';
 import {ThumbPista} from './thumbs/ThumbPista';
 import {ThumbCelular} from './thumbs/ThumbCelular';
+import {ThumbBrian} from './thumbs/ThumbBrian';
+import {GTA6Brian} from './brian/Video';
+import {DURATION_S as BRIAN_DURATION} from './brian/data';
 import {GTA6Celular} from './celular/Video';
 import {DURATION_S as CELULAR_DURATION} from './celular/data';
 import {GTA6Pista} from './pista/Video';
@@ -46,5 +49,8 @@ export const Root: React.FC = () => (
 		{/* "O celular de GTA 6" — trilha "Raving Energy" (Kevin MacLeod, CC BY 4.0) */}
 		<Composition id="GTA6Celular" component={GTA6Celular} defaultProps={{music: 'audio/music-celular-raving.wav', musicGain: 1}} durationInFrames={Math.round(CELULAR_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Still id="ThumbCelular" component={ThumbCelular} width={1280} height={720} />
+		{/* "Jason mora de favor (Brian Heder)" — trilha "Mistake the Getaway" (Kevin MacLeod, CC BY 4.0) */}
+		<Composition id="GTA6Brian" component={GTA6Brian} defaultProps={{music: 'audio/music-brian-getaway.wav', musicGain: 0.95}} durationInFrames={Math.round(BRIAN_DURATION * FPS)} fps={FPS} width={W} height={H} />
+		<Still id="ThumbBrian" component={ThumbBrian} width={1280} height={720} />
 	</>
 );

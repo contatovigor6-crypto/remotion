@@ -19,6 +19,9 @@ for i, w in enumerate(words):
     # Grafia oficial dos presidentes fictícios de Red Dead Redemption 2
     if w["text"] == "Fadius":
         w["text"] = "Thaddeus"
+    # Grafia oficial: Brian Heder (Whisper ouve "Heather")
+    if w["text"].startswith("Heather") and i > 0 and words[i - 1]["text"] == "Brian":
+        w["text"] = w["text"].replace("Heather", "Heder")
     if w["text"].startswith("Harden"):
         w["text"] = w["text"].replace("Harden", "Hardin")
     if w["text"] == "vivo" and words[i+1]["text"] == "mesmo":

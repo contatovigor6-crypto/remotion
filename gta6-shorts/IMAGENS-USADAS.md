@@ -34,10 +34,15 @@ Jason_Duval_01/02/04/05/06, Lucia_Caminos_02/03/04/05/06, Real_Dimez_01-04, Boob
 DreQuan_Priest_01/04, Cal_Hampton_02/03, Vice_City_01/03/04/05/06/08/09, Leonida_Keys_02/03/05, outro (arte Jason e Lucia na cama)
 thumbnail: Jason_Duval_04 (Jason com celular)
 
+## Jason mora de favor — Brian Heder (public/v8 — todas inéditas no canal)
+Jason_Duval_03, Brian_Heder_01/02/04, arte brian (personagem), SAFEHOUSE_VEHICLES_02, ONE_EYED_WILLIE_01, Grassrivers_01/02/04,
+Ambrosia_02/03/04, Port_Gellhorn_01/02/03/04, Leonida_Keys_01, Lucia_Caminos_01, Cal_Hampton_04, Raul_Bautista_04, Boobie_Ike_03,
+DreQuan_Priest_03, Mount_Kalaga_National_Park_06
+thumbnail: arte brian
+
 ## Ainda inéditos (disponíveis para próximos vídeos)
-Screenshots de personagens/lugares: Jason_Duval_03, Lucia_Caminos_01, Boobie_Ike_03/04, Brian_Heder_01/02/04, Cal_Hampton_01/04,
-DreQuan_Priest_02/03, Raul_Bautista_02/04, Vice_City_02/07, Leonida_Keys_01/04, Ambrosia_01-05, Grassrivers_01-04,
-Mount_Kalaga_National_Park_01-06, Port_Gellhorn_01-05, Hero_BG (artes), fundos das rádios. (Os clipes 2160/3840 novos repetem cenas já usadas.)
+Screenshots de personagens/lugares: Boobie_Ike_04, Cal_Hampton_01, DreQuan_Priest_02, Raul_Bautista_02, Vice_City_02/07,
+Leonida_Keys_04, Ambrosia_01/05, Grassrivers_03, Mount_Kalaga_National_Park_01-05, Port_Gellhorn_05, artes boobie/dimez/raul, Hero_BG (artes), fundos das rádios. (Os clipes 2160/3840 novos repetem cenas já usadas.)
 ULTIMATE_EDITION: CHEETAH_03/04, ELECTRIC_FANG_02, SAFEHOUSE_VEHICLES_02, SQUALO_02?(usado)/…, STOCK_305_01/04,
 VAPID_BUGGY_02/03/04, VICE_CITY_STYLE_01/03/04, WYMAN_CAR_COLLECTION_02/03/05, GOODTIME_GEAR_01, HAWK_AND_LITTLE_MORGAN_REVOLVERS,
 ONE_EYED_WILLIE_01-03, PTT_STORE_01, SARAS_SALON_01-03, WEAPON_VARIANTS_01; VINTAGE_VICE_CITY_PACK (vários);

@@ -24,4 +24,5 @@ fps-volatile Volatile_Reaction.mp3 27.9 0 100.4 51.9 55.3
 fps-cyborg Cyborg_Ninja.mp3 0 0 100.4 51.9 55.3
 pista-spyglass Spy_Glass.mp3 0 0 107.4 59.7 61.1
 celular-raving Raving_Energy.mp3 0 0 122.6 73.9 76.7
+brian-getaway Mistake_the_Getaway.mp3 0 0 98.6 69.6 71.0
 LIST
