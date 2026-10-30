@@ -46,6 +46,15 @@ SARAS_SALON_01, STOCK_305_04, GOODTIME_GEAR_01, ONE_EYED_WILLIE_03, DreQuan_Prie
 artes boobie/dimez/raul, Hero_BG (hotel, Jack of Hearts, grafite, galpão de barcos, ponte)
 thumbnail: Cal_Hampton_01
 
+## VÍDEO LONGO — Novas imagens (Edge 430) (public/v10)
+NOVAS: os 12 screenshots oficiais divulgados em 29/10/2026 na Edge 430 (tubarão, tatuagem no quintal, Méndez, motociclistas na cidade,
+Jason e Lucia na moto, Jason no fogo, Lucia no clube, 24/7, Jason e Lucia no carro, motociclista tatuado, aerobarco, skyline)
++ inéditos do site: capas do álbum e da trilha do Justice, fundos das rádios, WYMAN_02/03/05, VAPID_BUGGY_02/04, Kalaga_04, Leonida_Keys_04
+REAPROVEITADAS (vídeo longo): v6 stanier-night/pistols/style-man, v7 vc-street/vc-beach/vc-police/jason-bike/vc-night/jason-bar/lucia-bar/
+vc-aerial/dimez-car/keys-boats, v8 grass-chase/keys-aerial/ambrosia-sunset/gellhorn-bat/gellhorn-motel/safehouse,
+v9 street-bikers/bonfire/art-crowd/art-hotel/woman-face/pool-party/tough-duo/strangers/dirt-bikes/hunters/helicopter
+thumbnail: tubarão-martelo (Edge)
+
 ## Ainda inéditos (disponíveis para próximos vídeos)
 Screenshots de personagens/lugares: Boobie_Ike_04, Vice_City_07 (clube, evitar), Leonida_Keys_04 (submarino), Mount_Kalaga_04,
 Hero_BG (clube); carros WYMAN_02/03/05 e VAPID_BUGGY_02/03/04; capas The Album; mascotes PNG. Estoque de imagens oficiais inéditas está acabando; restam também os fundos das rádios. (Os clipes 2160/3840 novos repetem cenas já usadas.)

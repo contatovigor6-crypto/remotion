@@ -26,6 +26,16 @@ for i, w in enumerate(words):
         w["text"] = w["text"].replace("Harden", "Hardin")
     if w["text"] == "vivo" and words[i+1]["text"] == "mesmo":
         w["text"] = "vivo,"
+# Nomes próprios citados na narração (grafia oficial)
+FIX = {"Ed": "Edge", "Ed,": "Edge,", "WANK,": "WAINK,", "Garbitt": "Garbut", "Leônida.": "Leonida.", "Leônida": "Leonida",
+       "Playstation": "PlayStation", "XS.": "X|S.", "Taemin": "Tame", "Pala,": "Impala,"}
+for w in words:
+    w["text"] = FIX.get(w["text"], w["text"])
+for i in range(len(words) - 1):
+    if words[i]["text"] == "Gesavel" and words[i + 1]["text"].startswith("Stein"):
+        words[i] = {"text": "Gesaffelstein" + words[i + 1]["text"][5:], "start": words[i]["start"], "end": words[i + 1]["end"]}
+        del words[i + 1]
+        break
 # Nome do canal dito na narração ("Zone GTA VI") -> grafia oficial
 for i in range(len(words) - 2):
     if words[i]["text"] == "Zone" and words[i + 1]["text"] == "GTA" and words[i + 2]["text"].rstrip(".,") in ("V", "VI", "6", "V1"):
