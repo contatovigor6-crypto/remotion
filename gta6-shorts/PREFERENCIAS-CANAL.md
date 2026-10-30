@@ -7,3 +7,5 @@
 - Voz original sem alteração (TARGET=none); nunca cortar, acelerar ou inventar falas.
 - Nunca repetir músicas (MUSICAS-USADAS.md) nem imagens (IMAGENS-USADAS.md) entre vídeos.
 - Áudio novo = vídeo novo; entregar vídeo, thumbnail, título, descrição, hashtags, tags e comentário fixado na pasta EXPORTADO.
+- Vídeo LONGO (quando o dono pedir): 1920×1080, editor src/long/LongEdit.tsx, capítulos + capítulos com timestamps na descrição;
+  thumbnail HORIZONTAL 1280×720 no estilo PRO (ThumbProLongEdge como modelo).
