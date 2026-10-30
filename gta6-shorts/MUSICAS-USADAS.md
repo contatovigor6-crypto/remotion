@@ -11,5 +11,6 @@
 | **Pista no dinheiro (GTA 6 × Red Dead)** | **Spy Glass** | Kevin MacLeod, CC BY 4.0 |
 | **O celular de GTA 6** | **Raving Energy** | Kevin MacLeod, CC BY 4.0 |
 | **Jason mora de favor (Brian Heder)** | **Mistake the Getaway** | Kevin MacLeod, CC BY 4.0 |
+| **NPCs com personalidade** | **Exit the Premises** | Kevin MacLeod, CC BY 4.0 |
 
 Vetadas para próximos vídeos: todas acima.

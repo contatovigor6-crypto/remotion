@@ -40,9 +40,15 @@ Ambrosia_02/03/04, Port_Gellhorn_01/02/03/04, Leonida_Keys_01, Lucia_Caminos_01,
 DreQuan_Priest_03, Mount_Kalaga_National_Park_06
 thumbnail: arte brian
 
+## NPCs com personalidade (public/v9 — todas inéditas no canal)
+EXCLUSIVE_LOOKS_02/05, VAPID_STANIER_02/03, Raul_Bautista_02, Ambrosia_01/05, Port_Gellhorn_05, Vice_City_02, Cal_Hampton_01,
+SARAS_SALON_01, STOCK_305_04, GOODTIME_GEAR_01, ONE_EYED_WILLIE_03, DreQuan_Priest_02, Grassrivers_03, Mount_Kalaga_01/02/03/05,
+artes boobie/dimez/raul, Hero_BG (hotel, Jack of Hearts, grafite, galpão de barcos, ponte)
+thumbnail: Cal_Hampton_01
+
 ## Ainda inéditos (disponíveis para próximos vídeos)
-Screenshots de personagens/lugares: Boobie_Ike_04, Cal_Hampton_01, DreQuan_Priest_02, Raul_Bautista_02, Vice_City_02/07,
-Leonida_Keys_04, Ambrosia_01/05, Grassrivers_03, Mount_Kalaga_National_Park_01-05, Port_Gellhorn_05, artes boobie/dimez/raul, Hero_BG (artes), fundos das rádios. (Os clipes 2160/3840 novos repetem cenas já usadas.)
+Screenshots de personagens/lugares: Boobie_Ike_04, Vice_City_07 (clube, evitar), Leonida_Keys_04 (submarino), Mount_Kalaga_04,
+Hero_BG (clube); carros WYMAN_02/03/05 e VAPID_BUGGY_02/03/04; capas The Album; mascotes PNG. Estoque de imagens oficiais inéditas está acabando; restam também os fundos das rádios. (Os clipes 2160/3840 novos repetem cenas já usadas.)
 ULTIMATE_EDITION: CHEETAH_03/04, ELECTRIC_FANG_02, SAFEHOUSE_VEHICLES_02, SQUALO_02?(usado)/…, STOCK_305_01/04,
 VAPID_BUGGY_02/03/04, VICE_CITY_STYLE_01/03/04, WYMAN_CAR_COLLECTION_02/03/05, GOODTIME_GEAR_01, HAWK_AND_LITTLE_MORGAN_REVOLVERS,
 ONE_EYED_WILLIE_01-03, PTT_STORE_01, SARAS_SALON_01-03, WEAPON_VARIANTS_01; VINTAGE_VICE_CITY_PACK (vários);

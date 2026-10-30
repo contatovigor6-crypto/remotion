@@ -74,3 +74,20 @@ export const ThumbProPolicia: React.FC = () => (
 		credit="IMAGEM OFICIAL: ROCKSTAR GAMES"
 	/>
 );
+
+/** "NPCs com personalidade" — Cal com o taco (screenshot oficial) */
+export const ThumbProNpc: React.FC = () => (
+	<ThumbPro
+		src="v9/cal-golf.jpg"
+		pos="66% 20%"
+		imageTop={1060}
+		lines={[
+			{text: 'EM GTA 6', size: 130},
+			{text: 'OS NPCs', size: 170, style: 'grad'},
+			{text: 'REVIDAM', size: 190, style: 'box'},
+			{text: 'CUIDADO 😳', size: 130},
+		]}
+		circle={{x: 560, y: 1330, r: 150}}
+		credit="IMAGEM OFICIAL: ROCKSTAR GAMES"
+	/>
+);

@@ -5,7 +5,9 @@ import {ThumbFps} from './thumbs/ThumbFps';
 import {ThumbPista} from './thumbs/ThumbPista';
 import {ThumbCelular} from './thumbs/ThumbCelular';
 import {ThumbBrian} from './thumbs/ThumbBrian';
-import {ThumbProPolicia} from './thumbs/ThumbPro';
+import {ThumbProNpc, ThumbProPolicia} from './thumbs/ThumbPro';
+import {GTA6Npc} from './npc/Video';
+import {DURATION_S as NPC_DURATION} from './npc/data';
 import {ThumbShortBrian, ThumbShortCelular, ThumbShortFps, ThumbShortInternet, ThumbShortParado, ThumbShortPista, ThumbShortPreso} from './thumbs/ThumbShorts';
 import {GTA6Brian} from './brian/Video';
 import {DURATION_S as BRIAN_DURATION} from './brian/data';
@@ -63,5 +65,8 @@ export const Root: React.FC = () => (
 		<Still id="ThumbShortPreso" component={ThumbShortPreso} width={1080} height={1920} />
 		<Still id="ThumbShortInternet" component={ThumbShortInternet} width={1080} height={1920} />
 		<Still id="ThumbProPolicia" component={ThumbProPolicia} width={1080} height={1920} />
+		{/* "NPCs com personalidade" — trilha "Exit the Premises" (Kevin MacLeod, CC BY 4.0) */}
+		<Composition id="GTA6Npc" component={GTA6Npc} defaultProps={{music: 'audio/music-npc-exit.wav', musicGain: 0.83}} durationInFrames={Math.round(NPC_DURATION * FPS)} fps={FPS} width={W} height={H} />
+		<Still id="ThumbProNpc" component={ThumbProNpc} width={1080} height={1920} />
 	</>
 );
