@@ -119,3 +119,31 @@ export const ThumbProLongEdge: React.FC = () => (
 		<div style={{position: 'absolute', left: 40, bottom: 18, fontFamily: UI, fontWeight: 800, fontSize: 16, color: 'rgba(255,255,255,0.7)', letterSpacing: 2}}>IMAGEM OFICIAL: ROCKSTAR GAMES</div>
 	</AbsoluteFill>
 );
+
+/** Thumbnail HORIZONTAL do vídeo longo "Os interiores de GTA 6" — círculo no cachorro (screenshot oficial da Edge) */
+export const ThumbProLongInteriores: React.FC = () => (
+	<AbsoluteFill style={{background: '#07040c', overflow: 'hidden'}}>
+		<Img src={staticFile('v6/neon-tattoo.jpg')} style={{position: 'absolute', left: 330, top: 0, width: 1280, height: 720, objectFit: 'cover', filter: 'contrast(1.15) saturate(1.3)'}} />
+		<AbsoluteFill style={{background: 'linear-gradient(90deg, #07040c 0%, rgba(7,4,12,0.92) 33%, rgba(7,4,12,0.2) 58%, rgba(7,4,12,0) 75%)'}} />
+		<AbsoluteFill style={{background: 'radial-gradient(circle at 15% 20%, rgba(255,62,154,0.35), rgba(7,4,12,0) 45%)'}} />
+		<AbsoluteFill style={{boxShadow: 'inset 0 0 160px rgba(0,0,0,0.7)'}} />
+		{/* círculo + seta no tubarão-martelo */}
+		<div style={{position: 'absolute', left: 700, top: 170, width: 300, height: 300, borderRadius: '50%', border: `10px solid ${C.red}`, boxShadow: `0 0 34px ${C.red}`}} />
+		<svg width={1280} height={720} style={{position: 'absolute', left: 0, top: 0}}>
+			<path d="M 1160 610 Q 1130 480 1010 420" stroke={C.red} strokeWidth={14} fill="none" strokeLinecap="round" />
+			<polygon points="990,396 1038,418 1002,446" fill={C.red} />
+		</svg>
+		{WATERMARK === null ? null : (
+			<div style={{position: 'absolute', top: 30, left: 34, padding: 6, borderRadius: 30, background: GRAD, boxShadow: '0 0 40px rgba(255,62,154,0.75), 0 10px 26px rgba(0,0,0,0.7)'}}>
+				<Img src={staticFile(WATERMARK)} style={{display: 'block', width: 150, height: 150, borderRadius: 25}} />
+			</div>
+		)}
+		<div style={{position: 'absolute', left: 40, top: 215}}>
+			<div style={{fontFamily: DISPLAY, fontSize: 96, color: 'white', lineHeight: 1, textShadow: '0 7px 0 #000', whiteSpace: 'nowrap'}}>O QUE TEM ATRÁS</div>
+			<div style={{fontFamily: DISPLAY, fontSize: 118, lineHeight: 1.02, backgroundImage: GRAD, WebkitBackgroundClip: 'text', color: 'transparent', filter: 'drop-shadow(0 7px 0 #000)', whiteSpace: 'nowrap'}}>DAS PORTAS</div>
+			<div style={{display: 'inline-block', marginTop: 12, background: C.yellow, color: C.ink, fontFamily: DISPLAY, fontSize: 92, padding: '4px 24px 0', borderRadius: 12, transform: 'rotate(-2.5deg)', boxShadow: '0 10px 0 #000, 0 0 40px rgba(255,216,74,0.5)', whiteSpace: 'nowrap'}}>DE GTA 6? 🚪</div>
+		</div>
+		<div style={{position: 'absolute', right: 30, top: 28, background: 'rgba(11,6,18,0.85)', color: 'white', fontFamily: UI, fontWeight: 800, fontSize: 22, letterSpacing: 3, padding: '8px 16px', borderRadius: 8}}>🔎 INTERIORES DE GTA 6</div>
+		<div style={{position: 'absolute', left: 40, bottom: 18, fontFamily: UI, fontWeight: 800, fontSize: 16, color: 'rgba(255,255,255,0.7)', letterSpacing: 2}}>IMAGEM OFICIAL: ROCKSTAR GAMES</div>
+	</AbsoluteFill>
+);

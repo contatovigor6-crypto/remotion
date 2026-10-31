@@ -11,7 +11,7 @@ const EDGE_IMGS = ['shark', 'tattoo-yard', 'mendez', 'bikers-town', 'jl-moto', '
 
 const useAt = (start: number, at: number, damping = 12, stiffness = 260) => useSpring(at - start, damping, stiffness);
 
-const Pill: React.FC<{children: React.ReactNode; bg?: string; color?: string; size?: number; style?: React.CSSProperties}> = ({children, bg = 'rgba(11,6,18,0.88)', color = 'white', size = 34, style}) => (
+export const Pill: React.FC<{children: React.ReactNode; bg?: string; color?: string; size?: number; style?: React.CSSProperties}> = ({children, bg = 'rgba(11,6,18,0.88)', color = 'white', size = 34, style}) => (
 	<div style={{display: 'inline-flex', alignItems: 'center', gap: 12, padding: '10px 24px', background: bg, color, fontFamily: UI, fontWeight: 800, fontSize: size, letterSpacing: 3, borderRadius: 10, boxShadow: '0 10px 30px rgba(0,0,0,0.45)', whiteSpace: 'nowrap', ...style}}>{children}</div>
 );
 
@@ -28,7 +28,7 @@ const NewBadge: React.FC = () => {
 };
 
 /** Rótulo do assunto da imagem, abaixo da logo */
-const Label: React.FC<{text: string; dur: number; color?: string}> = ({text, dur, color = C.pink}) => {
+export const Label: React.FC<{text: string; dur: number; color?: string}> = ({text, dur, color = C.pink}) => {
 	const s = useSpring(0.1, 13, 260);
 	const out = useOut(dur);
 	return (
@@ -41,7 +41,7 @@ const Label: React.FC<{text: string; dur: number; color?: string}> = ({text, dur
 	);
 };
 
-const Hook: React.FC<{dur: number}> = ({dur}) => {
+export const Hook: React.FC<{dur: number}> = ({dur}) => {
 	const a = useSpring(0.2, 12, 240);
 	const b = useSpring(0.9, 10, 280);
 	const out = useOut(dur, 6);
@@ -72,7 +72,7 @@ const DemoCard: React.FC<{dur: number; edgeAt: number; start: number}> = ({dur, 
 	);
 };
 
-const Chapter: React.FC<{n: number; title: string; sub: string; dur: number}> = ({n, title, sub, dur}) => {
+export const Chapter: React.FC<{n: number; title: string; sub: string; dur: number}> = ({n, title, sub, dur}) => {
 	const a = useSpring(0.05, 12, 220);
 	const b = useSpring(0.35, 12, 240);
 	const out = useOut(dur, 8);
@@ -145,7 +145,7 @@ const BigStat: React.FC<{start: number; dur: number; at: number}> = ({start, dur
 	);
 };
 
-const ChipRow: React.FC<{start: number; dur: number; items: [string, number, string][]; top?: number; title?: string}> = ({start, dur, items, top = 190, title}) => {
+export const ChipRow: React.FC<{start: number; dur: number; items: [string, number, string][]; top?: number; title?: string}> = ({start, dur, items, top = 190, title}) => {
 	const frame = useCurrentFrame();
 	const out = useOut(dur);
 	return (
@@ -291,7 +291,7 @@ const AppRow: React.FC<{title: string; sub: string; at: number; start: number; t
 	);
 };
 
-const Quote: React.FC<{dur: number; who: string; role: string; text: string}> = ({dur, who, role, text}) => {
+export const Quote: React.FC<{dur: number; who: string; role: string; text: string}> = ({dur, who, role, text}) => {
 	const s = useSpring(0, 13, 240);
 	const out = useOut(dur);
 	return (
@@ -382,7 +382,7 @@ const Poll: React.FC<{start: number; dur: number}> = ({start, dur}) => {
 	);
 };
 
-const EndCard: React.FC<{start: number; subAt: number}> = ({start, subAt}) => {
+export const EndCard: React.FC<{start: number; subAt: number}> = ({start, subAt}) => {
 	const frame = useCurrentFrame();
 	const s = useSpring(0, 13, 220);
 	const b = useAt(start, subAt, 10, 300);

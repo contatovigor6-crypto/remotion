@@ -27,7 +27,7 @@ for i, w in enumerate(words):
     if w["text"] == "vivo" and words[i+1]["text"] == "mesmo":
         w["text"] = "vivo,"
 # Nomes próprios citados na narração (grafia oficial)
-FIX = {"Ed": "Edge", "Ed,": "Edge,", "WANK,": "WAINK,", "Garbitt": "Garbut", "Leônida.": "Leonida.", "Leônida": "Leonida",
+FIX = {"Ed": "Edge", "Ed,": "Edge,", "WANK,": "WAINK,", "Garbitt": "Garbut", "Garbott,": "Garbut,", "Garbott": "Garbut", "Leônida.": "Leonida.", "Leônida": "Leonida",
        "Playstation": "PlayStation", "XS.": "X|S.", "Taemin": "Tame", "Pala,": "Impala,"}
 for w in words:
     w["text"] = FIX.get(w["text"], w["text"])

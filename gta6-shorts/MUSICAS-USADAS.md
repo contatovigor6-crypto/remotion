@@ -13,5 +13,6 @@
 | **Jason mora de favor (Brian Heder)** | **Mistake the Getaway** | Kevin MacLeod, CC BY 4.0 |
 | **NPCs com personalidade** | **Exit the Premises** | Kevin MacLeod, CC BY 4.0 |
 | **VÍDEO LONGO — Novas imagens (Edge 430)** | **Crypto · Darkest Child · Hidden Agenda · Unholy Knight** | Kevin MacLeod, CC BY 4.0 |
+| **VÍDEO LONGO — Interiores** | **Mysterioso March · Sneaky Snitch · Comfortable Mystery 4** | Kevin MacLeod, CC BY 4.0 |
 
 Vetadas para próximos vídeos: todas acima.

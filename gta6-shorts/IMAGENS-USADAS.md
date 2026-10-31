@@ -55,6 +55,12 @@ vc-aerial/dimez-car/keys-boats, v8 grass-chase/keys-aerial/ambrosia-sunset/gellh
 v9 street-bikers/bonfire/art-crowd/art-hotel/woman-face/pool-party/tough-duo/strangers/dirt-bikes/hunters/helicopter
 thumbnail: tubarão-martelo (Edge)
 
+## VÍDEO LONGO — Interiores (v11 + reaproveitadas)
+Inédita: Hero_BG (arte do clube). Reaproveitadas: v5 rooftop/stilt-house/postcard/tattoo-shop/tattoo-back/tattoo-neon/mechanic,
+v6 salon-desk/salon-man/neon-tattoo/club-night/cash-seat/couple-port, v7 boobie-office/dimez-studio/raul-phone/cal-pool-hall/keys-anchor/
+jason-phone/vc-aerial/vc-street, v8 gellhorn-cabaret/gellhorn-motel/willie-garage/safehouse, v9 strangers/counter-woman/pool-party/bonfire/
+street-bikers, v10 jason-247/jason-fire/tattoo-yard/skyline. thumbnail: Jason no 24/7 (Edge)
+
 ## Ainda inéditos (disponíveis para próximos vídeos)
 Screenshots de personagens/lugares: Boobie_Ike_04, Vice_City_07 (clube, evitar), Leonida_Keys_04 (submarino), Mount_Kalaga_04,
 Hero_BG (clube); carros WYMAN_02/03/05 e VAPID_BUGGY_02/03/04; capas The Album; mascotes PNG. Estoque de imagens oficiais inéditas está acabando; restam também os fundos das rádios. (Os clipes 2160/3840 novos repetem cenas já usadas.)

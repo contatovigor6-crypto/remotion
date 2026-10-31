@@ -5,7 +5,10 @@ import {ThumbFps} from './thumbs/ThumbFps';
 import {ThumbPista} from './thumbs/ThumbPista';
 import {ThumbCelular} from './thumbs/ThumbCelular';
 import {ThumbBrian} from './thumbs/ThumbBrian';
-import {ThumbProLongEdge, ThumbProNpc, ThumbProPolicia} from './thumbs/ThumbPro';
+import {ThumbProLongEdge, ThumbProLongInteriores, ThumbProNpc, ThumbProPolicia} from './thumbs/ThumbPro';
+import {GTA6Interiores} from './interiores/Video';
+import {ThumbExtremeInteriores} from './thumbs/ThumbExtreme';
+import {DURATION_S as INTERIORES_DURATION} from './interiores/data';
 import {GTA6Npc} from './npc/Video';
 import {GTA6Edge} from './edge/Video';
 import {DURATION_S as EDGE_DURATION} from './edge/data';
@@ -72,6 +75,10 @@ export const Root: React.FC = () => (
 		<Still id="ThumbProNpc" component={ThumbProNpc} width={1080} height={1920} />
 		{/* VÍDEO LONGO 16:9 "Novas imagens de GTA 6 (Edge 430)" — trilha de 4 faixas de Kevin MacLeod (CC BY 4.0) */}
 		<Still id="ThumbProLongEdge" component={ThumbProLongEdge} width={1280} height={720} />
+		{/* VÍDEO LONGO 16:9 "Os interiores de GTA 6" — trilha de 3 faixas de Kevin MacLeod (CC BY 4.0) */}
+		<Composition id="GTA6Interiores" component={GTA6Interiores} defaultProps={{music: 'audio/music-interiores-long.wav', musicGain: 0.8}} durationInFrames={Math.round(INTERIORES_DURATION * FPS)} fps={FPS} width={1920} height={1080} />
+		<Still id="ThumbProLongInteriores" component={ThumbProLongInteriores} width={1280} height={720} />
+		<Still id="ThumbExtremeInteriores" component={ThumbExtremeInteriores} width={1280} height={720} />
 		<Composition id="GTA6Edge" component={GTA6Edge} defaultProps={{music: 'audio/music-edge-long.wav', musicGain: 0.8}} durationInFrames={Math.round(EDGE_DURATION * FPS)} fps={FPS} width={1920} height={1080} />
 	</>
 );
