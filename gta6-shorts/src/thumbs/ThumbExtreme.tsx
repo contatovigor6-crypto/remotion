@@ -4,7 +4,7 @@ import {WATERMARK} from '../brand';
 import {C, DISPLAY, GRAD, UI} from '../theme';
 
 // ZONEGTA6 — EXTREME CLICK THUMBNAIL SYSTEM (1280×720): um foco dominante (personagem oficial em primeiro plano),
-// luz cinematográfica + partículas, texto de 2–5 palavras com uma palavra em destaque, logo original sempre exposta.
+// luz cinematográfica + partículas, texto de 2–5 palavras com uma palavra em destaque. Sem logo do canal (pedido em 31/10).
 
 const Dust: React.FC<{seed: string; n: number; x0: number; x1: number}> = ({seed, n, x0, x1}) => (
 	<>
@@ -40,7 +40,6 @@ export const ThumbExtremeInteriores: React.FC = () => (
 			<div style={{fontFamily: DISPLAY, fontSize: 96, color: 'white', lineHeight: 1.0, textShadow: '0 7px 0 #000'}}>MAIS</div>
 			<div style={{fontFamily: DISPLAY, fontSize: 104, color: 'white', lineHeight: 1.0, textShadow: '0 7px 0 #000', whiteSpace: 'nowrap'}}>INTERIORES</div>
 		</div>
-		<Logo side="right" />
 		<div style={{position: 'absolute', right: 46, bottom: 16, fontFamily: UI, fontWeight: 800, fontSize: 15, color: 'rgba(255,255,255,0.6)', letterSpacing: 2}}>IMAGEM OFICIAL: ROCKSTAR GAMES</div>
 	</AbsoluteFill>
 );
