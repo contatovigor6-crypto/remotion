@@ -13,6 +13,7 @@ import {
 import type {Look, Shot} from '../data/shots';
 import {f} from '../theme';
 import {RGBSplit} from './RGBSplit';
+import {random} from 'remotion';
 
 const LOOKS: Record<Look, string> = {
 	base: 'contrast(1.08) saturate(1.15)',
@@ -76,6 +77,13 @@ export const ShotView: React.FC<{shot: Shot}> = ({shot}) => {
 		overlay = <AbsoluteFill style={{background: 'black', opacity: o}} />;
 	}
 
+	// Foto viva: deriva 3D lenta + micro-movimento de câmera na mão, para a imagem parada parecer filmada
+	const live = shot.live === true && !shot.video;
+	const t = frame / fps;
+	const liveTransform = live
+		? `perspective(1400px) rotateY(${Math.sin(t * 0.9 + shot.from) * 2.4}deg) rotateX(${Math.cos(t * 0.7 + shot.from) * 1.4}deg) translate(${Math.sin(t * 1.7) * 6 + Math.sin(t * 5.3) * 1.5}px, ${Math.cos(t * 1.3) * 5 + Math.cos(t * 4.7) * 1.5}px) scale(1.06)`
+		: '';
+
 	const look = frozen ? 'freeze' : shot.look ?? 'base';
 	const filterId = `mb-${shot.id}`;
 	const filters = [LOOKS[look], blur > 0.2 ? `blur(${blur}px)` : '', blurX > 0.5 ? `url(#${filterId})` : '']
@@ -106,7 +114,7 @@ export const ShotView: React.FC<{shot: Shot}> = ({shot}) => {
 			<RGBSplit amount={split}>
 				<AbsoluteFill
 					style={{
-						transform: `translateX(${tx}px) scale(${scale})`,
+						transform: `${liveTransform} translateX(${tx}px) scale(${scale})`,
 						transformOrigin: `${fx * 100}% ${fy * 100}%`,
 						filter: filters,
 					}}
@@ -117,9 +125,29 @@ export const ShotView: React.FC<{shot: Shot}> = ({shot}) => {
 			{look === 'red' ? (
 				<AbsoluteFill style={{background: 'radial-gradient(circle at 60% 40%, rgba(255,40,70,0) 20%, rgba(150,0,30,0.55) 100%)'}} />
 			) : null}
+			{live ? <LiveFx frame={frame} len={len} seed={shot.id} /> : null}
 			{frozen ? <FreezeFx since={frame - (f(shot.freezeAt!) - f(shot.from))} /> : null}
 			{overlay}
 		</AbsoluteFill>
+	);
+};
+
+/** Feixe de luz que atravessa a cena + partículas flutuando (foto viva) */
+const LiveFx: React.FC<{frame: number; len: number; seed: string}> = ({frame, len, seed}) => {
+	const sweep = interpolate(frame, [0, Math.max(len, 1)], [-60, 160]);
+	return (
+		<>
+			<AbsoluteFill style={{background: `linear-gradient(105deg, rgba(255,255,255,0) ${sweep - 18}%, rgba(255,235,210,0.16) ${sweep}%, rgba(255,255,255,0) ${sweep + 18}%)`, mixBlendMode: 'screen'}} />
+			{Array.from({length: 26}).map((_, i) => {
+				const x0 = random(`${seed}lx${i}`) * 100;
+				const y0 = random(`${seed}ly${i}`) * 100;
+				const sp = 0.03 + random(`${seed}ls${i}`) * 0.06;
+				const r = 2 + random(`${seed}lr${i}`) * 5;
+				const y = (((y0 - frame * sp) % 100) + 100) % 100;
+				const x = x0 + Math.sin(frame / 25 + i) * 1.2;
+				return <div key={i} style={{position: 'absolute', left: `${x}%`, top: `${y}%`, width: r * 2, height: r * 2, borderRadius: r, background: 'rgba(255,240,220,0.9)', opacity: 0.18 + random(`${seed}lo${i}`) * 0.4, filter: `blur(${r > 5 ? 2 : 0.8}px)`}} />;
+			})}
+		</>
 	);
 };
 

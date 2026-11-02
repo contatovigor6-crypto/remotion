@@ -27,6 +27,8 @@ export type Shot = {
 	punches?: number[];
 	/** encaixa a imagem inteira com fundo desfocado em vez de cortar */
 	fit?: boolean;
+	/** foto "viva": câmera em movimento contínuo (deriva 3D + respiração), feixe de luz e partículas, para parecer cena de vídeo */
+	live?: boolean;
 	note: string;
 };
 
