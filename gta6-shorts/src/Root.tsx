@@ -7,7 +7,9 @@ import {ThumbCelular} from './thumbs/ThumbCelular';
 import {ThumbBrian} from './thumbs/ThumbBrian';
 import {ThumbProLongEdge, ThumbProLongInteriores, ThumbProNpc, ThumbProPolicia} from './thumbs/ThumbPro';
 import {GTA6Interiores} from './interiores/Video';
-import {ThumbExtremeInteriores} from './thumbs/ThumbExtreme';
+import {ThumbExtremeContagem, ThumbExtremeInteriores} from './thumbs/ThumbExtreme';
+import {GTA6Contagem} from './contagem/Video';
+import {DURATION_S as CONTAGEM_DURATION} from './contagem/data';
 import {DURATION_S as INTERIORES_DURATION} from './interiores/data';
 import {GTA6Npc} from './npc/Video';
 import {GTA6Edge} from './edge/Video';
@@ -79,6 +81,9 @@ export const Root: React.FC = () => (
 		<Composition id="GTA6Interiores" component={GTA6Interiores} defaultProps={{music: 'audio/music-interiores-long.wav', musicGain: 0.8}} durationInFrames={Math.round(INTERIORES_DURATION * FPS)} fps={FPS} width={1920} height={1080} />
 		<Still id="ThumbProLongInteriores" component={ThumbProLongInteriores} width={1280} height={720} />
 		<Still id="ThumbExtremeInteriores" component={ThumbExtremeInteriores} width={1280} height={720} />
+		{/* Short "Faltam 17 dias" — trilha "Clash Defiant" (Kevin MacLeod, CC BY 4.0) */}
+		<Composition id="GTA6Contagem" component={GTA6Contagem} defaultProps={{music: 'audio/music-contagem-clash.wav', musicGain: 1.1}} durationInFrames={Math.round(CONTAGEM_DURATION * FPS)} fps={FPS} width={W} height={H} />
+		<Still id="ThumbExtremeContagem" component={ThumbExtremeContagem} width={1280} height={720} />
 		<Composition id="GTA6Edge" component={GTA6Edge} defaultProps={{music: 'audio/music-edge-long.wav', musicGain: 0.8}} durationInFrames={Math.round(EDGE_DURATION * FPS)} fps={FPS} width={1920} height={1080} />
 	</>
 );

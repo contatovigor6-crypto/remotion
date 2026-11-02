@@ -43,3 +43,20 @@ export const ThumbExtremeInteriores: React.FC = () => (
 		<div style={{position: 'absolute', right: 46, bottom: 16, fontFamily: UI, fontWeight: 800, fontSize: 15, color: 'rgba(255,255,255,0.6)', letterSpacing: 2}}>IMAGEM OFICIAL: ROCKSTAR GAMES</div>
 	</AbsoluteFill>
 );
+
+/** Short "Faltam 17 dias": Lucia (screenshot oficial, Edge 430) — "BAIXE 7 DIAS ANTES" (pré-carregamento em 12/11, lançamento 19/11) */
+export const ThumbExtremeContagem: React.FC = () => (
+	<AbsoluteFill style={{background: '#05040a', overflow: 'hidden'}}>
+		<Img src={staticFile('v10/lucia-club.jpg')} style={{position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(1.18) translateX(110px)', transformOrigin: '55% 40%', filter: 'contrast(1.15) saturate(1.3)'}} />
+		<AbsoluteFill style={{background: 'linear-gradient(90deg, rgba(5,4,10,0.97) 0%, rgba(5,4,10,0.88) 32%, rgba(5,4,10,0.1) 58%, rgba(5,4,10,0) 72%)'}} />
+		<AbsoluteFill style={{background: 'linear-gradient(250deg, rgba(255,62,154,0.28) 0%, rgba(255,62,154,0) 35%)', mixBlendMode: 'screen'}} />
+		<Dust seed="cont" n={40} x0={500} x1={1280} />
+		<AbsoluteFill style={{boxShadow: 'inset 0 0 170px rgba(0,0,0,0.85)'}} />
+		<div style={{position: 'absolute', left: 46, top: 110}}>
+			<div style={{fontFamily: DISPLAY, fontSize: 132, color: 'white', lineHeight: 1, textShadow: '0 8px 0 #000'}}>BAIXE</div>
+			<div style={{fontFamily: DISPLAY, fontSize: 236, lineHeight: 0.95, backgroundImage: `linear-gradient(180deg, ${C.yellow}, ${C.orange})`, WebkitBackgroundClip: 'text', color: 'transparent', filter: 'drop-shadow(0 10px 0 #000) drop-shadow(0 0 30px rgba(255,180,60,0.45))', whiteSpace: 'nowrap'}}>7 DIAS</div>
+			<div style={{fontFamily: DISPLAY, fontSize: 132, color: 'white', lineHeight: 1, textShadow: '0 8px 0 #000'}}>ANTES</div>
+		</div>
+		<div style={{position: 'absolute', left: 46, bottom: 16, fontFamily: UI, fontWeight: 800, fontSize: 15, color: 'rgba(255,255,255,0.6)', letterSpacing: 2}}>IMAGEM OFICIAL: ROCKSTAR GAMES</div>
+	</AbsoluteFill>
+);
