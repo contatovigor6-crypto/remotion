@@ -81,8 +81,8 @@ export const Root: React.FC = () => (
 		<Composition id="GTA6Interiores" component={GTA6Interiores} defaultProps={{music: 'audio/music-interiores-long.wav', musicGain: 0.8}} durationInFrames={Math.round(INTERIORES_DURATION * FPS)} fps={FPS} width={1920} height={1080} />
 		<Still id="ThumbProLongInteriores" component={ThumbProLongInteriores} width={1280} height={720} />
 		<Still id="ThumbExtremeInteriores" component={ThumbExtremeInteriores} width={1280} height={720} />
-		{/* Short "Faltam 17 dias" — trilha de suspense "Gathering Darkness" (Kevin MacLeod, CC BY 4.0) */}
-		<Composition id="GTA6Contagem" component={GTA6Contagem} defaultProps={{music: 'audio/music-contagem-suspense.wav', musicGain: 1.17}} durationInFrames={Math.round(CONTAGEM_DURATION * FPS)} fps={FPS} width={W} height={H} />
+		{/* Short "Faltam 17 dias" — trilha eletrizante "Cut and Run" (Kevin MacLeod, CC BY 4.0) */}
+		<Composition id="GTA6Contagem" component={GTA6Contagem} defaultProps={{music: 'audio/music-contagem-cutrun.wav', musicGain: 1.5}} durationInFrames={Math.round(CONTAGEM_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Still id="ThumbExtremeContagem" component={ThumbExtremeContagem} width={1280} height={720} />
 		<Composition id="GTA6Edge" component={GTA6Edge} defaultProps={{music: 'audio/music-edge-long.wav', musicGain: 0.8}} durationInFrames={Math.round(EDGE_DURATION * FPS)} fps={FPS} width={1920} height={1080} />
 	</>

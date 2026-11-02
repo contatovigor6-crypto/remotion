@@ -17,4 +17,5 @@
 | Short — Faltam 17 dias (rascunho, substituída) | Clash Defiant | Kevin MacLeod, CC BY 4.0 |
 
 Vetadas para próximos vídeos: todas acima.
-| **Short — Faltam 17 dias (final)** | **Gathering Darkness** (suspense) | Kevin MacLeod, CC BY 4.0 |
+| Short — Faltam 17 dias (rascunho, substituída) | Gathering Darkness (suspense) | Kevin MacLeod, CC BY 4.0 |
+| **Short — Faltam 17 dias (final)** | **Cut and Run** (eletrizante) | Kevin MacLeod, CC BY 4.0 |

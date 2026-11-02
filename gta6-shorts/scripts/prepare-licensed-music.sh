@@ -28,4 +28,5 @@ brian-getaway Mistake_the_Getaway.mp3 0 0 98.6 69.6 71.0
 npc-exit Exit_the_Premises.mp3 0 0 121.6 67.5 69.0
 contagem-clash Clash_Defiant.mp3 0 0 67.4 55.4 56.4
 contagem-suspense Gathering_Darkness.mp3 0 0 67.4 55.4 56.4
+contagem-cutrun Cut_and_Run.mp3 0 0 67.4 55.4 56.4
 LIST
