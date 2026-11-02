@@ -14,6 +14,7 @@
 | **NPCs com personalidade** | **Exit the Premises** | Kevin MacLeod, CC BY 4.0 |
 | **VÍDEO LONGO — Novas imagens (Edge 430)** | **Crypto · Darkest Child · Hidden Agenda · Unholy Knight** | Kevin MacLeod, CC BY 4.0 |
 | **VÍDEO LONGO — Interiores** | **Mysterioso March · Sneaky Snitch · Comfortable Mystery 4** | Kevin MacLeod, CC BY 4.0 |
-| **Short — Faltam 17 dias** | **Clash Defiant** | Kevin MacLeod, CC BY 4.0 |
+| Short — Faltam 17 dias (rascunho, substituída) | Clash Defiant | Kevin MacLeod, CC BY 4.0 |
 
 Vetadas para próximos vídeos: todas acima.
+| **Short — Faltam 17 dias (final)** | **Gathering Darkness** (suspense) | Kevin MacLeod, CC BY 4.0 |
