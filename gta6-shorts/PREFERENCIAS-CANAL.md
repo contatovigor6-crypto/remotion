@@ -15,3 +15,5 @@
   thumbnail HORIZONTAL 1280×720 no estilo PRO (ThumbProLongEdge como modelo).
 - VÍDEOS EM MOVIMENTO (pedido em 02/11): usar clipes de vídeo oficiais da Rockstar sempre que houver, não só fotos passando.
 - TRILHA (pedido em 02/11, atualizado): música ELETRIZANTE / energética (o dono trocou o suspense por eletrizante).
+- FINAL DOS VÍDEOS (pedido em 03/11): usar sempre o encerramento profissional src/components/ProOutro.tsx (slam da logo com onda de choque,
+  nome digitado, cursor clicando INSCREVER-SE → INSCRITO, sino e like animados, faixa "próxima investigação"), com SFX de clique/sino.

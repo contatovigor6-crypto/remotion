@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, spring, useCurrentFrame} from 'remotion';
 import {At, Chip, Stamp, useOut, useSpring} from '../components/Overlays';
-import {EndCard} from '../fps/Overlays';
+import {ProOutro} from '../components/ProOutro';
 import {C, DISPLAY, GRAD, SAFE, UI, f} from '../theme';
 
 const GREEN = '#3DFF8A';
@@ -226,7 +226,7 @@ export const SindicatoOverlays: React.FC = () => (
 			</AbsoluteFill>
 		</At>
 		<At from={90.7} to={95.4}>
-			<EndCard start={90.7} subAt={91.8} />
+			<ProOutro subAt={1.6} tagline="INVESTIGANDO CADA DETALHE DE GTA 6" />
 		</At>
 	</AbsoluteFill>
 );

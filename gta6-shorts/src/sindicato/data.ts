@@ -63,6 +63,10 @@ export const SFX: Sfx[] = [
 	{at: 82.0, file: 'sfx-impact', vol: 0.45},
 	{at: 86.58, file: 'sfx-glitch', vol: 0.3},
 	{at: 90.68, file: 'sfx-whoosh', vol: 0.3},
-	{at: 91.8, file: 'sfx-impact', vol: 0.45},
-	{at: 92.1, file: 'sfx-notify', vol: 0.4},
+	{at: 90.8, file: 'sfx-impact', vol: 0.5},
+	{at: 90.82, file: 'sfx-subdrop', vol: 0.35},
+	{at: 91.2, file: 'sfx-typing', vol: 0.25},
+	{at: 92.3, file: 'sfx-tick', vol: 0.45},
+	{at: 92.63, file: 'sfx-notify', vol: 0.4},
+	{at: 93.03, file: 'sfx-pop', vol: 0.4},
 ];
