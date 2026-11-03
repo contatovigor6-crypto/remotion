@@ -60,3 +60,22 @@ export const ThumbExtremeContagem: React.FC = () => (
 		<div style={{position: 'absolute', left: 46, bottom: 16, fontFamily: UI, fontWeight: 800, fontSize: 15, color: 'rgba(255,255,255,0.6)', letterSpacing: 2}}>IMAGEM OFICIAL: ROCKSTAR GAMES</div>
 	</AbsoluteFill>
 );
+
+/** Short "Votação sindical na Rockstar UK": Méndez em close (screenshot oficial, Edge 430) — "VOTAÇÃO NA ROCKSTAR" */
+export const ThumbExtremeSindicato: React.FC = () => (
+	<AbsoluteFill style={{background: '#05040a', overflow: 'hidden'}}>
+		<Img src={staticFile('v10/mendez.jpg')} style={{position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(1.2) translateX(150px)', transformOrigin: '40% 40%', filter: 'contrast(1.18) saturate(1.15)'}} />
+		<AbsoluteFill style={{background: 'linear-gradient(90deg, rgba(5,4,10,0.97) 0%, rgba(5,4,10,0.88) 36%, rgba(5,4,10,0.12) 62%, rgba(5,4,10,0) 76%)'}} />
+		<AbsoluteFill style={{background: 'linear-gradient(250deg, rgba(255,45,61,0.25) 0%, rgba(255,45,61,0) 38%)', mixBlendMode: 'screen'}} />
+		<Dust seed="sind" n={36} x0={560} x1={1280} />
+		<AbsoluteFill style={{boxShadow: 'inset 0 0 170px rgba(0,0,0,0.85)'}} />
+		<div style={{position: 'absolute', left: 46, top: 120}}>
+			<div style={{fontFamily: DISPLAY, fontSize: 118, color: 'white', lineHeight: 1, textShadow: '0 8px 0 #000'}}>ENQUANTO</div>
+			<div style={{fontFamily: DISPLAY, fontSize: 118, color: 'white', lineHeight: 1, textShadow: '0 8px 0 #000'}}>GTA 6 LANÇA…</div>
+			<div style={{display: 'inline-block', marginTop: 18, background: C.red, padding: '6px 26px 0', borderRadius: 12, transform: 'rotate(-2.5deg)', boxShadow: '0 12px 0 #000, 0 0 40px rgba(255,45,61,0.5)'}}>
+				<span style={{fontFamily: DISPLAY, fontSize: 130, color: 'white', whiteSpace: 'nowrap'}}>🗳️ VOTAÇÃO</span>
+			</div>
+		</div>
+		<div style={{position: 'absolute', left: 46, bottom: 16, fontFamily: UI, fontWeight: 800, fontSize: 15, color: 'rgba(255,255,255,0.6)', letterSpacing: 2}}>IMAGEM OFICIAL: ROCKSTAR GAMES</div>
+	</AbsoluteFill>
+);
