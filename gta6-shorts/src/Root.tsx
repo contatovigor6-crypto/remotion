@@ -7,7 +7,7 @@ import {ThumbCelular} from './thumbs/ThumbCelular';
 import {ThumbBrian} from './thumbs/ThumbBrian';
 import {ThumbProLongEdge, ThumbProLongInteriores, ThumbProNpc, ThumbProPolicia} from './thumbs/ThumbPro';
 import {GTA6Interiores} from './interiores/Video';
-import {ThumbExtremeContagem, ThumbExtremeInteriores, ThumbExtremeSindicato} from './thumbs/ThumbExtreme';
+import {ThumbExtremeContagem, ThumbExtremeInteriores, ThumbExtremeSindicato, ThumbExtremeSindicatoV} from './thumbs/ThumbExtreme';
 import {GTA6Sindicato} from './sindicato/Video';
 import {DURATION_S as SINDICATO_DURATION} from './sindicato/data';
 import {GTA6Contagem} from './contagem/Video';
@@ -89,6 +89,7 @@ export const Root: React.FC = () => (
 		{/* Short "Votação sindical na Rockstar UK" — trilha eletrizante "Movement Proposition" (Kevin MacLeod, CC BY 4.0) */}
 		<Composition id="GTA6Sindicato" component={GTA6Sindicato} defaultProps={{music: 'audio/music-sindicato-movement.wav', musicGain: 1.5}} durationInFrames={Math.round(SINDICATO_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Still id="ThumbExtremeSindicato" component={ThumbExtremeSindicato} width={1280} height={720} />
+		<Still id="ThumbExtremeSindicatoV" component={ThumbExtremeSindicatoV} width={1080} height={1920} />
 		<Composition id="GTA6Edge" component={GTA6Edge} defaultProps={{music: 'audio/music-edge-long.wav', musicGain: 0.8}} durationInFrames={Math.round(EDGE_DURATION * FPS)} fps={FPS} width={1920} height={1080} />
 	</>
 );

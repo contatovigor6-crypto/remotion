@@ -1,6 +1,7 @@
 # Preferências do canal ZoneGTAVI (pedidos do dono do canal — seguir até ele pedir mudança)
 
-- Thumbnail (ATUAL, pedido em 31/10): "ZONEGTA6 — EXTREME CLICK THUMBNAIL SYSTEM" — 1280×720 (16:9), src/thumbs/ThumbExtreme.tsx:
+- Thumbnail (ATUAL, pedido em 31/10): "ZONEGTA6 — EXTREME CLICK THUMBNAIL SYSTEM", src/thumbs/ThumbExtreme.tsx.
+  FORMATO: SHORTS → vertical 1080×1920 (pedido em 03/11); vídeo LONGO → horizontal 1280×720.
   um foco dominante (personagem oficial em primeiro plano, expressão forte), luz cinematográfica, partículas/atmosfera,
   texto de 2–5 palavras com UMA palavra em destaque, sem repetir o título, honesta (sem inventar cenas/mecânicas).
   SEM a logo do canal na thumbnail (pedido em 31/10). A logo continua obrigatória nos VÍDEOS (marca-d'água em 100% dos quadros).
