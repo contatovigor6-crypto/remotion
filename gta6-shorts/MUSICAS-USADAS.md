@@ -20,4 +20,5 @@ Vetadas para próximos vídeos: todas acima.
 | Short — Faltam 17 dias (rascunho, substituída) | Gathering Darkness (suspense) | Kevin MacLeod, CC BY 4.0 |
 | **Short — Faltam 17 dias (final)** | **Cut and Run** (eletrizante) | Kevin MacLeod, CC BY 4.0 |
 | **Short — Votação na Rockstar** | **Movement Proposition** (eletrizante) | Kevin MacLeod, CC BY 4.0 |
-| **Short — NPCs reagem à arma** | **Exhilarate** (eletrizante) | Kevin MacLeod, CC BY 4.0 |
+| Short — NPCs reagem à arma (rascunho, substituída) | Exhilarate | Kevin MacLeod, CC BY 4.0 |
+| **Short — NPCs reagem à arma (final)** | **Five Armies** (épica, impactante) | Kevin MacLeod, CC BY 4.0 |

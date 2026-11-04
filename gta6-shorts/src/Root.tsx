@@ -92,8 +92,8 @@ export const Root: React.FC = () => (
 		<Composition id="GTA6Sindicato" component={GTA6Sindicato} defaultProps={{music: 'audio/music-sindicato-movement.wav', musicGain: 1.5}} durationInFrames={Math.round(SINDICATO_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Still id="ThumbExtremeSindicato" component={ThumbExtremeSindicato} width={1280} height={720} />
 		<Still id="ThumbExtremeSindicatoV" component={ThumbExtremeSindicatoV} width={1080} height={1920} />
-		{/* Short "Os NPCs reagem à sua arma" — trilha eletrizante "Exhilarate" (Kevin MacLeod, CC BY 4.0) */}
-		<Composition id="GTA6Reacao" component={GTA6Reacao} defaultProps={{music: 'audio/music-reacao-exhilarate.wav', musicGain: 0.6}} durationInFrames={Math.round(REACAO_DURATION * FPS)} fps={FPS} width={W} height={H} />
+		{/* Short "Os NPCs reagem à sua arma" — trilha épica "Five Armies" (Kevin MacLeod, CC BY 4.0) */}
+		<Composition id="GTA6Reacao" component={GTA6Reacao} defaultProps={{music: 'audio/music-reacao-fivearmies.wav', musicGain: 0.79}} durationInFrames={Math.round(REACAO_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Still id="ThumbExtremeReacaoV" component={ThumbExtremeReacaoV} width={1080} height={1920} />
 		<Composition id="GTA6Edge" component={GTA6Edge} defaultProps={{music: 'audio/music-edge-long.wav', musicGain: 0.8}} durationInFrames={Math.round(EDGE_DURATION * FPS)} fps={FPS} width={1920} height={1080} />
 	</>
