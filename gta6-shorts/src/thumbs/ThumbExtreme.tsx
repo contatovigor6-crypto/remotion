@@ -98,3 +98,22 @@ export const ThumbExtremeSindicatoV: React.FC = () => (
 		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.65)', letterSpacing: 3}}>IMAGEM OFICIAL: ROCKSTAR GAMES</div>
 	</AbsoluteFill>
 );
+
+/** VERTICAL (Shorts) — "Os NPCs reagem à sua arma": Jason no fogo (screenshot oficial, Edge 430) */
+export const ThumbExtremeReacaoV: React.FC = () => (
+	<AbsoluteFill style={{background: '#05040a', overflow: 'hidden'}}>
+		<Img src={staticFile('v10/jason-fire.jpg')} style={{position: 'absolute', left: 0, top: 760, width: '100%', height: 1160, objectFit: 'cover', objectPosition: '50% 30%', transform: 'scale(1.15)', transformOrigin: '50% 30%', filter: 'contrast(1.15) saturate(1.25)'}} />
+		<AbsoluteFill style={{background: 'linear-gradient(180deg, #05040a 0%, #05040a 34%, rgba(5,4,10,0.6) 41%, rgba(5,4,10,0) 50%, rgba(5,4,10,0) 85%, rgba(5,4,10,0.9) 100%)'}} />
+		<AbsoluteFill style={{background: 'radial-gradient(circle at 50% 18%, rgba(255,140,40,0.3), rgba(5,4,10,0) 45%)'}} />
+		<Dust seed="reacv" n={70} x0={0} x1={1080} />
+		<AbsoluteFill style={{boxShadow: 'inset 0 0 220px rgba(0,0,0,0.85)'}} />
+		<div style={{position: 'absolute', left: 0, right: 0, top: 170, textAlign: 'center'}}>
+			<div style={{fontFamily: DISPLAY, fontSize: 150, color: 'white', lineHeight: 1, textShadow: '0 10px 0 #000'}}>SACOU A ARMA?</div>
+			<div style={{fontFamily: DISPLAY, fontSize: 130, color: 'white', lineHeight: 1.05, textShadow: '0 10px 0 #000', marginTop: 10}}>OS NPCs</div>
+			<div style={{display: 'inline-block', marginTop: 20, background: C.yellow, padding: '10px 44px 2px', borderRadius: 16, transform: 'rotate(-2.5deg)', boxShadow: '0 14px 0 #000, 0 0 50px rgba(255,216,74,0.5)'}}>
+				<span style={{fontFamily: DISPLAY, fontSize: 190, color: C.ink, whiteSpace: 'nowrap'}}>REAGEM</span>
+			</div>
+		</div>
+		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.65)', letterSpacing: 3}}>IMAGEM OFICIAL: ROCKSTAR GAMES</div>
+	</AbsoluteFill>
+);

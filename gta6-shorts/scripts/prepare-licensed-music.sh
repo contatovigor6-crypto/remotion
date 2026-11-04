@@ -30,4 +30,5 @@ contagem-clash Clash_Defiant.mp3 0 0 67.4 55.4 56.4
 contagem-suspense Gathering_Darkness.mp3 0 0 67.4 55.4 56.4
 contagem-cutrun Cut_and_Run.mp3 0 0 67.4 55.4 56.4
 sindicato-movement Movement_Proposition.mp3 0 0 95.4 74.0 76.0
+reacao-exhilarate Exhilarate.mp3 0 0 75.9 62.6 63.6
 LIST
