@@ -117,3 +117,25 @@ export const ThumbExtremeReacaoV: React.FC = () => (
 		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.65)', letterSpacing: 3}}>IMAGEM OFICIAL: ROCKSTAR GAMES</div>
 	</AbsoluteFill>
 );
+
+// Short "GTA 6 vai exigir até 212 GB" (vertical 1080×1920): Jason e Lucia (imagem oficial) + barra de armazenamento estourando (ilustração).
+export const ThumbExtremeArmazenamentoV: React.FC = () => (
+	<AbsoluteFill style={{background: '#05040a', overflow: 'hidden'}}>
+		<Img src={staticFile('v5/ocean-view.jpg')} style={{position: 'absolute', left: 0, top: 800, width: '100%', height: 1120, objectFit: 'cover', objectPosition: '42% 30%', transform: 'scale(1.12)', transformOrigin: '42% 30%', filter: 'contrast(1.12) saturate(1.25)'}} />
+		<AbsoluteFill style={{background: 'linear-gradient(180deg, #05040a 0%, #05040a 37%, rgba(5,4,10,0.6) 43%, rgba(5,4,10,0) 52%, rgba(5,4,10,0) 85%, rgba(5,4,10,0.9) 100%)'}} />
+		<AbsoluteFill style={{background: 'radial-gradient(circle at 50% 22%, rgba(255,45,61,0.32), rgba(5,4,10,0) 45%)'}} />
+		<Dust seed="armv" n={70} x0={0} x1={1080} />
+		<AbsoluteFill style={{boxShadow: 'inset 0 0 220px rgba(0,0,0,0.85)'}} />
+		<div style={{position: 'absolute', left: 0, right: 0, top: 150, textAlign: 'center'}}>
+			<div style={{fontFamily: DISPLAY, fontSize: 150, color: 'white', lineHeight: 1, textShadow: '0 10px 0 #000'}}>SEU CONSOLE</div>
+			<div style={{display: 'inline-block', marginTop: 24, background: C.yellow, padding: '10px 44px 2px', borderRadius: 16, transform: 'rotate(-2.5deg)', boxShadow: '0 14px 0 #000, 0 0 50px rgba(255,216,74,0.5)'}}>
+				<span style={{fontFamily: DISPLAY, fontSize: 180, color: C.ink, whiteSpace: 'nowrap'}}>AGUENTA?</span>
+			</div>
+			<div style={{margin: '54px 90px 0', position: 'relative', height: 86, borderRadius: 43, background: 'rgba(255,255,255,0.12)', border: `6px solid ${C.red}`, overflow: 'hidden', boxShadow: `0 0 50px rgba(255,45,61,0.7)`}}>
+				<div style={{position: 'absolute', left: 0, top: 0, bottom: 0, width: '100%', background: `linear-gradient(90deg, ${C.orange}, ${C.red})`}} />
+				<div style={{position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: DISPLAY, fontSize: 64, color: 'white', textShadow: '0 4px 0 #000'}}>212 GB 💾</div>
+			</div>
+		</div>
+		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.65)', letterSpacing: 3}}>IMAGEM OFICIAL: ROCKSTAR GAMES</div>
+	</AbsoluteFill>
+);

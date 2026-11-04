@@ -1,0 +1,91 @@
+import type {Sfx} from '../data/sfx';
+import type {Shake} from '../ShortEdit';
+
+export const DURATION_S = 93.6;
+
+export const KEYWORDS = new Set([
+	'212', 'gb.', 'gb,', 'gb', 'espaço', 'exigir', 'console.', 'único', 'armazenamento?', 'tamanho', 'revela', 'leonida?',
+	'rockstar', 'confirmou', 'pré-download', 'dispositivo.', 'atenção,', 'rumor', 'internet.', 'detalhe', 'interessante', 'mundo', 'enorme,', 'cidades,',
+	'rurais,', 'internos,', 'veículos,', 'personagens,', 'animais,', 'músicas', 'texturas,', 'modelos,', 'áudio,', 'animações', 'armazenados', 'fatos',
+	'teorias.', 'não', 'explicou', 'afirmar', 'missões,', 'cidades', 'conteúdo.', 'oficial', '10', 'novembro,', '9', 'dias',
+	'19', 'novembro.', '200', 'limpeza?', 'comenta', 'zonegtavi,',
+]);
+
+// legendas escondidas onde há texto grande na tela (gancho e encerramento)
+export const HIDDEN: [number, number][] = [
+	[0, 2.45],
+	[86.0, 93.6],
+];
+
+export const SHAKES: Shake[] = [
+	{at: 1.3, amp: 16},
+	{at: 9.1, amp: 16},
+	{at: 15.4, amp: 12},
+	{at: 25.2, amp: 18},
+	{at: 32.4, amp: 12},
+	{at: 75.4, amp: 14},
+	{at: 80.7, amp: 12},
+];
+
+export const SFX: Sfx[] = [
+	{at: 0.02, file: 'sfx-impact', vol: 0.5},
+	{at: 1.3, file: 'sfx-pop', vol: 0.4},
+	{at: 2.48, file: 'sfx-whoosh', vol: 0.3},
+	{at: 4.9, file: 'sfx-glitch', vol: 0.3},
+	{at: 6.38, file: 'sfx-whoosh', vol: 0.3},
+	{at: 8.58, file: 'sfx-whoosh', vol: 0.3},
+	{at: 9.1, file: 'sfx-impact', vol: 0.45},
+	{at: 10.48, file: 'sfx-whoosh', vol: 0.3},
+	{at: 12.88, file: 'sfx-whoosh-rev', vol: 0.3},
+	{at: 15.4, file: 'sfx-impact', vol: 0.4},
+	{at: 18.98, file: 'sfx-whoosh', vol: 0.3},
+	{at: 21.0, file: 'sfx-notify', vol: 0.3},
+	{at: 22.9, file: 'sfx-glitch', vol: 0.3},
+	{at: 24.2, file: 'sfx-shutter', vol: 0.35},
+	{at: 25.2, file: 'sfx-impact', vol: 0.5},
+	{at: 25.3, file: 'sfx-impact', vol: 0.4},
+	{at: 26.68, file: 'sfx-whoosh', vol: 0.3},
+	{at: 29.68, file: 'sfx-whoosh', vol: 0.3},
+	{at: 32.4, file: 'sfx-subdrop', vol: 0.35},
+	{at: 33.7, file: 'sfx-tick', vol: 0.3},
+	{at: 34.6, file: 'sfx-tick', vol: 0.3},
+	{at: 35.7, file: 'sfx-tick', vol: 0.3},
+	{at: 37.0, file: 'sfx-tick', vol: 0.3},
+	{at: 38.0, file: 'sfx-tick', vol: 0.3},
+	{at: 38.9, file: 'sfx-tick', vol: 0.3},
+	{at: 39.7, file: 'sfx-tick', vol: 0.3},
+	{at: 40.38, file: 'sfx-whoosh', vol: 0.3},
+	{at: 42.48, file: 'sfx-whoosh', vol: 0.3},
+	{at: 44.06, file: 'sfx-pop', vol: 0.3},
+	{at: 45.02, file: 'sfx-pop', vol: 0.3},
+	{at: 45.86, file: 'sfx-pop', vol: 0.3},
+	{at: 46.38, file: 'sfx-whoosh', vol: 0.3},
+	{at: 47.8, file: 'sfx-pop', vol: 0.3},
+	{at: 49.2, file: 'sfx-notify', vol: 0.3},
+	{at: 50.4, file: 'sfx-impact', vol: 0.4},
+	{at: 52.6, file: 'sfx-pop', vol: 0.4},
+	{at: 53.15, file: 'sfx-pop', vol: 0.4},
+	{at: 54.08, file: 'sfx-whoosh', vol: 0.3},
+	{at: 55.7, file: 'sfx-glitch', vol: 0.3},
+	{at: 59.78, file: 'sfx-whoosh', vol: 0.3},
+	{at: 63.18, file: 'sfx-whoosh', vol: 0.3},
+	{at: 63.9, file: 'sfx-tick', vol: 0.4},
+	{at: 65.0, file: 'sfx-tick', vol: 0.4},
+	{at: 66.0, file: 'sfx-tick', vol: 0.4},
+	{at: 66.9, file: 'sfx-impact', vol: 0.4},
+	{at: 69.0, file: 'sfx-pop', vol: 0.4},
+	{at: 71.38, file: 'sfx-whoosh', vol: 0.3},
+	{at: 71.5, file: 'sfx-pop', vol: 0.4},
+	{at: 72.8, file: 'sfx-typing', vol: 0.25},
+	{at: 75.4, file: 'sfx-impact', vol: 0.45},
+	{at: 76.88, file: 'sfx-whoosh', vol: 0.3},
+	{at: 78.8, file: 'sfx-pop', vol: 0.4},
+	{at: 80.7, file: 'sfx-glitch', vol: 0.3},
+	{at: 83.2, file: 'sfx-pop', vol: 0.4},
+	{at: 84.3, file: 'sfx-whoosh', vol: 0.3},
+	{at: 86.02, file: 'sfx-impact', vol: 0.5},
+	{at: 86.5, file: 'sfx-typing', vol: 0.25},
+	{at: 87.6, file: 'sfx-tick', vol: 0.45},
+	{at: 87.93, file: 'sfx-notify', vol: 0.4},
+	{at: 88.33, file: 'sfx-pop', vol: 0.4},
+];

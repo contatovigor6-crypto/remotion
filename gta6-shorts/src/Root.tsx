@@ -7,7 +7,9 @@ import {ThumbCelular} from './thumbs/ThumbCelular';
 import {ThumbBrian} from './thumbs/ThumbBrian';
 import {ThumbProLongEdge, ThumbProLongInteriores, ThumbProNpc, ThumbProPolicia} from './thumbs/ThumbPro';
 import {GTA6Interiores} from './interiores/Video';
-import {ThumbExtremeContagem, ThumbExtremeInteriores, ThumbExtremeSindicato, ThumbExtremeSindicatoV, ThumbExtremeReacaoV} from './thumbs/ThumbExtreme';
+import {ThumbExtremeContagem, ThumbExtremeInteriores, ThumbExtremeSindicato, ThumbExtremeSindicatoV, ThumbExtremeReacaoV, ThumbExtremeArmazenamentoV} from './thumbs/ThumbExtreme';
+import {GTA6Armazenamento} from './armazenamento/Video';
+import {DURATION_S as ARMAZENAMENTO_DURATION} from './armazenamento/data';
 import {GTA6Reacao} from './reacao/Video';
 import {DURATION_S as REACAO_DURATION} from './reacao/data';
 import {GTA6Sindicato} from './sindicato/Video';
@@ -95,6 +97,8 @@ export const Root: React.FC = () => (
 		{/* Short "Os NPCs reagem à sua arma" — trilha épica "Five Armies" (Kevin MacLeod, CC BY 4.0) */}
 		<Composition id="GTA6Reacao" component={GTA6Reacao} defaultProps={{music: 'audio/music-reacao-fivearmies.wav', musicGain: 0.79}} durationInFrames={Math.round(REACAO_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Still id="ThumbExtremeReacaoV" component={ThumbExtremeReacaoV} width={1080} height={1920} />
+		<Composition id="GTA6Armazenamento" component={GTA6Armazenamento} defaultProps={{music: 'audio/music-armazenamento-cabello.wav', musicGain: 1.1}} durationInFrames={Math.round(ARMAZENAMENTO_DURATION * FPS)} fps={FPS} width={W} height={H} />
+		<Still id="ThumbExtremeArmazenamentoV" component={ThumbExtremeArmazenamentoV} width={1080} height={1920} />
 		<Composition id="GTA6Edge" component={GTA6Edge} defaultProps={{music: 'audio/music-edge-long.wav', musicGain: 0.8}} durationInFrames={Math.round(EDGE_DURATION * FPS)} fps={FPS} width={1920} height={1080} />
 	</>
 );

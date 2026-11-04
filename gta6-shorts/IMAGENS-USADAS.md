@@ -61,6 +61,15 @@ v6 salon-desk/salon-man/neon-tattoo/club-night/cash-seat/couple-port, v7 boobie-
 jason-phone/vc-aerial/vc-street, v8 gellhorn-cabaret/gellhorn-motel/willie-garage/safehouse, v9 strangers/counter-woman/pool-party/bonfire/
 street-bikers, v10 jason-247/jason-fire/tattoo-yard/skyline. thumbnail: Jason no 24/7 (Edge)
 
+## Short — GTA 6 exige até 212 GB (public/v15)
+INÉDITA: imagem oficial do anúncio do pré-download no Rockstar Newswire (03/11/2026, Vice City de dia — praia, ponte, skyline, boias)
+em 5 enquadramentos (hero, hero-towers, hero-beach, hero-downtown, hero-bridge).
+Nunca usadas em Shorts (só no vídeo longo Edge): v10 canyon, airboat-swamp, underwater, radio-country, car-teal, car-cream, buggy-front.
+Clipes fora dos últimos 3 Shorts: v2/keys, v2/robbery, v2/lucia-car, v3/brian, v3/dimez-rec, v3/boobie-boat, v5/factory, v5/jungle.
+Fotos v5 (só no Short 60 FPS): ocean-view, speedboats, kayak, yacht, ganado-road.
+thumbnail: v5/ocean-view (Jason e Lucia) — vertical
+EVITAR no próximo Short: tudo acima (e os clipes v2 city-night/skyline-v/hug/jl-sun/jason-neon/green-car/storm, já repetidos).
+
 ## Ainda inéditos (disponíveis para próximos vídeos)
 Screenshots de personagens/lugares: Boobie_Ike_04, Vice_City_07 (clube, evitar), Leonida_Keys_04 (submarino), Mount_Kalaga_04,
 Hero_BG (clube); carros WYMAN_02/03/05 e VAPID_BUGGY_02/03/04; capas The Album; mascotes PNG. Estoque de imagens oficiais inéditas está acabando; restam também os fundos das rádios. (Os clipes 2160/3840 novos repetem cenas já usadas.)

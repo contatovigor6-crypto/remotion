@@ -27,10 +27,14 @@ for i, w in enumerate(words):
     if w["text"] == "vivo" and words[i+1]["text"] == "mesmo":
         w["text"] = "vivo,"
 # Nomes próprios citados na narração (grafia oficial)
-FIX = {"Ed": "Edge", "Ed,": "Edge,", "WANK,": "WAINK,", "Garbitt": "Garbut", "Garbott,": "Garbut,", "Garbott": "Garbut", "Leônida.": "Leonida.", "Leônida": "Leonida",
+FIX = {"Ed": "Edge", "Ed,": "Edge,", "WANK,": "WAINK,", "Garbitt": "Garbut", "Garbott,": "Garbut,", "Garbott": "Garbut", "Leônida.": "Leonida.", "Leônida": "Leonida", "Ionida?": "Leonida?", "Ionida": "Leonida",
        "Playstation": "PlayStation", "XS.": "X|S.", "Taemin": "Tame", "Pala,": "Impala,"}
 for w in words:
     w["text"] = FIX.get(w["text"], w["text"])
+for i in range(len(words) - 2, -1, -1):
+    if words[i]["text"] == "pré" and words[i + 1]["text"].startswith("-"):
+        words[i] = {"text": "pré" + words[i + 1]["text"], "start": words[i]["start"], "end": words[i + 1]["end"]}
+        del words[i + 1]
 for i in range(len(words) - 1):
     if words[i]["text"] == "Gesavel" and words[i + 1]["text"].startswith("Stein"):
         words[i] = {"text": "Gesaffelstein" + words[i + 1]["text"][5:], "start": words[i]["start"], "end": words[i + 1]["end"]}
