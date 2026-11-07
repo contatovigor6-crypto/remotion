@@ -7,7 +7,7 @@ import {ThumbCelular} from './thumbs/ThumbCelular';
 import {ThumbBrian} from './thumbs/ThumbBrian';
 import {ThumbProLongEdge, ThumbProLongInteriores, ThumbProNpc, ThumbProPolicia} from './thumbs/ThumbPro';
 import {GTA6Interiores} from './interiores/Video';
-import {ThumbExtremeContagem, ThumbExtremeInteriores, ThumbExtremeSindicato, ThumbExtremeSindicatoV, ThumbExtremeReacaoV, ThumbExtremeArmazenamentoV, ThumbExtremeGaleriaV} from './thumbs/ThumbExtreme';
+import {ThumbExtremeContagem, ThumbExtremeInteriores, ThumbExtremeSindicato, ThumbExtremeSindicatoV, ThumbExtremeReacaoV, ThumbExtremeArmazenamentoV, ThumbExtremeGaleriaV, ThumbExtremeVazamentoV} from './thumbs/ThumbExtreme';
 import {GTA6Galeria} from './galeria/Video';
 import {DURATION_S as GALERIA_DURATION} from './galeria/data';
 import {GTA6Armazenamento} from './armazenamento/Video';
@@ -103,6 +103,7 @@ export const Root: React.FC = () => (
 		<Still id="ThumbExtremeArmazenamentoV" component={ThumbExtremeArmazenamentoV} width={1080} height={1920} />
 		<Composition id="GTA6Galeria" component={GTA6Galeria} defaultProps={{music: 'audio/music-galeria-iceflow.wav', musicGain: 0.92}} durationInFrames={Math.round(GALERIA_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Still id="ThumbExtremeGaleriaV" component={ThumbExtremeGaleriaV} width={1080} height={1920} />
+		<Still id="ThumbExtremeVazamentoV" component={ThumbExtremeVazamentoV} width={1080} height={1920} />
 		<Composition id="GTA6Edge" component={GTA6Edge} defaultProps={{music: 'audio/music-edge-long.wav', musicGain: 0.8}} durationInFrames={Math.round(EDGE_DURATION * FPS)} fps={FPS} width={1920} height={1080} />
 	</>
 );

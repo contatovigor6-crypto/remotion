@@ -165,3 +165,30 @@ export const ThumbExtremeGaleriaV: React.FC = () => (
 		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.65)', letterSpacing: 3}}>IMAGENS OFICIAIS: ROCKSTAR GAMES</div>
 	</AbsoluteFill>
 );
+
+// Short "A armadilha da Rockstar pra quem vazar GTA 6" (vertical 1080×1920): Lucia (Launch Gallery) + marca d'água de nomes (ilustração da denúncia).
+export const ThumbExtremeVazamentoV: React.FC = () => (
+	<AbsoluteFill style={{background: '#05040a', overflow: 'hidden'}}>
+		<Img src={staticFile('v16/Lucia_Caminos_14.jpg')} style={{position: 'absolute', left: 0, top: 740, width: '100%', height: 1180, objectFit: 'cover', objectPosition: '30% 35%', transform: 'scale(1.12)', transformOrigin: '30% 35%', filter: 'contrast(1.15) saturate(1.2)'}} />
+		{/* marca d'água ilustrativa: nomes repetidos em diagonal */}
+		<div style={{position: 'absolute', left: -300, top: 700, width: 1700, height: 1300, transform: 'rotate(-18deg)', opacity: 0.22, fontFamily: UI, fontWeight: 800, fontSize: 40, color: 'white', lineHeight: '120px', letterSpacing: 4, whiteSpace: 'nowrap', overflow: 'hidden'}}>
+			{Array.from({length: 11}).map((_, i) => (
+				<div key={i} style={{marginLeft: (i % 2) * 140}}>{'ANALISTA_0427 · CÓPIA RASTREADA · '.repeat(4)}</div>
+			))}
+		</div>
+		<AbsoluteFill style={{background: 'linear-gradient(180deg, #05040a 0%, #05040a 34%, rgba(5,4,10,0.6) 40%, rgba(5,4,10,0) 49%, rgba(5,4,10,0) 85%, rgba(5,4,10,0.9) 100%)'}} />
+		<AbsoluteFill style={{background: 'radial-gradient(circle at 50% 16%, rgba(255,45,61,0.35), rgba(5,4,10,0) 45%)'}} />
+		<Dust seed="vazv" n={60} x0={0} x1={1080} />
+		<AbsoluteFill style={{boxShadow: 'inset 0 0 220px rgba(0,0,0,0.85)'}} />
+		<div style={{position: 'absolute', left: 0, right: 0, top: 150, textAlign: 'center'}}>
+			<div style={{fontFamily: DISPLAY, fontSize: 190, color: 'white', lineHeight: 1, textShadow: '0 10px 0 #000'}}>VAZOU?</div>
+			<div style={{display: 'inline-block', marginTop: 22, background: C.red, padding: '10px 50px 2px', borderRadius: 16, transform: 'rotate(-2.5deg)', boxShadow: '0 14px 0 #000, 0 0 60px rgba(255,45,61,0.6)'}}>
+				<span style={{fontFamily: DISPLAY, fontSize: 190, color: 'white', whiteSpace: 'nowrap'}}>FOI PEGO.</span>
+			</div>
+		</div>
+		<div style={{position: 'absolute', right: 60, top: 1180, border: `8px solid ${C.yellow}`, borderRadius: 16, padding: '10px 22px 4px', transform: 'rotate(8deg)', background: 'rgba(5,4,10,0.7)'}}>
+			<span style={{fontFamily: DISPLAY, fontSize: 64, color: C.yellow, letterSpacing: 3}}>🔍 RASTREADO</span>
+		</div>
+		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.65)', letterSpacing: 3}}>IMAGEM OFICIAL: ROCKSTAR GAMES · MARCA D'ÁGUA ILUSTRATIVA</div>
+	</AbsoluteFill>
+);
