@@ -18,3 +18,8 @@
 - TRILHA (pedido em 02/11, atualizado): música ELETRIZANTE / energética (o dono trocou o suspense por eletrizante).
 - FINAL DOS VÍDEOS (pedido em 03/11): usar sempre o encerramento profissional src/components/ProOutro.tsx (slam da logo com onda de choque,
   nome digitado, cursor clicando INSCREVER-SE → INSCRITO, sino e like animados, faixa "próxima investigação"), com SFX de clique/sino.
+
+## Temas (07/11/2026)
+- SOMENTE novidades quentes e investigações (notícias recentes de GTA 6, apuradas, separando fato confirmado de relato/rumor).
+- Nunca repetir roteiros/temas já feitos nesta sessão nem nas outras abas (ex.: 212 GB/pré-download, horário de lançamento à meia-noite, Launch Gallery 39 imagens, votação sindical, contagem 17 dias, NPCs reagem à arma, interiores, Edge 430, celular, Brian, pista do dinheiro, 60 fps, internet, preso, 1h parado, polícia).
+- Quando o usuário não mandar áudio: criar roteiro e narração com a voz "Marcio - Viral Hook Narrator" (ElevenLabs).
