@@ -70,6 +70,13 @@ Fotos v5 (só no Short 60 FPS): ocean-view, speedboats, kayak, yacht, ganado-roa
 thumbnail: v5/ocean-view (Jason e Lucia) — vertical
 EVITAR no próximo Short: tudo acima (e os clipes v2 city-night/skyline-v/hug/jl-sun/jason-neon/green-car/storm, já repetidos).
 
+## Short — As 39 imagens novas (public/v16 — Launch Gallery de 05/11/2026, todas inéditas no canal)
+USADAS: Vice_City_13/15/16/17/26/27, Jason_Duval_11/13/15/17/19, Lucia_Caminos_13, Jason_and_Lucia_14/15/16/19/20, Leonida_Keys_07,
+Grassrivers_07/08. Nenhum clipe de vídeo repetido (só fotos novas animadas). Narração gerada no ElevenLabs (voz Marcio).
+thumbnail: Lucia_Caminos_13 + recorte circulado do jacaré (Grassrivers_08)
+AINDA INÉDITAS da Launch Gallery (usar nos próximos): Jason_Duval_12/14/16/18, Jason_and_Lucia_17/18, Lucia_Caminos_11/12/14,
+Port_Gellhorn_07, Vice_City_14/18/19/20/21/22/23/24/25.
+
 ## Ainda inéditos (disponíveis para próximos vídeos)
 Screenshots de personagens/lugares: Boobie_Ike_04, Vice_City_07 (clube, evitar), Leonida_Keys_04 (submarino), Mount_Kalaga_04,
 Hero_BG (clube); carros WYMAN_02/03/05 e VAPID_BUGGY_02/03/04; capas The Album; mascotes PNG. Estoque de imagens oficiais inéditas está acabando; restam também os fundos das rádios. (Os clipes 2160/3840 novos repetem cenas já usadas.)
