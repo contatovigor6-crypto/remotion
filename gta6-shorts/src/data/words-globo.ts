@@ -4,121 +4,121 @@ export const WORDS: Word[] = [
  {
   "text": "GTA",
   "start": 0.0,
-  "end": 0.54
+  "end": 0.37
  },
  {
   "text": "6",
-  "start": 0.54,
-  "end": 0.92
+  "start": 0.37,
+  "end": 0.74
  },
  {
   "text": "acabou",
-  "start": 0.92,
-  "end": 1.24
+  "start": 0.74,
+  "end": 1.04
  },
  {
   "text": "de",
-  "start": 1.24,
-  "end": 1.46
+  "start": 1.04,
+  "end": 1.28
  },
  {
   "text": "aparecer",
-  "start": 1.46,
-  "end": 1.8
+  "start": 1.28,
+  "end": 1.6
  },
  {
   "text": "na",
-  "start": 1.8,
-  "end": 2.04
+  "start": 1.6,
+  "end": 1.84
  },
  {
-  "text": "Globo.",
-  "start": 2.04,
-  "end": 3.02
+  "text": "Globo,",
+  "start": 1.84,
+  "end": 3.1
  },
  {
-  "text": "Em",
-  "start": 3.28,
-  "end": 3.38
+  "text": "em",
+  "start": 3.4,
+  "end": 3.52
  },
  {
   "text": "pleno",
-  "start": 3.38,
-  "end": 3.7
+  "start": 3.52,
+  "end": 3.84
  },
  {
   "text": "sábado,",
-  "start": 3.7,
-  "end": 4.2
+  "start": 3.84,
+  "end": 4.32
  },
  {
   "text": "no",
-  "start": 4.32,
-  "end": 4.42
+  "start": 4.5,
+  "end": 4.62
  },
  {
   "text": "meio",
-  "start": 4.42,
-  "end": 4.6
+  "start": 4.62,
+  "end": 4.78
  },
  {
   "text": "da",
-  "start": 4.6,
-  "end": 4.8
+  "start": 4.78,
+  "end": 4.98
  },
  {
   "text": "Fórmula",
-  "start": 4.8,
-  "end": 5.16
+  "start": 4.98,
+  "end": 5.36
  },
  {
   "text": "1.",
-  "start": 5.16,
-  "end": 5.96
+  "start": 5.36,
+  "end": 6.1
  },
  {
   "text": "Foi",
   "start": 6.26,
-  "end": 6.4
+  "end": 6.44
  },
  {
   "text": "por",
-  "start": 6.4,
-  "end": 6.68
+  "start": 6.44,
+  "end": 6.72
  },
  {
   "text": "volta",
-  "start": 6.68,
-  "end": 6.88
+  "start": 6.72,
+  "end": 6.9
  },
  {
   "text": "das",
-  "start": 6.88,
-  "end": 7.1
+  "start": 6.9,
+  "end": 7.12
  },
  {
   "text": "duas",
-  "start": 7.1,
-  "end": 7.32
+  "start": 7.12,
+  "end": 7.34
  },
  {
   "text": "da",
-  "start": 7.32,
-  "end": 7.6
+  "start": 7.34,
+  "end": 7.62
  },
  {
   "text": "tarde,",
-  "start": 7.6,
-  "end": 7.86
+  "start": 7.62,
+  "end": 7.88
  },
  {
   "text": "no",
-  "start": 8.08,
-  "end": 8.2
+  "start": 8.1,
+  "end": 8.22
  },
  {
   "text": "intervalo",
-  "start": 8.2,
+  "start": 8.22,
   "end": 8.68
  },
  {
@@ -129,186 +129,186 @@ export const WORDS: Word[] = [
  {
   "text": "programação",
   "start": 8.88,
-  "end": 9.36
+  "end": 9.34
  },
  {
   "text": "do",
-  "start": 9.36,
-  "end": 9.5
+  "start": 9.34,
+  "end": 9.52
  },
  {
   "text": "GP",
-  "start": 9.5,
+  "start": 9.52,
   "end": 9.74
  },
  {
   "text": "de",
   "start": 9.74,
-  "end": 9.94
+  "end": 9.92
  },
  {
   "text": "São",
-  "start": 9.94,
+  "start": 9.92,
   "end": 10.18
  },
  {
   "text": "Paulo,",
   "start": 10.18,
-  "end": 10.42
+  "end": 10.4
  },
  {
   "text": "pouco",
-  "start": 10.72,
-  "end": 10.94
+  "start": 10.68,
+  "end": 10.9
  },
  {
   "text": "antes",
-  "start": 10.94,
-  "end": 11.2
+  "start": 10.9,
+  "end": 11.14
  },
  {
   "text": "da",
-  "start": 11.2,
-  "end": 11.38
+  "start": 11.14,
+  "end": 11.34
  },
  {
   "text": "classificação",
-  "start": 11.38,
-  "end": 11.96
+  "start": 11.34,
+  "end": 11.9
  },
  {
   "text": "em",
-  "start": 11.96,
-  "end": 12.22
+  "start": 11.9,
+  "end": 12.12
  },
  {
   "text": "Interlagos.",
-  "start": 12.22,
-  "end": 13.28
+  "start": 12.12,
+  "end": 13.22
  },
  {
   "text": "30",
-  "start": 13.5,
+  "start": 13.54,
   "end": 13.8
  },
  {
   "text": "segundos",
   "start": 13.8,
-  "end": 14.2
+  "end": 14.22
  },
  {
   "text": "de",
-  "start": 14.2,
-  "end": 14.42
+  "start": 14.22,
+  "end": 14.44
  },
  {
   "text": "Vice",
-  "start": 14.42,
-  "end": 14.64
+  "start": 14.44,
+  "end": 14.66
  },
  {
   "text": "City,",
-  "start": 14.64,
-  "end": 14.96
+  "start": 14.66,
+  "end": 15.04
  },
  {
   "text": "com",
-  "start": 15.24,
-  "end": 15.38
+  "start": 15.28,
+  "end": 15.42
  },
  {
   "text": "legenda",
-  "start": 15.38,
-  "end": 15.66
+  "start": 15.42,
+  "end": 15.7
  },
  {
   "text": "em",
-  "start": 15.66,
-  "end": 15.82
+  "start": 15.7,
+  "end": 15.84
  },
  {
   "text": "português,",
-  "start": 15.82,
-  "end": 16.42
+  "start": 15.84,
+  "end": 16.48
  },
  {
   "text": "selo",
-  "start": 16.66,
-  "end": 16.82
+  "start": 16.72,
+  "end": 16.9
  },
  {
   "text": "de",
-  "start": 16.82,
-  "end": 17.04
+  "start": 16.9,
+  "end": 17.08
  },
  {
   "text": "18",
-  "start": 17.04,
-  "end": 17.32
+  "start": 17.08,
+  "end": 17.36
  },
  {
-  "text": "anos,",
-  "start": 17.32,
-  "end": 17.74
+  "text": "anos",
+  "start": 17.36,
+  "end": 17.8
  },
  {
   "text": "e",
-  "start": 17.9,
-  "end": 18.06
+  "start": 17.8,
+  "end": 18.1
  },
  {
   "text": "a",
-  "start": 18.06,
-  "end": 18.26
+  "start": 18.1,
+  "end": 18.34
  },
  {
-  "text": "frase",
-  "start": 18.26,
-  "end": 18.46
+  "text": "frase,",
+  "start": 18.34,
+  "end": 18.56
  },
  {
   "text": "\"Vamos",
-  "start": 18.8,
-  "end": 19.08
+  "start": 18.92,
+  "end": 19.18
  },
  {
   "text": "ficar",
-  "start": 19.08,
-  "end": 19.42
+  "start": 19.18,
+  "end": 19.52
  },
  {
   "text": "bem?\"",
-  "start": 19.42,
-  "end": 19.74
+  "start": 19.52,
+  "end": 19.8
  },
  {
   "text": "Quem",
-  "start": 20.42,
-  "end": 20.68
+  "start": 20.4,
+  "end": 20.66
  },
  {
   "text": "estava",
-  "start": 20.68,
-  "end": 21.0
+  "start": 20.66,
+  "end": 21.02
  },
  {
-  "text": "assistindo",
-  "start": 21.0,
-  "end": 21.48
+  "text": "assistindo,",
+  "start": 21.02,
+  "end": 21.64
  },
  {
   "text": "não",
-  "start": 21.48,
-  "end": 21.76
+  "start": 21.86,
+  "end": 22.14
  },
  {
   "text": "acreditou.",
-  "start": 21.76,
-  "end": 22.42
+  "start": 22.14,
+  "end": 22.74
  },
  {
   "text": "Um",
-  "start": 23.02,
+  "start": 23.04,
   "end": 23.28
  },
  {
@@ -338,12 +338,12 @@ export const WORDS: Word[] = [
  },
  {
   "text": "e",
-  "start": 24.9,
-  "end": 25.02
+  "start": 24.92,
+  "end": 25.04
  },
  {
   "text": "o",
-  "start": 25.02,
+  "start": 25.04,
   "end": 25.16
  },
  {
@@ -354,11 +354,11 @@ export const WORDS: Word[] = [
  {
   "text": "se",
   "start": 25.36,
-  "end": 25.58
+  "end": 25.6
  },
  {
   "text": "espalhou",
-  "start": 25.58,
+  "start": 25.6,
   "end": 25.86
  },
  {
@@ -369,31 +369,31 @@ export const WORDS: Word[] = [
  {
   "text": "redes.",
   "start": 26.12,
-  "end": 26.46
+  "end": 26.44
  },
  {
   "text": "E",
-  "start": 27.18,
-  "end": 27.48
+  "start": 27.08,
+  "end": 27.32
  },
  {
   "text": "não",
-  "start": 27.48,
-  "end": 27.66
+  "start": 27.32,
+  "end": 27.58
  },
  {
   "text": "foi",
-  "start": 27.66,
-  "end": 27.8
+  "start": 27.58,
+  "end": 27.76
  },
  {
   "text": "só",
-  "start": 27.8,
-  "end": 27.98
+  "start": 27.76,
+  "end": 27.96
  },
  {
   "text": "na",
-  "start": 27.98,
+  "start": 27.96,
   "end": 28.16
  },
  {
@@ -404,241 +404,241 @@ export const WORDS: Word[] = [
  {
   "text": "Tem",
   "start": 29.1,
-  "end": 29.36
+  "end": 29.28
  },
  {
   "text": "painel",
-  "start": 29.36,
-  "end": 29.78
+  "start": 29.28,
+  "end": 29.68
  },
  {
   "text": "de",
-  "start": 29.78,
-  "end": 29.98
+  "start": 29.68,
+  "end": 29.86
  },
  {
   "text": "GTA",
-  "start": 29.98,
-  "end": 30.16
+  "start": 29.86,
+  "end": 30.119999999999997
  },
  {
   "text": "6",
-  "start": 30.16,
-  "end": 30.52
+  "start": 30.119999999999997,
+  "end": 30.38
  },
  {
   "text": "na",
-  "start": 30.52,
-  "end": 30.66
+  "start": 30.38,
+  "end": 30.52
  },
  {
   "text": "Avenida",
-  "start": 30.66,
-  "end": 31.02
+  "start": 30.52,
+  "end": 30.86
  },
  {
   "text": "Nove",
-  "start": 31.02,
-  "end": 31.32
+  "start": 30.86,
+  "end": 31.16
  },
  {
   "text": "de",
-  "start": 31.32,
-  "end": 31.5
+  "start": 31.16,
+  "end": 31.36
  },
  {
   "text": "Julho,",
-  "start": 31.5,
-  "end": 31.8
+  "start": 31.36,
+  "end": 31.66
  },
  {
   "text": "perto",
-  "start": 32.02,
-  "end": 32.2
+  "start": 31.86,
+  "end": 32.02
  },
  {
   "text": "da",
-  "start": 32.2,
-  "end": 32.42
+  "start": 32.02,
+  "end": 32.26
  },
  {
   "text": "Praça",
-  "start": 32.42,
-  "end": 32.66
+  "start": 32.26,
+  "end": 32.48
  },
  {
   "text": "da",
-  "start": 32.66,
-  "end": 32.88
+  "start": 32.48,
+  "end": 32.7
  },
  {
   "text": "Sé",
-  "start": 32.88,
-  "end": 33.02
+  "start": 32.7,
+  "end": 32.84
  },
  {
   "text": "e",
-  "start": 33.02,
-  "end": 33.16
+  "start": 32.84,
+  "end": 32.96
  },
  {
   "text": "até",
-  "start": 33.16,
-  "end": 33.38
+  "start": 32.96,
+  "end": 33.18
  },
  {
   "text": "nas",
-  "start": 33.38,
-  "end": 33.62
+  "start": 33.18,
+  "end": 33.42
  },
  {
   "text": "estações",
-  "start": 33.62,
-  "end": 34.02
+  "start": 33.42,
+  "end": 33.82
  },
  {
   "text": "de",
-  "start": 34.02,
-  "end": 34.28
+  "start": 33.82,
+  "end": 34.06
  },
  {
   "text": "metrô",
-  "start": 34.28,
-  "end": 34.48
+  "start": 34.06,
+  "end": 34.26
  },
  {
   "text": "de",
-  "start": 34.48,
-  "end": 34.62
+  "start": 34.26,
+  "end": 34.4
  },
  {
   "text": "São",
-  "start": 34.62,
-  "end": 34.84
+  "start": 34.4,
+  "end": 34.6
  },
  {
   "text": "Paulo.",
-  "start": 34.84,
-  "end": 35.18
+  "start": 34.6,
+  "end": 34.9
  },
  {
   "text": "Parece",
-  "start": 35.94,
-  "end": 36.16
+  "start": 36.06,
+  "end": 36.28
  },
  {
   "text": "que",
-  "start": 36.16,
-  "end": 36.3
+  "start": 36.28,
+  "end": 36.46
  },
  {
   "text": "a",
-  "start": 36.3,
-  "end": 36.42
+  "start": 36.46,
+  "end": 36.56
  },
  {
   "text": "Rockstar",
-  "start": 36.42,
-  "end": 36.8
+  "start": 36.56,
+  "end": 36.98
  },
  {
   "text": "está",
-  "start": 36.8,
-  "end": 37.04
+  "start": 36.98,
+  "end": 37.22
  },
  {
   "text": "de",
-  "start": 37.04,
-  "end": 37.26
+  "start": 37.22,
+  "end": 37.46
  },
  {
   "text": "olho",
-  "start": 37.26,
-  "end": 37.38
+  "start": 37.46,
+  "end": 37.6
  },
  {
   "text": "no",
-  "start": 37.38,
-  "end": 37.52
+  "start": 37.6,
+  "end": 37.74
  },
  {
   "text": "Brasil",
-  "start": 37.52,
-  "end": 37.84
+  "start": 37.74,
+  "end": 38.06
  },
  {
   "text": "como",
-  "start": 37.84,
-  "end": 38.12
+  "start": 38.06,
+  "end": 38.38
  },
  {
   "text": "nunca.",
-  "start": 38.12,
-  "end": 38.52
+  "start": 38.38,
+  "end": 38.76
  },
  {
   "text": "Faltam",
-  "start": 39.34,
-  "end": 39.7
+  "start": 39.42,
+  "end": 39.78
  },
  {
   "text": "11",
-  "start": 39.7,
-  "end": 40.0
+  "start": 39.78,
+  "end": 40.12
  },
  {
   "text": "dias.",
-  "start": 40.0,
-  "end": 40.42
+  "start": 40.12,
+  "end": 40.54
  },
  {
   "text": "Você",
-  "start": 41.28,
-  "end": 41.58
+  "start": 41.32,
+  "end": 41.66
  },
  {
   "text": "viu",
-  "start": 41.58,
-  "end": 41.72
+  "start": 41.66,
+  "end": 41.8
  },
  {
   "text": "esse",
-  "start": 41.72,
-  "end": 41.98
+  "start": 41.8,
+  "end": 42.08
  },
  {
   "text": "comercial?",
-  "start": 41.98,
-  "end": 42.46
+  "start": 42.08,
+  "end": 42.58
  },
  {
   "text": "Comenta",
-  "start": 43.42,
-  "end": 43.76
+  "start": 43.48,
+  "end": 43.86
  },
  {
   "text": "aqui,",
-  "start": 43.76,
-  "end": 44.06
+  "start": 43.86,
+  "end": 44.18
  },
  {
   "text": "e",
-  "start": 44.32,
-  "end": 44.48
+  "start": 44.38,
+  "end": 44.56
  },
  {
   "text": "segue",
-  "start": 44.48,
-  "end": 44.66
+  "start": 44.56,
+  "end": 44.74
  },
  {
   "text": "o",
-  "start": 44.66,
-  "end": 44.86
+  "start": 44.74,
+  "end": 44.96
  },
  {
   "text": "ZoneGTAVI.",
-  "start": 44.86,
-  "end": 45.78
+  "start": 44.96,
+  "end": 45.86
  }
 ];
