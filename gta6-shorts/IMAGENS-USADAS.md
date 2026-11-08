@@ -77,6 +77,12 @@ thumbnail: Lucia_Caminos_13 + recorte circulado do jacaré (Grassrivers_08)
 AINDA INÉDITAS da Launch Gallery (usar nos próximos): Jason_Duval_12/14/16/18, Jason_and_Lucia_17/18, Lucia_Caminos_11/12/14,
 Port_Gellhorn_07, Vice_City_14/18/19/20/21/22/23/24/25.
 
+## Short — GTA 6 apareceu na Globo (v16, Launch Gallery — inéditas em vídeo)
+USADAS: Vice_City_14/19/20/21/22/24/25, Jason_Duval_12/14/16/18, Jason_and_Lucia_17, Lucia_Caminos_11/12, Port_Gellhorn_07.
+Narração: voz neural pt-BR "Antonio" (Microsoft, via edge-tts), pois o ElevenLabs estava sem créditos.
+thumbnail: Jason_and_Lucia_17 dentro de TV ilustrada. Lucia_Caminos_14 reservada para a thumb do vídeo da armadilha.
+RESTAM da Launch Gallery: Vice_City_18/23, Jason_and_Lucia_18, Lucia_Caminos_14 (thumb vazamentos).
+
 ## Ainda inéditos (disponíveis para próximos vídeos)
 Screenshots de personagens/lugares: Boobie_Ike_04, Vice_City_07 (clube, evitar), Leonida_Keys_04 (submarino), Mount_Kalaga_04,
 Hero_BG (clube); carros WYMAN_02/03/05 e VAPID_BUGGY_02/03/04; capas The Album; mascotes PNG. Estoque de imagens oficiais inéditas está acabando; restam também os fundos das rádios. (Os clipes 2160/3840 novos repetem cenas já usadas.)

@@ -192,3 +192,33 @@ export const ThumbExtremeVazamentoV: React.FC = () => (
 		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.65)', letterSpacing: 3}}>IMAGEM OFICIAL: ROCKSTAR GAMES · MARCA D'ÁGUA ILUSTRATIVA</div>
 	</AbsoluteFill>
 );
+
+// Short "GTA 6 apareceu na GLOBO" (vertical 1080×1920): Jason e Lucia (Launch Gallery) dentro de uma TV ilustrada (sem logotipo da emissora).
+export const ThumbExtremeGloboV: React.FC = () => (
+	<AbsoluteFill style={{background: '#05040a', overflow: 'hidden'}}>
+		<AbsoluteFill style={{background: 'radial-gradient(circle at 50% 30%, rgba(255,45,61,0.35), rgba(5,4,10,0) 55%)'}} />
+		<Dust seed="globov" n={60} x0={0} x1={1080} />
+		<div style={{position: 'absolute', left: 0, right: 0, top: 120, textAlign: 'center'}}>
+			<div style={{fontFamily: DISPLAY, fontSize: 150, color: 'white', lineHeight: 1, textShadow: '0 10px 0 #000'}}>PASSOU NA</div>
+			<div style={{display: 'inline-block', marginTop: 20, background: C.yellow, padding: '10px 44px 2px', borderRadius: 16, transform: 'rotate(-2.5deg)', boxShadow: '0 14px 0 #000, 0 0 50px rgba(255,216,74,0.5)'}}>
+				<span style={{fontFamily: DISPLAY, fontSize: 170, color: C.ink, whiteSpace: 'nowrap'}}>TV ABERTA</span>
+			</div>
+		</div>
+		{/* TV ilustrada */}
+		<div style={{position: 'absolute', left: 50, right: 50, top: 760, height: 760, borderRadius: 40, background: '#151519', padding: 26, boxShadow: '0 0 0 6px #2c2c33, 0 40px 90px rgba(0,0,0,0.8), 0 0 80px rgba(255,45,61,0.35)'}}>
+			<div style={{position: 'relative', width: '100%', height: '100%', borderRadius: 22, overflow: 'hidden'}}>
+				<Img src={staticFile('v16/Jason_and_Lucia_17.jpg')} style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 40%', filter: 'contrast(1.12) saturate(1.2)'}} />
+				<AbsoluteFill style={{background: 'repeating-linear-gradient(0deg, rgba(0,0,0,0.12) 0px, rgba(0,0,0,0.12) 2px, rgba(0,0,0,0) 3px, rgba(0,0,0,0) 5px)'}} />
+				<div style={{position: 'absolute', left: 22, top: 22, display: 'flex', alignItems: 'center', gap: 10, background: C.red, padding: '8px 18px', borderRadius: 10}}>
+					<div style={{width: 18, height: 18, borderRadius: 9, background: 'white'}} />
+					<span style={{fontFamily: UI, fontWeight: 800, fontSize: 34, color: 'white', letterSpacing: 3}}>NO AR</span>
+				</div>
+				<div style={{position: 'absolute', right: 22, top: 22, width: 80, height: 80, borderRadius: 12, background: '#111', border: '4px solid white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: DISPLAY, fontSize: 56, color: 'white'}}>18</div>
+				<div style={{position: 'absolute', left: 0, right: 0, bottom: 26, textAlign: 'center'}}>
+					<span style={{fontFamily: UI, fontWeight: 800, fontSize: 44, color: 'white', background: 'rgba(0,0,0,0.75)', padding: '8px 20px', borderRadius: 8}}>"Vamos ficar bem?"</span>
+				</div>
+			</div>
+		</div>
+		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.65)', letterSpacing: 3}}>IMAGEM OFICIAL: ROCKSTAR GAMES · TV ILUSTRATIVA</div>
+	</AbsoluteFill>
+);
