@@ -169,7 +169,7 @@ export const ThumbExtremeGaleriaV: React.FC = () => (
 // Short "A armadilha da Rockstar pra quem vazar GTA 6" (vertical 1080×1920): Lucia (Launch Gallery) + marca d'água de nomes (ilustração da denúncia).
 export const ThumbExtremeVazamentoV: React.FC = () => (
 	<AbsoluteFill style={{background: '#05040a', overflow: 'hidden'}}>
-		<Img src={staticFile('v16/Lucia_Caminos_14.jpg')} style={{position: 'absolute', left: 0, top: 740, width: '100%', height: 1180, objectFit: 'cover', objectPosition: '30% 35%', transform: 'scale(1.12)', transformOrigin: '30% 35%', filter: 'contrast(1.15) saturate(1.2)'}} />
+		<Img src={staticFile('v16/Vice_City_16.jpg')} style={{position: 'absolute', left: 0, top: 740, width: '100%', height: 1180, objectFit: 'cover', objectPosition: '62% 40%', transform: 'scale(1.15)', transformOrigin: '62% 40%', filter: 'contrast(1.15) saturate(1.2)'}} />
 		{/* marca d'água ilustrativa: nomes repetidos em diagonal */}
 		<div style={{position: 'absolute', left: -300, top: 700, width: 1700, height: 1300, transform: 'rotate(-18deg)', opacity: 0.22, fontFamily: UI, fontWeight: 800, fontSize: 40, color: 'white', lineHeight: '120px', letterSpacing: 4, whiteSpace: 'nowrap', overflow: 'hidden'}}>
 			{Array.from({length: 11}).map((_, i) => (

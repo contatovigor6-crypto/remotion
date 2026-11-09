@@ -8,6 +8,8 @@ import {ThumbBrian} from './thumbs/ThumbBrian';
 import {ThumbProLongEdge, ThumbProLongInteriores, ThumbProNpc, ThumbProPolicia} from './thumbs/ThumbPro';
 import {GTA6Interiores} from './interiores/Video';
 import {ThumbExtremeContagem, ThumbExtremeInteriores, ThumbExtremeSindicato, ThumbExtremeSindicatoV, ThumbExtremeReacaoV, ThumbExtremeArmazenamentoV, ThumbExtremeGaleriaV, ThumbExtremeVazamentoV, ThumbExtremeGloboV, ThumbExtremeCodigoV, ThumbExtremeCarrosV} from './thumbs/ThumbExtreme';
+import {GTA6Armadilha} from './armadilha/Video';
+import {DURATION_S as ARMADILHA_DURATION} from './armadilha/data';
 import {GTA6Carros} from './carros/Video';
 import {DURATION_S as CARROS_DURATION} from './carros/data';
 import {GTA6Codigo} from './codigo/Video';
@@ -116,6 +118,7 @@ export const Root: React.FC = () => (
 		<Still id="ThumbExtremeCodigoV" component={ThumbExtremeCodigoV} width={1080} height={1920} />
 		<Composition id="GTA6Carros" component={GTA6Carros} defaultProps={{music: 'audio/music-carros-dangerstorm.wav', musicGain: 1.7}} durationInFrames={Math.round(CARROS_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Still id="ThumbExtremeCarrosV" component={ThumbExtremeCarrosV} width={1080} height={1920} />
+		<Composition id="GTA6Armadilha" component={GTA6Armadilha} defaultProps={{music: 'audio/music-armadilha-hotpursuit.wav', musicGain: 0.75}} durationInFrames={Math.round(ARMADILHA_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Composition id="GTA6Edge" component={GTA6Edge} defaultProps={{music: 'audio/music-edge-long.wav', musicGain: 0.8}} durationInFrames={Math.round(EDGE_DURATION * FPS)} fps={FPS} width={1920} height={1080} />
 	</>
 );

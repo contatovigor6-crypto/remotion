@@ -36,4 +36,5 @@ armazenamento-cabello Electro_Cabello.mp3 0 0 93.6 50.45 51.15
 galeria-iceflow Ice_Flow.mp3 0 0 65.0 38.15 40.6
 globo-heroic Heroic_Age.mp3 10 0 51.0 38.7 39.3
 carros-dangerstorm Danger_Storm.mp3 0 0 51.5 28.5 28.9
+armadilha-hotpursuit Hot_Pursuit.mp3 5 0 55.0 25.3 25.75
 LIST

@@ -93,6 +93,10 @@ Screenshots oficiais dos 6 carros (Cheetah, Tempesta polícia, Emerus, Coquette,
 em 05–06/11/2026 (6 horizontais via Hypebeast + 8 verticais via DiscussingFilm, incl. 2 fotos de grupo). Não usadas: fotos reais (terceiros).
 thumbnail: v-tempesta (viatura) com luzes de giroflex.
 
+## Short — A armadilha da Rockstar contra vazamentos (v16, 2º uso)
+Reaproveitadas (cada uma usada só 1 vez antes): Vice_City_14/16/17/21, Lucia_Caminos_11, Jason_Duval_12/16/18, Jason_and_Lucia_15/19/20, Grassrivers_07.
+thumbnail: Vice_City_16 (mão cobrindo o rosto) + marca d'água ilustrativa.
+
 ## Ainda inéditos (disponíveis para próximos vídeos)
 Screenshots de personagens/lugares: Boobie_Ike_04, Vice_City_07 (clube, evitar), Leonida_Keys_04 (submarino), Mount_Kalaga_04,
 Hero_BG (clube); carros WYMAN_02/03/05 e VAPID_BUGGY_02/03/04; capas The Album; mascotes PNG. Estoque de imagens oficiais inéditas está acabando; restam também os fundos das rádios. (Os clipes 2160/3840 novos repetem cenas já usadas.)
