@@ -25,3 +25,4 @@ Vetadas para próximos vídeos: todas acima.
 | **Short — GTA 6 exige até 212 GB** | **Electro Cabello** (eletrizante) | Kevin MacLeod, CC BY 4.0 |
 | **Short — As 39 imagens novas (Launch Gallery)** | **Ice Flow** (eletrizante) | Kevin MacLeod, CC BY 4.0 |
 | **Short — GTA 6 apareceu na Globo** | **Heroic Age** (épica) | Kevin MacLeod, CC BY 4.0 |
+| **Short — O código de GTA 6 entregou 2 segredos** | **Mechanolith** (eletrônica, estendida em laço) | Kevin MacLeod, CC BY 4.0 |

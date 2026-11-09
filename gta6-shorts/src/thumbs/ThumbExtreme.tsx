@@ -222,3 +222,24 @@ export const ThumbExtremeGloboV: React.FC = () => (
 		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.65)', letterSpacing: 3}}>IMAGEM OFICIAL: ROCKSTAR GAMES · TV ILUSTRATIVA</div>
 	</AbsoluteFill>
 );
+
+// Short "O código de GTA 6 entregou 2 segredos" (vertical 1080×1920): Lucia (Launch Gallery) + código verde e "ONLINE?" (ilustração).
+export const ThumbExtremeCodigoV: React.FC = () => (
+	<AbsoluteFill style={{background: '#030806', overflow: 'hidden'}}>
+		<Img src={staticFile('v16/Lucia_Caminos_14.jpg')} style={{position: 'absolute', left: 0, top: 760, width: '100%', height: 1160, objectFit: 'cover', objectPosition: '30% 35%', transform: 'scale(1.1)', transformOrigin: '30% 35%', filter: 'contrast(1.15) saturate(1.1) hue-rotate(-8deg)'}} />
+		<div style={{position: 'absolute', inset: 0, opacity: 0.22, fontFamily: '"Courier New", monospace', fontWeight: 700, fontSize: 34, lineHeight: '44px', color: '#3DFF8A', whiteSpace: 'pre', overflow: 'hidden', padding: 20}}>
+			{Array.from({length: 44}).map((_, i) => `joinSession(); launchMultiplayerActivity(); 0x${(i * 7919).toString(16)} achievements[55]\n`).join('')}
+		</div>
+		<AbsoluteFill style={{background: 'linear-gradient(180deg, #030806 0%, #030806 36%, rgba(3,8,6,0.6) 42%, rgba(3,8,6,0) 52%, rgba(3,8,6,0) 85%, rgba(3,8,6,0.9) 100%)'}} />
+		<AbsoluteFill style={{background: 'radial-gradient(circle at 50% 18%, rgba(61,255,138,0.25), rgba(3,8,6,0) 45%)'}} />
+		<AbsoluteFill style={{boxShadow: 'inset 0 0 220px rgba(0,0,0,0.85)'}} />
+		<div style={{position: 'absolute', left: 0, right: 0, top: 140, textAlign: 'center'}}>
+			<div style={{fontFamily: '"Courier New", monospace', fontWeight: 700, fontSize: 44, color: '#3DFF8A', letterSpacing: 4}}>&gt; código encontrado</div>
+			<div style={{fontFamily: DISPLAY, fontSize: 150, color: 'white', lineHeight: 1, textShadow: '0 10px 0 #000', marginTop: 16}}>GTA 6 TEM</div>
+			<div style={{display: 'inline-block', marginTop: 20, background: C.yellow, padding: '10px 44px 2px', borderRadius: 16, transform: 'rotate(-2.5deg)', boxShadow: '0 14px 0 #000, 0 0 50px rgba(255,216,74,0.5)'}}>
+				<span style={{fontFamily: DISPLAY, fontSize: 180, color: C.ink, whiteSpace: 'nowrap'}}>ONLINE?</span>
+			</div>
+		</div>
+		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.65)', letterSpacing: 3}}>IMAGEM OFICIAL: ROCKSTAR GAMES · CÓDIGO ILUSTRATIVO</div>
+	</AbsoluteFill>
+);

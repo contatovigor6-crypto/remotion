@@ -83,6 +83,11 @@ Narração: voz neural pt-BR "Antonio" (Microsoft, via edge-tts), pois o ElevenL
 thumbnail: Jason_and_Lucia_17 dentro de TV ilustrada. Lucia_Caminos_14 reservada para a thumb do vídeo da armadilha.
 RESTAM da Launch Gallery: Vice_City_18/23, Jason_and_Lucia_18, Lucia_Caminos_14 (thumb vazamentos).
 
+## Short — O código de GTA 6 entregou 2 segredos (v16/v15)
+USADAS (inéditas em vídeo): Vice_City_18/23, Jason_and_Lucia_18, Lucia_Caminos_14 (também thumbnail). Reaproveitadas: v15 hero/hero-towers/hero-downtown.
+ESTOQUE OFICIAL ESGOTADO: todas as imagens do site/Launch Gallery já foram usadas. Próximos vídeos dependem de material oficial novo.
+Narração: narrador pro (voz neural pt-BR Antonio).
+
 ## Ainda inéditos (disponíveis para próximos vídeos)
 Screenshots de personagens/lugares: Boobie_Ike_04, Vice_City_07 (clube, evitar), Leonida_Keys_04 (submarino), Mount_Kalaga_04,
 Hero_BG (clube); carros WYMAN_02/03/05 e VAPID_BUGGY_02/03/04; capas The Album; mascotes PNG. Estoque de imagens oficiais inéditas está acabando; restam também os fundos das rádios. (Os clipes 2160/3840 novos repetem cenas já usadas.)
