@@ -243,3 +243,21 @@ export const ThumbExtremeCodigoV: React.FC = () => (
 		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.65)', letterSpacing: 3}}>IMAGEM OFICIAL: ROCKSTAR GAMES · CÓDIGO ILUSTRATIVO</div>
 	</AbsoluteFill>
 );
+
+// Short "Os carros de GTA 6 saíram do jogo" (vertical 1080×1920): viatura Tempesta (imagem oficial) + luzes de giroflex (efeito).
+export const ThumbExtremeCarrosV: React.FC = () => (
+	<AbsoluteFill style={{background: '#05040a', overflow: 'hidden'}}>
+		<Img src={staticFile('v19/v-tempesta.jpg')} style={{position: 'absolute', left: 0, top: 640, width: '100%', height: 1280, objectFit: 'cover', objectPosition: '50% 62%', transform: 'scale(1.35)', transformOrigin: '50% 66%', filter: 'contrast(1.12) saturate(1.2)'}} />
+		<AbsoluteFill style={{background: 'linear-gradient(180deg, #05040a 0%, #05040a 33%, rgba(5,4,10,0.6) 40%, rgba(5,4,10,0) 50%, rgba(5,4,10,0) 85%, rgba(5,4,10,0.9) 100%)'}} />
+		<AbsoluteFill style={{background: 'radial-gradient(circle at 12% 45%, rgba(255,40,60,0.45), rgba(0,0,0,0) 35%), radial-gradient(circle at 88% 45%, rgba(40,110,255,0.45), rgba(0,0,0,0) 35%)'}} />
+		<Dust seed="carrosv" n={50} x0={0} x1={1080} />
+		<AbsoluteFill style={{boxShadow: 'inset 0 0 200px rgba(0,0,0,0.8)'}} />
+		<div style={{position: 'absolute', left: 0, right: 0, top: 130, textAlign: 'center'}}>
+			<div style={{fontFamily: DISPLAY, fontSize: 140, color: 'white', lineHeight: 1, textShadow: '0 10px 0 #000'}}>ISSO EXISTE</div>
+			<div style={{display: 'inline-block', marginTop: 20, background: C.yellow, padding: '10px 44px 2px', borderRadius: 16, transform: 'rotate(-2.5deg)', boxShadow: '0 14px 0 #000, 0 0 50px rgba(255,216,74,0.5)'}}>
+				<span style={{fontFamily: DISPLAY, fontSize: 170, color: C.ink, whiteSpace: 'nowrap'}}>DE VERDADE</span>
+			</div>
+		</div>
+		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.65)', letterSpacing: 3}}>IMAGEM OFICIAL DO JOGO: ROCKSTAR GAMES</div>
+	</AbsoluteFill>
+);

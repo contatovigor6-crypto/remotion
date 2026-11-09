@@ -88,6 +88,11 @@ USADAS (inéditas em vídeo): Vice_City_18/23, Jason_and_Lucia_18, Lucia_Caminos
 ESTOQUE OFICIAL ESGOTADO: todas as imagens do site/Launch Gallery já foram usadas. Próximos vídeos dependem de material oficial novo.
 Narração: narrador pro (voz neural pt-BR Antonio).
 
+## Short — Os carros de GTA 6 saíram do jogo (public/v19 — INÉDITAS)
+Screenshots oficiais dos 6 carros (Cheetah, Tempesta polícia, Emerus, Coquette, Manana, Buccaneer), divulgadas pela Rockstar à imprensa
+em 05–06/11/2026 (6 horizontais via Hypebeast + 8 verticais via DiscussingFilm, incl. 2 fotos de grupo). Não usadas: fotos reais (terceiros).
+thumbnail: v-tempesta (viatura) com luzes de giroflex.
+
 ## Ainda inéditos (disponíveis para próximos vídeos)
 Screenshots de personagens/lugares: Boobie_Ike_04, Vice_City_07 (clube, evitar), Leonida_Keys_04 (submarino), Mount_Kalaga_04,
 Hero_BG (clube); carros WYMAN_02/03/05 e VAPID_BUGGY_02/03/04; capas The Album; mascotes PNG. Estoque de imagens oficiais inéditas está acabando; restam também os fundos das rádios. (Os clipes 2160/3840 novos repetem cenas já usadas.)

@@ -7,7 +7,9 @@ import {ThumbCelular} from './thumbs/ThumbCelular';
 import {ThumbBrian} from './thumbs/ThumbBrian';
 import {ThumbProLongEdge, ThumbProLongInteriores, ThumbProNpc, ThumbProPolicia} from './thumbs/ThumbPro';
 import {GTA6Interiores} from './interiores/Video';
-import {ThumbExtremeContagem, ThumbExtremeInteriores, ThumbExtremeSindicato, ThumbExtremeSindicatoV, ThumbExtremeReacaoV, ThumbExtremeArmazenamentoV, ThumbExtremeGaleriaV, ThumbExtremeVazamentoV, ThumbExtremeGloboV, ThumbExtremeCodigoV} from './thumbs/ThumbExtreme';
+import {ThumbExtremeContagem, ThumbExtremeInteriores, ThumbExtremeSindicato, ThumbExtremeSindicatoV, ThumbExtremeReacaoV, ThumbExtremeArmazenamentoV, ThumbExtremeGaleriaV, ThumbExtremeVazamentoV, ThumbExtremeGloboV, ThumbExtremeCodigoV, ThumbExtremeCarrosV} from './thumbs/ThumbExtreme';
+import {GTA6Carros} from './carros/Video';
+import {DURATION_S as CARROS_DURATION} from './carros/data';
 import {GTA6Codigo} from './codigo/Video';
 import {DURATION_S as CODIGO_DURATION} from './codigo/data';
 import {GTA6Globo} from './globo/Video';
@@ -112,6 +114,8 @@ export const Root: React.FC = () => (
 		<Still id="ThumbExtremeGloboV" component={ThumbExtremeGloboV} width={1080} height={1920} />
 		<Composition id="GTA6Codigo" component={GTA6Codigo} defaultProps={{music: 'audio/music-codigo-mechanolith.wav', musicGain: 1.15}} durationInFrames={Math.round(CODIGO_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Still id="ThumbExtremeCodigoV" component={ThumbExtremeCodigoV} width={1080} height={1920} />
+		<Composition id="GTA6Carros" component={GTA6Carros} defaultProps={{music: 'audio/music-carros-dangerstorm.wav', musicGain: 1.7}} durationInFrames={Math.round(CARROS_DURATION * FPS)} fps={FPS} width={W} height={H} />
+		<Still id="ThumbExtremeCarrosV" component={ThumbExtremeCarrosV} width={1080} height={1920} />
 		<Composition id="GTA6Edge" component={GTA6Edge} defaultProps={{music: 'audio/music-edge-long.wav', musicGain: 0.8}} durationInFrames={Math.round(EDGE_DURATION * FPS)} fps={FPS} width={1920} height={1080} />
 	</>
 );
