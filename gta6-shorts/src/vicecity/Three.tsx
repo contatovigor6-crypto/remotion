@@ -46,9 +46,11 @@ export const useTex = (src: string) => {
 
 const Canvas: React.FC<{children: React.ReactNode; fov?: number; pos?: [number, number, number]; glow?: string}> = ({children, fov = 50, pos = [0, 0, 10], glow}) => (
 	<div style={{position: 'absolute', inset: 0, filter: glow ? `drop-shadow(0 0 14px ${glow}) drop-shadow(0 0 4px ${glow})` : undefined}}>
-		<ThreeCanvas width={1080} height={1920} camera={{fov, position: pos}} gl={{alpha: true, antialias: true, preserveDrawingBuffer: true}} style={{background: 'transparent'}}>
-			{children}
-		</ThreeCanvas>
+		<div style={{position: 'absolute', left: 0, top: 0, width: 540, height: 960, transform: 'scale(2)', transformOrigin: '0 0'}}>
+			<ThreeCanvas width={540} height={960} camera={{fov, position: pos}} gl={{alpha: true, antialias: true, preserveDrawingBuffer: true}} style={{background: 'transparent'}}>
+				{children}
+			</ThreeCanvas>
+		</div>
 	</div>
 );
 
