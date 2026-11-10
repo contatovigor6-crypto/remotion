@@ -31,3 +31,4 @@ Vetadas para próximos vídeos: todas acima.
 | **Short — Os arquivos de GTA 6 entregaram 3 pistas** | **Beauty Flow** (eletrônica) | Kevin MacLeod, CC BY 4.0 |
 | **Short — GTA 6 Gold (motion design)** | **Werq** (eletrônica) | Kevin MacLeod, CC BY 4.0 |
 | **Short — Pôster de GTA 6 (motion design)** | **Hyperfun** (alegre/energética) | Kevin MacLeod, CC BY 4.0 |
+| **Short — GTA 6 no PC: quando lança? (motion design)** | **Bit Shift** (eletrônica) | Kevin MacLeod, CC BY 4.0 |

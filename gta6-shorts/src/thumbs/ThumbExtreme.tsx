@@ -326,3 +326,26 @@ export const ThumbExtremePosterV: React.FC = () => (
 		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.7)', letterSpacing: 3}}>CAPA OFICIAL: ROCKSTAR GAMES · MAPA ILUSTRATIVO</div>
 	</AbsoluteFill>
 );
+
+// Short "GTA 6 no PC: quando lança?" (vertical 1080×1920): monitor com screenshot oficial + "PC: ??/??/????".
+export const ThumbExtremePcV: React.FC = () => (
+	<AbsoluteFill style={{background: '#030308', overflow: 'hidden'}}>
+		{Array.from({length: 5}).map((_, i) => (
+			<div key={i} style={{position: 'absolute', left: -300, right: -300, top: 300 + i * 340, height: 30, borderRadius: 15, background: 'linear-gradient(90deg, #ff0040, #ffae00, #3dff8a, #38e1ff, #7b3cff, #ff3e9a)', filter: 'blur(12px)', opacity: 0.6, transform: `rotate(${-8 + i * 3}deg)`}} />
+		))}
+		<div style={{position: 'absolute', left: 0, right: 0, top: 110, textAlign: 'center'}}>
+			<div style={{fontFamily: DISPLAY, fontSize: 150, color: 'white', lineHeight: 1, textShadow: '0 10px 0 #000'}}>GTA 6 NO PC</div>
+			<div style={{display: 'inline-block', marginTop: 20, background: C.yellow, padding: '10px 40px 2px', borderRadius: 16, transform: 'rotate(-2.5deg)', boxShadow: '0 14px 0 #000'}}>
+				<span style={{fontFamily: DISPLAY, fontSize: 150, color: C.ink, whiteSpace: 'nowrap'}}>QUANDO?</span>
+			</div>
+		</div>
+		<div style={{position: 'absolute', left: 80, right: 80, top: 760, height: 620, borderRadius: 26, background: '#0b0b10', border: '18px solid #1c1c24', overflow: 'hidden', boxShadow: '0 30px 70px rgba(0,0,0,0.7)'}}>
+			<Img src={staticFile('v16/Vice_City_19.jpg')} style={{width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.7) saturate(1.2)'}} />
+			<div style={{position: 'absolute', left: 0, right: 0, bottom: 40, textAlign: 'center'}}>
+				<span style={{fontFamily: DISPLAY, fontSize: 90, color: 'white', background: 'rgba(0,0,0,0.65)', padding: '6px 24px', borderRadius: 14}}>💻 ??/??/????</span>
+			</div>
+		</div>
+		<div style={{position: 'absolute', left: 360, right: 360, top: 1380, height: 110, background: '#1c1c24', clipPath: 'polygon(30% 0, 70% 0, 100% 100%, 0 100%)'}} />
+		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.65)', letterSpacing: 3}}>IMAGEM OFICIAL: ROCKSTAR GAMES</div>
+	</AbsoluteFill>
+);
