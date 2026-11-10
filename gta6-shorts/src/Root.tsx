@@ -7,7 +7,8 @@ import {ThumbCelular} from './thumbs/ThumbCelular';
 import {ThumbBrian} from './thumbs/ThumbBrian';
 import {ThumbProLongEdge, ThumbProLongInteriores, ThumbProNpc, ThumbProPolicia} from './thumbs/ThumbPro';
 import {GTA6Interiores} from './interiores/Video';
-import {ThumbExtremeContagem, ThumbExtremeInteriores, ThumbExtremeSindicato, ThumbExtremeSindicatoV, ThumbExtremeReacaoV, ThumbExtremeArmazenamentoV, ThumbExtremeGaleriaV, ThumbExtremeVazamentoV, ThumbExtremeGloboV, ThumbExtremeCodigoV, ThumbExtremeCarrosV, ThumbExtremeArquivosV, ThumbExtremeGoldV, ThumbExtremePosterV, ThumbExtremePcV} from './thumbs/ThumbExtreme';
+import {ThumbExtremeContagem, ThumbExtremeInteriores, ThumbExtremeSindicato, ThumbExtremeSindicatoV, ThumbExtremeReacaoV, ThumbExtremeArmazenamentoV, ThumbExtremeGaleriaV, ThumbExtremeVazamentoV, ThumbExtremeGloboV, ThumbExtremeCodigoV, ThumbExtremeCarrosV, ThumbExtremeArquivosV, ThumbExtremeGoldV, ThumbExtremePosterV, ThumbExtremePcV, ThumbExtremeFestivalV} from './thumbs/ThumbExtreme';
+import {GTA6Festival, DURATION_S as FESTIVAL_DURATION} from './festival/Video';
 import {GTA6Pc, DURATION_S as PC_DURATION} from './pc/Video';
 import {GTA6Poster, DURATION_S as POSTER_DURATION} from './poster/Video';
 import {GTA6Gold} from './gold/Video';
@@ -132,6 +133,8 @@ export const Root: React.FC = () => (
 		<Still id="ThumbExtremePosterV" component={ThumbExtremePosterV} width={1080} height={1920} />
 		<Composition id="GTA6Pc" component={GTA6Pc} defaultProps={{music: 'audio/music-pc-bitshift.wav', musicGain: 0.56}} durationInFrames={Math.round(PC_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Still id="ThumbExtremePcV" component={ThumbExtremePcV} width={1080} height={1920} />
+		<Composition id="GTA6Festival" component={GTA6Festival} defaultProps={{music: 'audio/music-festival-electrodoodle.wav', musicGain: 0.66}} durationInFrames={Math.round(FESTIVAL_DURATION * FPS)} fps={FPS} width={W} height={H} />
+		<Still id="ThumbExtremeFestivalV" component={ThumbExtremeFestivalV} width={1080} height={1920} />
 		<Composition id="GTA6Armadilha" component={GTA6Armadilha} defaultProps={{music: 'audio/music-armadilha-hotpursuit.wav', musicGain: 0.75}} durationInFrames={Math.round(ARMADILHA_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Composition id="GTA6Edge" component={GTA6Edge} defaultProps={{music: 'audio/music-edge-long.wav', musicGain: 0.8}} durationInFrames={Math.round(EDGE_DURATION * FPS)} fps={FPS} width={1920} height={1080} />
 	</>

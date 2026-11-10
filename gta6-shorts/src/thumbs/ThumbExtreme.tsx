@@ -349,3 +349,25 @@ export const ThumbExtremePcV: React.FC = () => (
 		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.65)', letterSpacing: 3}}>IMAGEM OFICIAL: ROCKSTAR GAMES</div>
 	</AbsoluteFill>
 );
+
+// Short "GTA 6 vai ganhar um FESTIVAL" (vertical 1080×1920): pôster oficial do festival (recorte) + nomes do line-up.
+export const ThumbExtremeFestivalV: React.FC = () => (
+	<AbsoluteFill style={{background: '#0a0620', overflow: 'hidden'}}>
+		<div style={{position: 'absolute', inset: 0, overflow: 'hidden'}}>
+			<Img src={staticFile('v25/festival.jpg')} style={{position: 'absolute', height: 1920, width: 3413, left: -1180, top: 0, maxWidth: 'none', filter: 'saturate(1.25) contrast(1.08)'}} />
+		</div>
+		<AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(10,6,32,0.92) 0%, rgba(10,6,32,0.75) 30%, rgba(10,6,32,0.1) 55%, rgba(10,6,32,0.6) 100%)'}} />
+		<div style={{position: 'absolute', left: 0, right: 0, top: 120, textAlign: 'center'}}>
+			<div style={{fontFamily: DISPLAY, fontSize: 130, color: 'white', lineHeight: 1, textShadow: '0 10px 0 #000'}}>GTA 6 VAI TER</div>
+			<div style={{display: 'inline-block', marginTop: 18, background: '#FF3E9A', padding: '10px 44px 2px', borderRadius: 16, transform: 'rotate(-2.5deg)', boxShadow: '0 14px 0 #000, 0 0 60px rgba(255,62,154,0.6)'}}>
+				<span style={{fontFamily: DISPLAY, fontSize: 170, color: 'white', whiteSpace: 'nowrap'}}>FESTIVAL</span>
+			</div>
+			<div style={{marginTop: 30, fontFamily: DISPLAY, fontSize: 70, color: '#FFD84A', textShadow: '0 6px 0 #000, 0 0 30px rgba(255,216,74,0.5)', lineHeight: 1.15}}>
+				TRAVIS SCOTT · CARDI B
+				<br />
+				KODAK BLACK · JUSTICE
+			</div>
+		</div>
+		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.75)', letterSpacing: 3}}>ARTE OFICIAL: ROCKSTAR GAMES / PLAYSTATION</div>
+	</AbsoluteFill>
+);

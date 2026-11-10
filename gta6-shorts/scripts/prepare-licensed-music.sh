@@ -41,4 +41,5 @@ arquivos-beautyflow Beauty_Flow.mp3 20 0 59.5 26.5 26.75
 gold-werq Werq.mp3 0 0 62.5 27.55 28.0
 poster-hyperfun Hyperfun.mp3 0 0 52.0 24.5 24.9
 pc-bitshift Bit_Shift.mp3 0 0 68.5 47.5 47.8
+festival-electrodoodle Electrodoodle.mp3 0 0 54.0 28.65 29.05
 LIST

@@ -114,3 +114,6 @@ ULTIMATE_EDITION: CHEETAH_03/04, ELECTRIC_FANG_02, SAFEHOUSE_VEHICLES_02, SQUALO
 VAPID_BUGGY_02/03/04, VICE_CITY_STYLE_01/03/04, WYMAN_CAR_COLLECTION_02/03/05, GOODTIME_GEAR_01, HAWK_AND_LITTLE_MORGAN_REVOLVERS,
 ONE_EYED_WILLIE_01-03, PTT_STORE_01, SARAS_SALON_01-03, WEAPON_VARIANTS_01; VINTAGE_VICE_CITY_PACK (vários);
 artes de personagens/lugares (boobie, brian, cal, dimez, drequan, jason, lucia, raul, ambrosia, grassrivers, kalaga, port-gellhorn, leonida-keys)
+
+## Short — GTA 6 vai ganhar um FESTIVAL (motion design)
+- NOVA: arte oficial "Grand Theft Auto VI: The Festival" (Newswire 09/11/2026) — public/v25/festival.jpg (recortes: céu, logo, skyline, capa do álbum, rótulo do vinil, thumb)
