@@ -37,3 +37,11 @@
   máquina de números, engrenagens — sem depender sempre de imagens de GTA 6 (usar imagens oficiais só em poucos momentos).
 - "Por que você nunca muda o fundo?": trocar o CENÁRIO DE FUNDO a cada cena (ex.: pôr do sol neon, cidade com chuva, grade tech,
   raios dourados, mercado, cassino, gelo, túnel, planta azul, galáxia). Referência: src/gold/Motion.tsx.
+
+## Trends 10/11/2026 (2ª leitura) → hashtags no FIM da descrição
+- Em alta: "GTA 6 Gold" (+300%), "GTA 6 Lançou?" (+150%/+110%), "Pôster de GTA 6"/"Pôster GTA 6" (+120%), "quando gta 6 vai ser lançado para PC" (+90%),
+  "quando lança o gta 6" (+70%), "Quantos GB tem o GTA 6" (+50%), "GTA 6 quando lança"/"que dia lança o gta 6" (+40%).
+- Mais buscados: "Lançamento GTA 6" (+20%), "GTA 6 lançamento", "PS5 GTA 6", "Xbox GTA 6", "Baixar do GTA 6", "GTA 6 PC".
+- REGRA: terminar TODA descrição com 10–15 hashtags tiradas das buscas do momento, sem espaço (ex.: #LançamentoGTA6 #GTA6Lançou #QuandoLançaOGTA6
+  #QueDiaLançaOGTA6 #PosterDeGTA6 #GTA6Gold #BaixarGTA6 #PS5GTA6 #GTA6Xbox #GTA6PC), sempre com #GTA6 primeiro e #Shorts no fim.
+  O YouTube ignora todas as hashtags se passar de 15 — nunca exceder.
