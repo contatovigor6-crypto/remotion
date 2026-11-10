@@ -33,3 +33,4 @@ Vetadas para próximos vídeos: todas acima.
 | **Short — Pôster de GTA 6 (motion design)** | **Hyperfun** (alegre/energética) | Kevin MacLeod, CC BY 4.0 |
 | **Short — GTA 6 no PC: quando lança? (motion design)** | **Bit Shift** (eletrônica) | Kevin MacLeod, CC BY 4.0 |
 | **Short — GTA 6 vai ganhar um FESTIVAL (motion design)** | **Electrodoodle** (eletrônica/funk) | Kevin MacLeod, CC BY 4.0 |
+| **Short — Miami virou Vice City (cyberpunk + 3D)** | **Space Fighter Loop** (eletrônica/synth) | Kevin MacLeod, CC BY 4.0 |

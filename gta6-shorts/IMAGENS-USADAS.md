@@ -117,3 +117,7 @@ artes de personagens/lugares (boobie, brian, cal, dimez, drequan, jason, lucia, 
 
 ## Short — GTA 6 vai ganhar um FESTIVAL (motion design)
 - NOVA: arte oficial "Grand Theft Auto VI: The Festival" (Newswire 09/11/2026) — public/v25/festival.jpg (recortes: céu, logo, skyline, capa do álbum, rótulo do vinil, thumb)
+
+## Short — Miami virou Vice City (cyberpunk + 3D)
+- NOVAS: fundos oficiais das rádios de GTA VI (Flash FM, The Chamber 106, Afrobank FM, Cocoteo FM, Dirty South Classics, Back Country Radio, Only in Leonida, fundo da página de rádios) — public/v26/r-*.jpg. Estoque restante de inéditas: praticamente zero.
+- Reuso mínimo: img/vc-night.jpg; clipes v2/skyline-v, v2/city-night, v2/jason-neon.
