@@ -302,3 +302,27 @@ export const ThumbExtremeGoldV: React.FC = () => (
 		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.65)', letterSpacing: 3}}>IMAGEM OFICIAL: ROCKSTAR GAMES</div>
 	</AbsoluteFill>
 );
+
+// Short "Pôster de GTA 6" (vertical 1080×1920): pôster com a capa oficial + mapa ilustrativo, etiqueta GRÁTIS.
+export const ThumbExtremePosterV: React.FC = () => (
+	<AbsoluteFill style={{background: 'linear-gradient(180deg, #04223f 0%, #0a4f7f 100%)', overflow: 'hidden'}}>
+		<AbsoluteFill style={{backgroundImage: 'linear-gradient(rgba(255,255,255,0.08) 2px, transparent 2px), linear-gradient(90deg, rgba(255,255,255,0.08) 2px, transparent 2px)', backgroundSize: '120px 120px'}} />
+		<div style={{position: 'absolute', left: 0, right: 0, top: 110, textAlign: 'center'}}>
+			<div style={{fontFamily: DISPLAY, fontSize: 140, color: 'white', lineHeight: 1, textShadow: '0 10px 0 #000'}}>O MAPA DE GTA 6</div>
+			<div style={{display: 'inline-block', marginTop: 20, background: '#3DFF8A', padding: '10px 44px 2px', borderRadius: 16, transform: 'rotate(-2.5deg)', boxShadow: '0 14px 0 #000'}}>
+				<span style={{fontFamily: DISPLAY, fontSize: 170, color: C.ink, whiteSpace: 'nowrap'}}>DE GRAÇA</span>
+			</div>
+		</div>
+		<div style={{position: 'absolute', left: 90, top: 760, width: 520, height: 720, background: 'white', padding: 16, transform: 'rotate(-6deg)', boxShadow: '0 30px 60px rgba(0,0,0,0.6)'}}>
+			<Img src={staticFile('v23/capa-oficial.jpg')} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+		</div>
+		<div style={{position: 'absolute', right: 70, top: 900, width: 440, height: 600, borderRadius: 18, overflow: 'hidden', background: 'linear-gradient(160deg, #1b6fa8, #0f4c7a)', border: '10px solid #f4ead2', transform: 'rotate(7deg)', boxShadow: '0 30px 60px rgba(0,0,0,0.6)'}}>
+			<svg width={440} height={600} viewBox="0 0 100 130" preserveAspectRatio="none">
+				<path d="M10 0 L70 0 L72 10 L66 22 L70 34 L64 46 L68 58 L62 72 L66 86 L58 100 L54 112 L46 122 L40 116 L44 104 L38 92 L42 80 L34 66 L38 52 L30 40 L34 26 L22 18 L12 10 Z" fill="#e8d9a8" stroke="#c9b37a" strokeWidth={0.8} />
+			</svg>
+			<div style={{position: 'absolute', left: 16, top: 10, fontFamily: DISPLAY, fontSize: 52, color: '#f4ead2'}}>LEONIDA</div>
+			<div style={{position: 'absolute', left: 0, right: 0, top: 230, textAlign: 'center', fontFamily: DISPLAY, fontSize: 200, color: 'white', textShadow: '0 10px 0 #000'}}>?</div>
+		</div>
+		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.7)', letterSpacing: 3}}>CAPA OFICIAL: ROCKSTAR GAMES · MAPA ILUSTRATIVO</div>
+	</AbsoluteFill>
+);

@@ -100,6 +100,10 @@ thumbnail: Vice_City_16 (mão cobrindo o rosto) + marca d'água ilustrativa.
 ## Short — Os arquivos de GTA 6 entregaram 3 pistas (reaproveitadas)
 v16: Vice_City_13/15/26/27, Jason_and_Lucia_14, Leonida_Keys_07; v19: v-grupo1/2, l-emerus/coquette/cheetah. thumbnail: Lucia_Caminos_13.
 
+## Short — Pôster de GTA 6 (motion design, public/v23)
+Única imagem do jogo: capa oficial (versão do PlayStation Blog, 03/11/2026) — é o próprio pôster de que o vídeo fala. Mapa = ilustração.
+ESTOQUE: nenhuma imagem/clipe oficial inédito restante; trailer de lançamento no YouTube tem restrição de idade (sem login).
+
 ## Ainda inéditos (disponíveis para próximos vídeos)
 Screenshots de personagens/lugares: Boobie_Ike_04, Vice_City_07 (clube, evitar), Leonida_Keys_04 (submarino), Mount_Kalaga_04,
 Hero_BG (clube); carros WYMAN_02/03/05 e VAPID_BUGGY_02/03/04; capas The Album; mascotes PNG. Estoque de imagens oficiais inéditas está acabando; restam também os fundos das rádios. (Os clipes 2160/3840 novos repetem cenas já usadas.)
