@@ -31,3 +31,9 @@
 - Regras: colocar no TÍTULO a busca exata em alta (pergunta como o público digita: "GTA 6 lançou?", "quando libera…"), repetir 2–3 dessas
   frases na DESCRIÇÃO (1ª linha responde a pergunta), e usar as frases exatas nas TAGS. Plataformas (PS5/Xbox/PC) sempre citadas.
 - Próximos temas puxados pela busca: GTA 6 no PC (quando lança?), Pôster/mapa de GTA 6, "GTA 6 Gold", "GTA 6 já lançou?".
+
+## Estilo motion (10/11/2026)
+- O usuário gostou da ideia de vídeos em MOTION DESIGN: tipografia cinética, objetos 3D (disco, calendário, cartões), gráficos animados,
+  máquina de números, engrenagens — sem depender sempre de imagens de GTA 6 (usar imagens oficiais só em poucos momentos).
+- "Por que você nunca muda o fundo?": trocar o CENÁRIO DE FUNDO a cada cena (ex.: pôr do sol neon, cidade com chuva, grade tech,
+  raios dourados, mercado, cassino, gelo, túnel, planta azul, galáxia). Referência: src/gold/Motion.tsx.

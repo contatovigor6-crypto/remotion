@@ -281,3 +281,24 @@ export const ThumbExtremeArquivosV: React.FC = () => (
 		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.65)', letterSpacing: 3}}>IMAGEM OFICIAL: ROCKSTAR GAMES</div>
 	</AbsoluteFill>
 );
+
+// Short "GTA 6 Gold: o jogo finalmente ficou pronto?" (vertical 1080×1920): Jason (imagem oficial) + disco dourado e "100%".
+export const ThumbExtremeGoldV: React.FC = () => (
+	<AbsoluteFill style={{background: '#0a0702', overflow: 'hidden'}}>
+		<Img src={staticFile('v16/Jason_Duval_19.jpg')} style={{position: 'absolute', left: 0, top: 760, width: '100%', height: 1160, objectFit: 'cover', objectPosition: '68% 40%', transform: 'scale(1.12)', transformOrigin: '68% 40%', filter: 'contrast(1.12) saturate(1.15) sepia(0.15)'}} />
+		<AbsoluteFill style={{background: 'linear-gradient(180deg, #0a0702 0%, #0a0702 36%, rgba(10,7,2,0.6) 42%, rgba(10,7,2,0) 52%, rgba(10,7,2,0) 85%, rgba(10,7,2,0.9) 100%)'}} />
+		<AbsoluteFill style={{background: 'radial-gradient(circle at 50% 20%, rgba(255,200,0,0.35), rgba(10,7,2,0) 45%)'}} />
+		<Dust seed="goldv" n={70} x0={0} x1={1080} />
+		<AbsoluteFill style={{boxShadow: 'inset 0 0 220px rgba(0,0,0,0.85)'}} />
+		<div style={{position: 'absolute', left: 0, right: 0, top: 110, textAlign: 'center'}}>
+			<div style={{display: 'inline-block', width: 230, height: 230, borderRadius: 115, background: 'conic-gradient(#FFF3B0, #E0A100, #FFE680, #B87A00, #FFF3B0)', boxShadow: '0 0 70px rgba(255,200,0,0.8), 0 14px 0 #000', position: 'relative'}}>
+				<div style={{position: 'absolute', left: 80, top: 80, width: 70, height: 70, borderRadius: 35, background: '#111', border: '8px solid #FFE680'}} />
+			</div>
+			<div style={{fontFamily: DISPLAY, fontSize: 150, lineHeight: 1, marginTop: 14, backgroundImage: 'linear-gradient(180deg, #FFF3B0 0%, #FFD24A 40%, #E0A100 70%, #FFE680 100%)', WebkitBackgroundClip: 'text', color: 'transparent', filter: 'drop-shadow(0 10px 0 #000)'}}>DEU GOLD</div>
+			<div style={{display: 'inline-block', marginTop: 10, background: '#3DFF8A', padding: '8px 36px 0', borderRadius: 14, transform: 'rotate(-2.5deg)', boxShadow: '0 12px 0 #000'}}>
+				<span style={{fontFamily: DISPLAY, fontSize: 120, color: C.ink}}>100% PRONTO?</span>
+			</div>
+		</div>
+		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.65)', letterSpacing: 3}}>IMAGEM OFICIAL: ROCKSTAR GAMES</div>
+	</AbsoluteFill>
+);

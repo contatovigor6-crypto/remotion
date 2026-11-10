@@ -29,3 +29,4 @@ Vetadas para próximos vídeos: todas acima.
 | **Short — Os carros de GTA 6 saíram do jogo** | **Danger Storm** (eletrizante) | Kevin MacLeod, CC BY 4.0 |
 | **Short — A armadilha da Rockstar contra vazamentos** | **Hot Pursuit** (tensa) | Kevin MacLeod, CC BY 4.0 |
 | **Short — Os arquivos de GTA 6 entregaram 3 pistas** | **Beauty Flow** (eletrônica) | Kevin MacLeod, CC BY 4.0 |
+| **Short — GTA 6 Gold (motion design)** | **Werq** (eletrônica) | Kevin MacLeod, CC BY 4.0 |
