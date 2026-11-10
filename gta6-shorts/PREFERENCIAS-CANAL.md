@@ -23,3 +23,11 @@
 - SOMENTE novidades quentes e investigações (notícias recentes de GTA 6, apuradas, separando fato confirmado de relato/rumor).
 - Nunca repetir roteiros/temas já feitos nesta sessão nem nas outras abas (ex.: 212 GB/pré-download, horário de lançamento à meia-noite, Launch Gallery 39 imagens, votação sindical, contagem 17 dias, NPCs reagem à arma, interiores, Edge 430, celular, Brian, pista do dinheiro, 60 fps, internet, preso, 1h parado, polícia).
 - Quando o usuário não mandar áudio: criar roteiro e narração com a voz "Marcio - Viral Hook Narrator" (ElevenLabs).
+
+## SEO pelo Google Trends (Brasil, 24h — 10/11/2026)
+- Mais buscados: "Lançamento GTA 6", "GTA 6 lançamento", "PS5 GTA 6", "GTA 6 PS5", "Xbox GTA 6", "Baixar do GTA 6" (+10%), "GTA 6 PC".
+- Em alta: "GTA 6 Gold" (+190%), "GTA 6 Lançou?" (+150%), "Pôster de GTA 6" (+130%), "Data pré-download do GTA 6" (+130%),
+  "quando gta 6 vai ser lançado para PC" (+120%), "quando libera o preload do gta 6" (+100%), "Grand Theft Auto VI" (+70%), "quando lança o gta 6" (+60%).
+- Regras: colocar no TÍTULO a busca exata em alta (pergunta como o público digita: "GTA 6 lançou?", "quando libera…"), repetir 2–3 dessas
+  frases na DESCRIÇÃO (1ª linha responde a pergunta), e usar as frases exatas nas TAGS. Plataformas (PS5/Xbox/PC) sempre citadas.
+- Próximos temas puxados pela busca: GTA 6 no PC (quando lança?), Pôster/mapa de GTA 6, "GTA 6 Gold", "GTA 6 já lançou?".

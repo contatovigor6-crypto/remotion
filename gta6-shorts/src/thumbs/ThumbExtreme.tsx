@@ -261,3 +261,23 @@ export const ThumbExtremeCarrosV: React.FC = () => (
 		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.65)', letterSpacing: 3}}>IMAGEM OFICIAL DO JOGO: ROCKSTAR GAMES</div>
 	</AbsoluteFill>
 );
+
+// Short "Os arquivos de GTA 6 entregaram 3 pistas" (vertical 1080×1920): Lucia (imagem oficial) + arquivo misterioso "core_restofworld001" (ilustração).
+export const ThumbExtremeArquivosV: React.FC = () => (
+	<AbsoluteFill style={{background: '#030806', overflow: 'hidden'}}>
+		<Img src={staticFile('v16/Lucia_Caminos_13.jpg')} style={{position: 'absolute', left: 0, top: 760, width: '100%', height: 1160, objectFit: 'cover', objectPosition: '42% 40%', transform: 'scale(1.1)', transformOrigin: '42% 40%', filter: 'contrast(1.12) saturate(1.15)'}} />
+		<AbsoluteFill style={{background: 'linear-gradient(180deg, #030806 0%, #030806 36%, rgba(3,8,6,0.6) 42%, rgba(3,8,6,0) 52%, rgba(3,8,6,0) 85%, rgba(3,8,6,0.9) 100%)'}} />
+		<AbsoluteFill style={{background: 'radial-gradient(circle at 50% 22%, rgba(255,216,74,0.22), rgba(3,8,6,0) 45%)'}} />
+		<AbsoluteFill style={{boxShadow: 'inset 0 0 220px rgba(0,0,0,0.85)'}} />
+		<div style={{position: 'absolute', left: 0, right: 0, top: 120, textAlign: 'center'}}>
+			<div style={{fontFamily: DISPLAY, fontSize: 130, color: 'white', lineHeight: 1, textShadow: '0 10px 0 #000'}}>ARQUIVO SUMIDO</div>
+			<div style={{display: 'inline-block', marginTop: 22, background: '#04100a', border: '6px solid #3DFF8A', padding: '14px 26px', borderRadius: 16, boxShadow: '0 14px 0 #000, 0 0 50px rgba(61,255,138,0.4)'}}>
+				<span style={{fontFamily: '"Courier New", monospace', fontWeight: 700, fontSize: 56, color: '#3DFF8A'}}>core_restofworld001</span>
+			</div>
+			<div style={{display: 'inline-block', marginTop: 26, background: C.yellow, padding: '10px 40px 2px', borderRadius: 16, transform: 'rotate(-2.5deg)', boxShadow: '0 14px 0 #000'}}>
+				<span style={{fontFamily: DISPLAY, fontSize: 130, color: C.ink, whiteSpace: 'nowrap'}}>O QUE É ISSO?</span>
+			</div>
+		</div>
+		<div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: UI, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.65)', letterSpacing: 3}}>IMAGEM OFICIAL: ROCKSTAR GAMES</div>
+	</AbsoluteFill>
+);

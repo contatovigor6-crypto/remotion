@@ -97,6 +97,9 @@ thumbnail: v-tempesta (viatura) com luzes de giroflex.
 Reaproveitadas (cada uma usada só 1 vez antes): Vice_City_14/16/17/21, Lucia_Caminos_11, Jason_Duval_12/16/18, Jason_and_Lucia_15/19/20, Grassrivers_07.
 thumbnail: Vice_City_16 (mão cobrindo o rosto) + marca d'água ilustrativa.
 
+## Short — Os arquivos de GTA 6 entregaram 3 pistas (reaproveitadas)
+v16: Vice_City_13/15/26/27, Jason_and_Lucia_14, Leonida_Keys_07; v19: v-grupo1/2, l-emerus/coquette/cheetah. thumbnail: Lucia_Caminos_13.
+
 ## Ainda inéditos (disponíveis para próximos vídeos)
 Screenshots de personagens/lugares: Boobie_Ike_04, Vice_City_07 (clube, evitar), Leonida_Keys_04 (submarino), Mount_Kalaga_04,
 Hero_BG (clube); carros WYMAN_02/03/05 e VAPID_BUGGY_02/03/04; capas The Album; mascotes PNG. Estoque de imagens oficiais inéditas está acabando; restam também os fundos das rádios. (Os clipes 2160/3840 novos repetem cenas já usadas.)
