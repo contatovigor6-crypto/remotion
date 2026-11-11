@@ -702,19 +702,247 @@ const BeachBg: React.FC<{dusk?: boolean}> = ({dusk}) => {
 	);
 };
 
+/* ---------------------------------------------------------------- */
+/* CENAS DE AÇÃO (originais, no clima de cidade praiana de crime)    */
+/* ---------------------------------------------------------------- */
+
+// Helicóptero com holofote varrendo a cidade
+const Helicopter: React.FC<{x: number; y: number; scale?: number}> = ({x, y, scale = 1}) => {
+	const frame = useCurrentFrame();
+	const beam = Math.sin(frame / 18) * 18;
+	const rotor = Math.abs(Math.sin(frame * 1.7));
+	return (
+		<div style={{position: 'absolute', left: x, top: y, transform: `scale(${scale})`}}>
+			<div
+				style={{
+					position: 'absolute',
+					left: 60,
+					top: 70,
+					width: 0,
+					height: 0,
+					borderLeft: '140px solid transparent',
+					borderRight: '140px solid transparent',
+					borderTop: '900px solid rgba(255,250,210,0.18)',
+					transform: `translateX(-140px) rotate(${180 + beam}deg)`,
+					transformOrigin: '140px 0',
+					filter: 'blur(6px)',
+				}}
+			/>
+			<svg width={260} height={110} viewBox="0 0 260 110" style={{position: 'absolute', left: -60, top: 0}}>
+				<rect x={10} y={8} width={240} height={5} rx={2} fill="#000" opacity={0.3 + rotor * 0.5} />
+				<rect x={115} y={10} width={8} height={18} fill="#05010d" />
+				<ellipse cx={120} cy={50} rx={58} ry={28} fill="#05010d" />
+				<path d="M170 46 L250 40 L250 50 L170 58 Z" fill="#05010d" />
+				<rect x={240} y={28} width={8} height={26} fill="#05010d" />
+				<path d="M88 42 Q 100 30 125 32 L 125 52 L 85 52 Z" fill="#3a6ea5" opacity={0.8} />
+				<rect x={85} y={80} width={80} height={5} fill="#05010d" />
+				<circle cx={120} cy={78} r={6} fill={frame % 20 < 10 ? RED : '#330000'} />
+			</svg>
+		</div>
+	);
+};
+
+// Conversível de lado, com rodas girando e luz neon embaixo
+const Convertible: React.FC<{x: number; y: number; scale?: number; color?: string}> = ({
+	x,
+	y,
+	scale = 1,
+	color = PINK,
+}) => {
+	const frame = useCurrentFrame();
+	const bounce = Math.sin(frame / 3) * 2;
+	const wheel = (cx: number) => (
+		<g transform={`rotate(${frame * 25} ${cx} 118)`}>
+			<circle cx={cx} cy={118} r={30} fill="#111" />
+			<circle cx={cx} cy={118} r={14} fill="#ccc" />
+			<rect x={cx - 2} y={92} width={4} height={52} fill="#888" />
+		</g>
+	);
+	return (
+		<svg
+			width={420 * scale}
+			height={160 * scale}
+			viewBox="0 0 420 160"
+			style={{position: 'absolute', left: x, top: y + bounce}}
+		>
+			<ellipse cx={210} cy={150} rx={190} ry={10} fill={CYAN} opacity={0.7} style={{filter: 'blur(4px)'}} />
+			<path
+				d="M20 110 L30 78 Q 60 66 120 64 L 170 40 L 200 40 L 190 64 L 330 66 Q 395 70 405 92 L 408 112 Z"
+				fill={color}
+			/>
+			<path d="M175 44 L 196 44 L 188 64 L 160 64 Z" fill="#9fd8ff" opacity={0.7} />
+			<rect x={30} y={88} width={370} height={6} fill="#ffffff" opacity={0.5} />
+			<circle cx={398} cy={92} r={7} fill="#fff6b0" />
+			<rect x={18} y={84} width={10} height={10} fill={RED} />
+			{/* motorista (silhueta genérica) */}
+			<circle cx={235} cy={44} r={14} fill="#1a0526" />
+			<rect x={224} y={56} width={24} height={14} rx={6} fill="#1a0526" />
+			{wheel(95)}
+			{wheel(330)}
+		</svg>
+	);
+};
+
+// Luzes de viatura piscando nas bordas: perseguição atrás da câmera
+const PoliceLights: React.FC = () => {
+	const frame = useCurrentFrame();
+	const red = Math.floor(frame / 5) % 2 === 0;
+	return (
+		<AbsoluteFill
+			style={{
+				background: red
+					? 'radial-gradient(circle at 0% 100%, rgba(255,30,40,0.55), transparent 55%)'
+					: 'radial-gradient(circle at 100% 100%, rgba(30,90,255,0.55), transparent 55%)',
+				mixBlendMode: 'screen',
+			}}
+		/>
+	);
+};
+
+// Carro fugindo à frente na estrada (vista traseira)
+const CarRear: React.FC = () => {
+	const frame = useCurrentFrame();
+	const sway = Math.sin(frame / 9) * 30;
+	return (
+		<svg
+			width={300}
+			height={170}
+			viewBox="0 0 300 170"
+			style={{position: 'absolute', left: 390 + sway, top: 1180}}
+		>
+			<ellipse cx={150} cy={160} rx={140} ry={10} fill="#000" opacity={0.6} />
+			<path d="M20 70 Q 30 30 80 26 L 220 26 Q 270 30 280 70 L 290 140 L 10 140 Z" fill="#1d1d2b" />
+			<path d="M60 34 L 240 34 L 255 66 L 45 66 Z" fill="#3a6ea5" opacity={0.6} />
+			<rect x={20} y={80} width={60} height={18} rx={6} fill={RED} style={{filter: `drop-shadow(0 0 12px ${RED})`}} />
+			<rect x={220} y={80} width={60} height={18} rx={6} fill={RED} style={{filter: `drop-shadow(0 0 12px ${RED})`}} />
+			<rect x={115} y={100} width={70} height={22} rx={3} fill="#e8e8e8" />
+			<rect x={10} y={135} width={50} height={30} rx={6} fill="#0a0a0a" />
+			<rect x={240} y={135} width={50} height={30} rx={6} fill="#0a0a0a" />
+		</svg>
+	);
+};
+
+// Mapa estilizado de uma cidade praiana fictícia com rota até a loja
+const MapBg: React.FC = () => {
+	const frame = useCurrentFrame();
+	const t0 = f(29.15);
+	const route = interpolate(frame, [t0 + 10, t0 + 150], [1, 0], {
+		extrapolateLeft: 'clamp',
+		extrapolateRight: 'clamp',
+	});
+	const pan = (frame - t0) * 0.6;
+	return (
+		<AbsoluteFill style={{background: '#1767a6', overflow: 'hidden'}}>
+			<svg
+				width={1400}
+				height={2200}
+				viewBox="0 0 1400 2200"
+				style={{position: 'absolute', left: -160 - pan * 0.3, top: -140 - pan * 0.5}}
+			>
+				{/* ondas do mar */}
+				{new Array(30).fill(0).map((_, i) => (
+					<path
+						key={i}
+						d={`M ${(i * 97) % 1400} ${(i * 173) % 2200} q 20 -12 40 0 q 20 12 40 0`}
+						stroke="#5fb0e8"
+						strokeWidth={4}
+						fill="none"
+						opacity={0.6}
+					/>
+				))}
+				{/* continente */}
+				<path d="M380 0 L1400 0 L1400 2200 L520 2200 Q 430 1900 470 1600 Q 520 1300 430 1050 Q 360 800 450 520 Q 500 300 380 0 Z" fill="#e8d9a8" />
+				<path d="M470 0 L1400 0 L1400 2200 L600 2200 Q 520 1900 560 1600 Q 610 1300 520 1050 Q 450 800 540 520 Q 590 300 470 0 Z" fill="#9bc97a" />
+				{/* ilha */}
+				<path d="M120 900 Q 230 820 300 930 Q 330 1100 220 1150 Q 100 1120 120 900 Z" fill="#e8d9a8" />
+				<path d="M150 930 Q 230 870 280 950 Q 300 1080 220 1110 Q 130 1090 150 930 Z" fill="#9bc97a" />
+				<path d="M290 1000 L 500 980" stroke="#f2f2f2" strokeWidth={14} />
+				{/* ruas */}
+				{new Array(14).fill(0).map((_, i) => (
+					<path key={`h${i}`} d={`M 520 ${120 + i * 150} L 1400 ${90 + i * 150}`} stroke="#f2f2f2" strokeWidth={i % 4 === 0 ? 22 : 10} />
+				))}
+				{new Array(7).fill(0).map((_, i) => (
+					<path key={`v${i}`} d={`M ${640 + i * 120} 0 L ${600 + i * 120} 2200`} stroke="#f2f2f2" strokeWidth={i % 3 === 0 ? 22 : 10} />
+				))}
+				{/* quarteirões especiais */}
+				<rect x={900} y={700} width={100} height={110} fill={PINK} opacity={0.5} />
+				<rect x={780} y={1300} width={100} height={110} fill={YELLOW} opacity={0.5} />
+				{/* rota */}
+				<path
+					d="M 690 1700 L 690 1260 L 930 1250 L 950 760"
+					stroke={PINK}
+					strokeWidth={22}
+					fill="none"
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					pathLength={1}
+					strokeDasharray={1}
+					strokeDashoffset={route}
+					style={{filter: `drop-shadow(0 0 10px ${PINK})`}}
+				/>
+				<circle cx={690} cy={1700} r={24} fill={CYAN} stroke="#fff" strokeWidth={6} />
+			</svg>
+			<div
+				style={{
+					position: 'absolute',
+					left: 950 - 160 - pan * 0.3 - 42,
+					top: 760 - 140 - pan * 0.5 - 100,
+					fontSize: 90,
+					transform: `translateY(${Math.sin(frame / 6) * 8}px)`,
+				}}
+			>
+				📍
+			</div>
+			<AbsoluteFill style={{background: 'rgba(10,0,30,0.35)'}} />
+			<BottomShade />
+		</AbsoluteFill>
+	);
+};
+
 // Escolhe o cenário de acordo com o bloco do roteiro
 const Background: React.FC = () => {
 	const frame = useCurrentFrame();
 	const t = frame / FPS;
 	if (t < 3.4) return <StoreBg />; // gancho: mídia física
-	if (t < 7.1) return <CityNightBg />; // dinheiro / cidade
-	if (t < 12.2) return <HighwayBg />; // "fica até o final" – a jornada
+	if (t < 7.1)
+		return (
+			<>
+				<CityNightBg />
+				<Helicopter x={180 - (frame - f(3.4)) * 2} y={420} scale={1.2} />
+			</>
+		); // dinheiro / cidade vigiada
+	if (t < 12.2)
+		return (
+			<>
+				<HighwayBg />
+				<CarRear />
+				<PoliceLights />
+			</>
+		); // "fica até o final" – perseguição
 	if (t < 15.5) return <StormBg />; // URGENTE
-	if (t < 22.1) return <SunsetBg hue={-25} />; // caixa vazia
+	if (t < 22.1)
+		return (
+			<>
+				<SunsetBg hue={-25} />
+				<Convertible x={1100 - (frame - f(15.5)) * 9} y={1230} scale={0.9} color={CYAN} />
+			</>
+		); // caixa vazia
 	if (t < 29.15) return <DataBg />; // código / download
-	if (t < 36) return <BeachBg />; // 🤡 enquanto baixa, praia
-	if (t < 44.6) return <CityNightBg fireworks />; // data de lançamento
-	if (t < 50.55) return <BeachBg dusk />; // enquete
+	if (t < 36) return <MapBg />; // rota até a loja… pra comprar uma caixa vazia
+	if (t < 44.6)
+		return (
+			<>
+				<CityNightBg fireworks />
+				<Helicopter x={900 - (frame - f(37)) * 1.5} y={700} scale={0.8} />
+			</>
+		); // data de lançamento
+	if (t < 50.55)
+		return (
+			<>
+				<BeachBg dusk />
+				<Convertible x={-450 + (frame - f(44.6)) * 8} y={1150} scale={1.1} />
+			</>
+		); // enquete
 	return <SunsetBg hue={0} />; // CTA
 };
 
