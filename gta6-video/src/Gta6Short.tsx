@@ -125,11 +125,13 @@ const Camera: React.FC<{children: React.ReactNode}> = ({children}) => {
 /* FUNDO: pôr do sol synthwave, grid em perspectiva e coqueiros      */
 /* ---------------------------------------------------------------- */
 
-const Palm: React.FC<{x: number; scale: number; flip?: boolean}> = ({
-	x,
-	scale,
-	flip,
-}) => {
+const Palm: React.FC<{
+	x: number;
+	scale: number;
+	flip?: boolean;
+	color?: string;
+	bottom?: number;
+}> = ({x, scale, flip, color = '#1a0526', bottom = 560}) => {
 	const frame = useCurrentFrame();
 	const sway = Math.sin(frame / 25 + x) * 2;
 	return (
@@ -140,14 +142,14 @@ const Palm: React.FC<{x: number; scale: number; flip?: boolean}> = ({
 			style={{
 				position: 'absolute',
 				left: x,
-				bottom: 560,
+				bottom,
 				transform: `scaleX(${flip ? -1 : 1}) rotate(${sway}deg)`,
 				transformOrigin: 'bottom center',
 			}}
 		>
 			<path
 				d="M100 400 C 104 300, 112 200, 120 110 L 128 110 C 122 200, 114 300, 112 400 Z"
-				fill="#1a0526"
+				fill={color}
 			/>
 			{[
 				'M124 110 C 90 80, 50 85, 10 120 C 55 95, 90 98, 124 116 Z',
@@ -156,7 +158,7 @@ const Palm: React.FC<{x: number; scale: number; flip?: boolean}> = ({
 				'M124 110 C 140 55, 170 30, 195 40 C 160 50, 140 80, 126 114 Z',
 				'M124 110 C 118 70, 125 30, 140 5 C 132 40, 130 75, 128 112 Z',
 			].map((d) => (
-				<path key={d} d={d} fill="#1a0526" />
+				<path key={d} d={d} fill={color} />
 			))}
 		</svg>
 	);
@@ -219,7 +221,7 @@ const Footage: React.FC = () => {
 	);
 };
 
-const Background: React.FC<{hue: number}> = ({hue}) => {
+const SunsetBg: React.FC<{hue: number}> = ({hue}) => {
 	const frame = useCurrentFrame();
 	return (
 		<AbsoluteFill
@@ -271,6 +273,449 @@ const Background: React.FC<{hue: number}> = ({hue}) => {
 			/>
 		</AbsoluteFill>
 	);
+};
+
+/* ---------------------------------------------------------------- */
+/* CENÁRIOS: cada bloco do roteiro tem um fundo diferente            */
+/* ---------------------------------------------------------------- */
+
+// Escurece a base da tela para as legendas sempre lerem bem, em qualquer cenário.
+const BottomShade: React.FC = () => (
+	<AbsoluteFill
+		style={{
+			background:
+				'linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.55) 78%, rgba(0,0,0,0.75) 100%), radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.55) 100%)',
+		}}
+	/>
+);
+
+// Loja de games: prateleiras cheias de caixas (combina com "mídia física")
+const StoreBg: React.FC = () => {
+	const frame = useCurrentFrame();
+	const pan = -frame * 1.2;
+	const colors = [PINK, CYAN, YELLOW, '#6b5bff', ORANGE, GREEN, '#ffffff', RED];
+	return (
+		<AbsoluteFill style={{background: 'linear-gradient(180deg, #0d1b3d, #050a1c)'}}>
+			<AbsoluteFill style={{filter: 'blur(3px) brightness(0.75)'}}>
+				{[180, 560, 940, 1320, 1700].map((y, row) => (
+					<React.Fragment key={y}>
+						{new Array(16).fill(0).map((_, i) => {
+							const w = 100 + random(`sw${row}-${i}`) * 30;
+							return (
+								<div
+									key={i}
+									style={{
+										position: 'absolute',
+										left: ((i * 135 + pan + row * 47) % 2160 + 2160) % 2160 - 300,
+										top: y - 200,
+										width: w,
+										height: 200,
+										borderRadius: 8,
+										background: `linear-gradient(160deg, ${colors[(i + row * 3) % colors.length]}, #1a0526)`,
+										border: '5px solid #0b4fc4',
+									}}
+								/>
+							);
+						})}
+						<div
+							style={{
+								position: 'absolute',
+								left: 0,
+								right: 0,
+								top: y,
+								height: 34,
+								background: 'linear-gradient(180deg, #c9cfe0, #6d7590)',
+								boxShadow: '0 14px 30px rgba(0,0,0,0.7)',
+							}}
+						/>
+					</React.Fragment>
+				))}
+			</AbsoluteFill>
+			{/* luz de vitrine */}
+			<AbsoluteFill
+				style={{
+					background: `radial-gradient(ellipse at 50% 30%, ${CYAN}33, transparent 60%)`,
+				}}
+			/>
+			<BottomShade />
+		</AbsoluteFill>
+	);
+};
+
+// Skyline noturno com prédios iluminados e reflexo na água
+const Skyline: React.FC<{seed: string; layer: number}> = ({seed, layer}) => {
+	const frame = useCurrentFrame();
+	const pan = -frame * (0.4 + layer * 0.5);
+	let x = 0;
+	const buildings: React.ReactNode[] = [];
+	for (let i = 0; x < 2400; i++) {
+		const w = 110 + random(`${seed}w${i}`) * 140;
+		const h = (layer ? 380 : 520) + random(`${seed}h${i}`) * (layer ? 420 : 600);
+		buildings.push(
+			<div
+				key={i}
+				style={{
+					position: 'absolute',
+					left: x,
+					bottom: 0,
+					width: w - 12,
+					height: h,
+					background: layer ? '#12062a' : '#1e0b3d',
+					backgroundImage: `repeating-linear-gradient(90deg, transparent 0 18px, rgba(0,0,0,0.9) 18px 34px), repeating-linear-gradient(0deg, transparent 0 22px, rgba(0,0,0,0.9) 22px 40px), linear-gradient(180deg, ${random(`${seed}c${i}`) > 0.5 ? YELLOW : CYAN}${layer ? '99' : '55'}, transparent)`,
+					borderTop: random(`${seed}n${i}`) > 0.7 ? `6px solid ${PINK}` : undefined,
+					boxShadow: random(`${seed}n${i}`) > 0.7 ? `0 -10px 30px ${PINK}` : undefined,
+				}}
+			/>,
+		);
+		x += w;
+	}
+	return (
+		<div
+			style={{
+				position: 'absolute',
+				left: ((pan % 600) - 300),
+				bottom: 0,
+				width: 2400,
+				height: 1300,
+			}}
+		>
+			{buildings}
+		</div>
+	);
+};
+
+const CityNightBg: React.FC<{fireworks?: boolean}> = ({fireworks}) => {
+	const frame = useCurrentFrame();
+	return (
+		<AbsoluteFill style={{background: 'linear-gradient(180deg, #050018 0%, #1a0838 45%, #4a0f5c 70%)'}}>
+			{new Array(50).fill(0).map((_, i) => (
+				<div
+					key={i}
+					style={{
+						position: 'absolute',
+						left: random(`st${i}`) * 1080,
+						top: random(`sy${i}`) * 700,
+						width: 4,
+						height: 4,
+						borderRadius: 2,
+						background: '#fff',
+						opacity: 0.4 + 0.6 * Math.abs(Math.sin(frame / 15 + i)),
+					}}
+				/>
+			))}
+			<div
+				style={{
+					position: 'absolute',
+					right: 120,
+					top: 170,
+					width: 150,
+					height: 150,
+					borderRadius: '50%',
+					background: '#fff6d8',
+					boxShadow: '0 0 80px #fff6d8',
+				}}
+			/>
+			{fireworks
+				? [0, 1, 2].map((k) => {
+						const period = 40;
+						const d = (frame + k * 13) % period;
+						const cx = 200 + random(`fx${k}${Math.floor((frame + k * 13) / period)}`) * 680;
+						const cy = 250 + random(`fy${k}${Math.floor((frame + k * 13) / period)}`) * 300;
+						return new Array(16).fill(0).map((_, i) => {
+							const ang = (i / 16) * Math.PI * 2;
+							const r = d * 6;
+							return (
+								<div
+									key={`${k}-${i}`}
+									style={{
+										position: 'absolute',
+										left: cx + Math.cos(ang) * r,
+										top: cy + Math.sin(ang) * r + d * d * 0.05,
+										width: 10,
+										height: 10,
+										borderRadius: 5,
+										background: [PINK, YELLOW, CYAN][k],
+										opacity: 1 - d / period,
+										boxShadow: `0 0 14px ${[PINK, YELLOW, CYAN][k]}`,
+									}}
+								/>
+							);
+						});
+					})
+				: null}
+			<div style={{position: 'absolute', left: 0, right: 0, top: 0, height: 1400}}>
+				<Skyline seed="far" layer={0} />
+				<Skyline seed="near" layer={1} />
+			</div>
+			{/* água com reflexo */}
+			<div
+				style={{
+					position: 'absolute',
+					left: 0,
+					right: 0,
+					top: 1400,
+					bottom: 0,
+					background: `linear-gradient(180deg, ${PINK}55, #0a0220 40%)`,
+					backgroundImage: `repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0 2px, transparent 2px ${14 + Math.sin(frame / 10) * 3}px), linear-gradient(180deg, ${PINK}66, #0a0220 50%)`,
+				}}
+			/>
+			<BottomShade />
+		</AbsoluteFill>
+	);
+};
+
+// Estrada à noite com faixas e postes passando
+const HighwayBg: React.FC = () => {
+	const frame = useCurrentFrame();
+	const horizon = 820;
+	return (
+		<AbsoluteFill style={{background: `linear-gradient(180deg, #0a0630 0%, #3a1360 ${horizon - 100}px, ${ORANGE} ${horizon}px, #0b0b12 ${horizon}px)`}}>
+			<div style={{position: 'absolute', left: 0, right: 0, top: horizon - 500, height: 500}}>
+				<Skyline seed="hw" layer={1} />
+			</div>
+			<Palm x={-80} scale={1.1} bottom={1920 - horizon} color="#0b0614" />
+			<Palm x={900} scale={0.9} bottom={1920 - horizon} color="#0b0614" flip />
+			{/* asfalto */}
+			<div
+				style={{
+					position: 'absolute',
+					left: 0,
+					right: 0,
+					top: horizon,
+					bottom: 0,
+					background: '#16161f',
+					clipPath: 'polygon(46% 0, 54% 0, 100% 100%, 0 100%)',
+				}}
+			/>
+			{/* faixas centrais e postes vindo na direção da câmera */}
+			{new Array(8).fill(0).map((_, i) => {
+				const z = ((frame * 0.035 + i / 8) % 1);
+				const p = z * z;
+				const y = horizon + p * (1920 - horizon);
+				const h = 10 + p * 160;
+				const sideX = 540 + p * 620;
+				return (
+					<React.Fragment key={i}>
+						<div
+							style={{
+								position: 'absolute',
+								left: 540 - (4 + p * 22),
+								top: y,
+								width: 8 + p * 44,
+								height: h,
+								background: YELLOW,
+								opacity: 0.9,
+							}}
+						/>
+						{[1, -1].map((side) => (
+							<div
+								key={side}
+								style={{
+									position: 'absolute',
+									left: 540 + (sideX - 540) * side - 6,
+									top: y - h * 6,
+									width: 6 + p * 14,
+									height: h * 6,
+									background: '#2b2b38',
+								}}
+							>
+								<div
+									style={{
+										position: 'absolute',
+										top: -10,
+										left: -20,
+										width: 40 + p * 50,
+										height: 14 + p * 16,
+										borderRadius: 20,
+										background: '#fff2c4',
+										boxShadow: `0 0 ${30 + p * 80}px #ffd27a`,
+									}}
+								/>
+							</div>
+						))}
+					</React.Fragment>
+				);
+			})}
+			{/* lanternas de carros à frente */}
+			{[0, 1].map((k) => (
+				<div
+					key={k}
+					style={{
+						position: 'absolute',
+						left: 470 + k * 90 + Math.sin(frame / 20 + k) * 10,
+						top: horizon + 90,
+						width: 14,
+						height: 8,
+						borderRadius: 4,
+						background: RED,
+						boxShadow: `0 0 20px ${RED}`,
+					}}
+				/>
+			))}
+			<BottomShade />
+		</AbsoluteFill>
+	);
+};
+
+// Tempestade com chuva e relâmpagos (clima de "URGENTE")
+const StormBg: React.FC = () => {
+	const frame = useCurrentFrame();
+	const flashCycle = frame % 50;
+	const flash = flashCycle < 3 ? 1 - flashCycle / 3 : flashCycle >= 6 && flashCycle < 8 ? 0.6 : 0;
+	return (
+		<AbsoluteFill style={{background: 'linear-gradient(180deg, #0b1020 0%, #1c2440 60%, #0a0d18 100%)'}}>
+			<div style={{position: 'absolute', left: 0, right: 0, top: 0, height: 1450, filter: 'brightness(0.6)'}}>
+				<Skyline seed="storm" layer={0} />
+			</div>
+			{flash > 0 ? (
+				<svg
+					viewBox="0 0 200 600"
+					width={300}
+					height={900}
+					style={{position: 'absolute', left: 150 + random(`lb${Math.floor(frame / 50)}`) * 600, top: 0, opacity: flash}}
+				>
+					<path d="M110 0 L70 220 L120 220 L60 420 L100 420 L40 600" stroke="#e8f0ff" strokeWidth={8} fill="none" />
+				</svg>
+			) : null}
+			{new Array(90).fill(0).map((_, i) => {
+				const speed = 40 + random(`rs${i}`) * 25;
+				const y = ((random(`ry${i}`) * 2100 + frame * speed) % 2100) - 150;
+				return (
+					<div
+						key={i}
+						style={{
+							position: 'absolute',
+							left: random(`rx${i}`) * 1180 - 50 - y * 0.15,
+							top: y,
+							width: 3,
+							height: 70,
+							background: 'linear-gradient(180deg, transparent, rgba(200,220,255,0.7))',
+							transform: 'rotate(10deg)',
+						}}
+					/>
+				);
+			})}
+			<AbsoluteFill style={{background: '#dfe8ff', opacity: flash * 0.35}} />
+			<BottomShade />
+		</AbsoluteFill>
+	);
+};
+
+// Fluxo de dados digital (o jogo "virando download")
+const DataBg: React.FC = () => {
+	const frame = useCurrentFrame();
+	const glyphs = '01GTA6↓<>/#';
+	return (
+		<AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 40%, #04303a, #01080c 70%)'}}>
+			{new Array(18).fill(0).map((_, c) => {
+				const speed = 6 + random(`ds${c}`) * 10;
+				const offset = (random(`do${c}`) * 2000 + frame * speed) % 2400;
+				return (
+					<div
+						key={c}
+						style={{
+							position: 'absolute',
+							left: c * 62,
+							top: offset - 1200,
+							fontFamily: 'monospace',
+							fontSize: 40,
+							lineHeight: '48px',
+							color: GREEN,
+							opacity: 0.35 + random(`dop${c}`) * 0.4,
+							textShadow: `0 0 10px ${GREEN}`,
+							whiteSpace: 'pre',
+						}}
+					>
+						{new Array(24)
+							.fill(0)
+							.map((_, r) => glyphs[Math.floor(random(`g${c}-${r}-${Math.floor(frame / 6)}`) * glyphs.length)])
+							.join('\n')}
+					</div>
+				);
+			})}
+			<AbsoluteFill
+				style={{
+					backgroundImage: 'repeating-linear-gradient(0deg, rgba(0,0,0,0.25) 0 2px, transparent 2px 6px)',
+				}}
+			/>
+			<BottomShade />
+		</AbsoluteFill>
+	);
+};
+
+// Praia ensolarada (ou ao entardecer) com ondas e coqueiros
+const BeachBg: React.FC<{dusk?: boolean}> = ({dusk}) => {
+	const frame = useCurrentFrame();
+	const sea = 1050;
+	const wave = (amp: number, phase: number, yBase: number) => {
+		let d = `M 0 ${yBase}`;
+		for (let x = 0; x <= 1080; x += 40) {
+			d += ` L ${x} ${yBase + Math.sin(x / 90 + frame / 12 + phase) * amp}`;
+		}
+		return d + ' L 1080 1920 L 0 1920 Z';
+	};
+	return (
+		<AbsoluteFill
+			style={{
+				background: dusk
+					? `linear-gradient(180deg, #2a0f5c 0%, ${PINK} 45%, ${ORANGE} ${sea}px)`
+					: `linear-gradient(180deg, #1d8fff 0%, #7fd3ff ${sea}px)`,
+			}}
+		>
+			<div
+				style={{
+					position: 'absolute',
+					left: dusk ? 340 : 720,
+					top: dusk ? sea - 200 : 170,
+					width: dusk ? 400 : 220,
+					height: dusk ? 400 : 220,
+					borderRadius: '50%',
+					background: dusk ? `linear-gradient(180deg, ${YELLOW}, ${ORANGE})` : '#fff7b0',
+					boxShadow: dusk ? `0 0 120px ${ORANGE}` : '0 0 120px #fff3a0',
+				}}
+			/>
+			{[0, 1, 2].map((i) => (
+				<div
+					key={i}
+					style={{
+						position: 'absolute',
+						left: ((i * 420 + frame * (0.8 + i * 0.3)) % 1500) - 300,
+						top: 260 + i * 170,
+						width: 300,
+						height: 90,
+						borderRadius: 60,
+						background: dusk ? 'rgba(255,190,220,0.55)' : 'rgba(255,255,255,0.85)',
+						boxShadow: dusk ? undefined : '60px -30px 0 10px rgba(255,255,255,0.85)',
+					}}
+				/>
+			))}
+			<svg width={1080} height={1920} style={{position: 'absolute', inset: 0}}>
+				<path d={wave(10, 0, sea)} fill={dusk ? '#5a1d7a' : '#0a6fd1'} />
+				<path d={wave(14, 2, sea + 130)} fill={dusk ? '#3d1260' : '#0b86e8'} />
+				<path d={wave(16, 4, sea + 260)} fill="#ffffff" opacity={0.8} />
+				<path d={wave(12, 4.3, sea + 290)} fill={dusk ? '#c98a5a' : '#f4d8a0'} />
+			</svg>
+			<Palm x={-60} scale={1.7} bottom={420} color={dusk ? '#1a0526' : '#14532d'} />
+			<Palm x={830} scale={1.4} bottom={460} color={dusk ? '#1a0526' : '#14532d'} flip />
+			<BottomShade />
+		</AbsoluteFill>
+	);
+};
+
+// Escolhe o cenário de acordo com o bloco do roteiro
+const Background: React.FC = () => {
+	const frame = useCurrentFrame();
+	const t = frame / FPS;
+	if (t < 3.4) return <StoreBg />; // gancho: mídia física
+	if (t < 7.1) return <CityNightBg />; // dinheiro / cidade
+	if (t < 12.2) return <HighwayBg />; // "fica até o final" – a jornada
+	if (t < 15.5) return <StormBg />; // URGENTE
+	if (t < 22.1) return <SunsetBg hue={-25} />; // caixa vazia
+	if (t < 29.15) return <DataBg />; // código / download
+	if (t < 36) return <BeachBg />; // 🤡 enquanto baixa, praia
+	if (t < 44.6) return <CityNightBg fireworks />; // data de lançamento
+	if (t < 50.55) return <BeachBg dusk />; // enquete
+	return <SunsetBg hue={0} />; // CTA
 };
 
 /* ---------------------------------------------------------------- */
@@ -1427,13 +1872,10 @@ const SFX: {t: number; src: string; volume: number; dur?: number}[] = [
 
 export const Gta6Short: React.FC = () => {
 	const frame = useCurrentFrame();
-	// Cada bloco do roteiro ganha um tom diferente no fundo (mesma identidade visual)
-	const hue =
-		frame < f(15.5) ? 0 : frame < f(22.1) ? -25 : frame < f(36) ? -55 : frame < f(44.7) ? -15 : 0;
 	return (
 		<AbsoluteFill style={{background: '#000'}}>
 			<Camera>
-				<Background hue={hue} />
+				<Background />
 				<Footage />
 				<Scene from={0} to={3.4}>
 					<HookScene />
