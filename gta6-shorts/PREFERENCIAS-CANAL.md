@@ -53,3 +53,11 @@
 - Continua valendo: logo em 100% dos quadros, música eletrizante inédita, ProOutro no final, thumbnail vertical sem logo, hashtags do Trends no fim.
 - Estoque de imagens oficiais inéditas praticamente esgotado: priorizar arte oficial nova que sair (Newswire) e, quando faltar, reuso mínimo
   e disfarçado (recorte/zoom diferente) — sempre avisar o usuário quais foram reaproveitadas.
+
+## PRODUÇÃO EM MASSA (pedido em 11/11/2026) — o canal produz Shorts de GTA 6 em série
+- Todo Short novo sai pela esteira: escrever plans/<slug>.json (roteiro + mídia por fala + selos + trilha + thumb + publicação)
+  e rodar `python3 scripts/serie.py plans/<slug>.json` (composição GTA6Serie / thumbnail ThumbSerie, src/serie/Serie.tsx).
+- A esteira faz sozinha: narração (narrador pro), legenda alinhada ao texto do roteiro, cortes/Ken Burns/transições/punch-ins,
+  SFX, tremidas, selos, ProOutro no "Comenta", trilha com ganho no padrão (-36 dB), render, master, QC e entrega na EXPORTADO
+  (vídeo, leve, mini, srt, THUMB vertical, PUBLICACAO) + registros de música/imagens. Bloqueia trilha repetida e hashtags fora da regra.
+- Tempo por vídeo: ~10–15 min de máquina. Sem 3D/motion de cena inteira (lentos) — foco em volume com o estilo clássico.

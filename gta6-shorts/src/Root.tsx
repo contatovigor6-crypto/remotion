@@ -11,6 +11,7 @@ import {ThumbExtremeContagem, ThumbExtremeInteriores, ThumbExtremeSindicato, Thu
 import {GTA6Festival, DURATION_S as FESTIVAL_DURATION} from './festival/Video';
 import {GTA6ViceCity, DURATION_S as VICECITY_DURATION} from './vicecity/Video';
 import {ThumbExtremeViceCityV} from './vicecity/Thumb';
+import {GTA6Serie, ThumbSerie, calcSerie, calcThumb} from './serie/Serie';
 import {GTA6Pc, DURATION_S as PC_DURATION} from './pc/Video';
 import {GTA6Poster, DURATION_S as POSTER_DURATION} from './poster/Video';
 import {GTA6Gold} from './gold/Video';
@@ -139,6 +140,9 @@ export const Root: React.FC = () => (
 		<Still id="ThumbExtremeFestivalV" component={ThumbExtremeFestivalV} width={1080} height={1920} />
 		<Composition id="GTA6ViceCity" component={GTA6ViceCity} defaultProps={{music: 'audio/music-vicecity-spacefighter.wav', musicGain: 0.87}} durationInFrames={Math.round(VICECITY_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Still id="ThumbExtremeViceCityV" component={ThumbExtremeViceCityV} width={1080} height={1920} />
+		{/* PRODUÇÃO EM SÉRIE: um modelo para todos os Shorts (props.slug -> public/serie/<slug>/) */}
+		<Composition id="GTA6Serie" component={GTA6Serie} calculateMetadata={calcSerie} defaultProps={{slug: 'exemplo', spec: null, music: null, musicGain: null}} durationInFrames={30} fps={FPS} width={W} height={H} />
+		<Still id="ThumbSerie" component={ThumbSerie} calculateMetadata={calcThumb} defaultProps={{slug: 'exemplo', thumb: null}} width={1080} height={1920} />
 		<Composition id="GTA6Armadilha" component={GTA6Armadilha} defaultProps={{music: 'audio/music-armadilha-hotpursuit.wav', musicGain: 0.75}} durationInFrames={Math.round(ARMADILHA_DURATION * FPS)} fps={FPS} width={W} height={H} />
 		<Composition id="GTA6Edge" component={GTA6Edge} defaultProps={{music: 'audio/music-edge-long.wav', musicGain: 0.8}} durationInFrames={Math.round(EDGE_DURATION * FPS)} fps={FPS} width={1920} height={1080} />
 	</>
