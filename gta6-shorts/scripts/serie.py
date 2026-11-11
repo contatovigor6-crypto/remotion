@@ -70,6 +70,9 @@ if len(tags_all) > 15 or tags_all[0] != '#GTA6' or tags_all[-1] != '#Shorts':
 
 # ------------------------------------------------------------------ 1. narração
 voice = f'{D}/voice.mp3'
+if P.get('voice_file') and not os.path.exists(voice):
+    # áudio enviado pelo dono do canal (ex.: ElevenLabs Marcio): usado como veio, sem cortar/acelerar
+    sh(['cp', P['voice_file'], voice])
 if not os.path.exists(voice):
     starts, t = [], 0.15
     for i, ln in enumerate(lines):
@@ -81,7 +84,7 @@ if not os.path.exists(voice):
     json.dump([[s, ln.get('say', ln['text']), ln.get('rate', '+8%'), ln.get('pitch', '+0Hz')] for s, ln in zip(starts, lines)], open(f'{W}/roteiro.json', 'w'), ensure_ascii=False)
     json.dump(starts, open(f'{D}/starts.json', 'w'))
     sh(['python3', 'scripts/narrador_pro.py', f'{W}/roteiro.json', voice])
-starts = json.load(open(f'{D}/starts.json'))
+starts = json.load(open(f'{D}/starts.json')) if os.path.exists(f'{D}/starts.json') else None
 vdur = dur(voice)
 
 # ------------------------------------------------------------------ 2. transcrição + alinhamento com o roteiro
@@ -100,6 +103,14 @@ times = [None] * len(toks)
 for blk in difflib.SequenceMatcher(None, A, B, autojunk=False).get_matching_blocks():
     for k in range(blk.size):
         times[blk.a + k] = (heard[blk.b + k]['s'], heard[blk.b + k]['e'])
+if starts is None:
+    # áudio pronto: início de cada fala = 1ª palavra reconhecida dela (recuada pelo nº de palavras antes dela)
+    starts = []
+    for i in range(len(lines)):
+        idx = [k for k, (_, li) in enumerate(toks) if li == i]
+        first = next((k for k in idx if times[k] is not None), None)
+        starts.append(0.0 if i == 0 else round(max(0.0, (times[first][0] if first is not None else starts[-1] + 1) - 0.3 * (first - idx[0] if first is not None else 0)), 2))
+    json.dump(starts, open(f'{D}/starts.json', 'w'))
 # palavras não reconhecidas: distribui no intervalo entre vizinhas (dentro da fala)
 for i, ln in enumerate(lines):
     idx = [k for k, (_, li) in enumerate(toks) if li == i]
