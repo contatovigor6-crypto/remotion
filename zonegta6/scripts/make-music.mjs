@@ -3,7 +3,10 @@
 import { writeFileSync } from "node:fs";
 
 const sr = 44100;
-const DUR = 64;
+// Presets: "leonida" (64s, 16:9 video) and "nota" (42s vertical short)
+const PRESET = process.argv[3] ?? "leonida";
+const SHORT = PRESET === "nota";
+const DUR = SHORT ? 42 : 64;
 const N = sr * DUR;
 const L = new Float32Array(N);
 const R = new Float32Array(N);
@@ -17,16 +20,18 @@ const rnd = () => {
   t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
   return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
 };
-const mtof = (m) => 440 * 2 ** ((m - 69) / 12);
+const mtof = (m) => 440 * 2 ** ((m + TRANSPOSE - 69) / 12);
 const BEAT = 0.5;
 const BAR = 2;
 const BARS = DUR / BAR;
 
 // Section boundaries in seconds: overview, 6 regions, outro
-const HITS = [4, 8, 16, 24, 32, 40, 48, 56];
-const DRUMS_FROM = 4;
-const FULL_FROM = 8;
-const END_RING = 62; // last bar rings out
+const HITS = SHORT ? [4, 10, 18, 24, 32, 38] : [4, 8, 16, 24, 32, 40, 48, 56];
+const DRUMS_FROM = SHORT ? 0 : 4;
+const FULL_FROM = SHORT ? 4 : 8;
+const END_RING = DUR - 2; // last bar rings out
+// The short plays a fourth higher so the two videos don't sound alike
+const TRANSPOSE = SHORT ? 5 : 0;
 
 const CHORDS = [
   { bass: 33, notes: [57, 60, 64] }, // Am
@@ -253,7 +258,7 @@ for (let i = 0; i < N; i++) {
   R[i] += arpR[i];
 }
 
-riser(4, 3.5, 0.5); // long build under the title
+riser(4, SHORT ? 2 : 3.5, 0.5); // long build under the title
 for (const t of HITS.slice(1)) riser(t, 1.2, 0.34);
 for (const t of HITS) impact(t, t === 4 || t === 8 ? 0.9 : 0.6);
 impact(0.05, 0.7);
