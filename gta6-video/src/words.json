@@ -1,0 +1,732 @@
+[
+{
+"text": "Você",
+"start": 0.12,
+"end": 0.34
+},
+{
+"text": "pretende",
+"start": 0.36,
+"end": 0.72
+},
+{
+"text": "comprar",
+"start": 0.76,
+"end": 1.14
+},
+{
+"text": "GTA",
+"start": 1.24,
+"end": 1.66
+},
+{
+"text": "6",
+"start": 1.68,
+"end": 1.98
+},
+{
+"text": "em",
+"start": 2.0,
+"end": 2.1
+},
+{
+"text": "mídia",
+"start": 2.16,
+"end": 2.36
+},
+{
+"text": "física?",
+"start": 2.52,
+"end": 2.94
+},
+{
+"text": "Então",
+"start": 3.42,
+"end": 3.68
+},
+{
+"text": "precisa",
+"start": 3.72,
+"end": 4.32
+},
+{
+"text": "saber",
+"start": 4.36,
+"end": 4.64
+},
+{
+"text": "disso",
+"start": 4.72,
+"end": 5.16
+},
+{
+"text": "antes",
+"start": 5.26,
+"end": 5.58
+},
+{
+"text": "de",
+"start": 5.62,
+"end": 5.66
+},
+{
+"text": "gastar",
+"start": 5.72,
+"end": 6.06
+},
+{
+"text": "seu",
+"start": 6.12,
+"end": 6.26
+},
+{
+"text": "dinheiro.",
+"start": 6.28,
+"end": 6.7
+},
+{
+"text": "E",
+"start": 7.16,
+"end": 7.18
+},
+{
+"text": "fica",
+"start": 7.32,
+"end": 7.5
+},
+{
+"text": "até",
+"start": 7.52,
+"end": 7.74
+},
+{
+"text": "o",
+"start": 7.76,
+"end": 7.84
+},
+{
+"text": "final,",
+"start": 7.88,
+"end": 8.2
+},
+{
+"text": "porque",
+"start": 8.3,
+"end": 8.66
+},
+{
+"text": "esse",
+"start": 8.74,
+"end": 8.92
+},
+{
+"text": "detalhe",
+"start": 8.96,
+"end": 9.46
+},
+{
+"text": "pode",
+"start": 9.48,
+"end": 9.7
+},
+{
+"text": "pegar",
+"start": 9.74,
+"end": 10.0
+},
+{
+"text": "muita",
+"start": 10.26,
+"end": 10.66
+},
+{
+"text": "gente",
+"start": 10.74,
+"end": 11.02
+},
+{
+"text": "de",
+"start": 11.06,
+"end": 11.1
+},
+{
+"text": "surpresa.",
+"start": 11.18,
+"end": 11.72
+},
+{
+"text": "A",
+"start": 12.24,
+"end": 12.28
+},
+{
+"text": "Rockstar",
+"start": 12.32,
+"end": 12.76
+},
+{
+"text": "confirmou",
+"start": 12.82,
+"end": 13.26
+},
+{
+"text": "uma",
+"start": 13.28,
+"end": 13.4
+},
+{
+"text": "informação",
+"start": 13.42,
+"end": 14.0
+},
+{
+"text": "bastante",
+"start": 14.04,
+"end": 14.58
+},
+{
+"text": "curiosa.",
+"start": 14.66,
+"end": 15.2
+},
+{
+"text": "Determinadas",
+"start": 15.62,
+"end": 16.28
+},
+{
+"text": "versões",
+"start": 16.32,
+"end": 16.72
+},
+{
+"text": "físicas",
+"start": 16.88,
+"end": 17.36
+},
+{
+"text": "de",
+"start": 17.4,
+"end": 17.48
+},
+{
+"text": "GTA",
+"start": 17.54,
+"end": 17.92
+},
+{
+"text": "6",
+"start": 18.24,
+"end": 18.26
+},
+{
+"text": "não",
+"start": 18.6,
+"end": 18.84
+},
+{
+"text": "terão",
+"start": 18.88,
+"end": 19.22
+},
+{
+"text": "disco",
+"start": 19.28,
+"end": 19.6
+},
+{
+"text": "dentro",
+"start": 19.76,
+"end": 20.06
+},
+{
+"text": "da",
+"start": 20.1,
+"end": 20.16
+},
+{
+"text": "caixa.",
+"start": 20.3,
+"end": 20.7
+},
+{
+"text": "Isso",
+"start": 21.14,
+"end": 21.4
+},
+{
+"text": "mesmo.",
+"start": 21.44,
+"end": 21.82
+},
+{
+"text": "Em",
+"start": 22.24,
+"end": 22.34
+},
+{
+"text": "vez",
+"start": 22.38,
+"end": 22.54
+},
+{
+"text": "de",
+"start": 22.56,
+"end": 22.62
+},
+{
+"text": "receber",
+"start": 22.66,
+"end": 23.06
+},
+{
+"text": "um",
+"start": 23.1,
+"end": 23.22
+},
+{
+"text": "Blu-ray",
+"start": 23.24,
+"end": 23.6
+},
+{
+"text": "tradicional,",
+"start": 23.68,
+"end": 24.28
+},
+{
+"text": "o",
+"start": 24.6,
+"end": 24.64
+},
+{
+"text": "jogador",
+"start": 24.68,
+"end": 25.06
+},
+{
+"text": "encontrará",
+"start": 25.08,
+"end": 25.7
+},
+{
+"text": "apenas",
+"start": 25.78,
+"end": 26.26
+},
+{
+"text": "um",
+"start": 26.3,
+"end": 26.48
+},
+{
+"text": "código",
+"start": 26.54,
+"end": 26.98
+},
+{
+"text": "para",
+"start": 27.0,
+"end": 27.18
+},
+{
+"text": "baixar",
+"start": 27.2,
+"end": 27.54
+},
+{
+"text": "o",
+"start": 27.58,
+"end": 27.62
+},
+{
+"text": "jogo",
+"start": 27.7,
+"end": 27.94
+},
+{
+"text": "digitalmente.",
+"start": 28.06,
+"end": 28.82
+},
+{
+"text": "Ou",
+"start": 29.22,
+"end": 29.34
+},
+{
+"text": "seja,",
+"start": 29.38,
+"end": 29.64
+},
+{
+"text": "você",
+"start": 30.0,
+"end": 30.34
+},
+{
+"text": "compra",
+"start": 30.4,
+"end": 30.68
+},
+{
+"text": "a",
+"start": 30.7,
+"end": 30.76
+},
+{
+"text": "caixa",
+"start": 30.78,
+"end": 31.02
+},
+{
+"text": "física,",
+"start": 31.16,
+"end": 31.54
+},
+{
+"text": "mas",
+"start": 31.76,
+"end": 31.96
+},
+{
+"text": "ainda",
+"start": 32.04,
+"end": 32.44
+},
+{
+"text": "precisará",
+"start": 32.46,
+"end": 32.98
+},
+{
+"text": "baixar",
+"start": 33.0,
+"end": 33.4
+},
+{
+"text": "o",
+"start": 33.44,
+"end": 33.46
+},
+{
+"text": "jogo",
+"start": 33.56,
+"end": 33.8
+},
+{
+"text": "pela",
+"start": 33.82,
+"end": 33.96
+},
+{
+"text": "internet",
+"start": 33.98,
+"end": 34.6
+},
+{
+"text": "para",
+"start": 34.62,
+"end": 34.78
+},
+{
+"text": "conseguir",
+"start": 34.8,
+"end": 35.18
+},
+{
+"text": "jogar.",
+"start": 35.24,
+"end": 35.58
+},
+{
+"text": "E",
+"start": 36.02,
+"end": 36.06
+},
+{
+"text": "tem",
+"start": 36.14,
+"end": 36.26
+},
+{
+"text": "mais!",
+"start": 36.32,
+"end": 36.64
+},
+{
+"text": "GTA",
+"start": 37.08,
+"end": 37.46
+},
+{
+"text": "6",
+"start": 37.76,
+"end": 37.78
+},
+{
+"text": "está",
+"start": 37.82,
+"end": 38.04
+},
+{
+"text": "previsto",
+"start": 38.06,
+"end": 38.48
+},
+{
+"text": "para",
+"start": 38.5,
+"end": 38.62
+},
+{
+"text": "chegar",
+"start": 38.7,
+"end": 39.0
+},
+{
+"text": "no",
+"start": 39.04,
+"end": 39.12
+},
+{
+"text": "dia",
+"start": 39.2,
+"end": 39.32
+},
+{
+"text": "19",
+"start": 39.38,
+"end": 40.04
+},
+{
+"text": "de",
+"start": 40.08,
+"end": 40.12
+},
+{
+"text": "novembro",
+"start": 40.18,
+"end": 40.66
+},
+{
+"text": "para",
+"start": 40.92,
+"end": 41.14
+},
+{
+"text": "PlayStation",
+"start": 41.18,
+"end": 41.66
+},
+{
+"text": "5",
+"start": 42.06,
+"end": 42.08
+},
+{
+"text": "e",
+"start": 42.24,
+"end": 42.28
+},
+{
+"text": "Xbox",
+"start": 42.5,
+"end": 42.86
+},
+{
+"text": "Series",
+"start": 42.92,
+"end": 43.24
+},
+{
+"text": "X",
+"start": 43.62,
+"end": 43.66
+},
+{
+"text": "e",
+"start": 43.8,
+"end": 43.84
+},
+{
+"text": "S.",
+"start": 43.98,
+"end": 44.16
+},
+{
+"text": "Agora",
+"start": 44.74,
+"end": 44.98
+},
+{
+"text": "quero",
+"start": 45.0,
+"end": 45.18
+},
+{
+"text": "saber,",
+"start": 45.22,
+"end": 45.54
+},
+{
+"text": "você",
+"start": 45.94,
+"end": 46.14
+},
+{
+"text": "acha",
+"start": 46.2,
+"end": 46.42
+},
+{
+"text": "isso",
+"start": 46.48,
+"end": 46.64
+},
+{
+"text": "um",
+"start": 46.68,
+"end": 46.74
+},
+{
+"text": "absurdo",
+"start": 46.8,
+"end": 47.7
+},
+{
+"text": "ou",
+"start": 47.78,
+"end": 47.92
+},
+{
+"text": "não",
+"start": 47.96,
+"end": 48.1
+},
+{
+"text": "se",
+"start": 48.14,
+"end": 48.18
+},
+{
+"text": "importa",
+"start": 48.22,
+"end": 48.62
+},
+{
+"text": "em",
+"start": 48.64,
+"end": 48.7
+},
+{
+"text": "comprar",
+"start": 48.74,
+"end": 49.08
+},
+{
+"text": "uma",
+"start": 49.1,
+"end": 49.3
+},
+{
+"text": "caixa",
+"start": 49.32,
+"end": 49.56
+},
+{
+"text": "sem",
+"start": 49.7,
+"end": 49.86
+},
+{
+"text": "disco?",
+"start": 49.92,
+"end": 50.26
+},
+{
+"text": "Comenta",
+"start": 50.66,
+"end": 51.08
+},
+{
+"text": "aqui",
+"start": 51.1,
+"end": 51.22
+},
+{
+"text": "embaixo",
+"start": 51.26,
+"end": 51.78
+},
+{
+"text": "e",
+"start": 51.82,
+"end": 51.84
+},
+{
+"text": "segue",
+"start": 52.04,
+"end": 52.28
+},
+{
+"text": "a",
+"start": 52.32,
+"end": 52.36
+},
+{
+"text": "Zone",
+"start": 52.44,
+"end": 52.62
+},
+{
+"text": "GTA",
+"start": 52.68,
+"end": 53.04
+},
+{
+"text": "6",
+"start": 53.3,
+"end": 53.36
+},
+{
+"text": "para",
+"start": 53.4,
+"end": 53.58
+},
+{
+"text": "não",
+"start": 53.68,
+"end": 53.86
+},
+{
+"text": "perder",
+"start": 53.9,
+"end": 54.28
+},
+{
+"text": "nenhuma",
+"start": 54.34,
+"end": 54.8
+},
+{
+"text": "novidade",
+"start": 54.86,
+"end": 55.42
+},
+{
+"text": "de",
+"start": 55.48,
+"end": 55.58
+},
+{
+"text": "GTA",
+"start": 55.64,
+"end": 56.0
+},
+{
+"text": "6.",
+"start": 56.36,
+"end": 56.38
+}
+]
