@@ -127,3 +127,6 @@ artes de personagens/lugares (boobie, brian, cal, dimez, drequan, jason, lucia, 
 
 ## Short (série) — GTA 6 em mídia física vem SEM disco
 - img/duo-walk.jpg, img/heist-v.jpg, img/jason-robbery.jpg, img/lucia-car.jpg, img/masked-v.jpg, img/people-car.jpg, img/vc-day.jpg, serie/midia-fisica/capa-quadrada.jpg, serie/midia-fisica/capa.jpg, serie/midia-fisica/standard.jpg, v2/green-car.mp4, v2/hug.mp4, v2/skyline-v.mp4
+
+## Short (série) — GTA 6 em mídia física vem SEM disco (versão motion agressivo)
+- serie/midia-fisica-v2/carro-neon.jpg, serie/midia-fisica-v2/casal.jpg, serie/midia-fisica-v2/cd-duplo.jpg, serie/midia-fisica-v2/dupla-assalto.jpg, serie/midia-fisica-v2/hidroaviao.jpg

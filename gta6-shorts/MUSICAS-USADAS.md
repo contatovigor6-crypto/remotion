@@ -36,3 +36,4 @@ Vetadas para próximos vídeos: todas acima.
 | **Short — Miami virou Vice City (cyberpunk + 3D)** | **Space Fighter Loop** (eletrônica/synth) | Kevin MacLeod, CC BY 4.0 |
 | **Short (série) — GTA 6 vai rodar no Xbox One (pela nuvem)** | **Rhinoceros** | Kevin MacLeod, CC BY 4.0 |
 | **Short (série) — GTA 6 em mídia física vem SEM disco** | **Funkorama** | Kevin MacLeod, CC BY 4.0 |
+| **Short (série) — GTA 6 em mídia física vem SEM disco (versão motion agressivo)** | **Run Amok** | Kevin MacLeod, CC BY 4.0 |
