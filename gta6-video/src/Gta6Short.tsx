@@ -561,7 +561,6 @@ const MoneyScene: React.FC = () => {
 			<Title at={6.12} top={300} size={150} color={GREEN} rotate={3}>
 				seu dinheiro
 			</Title>
-			<Emoji char="👛" at={3.5} x={540} y={860} size={340} />
 			<Emoji char="😰" at={4.4} x={540} y={600} size={190} wobble />
 		</>
 	);
