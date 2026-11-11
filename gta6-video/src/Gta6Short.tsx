@@ -26,7 +26,7 @@ loadFont({family: MONT, url: staticFile('fonts/montserrat-900.woff2'), weight: '
 
 export const FPS = 30;
 // Narração tem 56,6 s. Seguramos ~0,7 s no final para fechar o CTA.
-export const DURATION_IN_FRAMES = Math.round(57.3 * FPS);
+export const DURATION_IN_FRAMES = Math.round(58.8 * FPS);
 
 const f = (s: number) => Math.round(s * FPS);
 
@@ -1626,6 +1626,50 @@ const PollScene: React.FC = () => {
 	);
 };
 
+// Encerramento com a logo do canal
+const LogoOutro: React.FC = () => {
+	const frame = useCurrentFrame();
+	const start = 54.3;
+	const pop = usePop(start, 12);
+	if (frame < f(start)) return null;
+	const dim = interpolate(frame, [f(start), f(start) + 10], [0, 0.82], {
+		extrapolateRight: 'clamp',
+	});
+	const glow = 40 + Math.sin(frame / 6) * 20;
+	const size = 780;
+	return (
+		<>
+			<AbsoluteFill style={{background: '#05000d', opacity: dim}} />
+			<div
+				style={{
+					position: 'absolute',
+					left: 540 - size / 2,
+					top: 230,
+					width: size,
+					height: size,
+					borderRadius: '50%',
+					overflow: 'hidden',
+					transform: `scale(${pop}) rotate(${interpolate(pop, [0, 1], [-20, 0])}deg)`,
+					boxShadow: `0 0 ${glow}px ${PINK}, 0 0 ${glow * 2}px #8a2be2`,
+					border: `8px solid ${PINK}`,
+				}}
+			>
+				<Img
+					src={staticFile('logo.jpg')}
+					style={{
+						width: '100%',
+						height: '100%',
+						transform: `scale(${1.02 + (frame - f(start)) * 0.0008})`,
+					}}
+				/>
+			</div>
+			<Title at={start + 0.4} top={1090} size={100} color={YELLOW} rotate={-2}>
+				Segue a ZoneGTA6
+			</Title>
+		</>
+	);
+};
+
 const CtaScene: React.FC = () => {
 	const frame = useCurrentFrame();
 	const followed = frame >= f(52.15);
@@ -1664,23 +1708,16 @@ const CtaScene: React.FC = () => {
 							width: 150,
 							height: 150,
 							borderRadius: '50%',
-							background: `linear-gradient(160deg, ${PINK}, ${ORANGE})`,
-							fontFamily: ANTON,
-							fontSize: 64,
-							color: '#fff',
-							display: 'flex',
-							alignItems: 'center',
-							justifyContent: 'center',
-							WebkitTextStroke: '4px #12002b',
-							paintOrder: 'stroke fill',
+							overflow: 'hidden',
+							border: `5px solid ${PINK}`,
 							flexShrink: 0,
 						}}
 					>
-						Z6
+						<Img src={staticFile('logo.jpg')} style={{width: '100%', height: '100%'}} />
 					</div>
 					<div style={{flex: 1}}>
 						<div style={{fontFamily: ANTON, fontSize: 70, color: '#111', lineHeight: 1}}>
-							ZONE GTA 6
+							ZoneGTA6
 						</div>
 						<div
 							style={{
@@ -1747,7 +1784,7 @@ const KEYWORDS = new Set([
 	'absurdo',
 	'comenta',
 	'segue',
-	'zone',
+	'zonegta6',
 ]);
 
 type Word = {text: string; start: number; end: number};
@@ -1797,7 +1834,7 @@ const Captions: React.FC = () => {
 				display: 'flex',
 				flexWrap: 'wrap',
 				justifyContent: 'center',
-				gap: '0 38px',
+				gap: '0 52px',
 				transform: `scale(${interpolate(pagePop, [0, 1], [0.7, 1])})`,
 			}}
 		>
@@ -1907,8 +1944,9 @@ export const Gta6Short: React.FC = () => {
 				<Scene from={44.6} to={50.55}>
 					<PollScene />
 				</Scene>
-				<Scene from={50.55} to={57.3}>
+				<Scene from={50.55} to={58.8}>
 					<CtaScene />
+					<LogoOutro />
 				</Scene>
 			</Camera>
 			{/* Legendas fora da câmera para ficarem sempre legíveis */}

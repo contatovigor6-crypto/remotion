@@ -22,5 +22,5 @@ export const MEDIA: MediaSlot[] = [
 	{from: 29.15, to: 36.0, file: null, startAt: 0, credit: null}, // baixar pela internet
 	{from: 37.0, to: 44.6, file: null, startAt: 0, credit: null}, // data de lançamento
 	{from: 44.6, to: 50.55, file: null, startAt: 0, credit: null}, // enquete
-	{from: 50.55, to: 57.3, file: null, startAt: 0, credit: null}, // CTA
+	{from: 50.55, to: 58.8, file: null, startAt: 0, credit: null}, // CTA
 ];
