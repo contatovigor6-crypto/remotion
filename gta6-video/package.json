@@ -1,0 +1,25 @@
+{
+  "name": "gta6-video",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Short vertical (9:16) de humor sobre GTA 6 sem disco na caixa",
+  "scripts": {
+    "dev": "remotion studio",
+    "render": "remotion render Gta6Short out/gta6-short.mp4 && ffmpeg -y -i out/gta6-short.mp4 -c:v copy -af loudnorm=I=-14:TP=-1.0:LRA=11 -ar 48000 -c:a aac -b:a 192k -movflags +faststart out/GTA6_sem_disco_9x16_final.mp4"
+  },
+  "dependencies": {
+    "@react-three/fiber": "^9.2.0",
+    "@remotion/cli": "4.0.542",
+    "@remotion/fonts": "^4.0.542",
+    "@remotion/three": "^4.0.542",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "remotion": "4.0.542",
+    "three": "^0.178.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.8",
+    "@types/three": "^0.178.0",
+    "typescript": "5.8.3"
+  }
+}
