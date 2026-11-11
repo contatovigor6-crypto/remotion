@@ -45,3 +45,11 @@
 - REGRA: terminar TODA descrição com 10–15 hashtags tiradas das buscas do momento, sem espaço (ex.: #LançamentoGTA6 #GTA6Lançou #QuandoLançaOGTA6
   #QueDiaLançaOGTA6 #PosterDeGTA6 #GTA6Gold #BaixarGTA6 #PS5GTA6 #GTA6Xbox #GTA6PC), sempre com #GTA6 primeiro e #Shorts no fim.
   O YouTube ignora todas as hashtags se passar de 15 — nunca exceder.
+
+## VOLTAR AO ESTILO ANTIGO (pedido em 11/11/2026) — substitui "Estilo motion" e o cyberpunk/3D
+- Editar como antigamente (referência: src/carros, src/arquivos, src/codigo): ShortEdit com `shots` = imagens e CLIPES oficiais de GTA 6 em tela cheia
+  (Ken Burns/zoom, cortes no ritmo da fala, tremidas e SFX nos impactos), legendas palavra a palavra com destaque, overlays pontuais
+  (setas/círculos/selos/HUD) por cima das imagens — NÃO usar motion design de cenas inteiras nem cenas 3D, salvo pedido.
+- Continua valendo: logo em 100% dos quadros, música eletrizante inédita, ProOutro no final, thumbnail vertical sem logo, hashtags do Trends no fim.
+- Estoque de imagens oficiais inéditas praticamente esgotado: priorizar arte oficial nova que sair (Newswire) e, quando faltar, reuso mínimo
+  e disfarçado (recorte/zoom diferente) — sempre avisar o usuário quais foram reaproveitadas.
