@@ -124,3 +124,6 @@ artes de personagens/lugares (boobie, brian, cal, dimez, drequan, jason, lucia, 
 
 ## Short (série) — GTA 6 vai rodar no Xbox One (pela nuvem)
 - img/boats-skyline.jpg, img/couple-palms.jpg, img/cover-v.jpg, img/traffic.jpg, img/vc-night.jpg, serie/xbox-nuvem/jl-carro.jpg, serie/xbox-nuvem/rodovia.jpg, serie/xbox-nuvem/ultimate.jpg, serie/xbox-nuvem/vintage.jpg, v2/city-night.mp4, v2/jason-neon.mp4, v2/ocean-sunset.mp4, v2/skyline-v.mp4, video/jason-clip.mp4, video/lucia-clip.mp4
+
+## Short (série) — GTA 6 em mídia física vem SEM disco
+- img/duo-walk.jpg, img/heist-v.jpg, img/jason-robbery.jpg, img/lucia-car.jpg, img/masked-v.jpg, img/people-car.jpg, img/vc-day.jpg, serie/midia-fisica/capa-quadrada.jpg, serie/midia-fisica/capa.jpg, serie/midia-fisica/standard.jpg, v2/green-car.mp4, v2/hug.mp4, v2/skyline-v.mp4
