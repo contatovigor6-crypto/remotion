@@ -4,7 +4,9 @@ import {
 	AbsoluteFill,
 	Audio,
 	Easing,
+	Img,
 	interpolate,
+	OffthreadVideo,
 	random,
 	Sequence,
 	spring,
@@ -13,6 +15,7 @@ import {
 	useVideoConfig,
 } from 'remotion';
 import words from './words.json';
+import {MEDIA} from './media';
 
 // Fontes empacotadas em public/fonts (o render não depende de internet)
 const ANTON = 'Anton';
@@ -156,6 +159,63 @@ const Palm: React.FC<{x: number; scale: number; flip?: boolean}> = ({
 				<path key={d} d={d} fill="#1a0526" />
 			))}
 		</svg>
+	);
+};
+
+// Quando há um clipe/imagem cadastrado em src/media.ts para o trecho atual,
+// ele vira o fundo (escurecido, com Ken Burns leve) e o crédito aparece no topo.
+const Footage: React.FC = () => {
+	const frame = useCurrentFrame();
+	const slot = MEDIA.find((m) => m.file && frame >= f(m.from) && frame < f(m.to));
+	if (!slot || !slot.file) return null;
+	const local = frame - f(slot.from);
+	const kb = 1.08 + local * 0.0006;
+	const style: React.CSSProperties = {
+		width: '100%',
+		height: '100%',
+		objectFit: 'cover',
+		transform: `scale(${kb})`,
+	};
+	const isVideo = /\.(mp4|mov|webm|mkv)$/i.test(slot.file);
+	return (
+		<AbsoluteFill>
+			<Sequence from={f(slot.from)} layout="none">
+				{isVideo ? (
+					<OffthreadVideo
+						src={staticFile(`clips/${slot.file}`)}
+						startFrom={f(slot.startAt)}
+						muted
+						style={style}
+					/>
+				) : (
+					<Img src={staticFile(`clips/${slot.file}`)} style={style} />
+				)}
+			</Sequence>
+			<AbsoluteFill
+				style={{
+					background:
+						'linear-gradient(180deg, rgba(10,0,25,0.55) 0%, rgba(10,0,25,0.35) 45%, rgba(10,0,25,0.85) 100%)',
+				}}
+			/>
+			{slot.credit ? (
+				<div
+					style={{
+						position: 'absolute',
+						top: 60,
+						right: 50,
+						background: 'rgba(0,0,0,0.6)',
+						color: '#fff',
+						fontFamily: MONT,
+						fontWeight: 700,
+						fontSize: 28,
+						padding: '8px 18px',
+						borderRadius: 12,
+					}}
+				>
+					{slot.credit}
+				</div>
+			) : null}
+		</AbsoluteFill>
 	);
 };
 
@@ -1334,24 +1394,33 @@ const Captions: React.FC = () => {
 /* EFEITOS SONOROS (cada um tem uma função cômica — ver comentários) */
 /* ---------------------------------------------------------------- */
 
+// Um som diferente para cada beat cômico – nada repetido e sem "whoosh" nas trocas de cena.
 const SFX: {t: number; src: string; volume: number; dur?: number}[] = [
 	{t: 2.5, src: 'vine-boom', volume: 0.45}, // pergunta-gancho "mídia física?"
-	{t: 6.25, src: 'ding', volume: 0.3}, // "dinheiro" – caixa registradora
-	{t: 7.28, src: 'whoosh', volume: 0.5}, // virada "fica até o final"
+	{t: 6.25, src: 'minecraft-hurt', volume: 0.6}, // "dinheiro" – a carteira sente a dor
+	{t: 7.3, src: 'dramatic-boomer', volume: 0.3}, // "fica até o final" – suspense
 	{t: 11.15, src: 'anime-wow', volume: 0.22, dur: 1.4}, // "surpresa"
 	{t: 12.22, src: 'snapchat-notification', volume: 0.5}, // notificação: URGENTE
+	{t: 14.6, src: 'illuminati-confirmed', volume: 0.18, dur: 1.0}, // "informação curiosa" 🧐
 	{t: 18.55, src: 'record-scratch', volume: 0.45}, // "NÃO terão disco" – virada absurda
 	{t: 21.1, src: 'bruh', volume: 0.6}, // "Isso mesmo." 🗿
 	{t: 23.55, src: 'whip', volume: 0.6}, // tapa no Blu-ray
+	{t: 24.05, src: 'bone-crack', volume: 0.3}, // disco se espatifando fora da tela
 	{t: 26.5, src: 'windows-xp-error', volume: 0.4}, // "código" – erro de disco
 	{t: 27.3, src: 'loading-lag', volume: 0.2, dur: 1.8}, // download eterno
-	{t: 35.2, src: 'spongebob-fail', volume: 0.3, dur: 2.0}, // "jogar" 🤡
-	{t: 36.0, src: 'vine-boom', volume: 0.45}, // "E TEM MAIS!"
+	{t: 30.4, src: 'shutter-old', volume: 0.5}, // 📦 aparece
+	{t: 33.98, src: 'mac-quack', volume: 0.5}, // 🌐 aparece
+	{t: 35.2, src: 'price-is-right-fail', volume: 0.25, dur: 1.6}, // "jogar" 🤡
+	{t: 36.0, src: 'fah', volume: 0.35, dur: 0.9}, // "E TEM MAIS!"
 	{t: 39.3, src: 'yippee', volume: 0.25, dur: 1.6}, // data revelada + confete
+	{t: 41.15, src: 'ui-switch', volume: 0.6}, // selo PS5
+	{t: 42.45, src: 'shutter-modern', volume: 0.5}, // selo Xbox
 	{t: 46.75, src: 'omg-hell-nah', volume: 0.25, dur: 1.6}, // "absurdo"
-	{t: 50.6, src: 'whoosh', volume: 0.5}, // entra o CTA
+	{t: 48.1, src: 'triggered', volume: 0.3}, // "ou não se importa"
+	{t: 50.6, src: 'page-turn', volume: 0.6}, // entra o CTA
 	{t: 52.0, src: 'mouse-click', volume: 0.7}, // clica em seguir
 	{t: 52.15, src: 'ding', volume: 0.3}, // "SEGUINDO ✓"
+	{t: 56.45, src: 'skedaddle', volume: 0.3, dur: 0.85}, // saída
 ];
 
 /* ---------------------------------------------------------------- */
@@ -1365,6 +1434,7 @@ export const Gta6Short: React.FC = () => {
 		<AbsoluteFill style={{background: '#000'}}>
 			<Camera>
 				<Background hue={hue} />
+				<Footage />
 				<Scene from={0} to={3.4}>
 					<HookScene />
 				</Scene>
