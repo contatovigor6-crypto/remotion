@@ -198,8 +198,9 @@ for i, ln in enumerate(lines):
 tags.sort(key=lambda t: t['at'])
 for grp in (('pill', 'stamp'), ('big',)):
     g_ = [t for t in tags if t['kind'] in grp]
-    for t1, t2 in zip(g_, g_[1:]):
-        t1['to'] = round(min(t1['to'], t2['at'] - 0.05), 2)
+    for k_, t1 in enumerate(g_):
+        nxt = g_[k_ + 1]['at'] - 0.05 if k_ + 1 < len(g_) else outro_at - 0.05
+        t1['to'] = round(min(max(t1['to'], t1['at'] + 1.8), nxt, outro_at - 0.05), 2)
 tags = [t for t in tags if t['to'] - t['at'] > 0.4]
 sfx = [{'at': 0.02, 'file': 'sfx-impact', 'vol': 0.5}] + sfx + [
     {'at': round(outro_at + 0.02, 2), 'file': 'sfx-impact', 'vol': 0.5}, {'at': round(outro_at + 0.04, 2), 'file': 'sfx-subdrop', 'vol': 0.35},
@@ -254,6 +255,23 @@ nn = min(len(mx), len(mm))
 g = float(np.dot(mx[:nn], mm[:nn]) / np.dot(mm[:nn], mm[:nn]))
 level = 20 * np.log10(np.sqrt(np.mean((g * mm[:nn]) ** 2)) + 1e-12)
 print(f'QC: {qc} | quadros pretos: {blacks} | trilha na mixagem: {level:.1f} dB (alvo -36)')
+if abs(level + 36) > 1.0:
+    # corrige o nível da trilha sem re-renderizar os quadros: render só de áudio com o ganho ajustado + troca da faixa
+    gain2 = round(float(gain * 10 ** ((-36 - level) / 20)), 3)
+    print(f'ajustando trilha: ganho {gain} -> {gain2}')
+    ap = json.dumps({'slug': slug, 'spec': None, 'music': None, 'musicGain': gain2})
+    sh(['npx', 'remotion', 'render', 'GTA6Serie', f'{W}/audio.wav', f'--props={ap}', '--config=remotion.audio.config.ts', '--concurrency=1', f'--browser-executable={BROWSER}'], env=env)
+    sh(f'rm -rf -- "{S}"/tmp/remotion-*')
+    sh(['ffmpeg', '-v', 'error', '-y', '-i', final, '-i', f'{W}/audio.wav', '-map', '0:v', '-map', '1:a', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '320k', '-ar', '48000', '-movflags', '+faststart', f'{W}/fix.mp4'])
+    os.replace(f'{W}/fix.mp4', final)
+    spec['musicGain'] = gain2
+    json.dump(spec, open(f'{D}/spec.json', 'w'), ensure_ascii=False, indent=1)
+    sh(['ffmpeg', '-v', 'error', '-y', '-i', final, '-t', str(outro_at), '-af', F, '-f', 'f32le', f'{W}/mix.f32'])
+    mx = np.fromfile(f'{W}/mix.f32', np.float32)
+    nn = min(len(mx), len(mm))
+    g = float(np.dot(mx[:nn], mm[:nn]) / np.dot(mm[:nn], mm[:nn]))
+    level = 20 * np.log10(np.sqrt(np.mean((g * mm[:nn]) ** 2)) + 1e-12)
+    print(f'trilha após ajuste: {level:.1f} dB')
 
 # ------------------------------------------------------------------ 6. entrega
 sh(['ffmpeg', '-v', 'error', '-y', '-i', final, '-vf', 'scale=720:1280', '-c:v', 'libx264', '-crf', '27', '-maxrate', '3M', '-bufsize', '6M', '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', f'{EXP}/gta6-{slug}-mini.mp4'])

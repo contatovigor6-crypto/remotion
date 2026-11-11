@@ -40,25 +40,27 @@ export const calcSerie: CalculateMetadataFunction<SerieProps> = async ({props}) 
 
 const TagView: React.FC<{tag: Tag}> = ({tag}) => {
 	const frame = useCurrentFrame();
+	// tamanho da fonte se adapta ao texto para nunca sair da tela (Anton ≈ 0,46 em por caractere)
+	const fit = (max: number, width: number, em: number) => Math.min(max, width / (tag.text.length * em));
 	const k = spring({frame, fps: 30, config: {damping: 11, stiffness: 280}});
 	const out = interpolate(frame, [f(tag.to - tag.at) - 5, f(tag.to - tag.at)], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
 	if (tag.kind === 'stamp') {
 		return (
 			<div style={{position: 'absolute', left: 0, right: 0, top: 1330, textAlign: 'center', opacity: k * out, transform: `rotate(-4deg) scale(${interpolate(k, [0, 1], [2.2, 1])})`}}>
-				<span style={{display: 'inline-block', fontFamily: DISPLAY, fontSize: 82, color: tag.color, border: `9px solid ${tag.color}`, borderRadius: 18, padding: '4px 28px 0', background: 'rgba(0,0,0,0.55)', whiteSpace: 'nowrap'}}>{tag.text}</span>
+				<span style={{display: 'inline-block', fontFamily: DISPLAY, fontSize: fit(82, 860, 0.46), color: tag.color, border: `9px solid ${tag.color}`, borderRadius: 18, padding: '4px 28px 0', background: 'rgba(0,0,0,0.55)', whiteSpace: 'nowrap'}}>{tag.text}</span>
 			</div>
 		);
 	}
 	if (tag.kind === 'big') {
 		return (
 			<div style={{position: 'absolute', left: 0, right: 0, top: 300, textAlign: 'center', opacity: out, transform: `scale(${interpolate(k, [0, 1], [1.8, 1])})`}}>
-				<span style={{fontFamily: DISPLAY, fontSize: 150, color: tag.color, lineHeight: 1, textShadow: '0 10px 0 #000, 0 0 40px rgba(0,0,0,0.6)', whiteSpace: 'nowrap'}}>{tag.text}</span>
+				<span style={{fontFamily: DISPLAY, fontSize: fit(150, 980, 0.46), color: tag.color, lineHeight: 1, textShadow: '0 10px 0 #000, 0 0 40px rgba(0,0,0,0.6)', whiteSpace: 'nowrap'}}>{tag.text}</span>
 			</div>
 		);
 	}
 	return (
 		<div style={{position: 'absolute', left: 0, right: 0, top: 1340, textAlign: 'center', opacity: k * out, transform: `translateY(${(1 - k) * 70}px)`}}>
-			<span style={{display: 'inline-block', background: tag.color, color: tag.color === C.yellow ? '#111' : 'white', fontFamily: UI, fontWeight: 800, fontSize: 46, padding: '12px 30px', borderRadius: 24, boxShadow: '0 10px 0 rgba(0,0,0,0.55)', whiteSpace: 'nowrap'}}>{tag.text}</span>
+			<span style={{display: 'inline-block', background: tag.color, color: tag.color === C.yellow ? '#111' : 'white', fontFamily: UI, fontWeight: 800, fontSize: fit(46, 900, 0.62), padding: '12px 30px', borderRadius: 24, boxShadow: '0 10px 0 rgba(0,0,0,0.55)', whiteSpace: 'nowrap'}}>{tag.text}</span>
 		</div>
 	);
 };

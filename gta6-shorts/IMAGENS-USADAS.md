@@ -121,3 +121,6 @@ artes de personagens/lugares (boobie, brian, cal, dimez, drequan, jason, lucia, 
 ## Short — Miami virou Vice City (cyberpunk + 3D)
 - NOVAS: fundos oficiais das rádios de GTA VI (Flash FM, The Chamber 106, Afrobank FM, Cocoteo FM, Dirty South Classics, Back Country Radio, Only in Leonida, fundo da página de rádios) — public/v26/r-*.jpg. Estoque restante de inéditas: praticamente zero.
 - Reuso mínimo: img/vc-night.jpg; clipes v2/skyline-v, v2/city-night, v2/jason-neon.
+
+## Short (série) — GTA 6 vai rodar no Xbox One (pela nuvem)
+- img/boats-skyline.jpg, img/couple-palms.jpg, img/cover-v.jpg, img/traffic.jpg, img/vc-night.jpg, serie/xbox-nuvem/jl-carro.jpg, serie/xbox-nuvem/rodovia.jpg, serie/xbox-nuvem/ultimate.jpg, serie/xbox-nuvem/vintage.jpg, v2/city-night.mp4, v2/jason-neon.mp4, v2/ocean-sunset.mp4, v2/skyline-v.mp4, video/jason-clip.mp4, video/lucia-clip.mp4
