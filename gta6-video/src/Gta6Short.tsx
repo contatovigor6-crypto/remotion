@@ -1282,6 +1282,9 @@ export const Gta6Short: React.FC = () => {
 			{/* Legendas fora da câmera para ficarem sempre legíveis */}
 			<Captions />
 			<Audio src={staticFile('narracao.mp3')} />
+			{/* Trilha original (synthwave) bem abaixo da voz. Os silêncios nas piadas e a
+			    subida no encerramento já estão gravados no próprio arquivo. */}
+			<Audio src={staticFile('trilha.mp3')} volume={0.2} />
 			{SFX.map((s) => (
 				<Sequence
 					key={`${s.src}-${s.t}`}

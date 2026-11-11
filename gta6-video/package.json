@@ -5,7 +5,7 @@
   "description": "Short vertical (9:16) de humor sobre GTA 6 sem disco na caixa",
   "scripts": {
     "dev": "remotion studio",
-    "render": "remotion render Gta6Short out/gta6-short.mp4 && ffmpeg -y -i out/gta6-short.mp4 -c:v copy -af loudnorm=I=-14:TP=-1.0:LRA=11 -ar 48000 -c:a aac -b:a 192k -movflags +faststart out/GTA6_sem_disco_9x16.mp4"
+    "render": "remotion render Gta6Short out/gta6-short.mp4 && ffmpeg -y -i out/gta6-short.mp4 -c:v copy -af loudnorm=I=-14:TP=-1.0:LRA=11 -ar 48000 -c:a aac -b:a 192k -movflags +faststart out/GTA6_sem_disco_9x16_final.mp4"
   },
   "dependencies": {
     "@react-three/fiber": "^9.2.0",
