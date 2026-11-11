@@ -646,11 +646,6 @@ const NewsScene: React.FC = () => {
 
 const EmptyBoxScene: React.FC = () => {
 	const frame = useCurrentFrame();
-	const open = interpolate(frame, [f(18.5), f(19.3)], [0, 1], {
-		extrapolateLeft: 'clamp',
-		extrapolateRight: 'clamp',
-		easing: Easing.out(Easing.back(1.4)),
-	});
 	const sad = frame >= f(21.14);
 	return (
 		<AbsoluteFill style={{filter: sad ? 'grayscale(0.85) contrast(1.15)' : 'none'}}>
@@ -660,16 +655,6 @@ const EmptyBoxScene: React.FC = () => {
 			<Title at={18.6} top={265} size={135} color={RED} rotate={2}>
 				SEM DISCO ❌
 			</Title>
-			<div
-				style={{
-					position: 'absolute',
-					left: 290,
-					top: 500,
-					transform: `scale(0.95) rotate(${interpolate(open, [0, 1], [-3, 0])}deg)`,
-				}}
-			>
-				<GameCase open={open} finePrint={frame >= f(17.4)} />
-			</div>
 			{sad ? (
 				<>
 					<Emoji char="🗿" at={21.14} x={880} y={1080} size={240} />
@@ -684,13 +669,6 @@ const EmptyBoxScene: React.FC = () => {
 
 const BluRayScene: React.FC = () => {
 	const frame = useCurrentFrame();
-	const discPop = usePop(22.2);
-	// tapa: o disco voa pra fora no "Blu-ray"
-	const slap = interpolate(frame, [f(23.6), f(24.1)], [0, 1], {
-		extrapolateLeft: 'clamp',
-		extrapolateRight: 'clamp',
-		easing: Easing.in(Easing.quad),
-	});
 	const errPop = usePop(26.54, 13);
 	const dl = interpolate(frame, [f(27.2), f(29.1)], [0, 0.07], {
 		extrapolateLeft: 'clamp',
@@ -701,53 +679,6 @@ const BluRayScene: React.FC = () => {
 			<Title at={22.24} top={150} size={110}>
 				Em vez do Blu-ray...
 			</Title>
-			{slap < 1 ? (
-				<div
-					style={{
-						position: 'absolute',
-						left: 540 - 220,
-						top: 420,
-						width: 440,
-						height: 440,
-						borderRadius: '50%',
-						background:
-							'conic-gradient(from 0deg, #c9d6ff, #f0c9ff, #c9fff3, #fff6c9, #c9d6ff)',
-						border: '6px solid #fff',
-						boxShadow: '0 0 60px rgba(120,180,255,0.8)',
-						transform: `translate(${slap * 900}px, ${-slap * 300}px) rotate(${frame * 6 + slap * 720}deg) scale(${discPop})`,
-					}}
-				>
-					<div
-						style={{
-							position: 'absolute',
-							left: 170,
-							top: 170,
-							width: 100,
-							height: 100,
-							borderRadius: '50%',
-							background: '#2a0f40',
-						}}
-					/>
-					{frame >= f(23.24) ? (
-						<div
-							style={{
-								position: 'absolute',
-								inset: 0,
-								fontSize: 380,
-								lineHeight: '440px',
-								textAlign: 'center',
-								color: RED,
-								fontFamily: ANTON,
-							}}
-						>
-							✕
-						</div>
-					) : null}
-				</div>
-			) : null}
-			{frame < f(26.5) ? (
-				<Emoji char="👋" at={23.5} x={260} y={650} size={220} />
-			) : null}
 			{/* Janela de erro estilo sistema antigo */}
 			{errPop > 0 ? (
 				<div
@@ -858,15 +789,8 @@ const ClownScene: React.FC = () => {
 			>
 				INTERNET
 			</div>
-			{frame < f(35.24) ? (
-				<DownloadBar
-					at={33.4}
-					top={880}
-					progress={dl}
-					label={stuck ? 'Travou em 99% 💀' : 'Baixando 150 GB...'}
-					sub={stuck ? 'tempo restante: 3 dias' : 'tempo restante: ∞'}
-				/>
-			) : (
+			{/* a barra de download agora aparece na TV 3D (World3D › LivingRoomSet) */}
+			{frame < f(35.24) ? null : (
 				<>
 					<Emoji char="🤡" at={35.24} x={540} y={1000} size={360} wobble />
 				</>
@@ -898,78 +822,12 @@ const MoreScene: React.FC = () => {
 };
 
 const DateScene: React.FC = () => {
-	const frame = useCurrentFrame();
-	const cal = usePop(39.2, 9);
-	const confettiStart = f(39.38);
 	return (
 		<>
 			<Title at={37.08} top={140} size={110}>
 				GTA 6 chega dia
 			</Title>
-			{cal > 0 ? (
-				<div
-					style={{
-						position: 'absolute',
-						left: 540 - 230,
-						top: 330,
-						width: 460,
-						borderRadius: 34,
-						overflow: 'hidden',
-						background: '#fff',
-						boxShadow: '0 30px 60px rgba(0,0,0,0.5)',
-						transform: `perspective(1200px) rotateX(${(1 - cal) * 90}deg)`,
-						transformOrigin: 'top center',
-					}}
-				>
-					<div
-						style={{
-							background: RED,
-							color: '#fff',
-							fontFamily: ANTON,
-							fontSize: 90,
-							textAlign: 'center',
-							padding: '6px 0',
-						}}
-					>
-						NOV
-					</div>
-					<div
-						style={{
-							fontFamily: ANTON,
-							fontSize: 300,
-							color: '#111',
-							textAlign: 'center',
-							lineHeight: 1.1,
-						}}
-					>
-						19
-					</div>
-				</div>
-			) : null}
-			{/* confete */}
-			{frame >= confettiStart
-				? new Array(40).fill(0).map((_, i) => {
-						const d = frame - confettiStart;
-						const ang = random(`ca${i}`) * Math.PI * 2;
-						const v = 14 + random(`cv${i}`) * 18;
-						const x = 540 + Math.cos(ang) * v * d;
-						const y = 600 + Math.sin(ang) * v * d + 0.9 * d * d;
-						return (
-							<div
-								key={i}
-								style={{
-									position: 'absolute',
-									left: x,
-									top: y,
-									width: 22,
-									height: 34,
-									background: [PINK, YELLOW, CYAN, GREEN, ORANGE][i % 5],
-									transform: `rotate(${d * 20 + i * 30}deg)`,
-								}}
-							/>
-						);
-					})
-				: null}
+			{/* calendário, consoles e confete agora são 3D (World3D › LaunchSet) */}
 			{(
 				[
 					{t: 41.18, label: 'PS5', color: '#0b4fc4', y: 1000},
@@ -1383,7 +1241,7 @@ export const Gta6Short: React.FC = () => {
 	return (
 		<AbsoluteFill style={{background: '#000'}}>
 			<Camera>
-				<World3D />
+				<World3D end={DURATION_IN_FRAMES / FPS} />
 				<BottomShade />
 				<Footage />
 				<Scene from={0} to={3.4}>
