@@ -66,3 +66,5 @@
   (src/serie/Cards.tsx: slam, cross, progress, date, photo, poll) com fundos variados (burst, stripes, grid, dots, split) —
   usar `{"card": {...}}` no lugar de uma mídia. Música: animada e CURIOSA (ex.: Run Amok, Jaunty Gumption, Scheming Weasel faster).
 - Nunca repetir imagens/vídeos: as cartelas carregam o vídeo quando faltar mídia oficial inédita.
+- (11/11) NUNCA usar o som de transição "schuuu" (sfx-whoosh / whoosh-rev) nos cortes. A esteira remove qualquer whoosh do spec.
+  Para trocar só o áudio de um vídeo pronto: `python3 scripts/serie.py plans/<slug>.json --etapa audio`.

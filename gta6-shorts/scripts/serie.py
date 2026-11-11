@@ -183,7 +183,6 @@ for i, ln in enumerate(lines):
             cards.append(cd_)
             m = {'src': last_src}
             if sid > 0:
-                sfx.append({'at': round(fr_ - 0.02, 2), 'file': 'sfx-whoosh', 'vol': 0.32})
                 if AGR:
                     cutfx.append(fr_)
             shakes.append({'at': round(fr_ + 0.1, 2), 'amp': 12 if AGR else 8})
@@ -213,7 +212,7 @@ for i, ln in enumerate(lines):
             shot['fit'] = True
         shots.append(shot)
         if sid > 0 and 'card' not in (ln['media'][q] if isinstance(ln['media'][q], dict) else {}):
-            sfx.append({'at': round(fr_ - 0.02, 2), 'file': ('sfx-glitch' if sid % 3 == 0 else 'sfx-whoosh') if AGR else ('sfx-whoosh' if q == 0 else 'sfx-pop'), 'vol': 0.3})
+            # SEM som de transição ("schuuu"/whoosh) nos cortes — pedido do dono do canal (11/11)
             if AGR:
                 cutfx.append(fr_)
         sid += 1
@@ -256,6 +255,7 @@ band = float(re.search(r'mean_volume: (-?[\d.]+)', subprocess.run(['ffmpeg', '-n
 gain = round(10 ** ((-36 + 14.4 - band) / 20), 3)
 gain = round(gain * P['music'].get('ajuste', 1.0), 3)
 
+sfx = [x for x in sfx if 'whoosh' not in x['file']]
 spec = {'slug': slug, 'duration': duration, 'outroAt': outro_at, 'voice': f'serie/{slug}/voice.mp3', 'music': f'serie/{slug}/music.wav', 'musicGain': gain,
         'words': words, 'keywords': sorted(keywords), 'hidden': [[outro_at, duration]], 'shots': shots, 'sfx': sfx, 'shakes': shakes, 'tags': tags, 'cards': cards, 'cutFx': [round(x, 2) for x in cutfx],
         'credit': P.get('credit', 'Imagens: Rockstar Games')}
@@ -275,6 +275,13 @@ draft = f'out/serie-{slug}.mp4'
 final = f'{EXP}/gta6-{slug}.mp4'
 props = json.dumps({'slug': slug, 'spec': None, 'music': None, 'musicGain': None})
 env = dict(os.environ, TMPDIR=f'{S}/tmp')
+if etapa == 'audio' and os.path.exists(final):
+    # refaz só o áudio (ex.: mudança de SFX/trilha) e troca a faixa do vídeo pronto, sem re-renderizar os quadros
+    ap = json.dumps({'slug': slug, 'spec': None, 'music': None, 'musicGain': None})
+    sh(['npx', 'remotion', 'render', 'GTA6Serie', f'{W}/audio.wav', f'--props={ap}', '--config=remotion.audio.config.ts', '--concurrency=1', f'--browser-executable={BROWSER}'], env=env)
+    sh(f'rm -rf -- "{S}"/tmp/remotion-*')
+    sh(['ffmpeg', '-v', 'error', '-y', '-i', final, '-i', f'{W}/audio.wav', '-map', '0:v', '-map', '1:a', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '320k', '-ar', '48000', '-movflags', '+faststart', f'{W}/fix.mp4'])
+    os.replace(f'{W}/fix.mp4', final)
 if not os.path.exists(final):
     sh(['npx', 'remotion', 'render', 'GTA6Serie', draft, f'--props={props}', '--concurrency=4', f'--browser-executable={BROWSER}'], env=env)
     sh(f'rm -rf -- "{S}"/tmp/remotion-*')
