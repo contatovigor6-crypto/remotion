@@ -61,6 +61,10 @@ if f'**{mname}**' in used_music and not os.path.exists(f'{D}/music.wav'):
     sys.exit(f'ERRO: a trilha "{mname}" já foi usada (MUSICAS-USADAS.md). Escolha outra.')
 for ln in lines:
     for m in ln['media']:
+        if isinstance(m, dict) and 'card' in m:
+            if m['card'].get('img') and not os.path.exists(f"public/{m['card']['img']}"):
+                sys.exit(f"ERRO: imagem da cartela não encontrada: public/{m['card']['img']}")
+            continue
         src = m if isinstance(m, str) else m['src']
         if not os.path.exists(f'public/{src}'):
             sys.exit(f'ERRO: mídia não encontrada: public/{src}')
@@ -147,8 +151,13 @@ for i, lw in enumerate(line_words):
             keywords.add(w['text'].lower())
 keywords |= {'gta', '6'}
 TRANS = ['whipL', 'flash', 'whipR', 'zoom', 'glitch', 'whipL', 'flash', 'whipR', 'dip']
-shots, sfx, shakes, tags = [], [], [], []
+AGR = P.get('estilo') == 'agressivo'
+TRANS_AGR = ['glitch', 'whipL', 'flash', 'zoom', 'whipR', 'glitch', 'flash', 'whipL', 'zoom', 'whipR']
+BGS = ['burst', 'stripes', 'grid', 'dots', 'split']
+shots, sfx, shakes, tags, cards, cutfx = [], [], [], [], [], []
 sid = 0
+first_src = next((m if isinstance(m, str) else m['src']) for ln in lines for m in ln['media'] if not (isinstance(m, dict) and 'card' in m))
+last_src = first_src
 for i, ln in enumerate(lines):
     a = 0.0 if i == 0 else round(starts[i] - 0.12, 2)
     b = round(starts[i + 1] - 0.12, 2) if i + 1 < len(lines) else duration
@@ -168,12 +177,24 @@ for i, ln in enumerate(lines):
         fr_, to_ = cuts[q], cuts[q + 1]
         if to_ - fr_ < 0.3:
             continue
+        if 'card' in m:
+            cd_ = dict(m['card'])
+            cd_.update({'from': fr_, 'to': to_, 'color': COLORS.get(cd_.get('color', 'yellow'), cd_.get('color')), 'color2': COLORS.get(cd_.get('color2', 'purple'), cd_.get('color2')), 'bg': cd_.get('bg', BGS[len(cards) % len(BGS)])})
+            cards.append(cd_)
+            m = {'src': last_src}
+            if sid > 0:
+                sfx.append({'at': round(fr_ - 0.02, 2), 'file': 'sfx-whoosh', 'vol': 0.32})
+                if AGR:
+                    cutfx.append(fr_)
+            shakes.append({'at': round(fr_ + 0.1, 2), 'amp': 12 if AGR else 8})
+        elif not m['src'].endswith('.mp4'):
+            last_src = m['src']
         zin = sid % 2 == 0
         f0 = m.get('focus', [0.5, 0.5])
         shot = {'id': chr(65 + sid % 26) + str(sid // 26), 'from': fr_, 'to': to_, 'src': m['src'], 'focus0': f0, 'focus1': m.get('focus1', f0),
-                's0': m.get('s0', 1.05 if zin else 1.22), 's1': m.get('s1', 1.2 if zin else 1.06),
-                'inT': 'cut' if sid == 0 else (TRANS[i % len(TRANS)] if q == 0 else 'cut'), 'look': m.get('look', 'base' if i else 'dark'),
-                'punches': [w['start'] for w in lw if fr_ <= w['start'] < to_ and w['text'].lower() in keywords and re.search(r'\d', w['text'])][:2],
+                's0': m.get('s0', (1.0 if zin else 1.38) if AGR else (1.05 if zin else 1.22)), 's1': m.get('s1', (1.32 if zin else 1.04) if AGR else (1.2 if zin else 1.06)),
+                'inT': 'cut' if sid == 0 else (TRANS_AGR[sid % len(TRANS_AGR)] if AGR else (TRANS[i % len(TRANS)] if q == 0 else 'cut')), 'look': m.get('look', 'base' if i else 'dark'),
+                'punches': [w['start'] for w in lw if fr_ <= w['start'] < to_ and w['text'].lower() in keywords and (AGR or re.search(r'\d', w['text']))][:3 if AGR else 2],
                 'note': ln['text'][:60]}
         if m['src'].endswith('.mp4'):
             shot['video'] = True
@@ -191,9 +212,13 @@ for i, ln in enumerate(lines):
         if m.get('fit'):
             shot['fit'] = True
         shots.append(shot)
-        if sid > 0:
-            sfx.append({'at': round(fr_ - 0.02, 2), 'file': 'sfx-whoosh' if q == 0 else 'sfx-pop', 'vol': 0.3})
+        if sid > 0 and 'card' not in (ln['media'][q] if isinstance(ln['media'][q], dict) else {}):
+            sfx.append({'at': round(fr_ - 0.02, 2), 'file': ('sfx-glitch' if sid % 3 == 0 else 'sfx-whoosh') if AGR else ('sfx-whoosh' if q == 0 else 'sfx-pop'), 'vol': 0.3})
+            if AGR:
+                cutfx.append(fr_)
         sid += 1
+    if AGR and i > 0:
+        shakes.append({'at': round(a + 0.12, 2), 'amp': 9})
     if ln.get('impact'):
         at = lw[0]['start'] if lw else a
         sfx.append({'at': round(at, 2), 'file': 'sfx-impact', 'vol': 0.45})
@@ -232,7 +257,7 @@ gain = round(10 ** ((-36 + 14.4 - band) / 20), 3)
 gain = round(gain * P['music'].get('ajuste', 1.0), 3)
 
 spec = {'slug': slug, 'duration': duration, 'outroAt': outro_at, 'voice': f'serie/{slug}/voice.mp3', 'music': f'serie/{slug}/music.wav', 'musicGain': gain,
-        'words': words, 'keywords': sorted(keywords), 'hidden': [[outro_at, duration]], 'shots': shots, 'sfx': sfx, 'shakes': shakes, 'tags': tags,
+        'words': words, 'keywords': sorted(keywords), 'hidden': [[outro_at, duration]], 'shots': shots, 'sfx': sfx, 'shakes': shakes, 'tags': tags, 'cards': cards, 'cutFx': [round(x, 2) for x in cutfx],
         'credit': P.get('credit', 'Imagens: Rockstar Games')}
 json.dump(spec, open(f'{D}/spec.json', 'w'), ensure_ascii=False, indent=1)
 th = dict(P['thumb'])
@@ -241,7 +266,7 @@ th.setdefault('pos', '50% 50%')
 th.setdefault('bottom', '')
 th.setdefault('credit', 'IMAGEM OFICIAL: ROCKSTAR GAMES')
 json.dump(th, open(f'{D}/thumb.json', 'w'), ensure_ascii=False)
-print(f'spec ok: {duration}s, outro em {outro_at}s, {len(shots)} cortes, {len(tags)} selos, trilha ganho {gain}')
+print(f'spec ok: {duration}s, outro em {outro_at}s, {len(shots)} cortes, {len(cards)} cartelas, {len(tags)} selos, trilha ganho {gain}')
 if etapa in ('voz', 'spec'):
     sys.exit(0)
 
@@ -330,7 +355,7 @@ open(f'{EXP}/PUBLICACAO-gta6-{slug}.txt', 'w').write(txt)
 # ------------------------------------------------------------------ 7. registros
 if f'**{mname}**' not in used_music:
     open('MUSICAS-USADAS.md', 'a').write(f"| **Short (série) — {P['tema']}** | **{mname}** | Kevin MacLeod, CC BY 4.0 |\n")
-media_used = sorted({(m if isinstance(m, str) else m['src']) for ln in lines for m in ln['media']} | {P['thumb']['bg']})
+media_used = sorted({(m if isinstance(m, str) else m.get('src') or m['card'].get('img') or '') for ln in lines for m in ln['media']} - {''} | {P['thumb']['bg']})
 reg = open('IMAGENS-USADAS.md').read()
 if f'## Short (série) — {P["tema"]}' not in reg:
     open('IMAGENS-USADAS.md', 'a').write(f"\n## Short (série) — {P['tema']}\n- " + ', '.join(media_used) + '\n')

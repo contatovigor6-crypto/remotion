@@ -1,0 +1,315 @@
+{
+ "slug": "midia-fisica-v2",
+ "tema": "GTA 6 em mídia física vem SEM disco (versão motion agressivo)",
+ "voice_file": "public/serie/midia-fisica-v2/marcio.mp3",
+ "music": {
+  "name": "Run Amok",
+  "file": "Run_Amok.mp3",
+  "offset": 0
+ },
+ "credit": "Imagens: Rockstar Games",
+ "keywords": [
+  "física",
+  "física?",
+  "dinheiro.",
+  "surpresa.",
+  "Rockstar",
+  "disco",
+  "caixa.",
+  "Blu-ray",
+  "código",
+  "digitalmente.",
+  "internet",
+  "absurdo",
+  "19",
+  "novembro",
+  "PlayStation",
+  "Xbox"
+ ],
+ "lines": [
+  {
+   "text": "Você pretende comprar GTA 6 em mídia física?",
+   "impact": true,
+   "media": [
+    {
+     "card": {
+      "type": "photo",
+      "img": "serie/midia-fisica-v2/cd-duplo.jpg",
+      "label": "MÍDIA FÍSICA?",
+      "sub": "na foto: CD do álbum oficial de GTA VI",
+      "color": "yellow",
+      "color2": "pink",
+      "bg": "burst"
+     }
+    }
+   ],
+   "tags": []
+  },
+  {
+   "text": "Então precisa saber disso antes de gastar seu dinheiro.",
+   "media": [
+    {
+     "src": "serie/midia-fisica-v2/dupla-assalto.jpg",
+     "focus": [
+      0.5,
+      0.4
+     ]
+    },
+    {
+     "card": {
+      "type": "slam",
+      "words": [
+       "ANTES DE",
+       "GASTAR",
+       "SEU DINHEIRO"
+      ],
+      "color": "green",
+      "color2": "purple",
+      "bg": "stripes"
+     }
+    }
+   ],
+   "tags": []
+  },
+  {
+   "text": "E fica até o final, porque esse detalhe pode pegar muita gente de surpresa.",
+   "media": [
+    {
+     "src": "serie/midia-fisica-v2/carro-neon.jpg",
+     "focus": [
+      0.5,
+      0.55
+     ]
+    },
+    {
+     "src": "serie/midia-fisica-v2/hidroaviao.jpg",
+     "focus": [
+      0.45,
+      0.5
+     ]
+    }
+   ],
+   "tags": [
+    {
+     "word": "surpresa",
+     "text": "FICA ATÉ O FINAL 👀",
+     "kind": "pill",
+     "color": "yellow"
+    }
+   ]
+  },
+  {
+   "text": "A Rockstar confirmou uma informação bastante curiosa.",
+   "media": [
+    {
+     "card": {
+      "type": "slam",
+      "words": [
+       "A ROCKSTAR",
+       "CONFIRMOU"
+      ],
+      "color": "yellow",
+      "color2": "red",
+      "bg": "split"
+     }
+    }
+   ],
+   "tags": []
+  },
+  {
+   "text": "Determinadas versões físicas de GTA 6 não terão disco dentro da caixa.",
+   "impact": true,
+   "media": [
+    {
+     "src": "serie/midia-fisica-v2/casal.jpg",
+     "focus": [
+      0.5,
+      0.4
+     ]
+    },
+    {
+     "card": {
+      "type": "cross",
+      "icon": "💿",
+      "label": "SEM DISCO NA CAIXA",
+      "color": "red",
+      "color2": "purple",
+      "bg": "dots"
+     }
+    }
+   ],
+   "tags": []
+  },
+  {
+   "text": "Isso mesmo! Em vez de receber um Blu-ray tradicional, o jogador encontrará apenas um código para baixar o jogo digitalmente.",
+   "media": [
+    {
+     "card": {
+      "type": "slam",
+      "words": [
+       "ISSO",
+       "MESMO!"
+      ],
+      "color": "pink",
+      "color2": "cyan",
+      "bg": "burst"
+     }
+    },
+    {
+     "card": {
+      "type": "cross",
+      "icon": "📀",
+      "label": "SEM BLU-RAY",
+      "color": "orange",
+      "color2": "purple",
+      "bg": "grid"
+     }
+    },
+    {
+     "card": {
+      "type": "slam",
+      "words": [
+       "SÓ UM",
+       "CÓDIGO 🔑"
+      ],
+      "color": "orange",
+      "color2": "red",
+      "bg": "stripes"
+     }
+    }
+   ],
+   "tags": []
+  },
+  {
+   "text": "Ou seja, você compra a caixa física, mas ainda precisará baixar o jogo pela internet para conseguir jogar.",
+   "media": [
+    {
+     "card": {
+      "type": "slam",
+      "words": [
+       "VOCÊ COMPRA",
+       "A CAIXA...",
+       "MAS BAIXA"
+      ],
+      "color": "cyan",
+      "color2": "purple",
+      "bg": "split"
+     }
+    },
+    {
+     "card": {
+      "type": "progress",
+      "label": "BAIXANDO GTA 6...",
+      "value": 212,
+      "unit": " GB",
+      "sub": "pré-download: até ~212 GB",
+      "color": "green",
+      "color2": "cyan",
+      "bg": "grid"
+     }
+    }
+   ],
+   "tags": []
+  },
+  {
+   "text": "E tem mais! GTA 6 está previsto para chegar no dia 19 de novembro para PlayStation 5 e Xbox Series X e S.",
+   "impact": true,
+   "media": [
+    {
+     "card": {
+      "type": "slam",
+      "words": [
+       "E TEM",
+       "MAIS!"
+      ],
+      "color": "yellow",
+      "color2": "pink",
+      "bg": "dots"
+     }
+    },
+    {
+     "card": {
+      "type": "date",
+      "label": "19 NOV",
+      "sub": "PS5 · XBOX SERIES X|S",
+      "color": "red",
+      "color2": "purple",
+      "bg": "burst"
+     }
+    }
+   ],
+   "tags": []
+  },
+  {
+   "text": "Agora quero saber, você acha isso um absurdo ou não se importa em comprar uma caixa sem disco?",
+   "media": [
+    {
+     "card": {
+      "type": "poll",
+      "label": "CAIXA SEM DISCO É...",
+      "options": [
+       "ABSURDO 😡",
+       "TANTO FAZ 🤷"
+      ],
+      "color": "red",
+      "color2": "cyan",
+      "bg": "stripes"
+     }
+    }
+   ],
+   "tags": []
+  },
+  {
+   "text": "Comenta aqui embaixo e segue a ZoneGTAVI para não perder nenhuma novidade de GTA 6.",
+   "media": [
+    {
+     "src": "serie/midia-fisica-v2/carro-neon.jpg",
+     "focus": [
+      0.5,
+      0.5
+     ]
+    }
+   ],
+   "tags": []
+  }
+ ],
+ "thumb": {
+  "bg": "serie/midia-fisica-v2/dupla-assalto.jpg",
+  "pos": "50% 40%",
+  "top": "GTA 6 FÍSICO",
+  "hl": "SEM DISCO",
+  "hlColor": "red",
+  "bottom": "SÓ UM CÓDIGO NA CAIXA 💿❌",
+  "credit": "ARTE OFICIAL: ROCKSTAR GAMES"
+ },
+ "pub": {
+  "titulo": "GTA 6 em mídia física vem SEM DISCO 😳 (só um código) #GTA6",
+  "alternativas": [
+   "Vai comprar GTA 6 físico? Veja isso ANTES 💿❌ #GTA6",
+   "GTA 6 físico não tem disco: a Rockstar confirmou #GTA6"
+  ],
+  "descricao": "Vai comprar GTA 6 em mídia física? Atenção: a caixa de GTA 6 não traz disco — só um código para baixar o jogo. 💿❌\n\n📦 A Rockstar confirmou o formato \"Code in Box\": a versão vendida nas lojas vem com um código de download, sem Blu-ray.\n🔑 O código é resgatado na PlayStation Store ou na Microsoft Store, e o jogo precisa ser baixado pela internet (o pré-download pede até ~212 GB).\n🔁 Depois que o código é resgatado, a caixa não funciona como uma cópia física tradicional para emprestar ou revender.\n📅 Lançamento: 19 de novembro, no PS5 e no Xbox Series X|S. Segundo a imprensa, quem comprar a caixa poderá fazer o pré-download a partir de 12/11.\n💿 Uma versão com disco no futuro NÃO está confirmada.\n\n💬 Você acha isso um absurdo ou não se importa? Comenta!\n🔔 Segue o ZoneGTAVI: notícia nova de GTA 6 todo dia até o lançamento.",
+  "fontes": "Video Games Chronicle, Push Square, TechRadar, Guru3D, games.gg (formato \"Code in Box\" confirmado pela Rockstar).",
+  "imagens": "artes oficiais de GTA VI e foto oficial do CD do álbum de GTA VI — Rockstar Games.",
+  "hashtags": [
+   "#GTA6",
+   "#GTA6Fisico",
+   "#MidiaFisica",
+   "#LançamentoGTA6",
+   "#GTA6Lançou",
+   "#QuandoLançaOGTA6",
+   "#QueDiaLançaOGTA6",
+   "#BaixarGTA6",
+   "#PS5GTA6",
+   "#GTA6Xbox",
+   "#GTA6PC",
+   "#GTA6Gold",
+   "#Shorts"
+  ],
+  "hashtags_curtas": "#GTA6 #MidiaFisica #GTAVI #PS5 #Xbox #Shorts",
+  "tags": "GTA 6, GTA 6 mídia física, GTA 6 físico, GTA 6 sem disco, GTA 6 disco, GTA 6 code in box, GTA 6 código na caixa, GTA 6 caixa, comprar GTA 6, GTA 6 Blu-ray, GTA 6 download, baixar GTA 6, GTA 6 PS5, GTA 6 Xbox, GTA 6 lançou, quando lança o gta 6, que dia lança o gta 6, lançamento GTA 6, GTA 6 19 de novembro, GTA VI, Grand Theft Auto VI, GTA 6 shorts, ZoneGTAVI",
+  "fixado": "💿 GTA 6 físico vem SEM disco, só um código. E aí?\n😡 A — Absurdo, queria o disco\n🤷 B — Tanto faz, jogo digital mesmo\nComenta A ou B 👇",
+  "quando": "- Hoje, entre 18h e 20h (Brasília). Amanhã (12/11) a notícia volta à tona com o pré-download das caixas.\n- Responder os primeiros comentários na primeira hora."
+ },
+ "estilo": "agressivo"
+}

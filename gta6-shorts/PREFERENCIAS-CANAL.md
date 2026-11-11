@@ -61,3 +61,8 @@
   SFX, tremidas, selos, ProOutro no "Comenta", trilha com ganho no padrão (-36 dB), render, master, QC e entrega na EXPORTADO
   (vídeo, leve, mini, srt, THUMB vertical, PUBLICACAO) + registros de música/imagens. Bloqueia trilha repetida e hashtags fora da regra.
 - Tempo por vídeo: ~10–15 min de máquina. Sem 3D/motion de cena inteira (lentos) — foco em volume com o estilo clássico.
+- (11/11) MOTION AGRESSIVO na série: `"estilo": "agressivo"` no plano = transição forte em TODO corte (glitch/whip/flash/zoom),
+  flash RGB nos cortes, zooms fortes, punch-ins em todas as palavras-chave, tremida a cada fala. CARTELAS de motion em tela cheia
+  (src/serie/Cards.tsx: slam, cross, progress, date, photo, poll) com fundos variados (burst, stripes, grid, dots, split) —
+  usar `{"card": {...}}` no lugar de uma mídia. Música: animada e CURIOSA (ex.: Run Amok, Jaunty Gumption, Scheming Weasel faster).
+- Nunca repetir imagens/vídeos: as cartelas carregam o vídeo quando faltar mídia oficial inédita.

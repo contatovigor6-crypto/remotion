@@ -8,6 +8,7 @@ import type {Sfx} from '../data/sfx';
 import type {Word} from '../data/words-vicecity';
 import {ShortEdit, type Shake} from '../ShortEdit';
 import {C, DISPLAY, UI, f} from '../theme';
+import {CardView, CutFx, type Card} from './Cards';
 
 // PRODUÇÃO EM SÉRIE — um único modelo para todos os Shorts de GTA 6 no estilo clássico do canal:
 // imagens/clipes oficiais em tela cheia (Ken Burns, cortes no ritmo da fala), legendas palavra a palavra,
@@ -30,6 +31,9 @@ export type Spec = {
 	shakes: Shake[];
 	tags: Tag[];
 	credit: string;
+	cards?: Card[];
+	/** estilo agressivo: flash RGB/glitch em cada corte */
+	cutFx?: number[];
 };
 export type SerieProps = {slug: string; spec: Spec | null; music: string | null; musicGain: number | null};
 
@@ -67,6 +71,16 @@ const TagView: React.FC<{tag: Tag}> = ({tag}) => {
 
 const SerieOverlays: React.FC<{spec: Spec}> = ({spec}) => (
 	<AbsoluteFill>
+		{(spec.cards ?? []).map((c, i) => (
+			<At key={`c${i}`} from={c.from} to={c.to}>
+				<CardView card={c} />
+			</At>
+		))}
+		{(spec.cutFx ?? []).map((t, i) => (
+			<At key={`x${i}`} from={t} to={t + 0.2}>
+				<CutFx />
+			</At>
+		))}
 		{spec.tags.map((t, i) => (
 			<At key={i} from={t.at} to={t.to}>
 				<TagView tag={t} />
