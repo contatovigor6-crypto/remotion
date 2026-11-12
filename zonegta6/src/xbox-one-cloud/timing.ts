@@ -24,10 +24,10 @@ for (let i = 0; i < words.length; i++) {
 	if (next) words[i].end = Math.min(Math.max(words[i].end, words[i].start + 0.12), next.start);
 	words[i].hl = HL.has(words[i].text.toLowerCase().replace(/[.,!?]/g, ''));
 }
-// "Zone GTA 6" => marca
+// "Zone GTA 6" => marca ZoneGTAVI
 for (let i = 0; i < words.length - 2; i++) {
 	if (words[i].text === 'Zone' && words[i + 1].text === 'GTA') {
-		words[i].text = 'ZoneGTA6';
+		words[i].text = 'ZoneGTAVI';
 		words[i].end = words[i + 2].end;
 		words.splice(i + 1, 2);
 	}

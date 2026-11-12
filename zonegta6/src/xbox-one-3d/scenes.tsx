@@ -1,4 +1,4 @@
-import {Environment, RoundedBox, Sparkles} from '@react-three/drei';
+import {Environment, RoundedBox, Sparkles, useTexture} from '@react-three/drei';
 import {ThreeCanvas} from '@remotion/three';
 import {useMemo} from 'react';
 import {Easing, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
@@ -353,7 +353,21 @@ export const Beach: React.FC<{coolAt: number}> = ({coolAt}) => {
 };
 
 // 11) RUA NOTURNA COM CHUVA E REFLEXOS: grua sobe até o letreiro neon da marca.
-export const RainyNight: React.FC<{followAt: number}> = ({followAt}) => {
+const LogoOnSign: React.FC<{src: string}> = ({src}) => {
+	const tex = useTexture(src);
+	tex.colorSpace = THREE.SRGBColorSpace;
+	const img = tex.image as {width: number; height: number};
+	const aspect = img.width / img.height;
+	const h = Math.min(1.7, 7 / aspect);
+	return (
+		<mesh position={[0, 0, 0.22]}>
+			<planeGeometry args={[h * aspect, h]} />
+			<meshStandardMaterial map={tex} emissiveMap={tex} emissive="#ffffff" emissiveIntensity={1.2} transparent toneMapped={false} />
+		</mesh>
+	);
+};
+
+export const RainyNight: React.FC<{followAt: number; logoSrc: string | null}> = ({followAt, logoSrc}) => {
 	const frame = useCurrentFrame();
 	const drops = useMemo(() => {
 		const r = rand(99);
@@ -374,8 +388,12 @@ export const RainyNight: React.FC<{followAt: number}> = ({followAt}) => {
 			{/* letreiro neon 3D "ZG6" sobre o prédio */}
 			<group position={[0, 9.6, -11]}>
 				<RoundedBox args={[7.5, 2, 0.4]} radius={0.15}><meshStandardMaterial color="#111" metalness={0.6} roughness={0.3} /></RoundedBox>
-				<mesh position={[0, 0, 0.25]}><torusGeometry args={[0.7, 0.08, 16, 48]} /><meshStandardMaterial color="#ff2e88" emissive="#ff2e88" emissiveIntensity={5} toneMapped={false} /></mesh>
-				{[-2.4, 2.4].map((x, i) => <mesh key={x} position={[x, 0, 0.25]}><boxGeometry args={[1.6, 0.16, 0.1]} /><meshStandardMaterial color={i ? G : '#2de2e6'} emissive={i ? G : '#2de2e6'} emissiveIntensity={5} toneMapped={false} /></mesh>)}
+				{logoSrc ? <LogoOnSign src={logoSrc} /> : (
+					<>
+						<mesh position={[0, 0, 0.25]}><torusGeometry args={[0.7, 0.08, 16, 48]} /><meshStandardMaterial color="#ff2e88" emissive="#ff2e88" emissiveIntensity={5} toneMapped={false} /></mesh>
+						{[-2.4, 2.4].map((x, i) => <mesh key={x} position={[x, 0, 0.25]}><boxGeometry args={[1.6, 0.16, 0.1]} /><meshStandardMaterial color={i ? G : '#2de2e6'} emissive={i ? G : '#2de2e6'} emissiveIntensity={5} toneMapped={false} /></mesh>)}
+					</>
+				)}
 				<pointLight position={[0, 0, 1.5]} color="#ff2e88" intensity={40} distance={15} />
 			</group>
 			<Car3D position={[2.2, 0, -2]} rotation={[0, -0.3, 0]} color="#2a6cff" />

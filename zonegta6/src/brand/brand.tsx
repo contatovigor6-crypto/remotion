@@ -1,4 +1,4 @@
-// Kit de marca ZoneGTA6: cores, fontes, fundo, marca d'água e legendas.
+// Kit de marca ZoneGTAVI: cores, fontes, fundo, marca d'água e legendas.
 // Reutilizável entre vídeos — cada vídeo traz seu próprio conceito por cima.
 import {loadFont as loadAnton} from '@remotion/google-fonts/Anton';
 import {loadFont as loadInter} from '@remotion/google-fonts/Inter';
@@ -34,7 +34,7 @@ export const ViceBackground: React.FC<{tint?: string; shake?: number}> = ({tint 
 
 export const Watermark: React.FC = () => (
 	<div style={{position: 'absolute', top: 70, right: 60, fontFamily: display, fontSize: 40, letterSpacing: 2, color: C.white, opacity: 0.75, textShadow: '0 2px 10px rgba(0,0,0,0.6)'}}>
-		ZONE<span style={{color: C.pink}}>GTA6</span>
+		ZONEGTA<span style={{color: C.pink}}>VI</span>
 	</div>
 );
 

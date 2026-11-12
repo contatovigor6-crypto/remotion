@@ -1,4 +1,4 @@
-// Kit 3D ZoneGTA6: objetos procedurais (geometria real, materiais PBR) para os cenários.
+// Kit 3D ZoneGTAVI: objetos procedurais (geometria real, materiais PBR) para os cenários.
 import type {ThreeElements} from '@react-three/fiber';
 // Tudo é determinístico (depende só do frame), como o Remotion exige.
 import {RoundedBox} from '@react-three/drei';

@@ -1,4 +1,4 @@
-import {AbsoluteFill, Audio, interpolate, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Audio, Img, interpolate, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {body, C, Captions, display, Watermark} from '../brand/brand';
 import {sentences as S, wordAt, words} from '../xbox-one-cloud/timing';
 import {Beach, BedroomRise, CityFlythrough, CloudDescent, DiscShatter, Garage, RainyNight, ServerAisle, StopVoid, StudioHook, ViceStreet} from './scenes';
@@ -30,7 +30,19 @@ const Year: React.FC<{from: number; to: number}> = ({from, to}) => {
 
 type Shot = {from: number; to: number; el: React.ReactNode; overlay?: React.ReactNode};
 
-export const XboxOne3D: React.FC<{narrationSrc: string | null}> = ({narrationSrc}) => {
+const LogoPop: React.FC<{src: string}> = ({src}) => {
+	const frame = useCurrentFrame();
+	const {fps} = useVideoConfig();
+	const s = spring({frame, fps, config: {damping: 10, mass: 0.7}});
+	return (
+		<div style={{position: 'absolute', top: 330, left: 90, right: 90, display: 'flex', justifyContent: 'center', transform: `scale(${s}) rotate(${(1 - s) * -8}deg)`}}>
+			<Img src={src} style={{maxWidth: '100%', maxHeight: 420, objectFit: 'contain', filter: 'drop-shadow(0 12px 30px rgba(0,0,0,0.7))'}} />
+		</div>
+	);
+};
+
+export const XboxOne3D: React.FC<{narrationSrc: string | null; logoSrc: string | null}> = ({narrationSrc, logoSrc}) => {
+	const logo = logoSrc ? staticFile(logoSrc) : null;
 	const shots: Shot[] = [
 		{
 			from: 0, to: S[2].start,
@@ -52,8 +64,8 @@ export const XboxOne3D: React.FC<{narrationSrc: string | null}> = ({narrationSrc
 		{from: S[13].start, to: S[14].start, el: <Beach coolAt={rel(13, 'console', S[13].start)} />, overlay: <><Year from={rel(13, 'tantos', S[13].start)} to={rel(13, 'descobrir', S[13].start)} /><Type text="Eu sobrevivi" top={1120} size={110} color={C.yellow} at={rel(13, 'console', S[13].start)} /></>},
 		{
 			from: S[14].start, to: END,
-			el: <RainyNight followAt={f(S[15].start - S[14].start)} />,
-			overlay: <><Sequence durationInFrames={f(S[15].start - S[14].start)}><Type text="Ainda tem Xbox One" top={240} size={95} color={G} at={rel(14, 'ainda', S[14].start)} /><Type text="ou já migrou?" top={350} size={95} color={C.pink} at={rel(14, 'migrou', S[14].start)} /></Sequence><Sequence from={f(S[15].start - S[14].start)}><Type text="Segue a" top={230} size={100} /><Type text="ZoneGTA6" top={340} size={170} color={C.pink} /></Sequence></>,
+			el: <RainyNight followAt={f(S[15].start - S[14].start)} logoSrc={logo} />,
+			overlay: <><Sequence durationInFrames={f(S[15].start - S[14].start)}><Type text="Ainda tem Xbox One" top={240} size={95} color={G} at={rel(14, 'ainda', S[14].start)} /><Type text="ou já migrou?" top={350} size={95} color={C.pink} at={rel(14, 'migrou', S[14].start)} /></Sequence><Sequence from={f(S[15].start - S[14].start)}><Type text="Segue a" top={200} size={100} />{logo ? <LogoPop src={logo} /> : <Type text="ZoneGTAVI" top={340} size={160} color={C.pink} />}</Sequence></>,
 		},
 	];
 
