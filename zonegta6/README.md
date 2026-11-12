@@ -1,0 +1,19 @@
+# ZoneGTA6 — Shorts
+
+Projeto Remotion do canal ZoneGTA6 (9:16, 1080×1920, 30 fps).
+
+- `src/brand/` — kit de marca reutilizável (cores, fontes, fundo Vice, marca d'água, legendas animadas).
+- `src/preload-212/` — vídeo "GTA 6 pede 212 GB" (pré-load aberto em 10/11/2026).
+- `public/music/vice-pulse.wav` — trilha original gerada por `scripts/make-music.mjs` (sem direitos de terceiros).
+- `public/sfx/` — efeitos da biblioteca `@remotion/sfx` (remotion.media).
+
+## Narração
+
+Voz: ElevenLabs "Marcio - Viral Hook Narrator" (`plASsyS7JE6GCAvx9uIc`).
+Salve o MP3 em `public/voice/preload-212.mp3`, atualize os tempos em `src/preload-212/script.ts`
+e renderize com:
+
+```bash
+npm install
+npx remotion render Preload212 out/preload-212gb.mp4 --props='{"narrationSrc":"voice/preload-212.mp3"}'
+```

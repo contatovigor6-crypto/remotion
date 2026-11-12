@@ -1,0 +1,20 @@
+{
+  "name": "zonegta6-shorts",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render Preload212 out/preload-212gb.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.538",
+    "@remotion/google-fonts": "4.0.538",
+    "@remotion/sfx": "4.0.538",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "remotion": "4.0.538"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.0",
+    "typescript": "5.8.3"
+  }
+}
