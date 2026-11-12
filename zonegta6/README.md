@@ -3,6 +3,8 @@
 Projeto Remotion do canal ZoneGTA6 (9:16, 1080×1920, 30 fps).
 
 - `src/brand/` — kit de marca reutilizável (cores, fontes, fundo Vice, marca d'água, legendas animadas).
+- `src/xbox-one-cloud/` — vídeo "GTA 6 no Xbox One via nuvem" (narração Marcio, tempos reais em `narration-captions.json` via `scripts/transcribe.mjs`).
+- `public/music/cloud-drip.wav` — trilha trap original (`scripts/make-music-trap.mjs`).
 - `src/preload-212/` — vídeo "GTA 6 pede 212 GB" (pré-load aberto em 10/11/2026).
 - `public/music/vice-pulse.wav` — trilha original gerada por `scripts/make-music.mjs` (sem direitos de terceiros).
 - `public/sfx/` — efeitos da biblioteca `@remotion/sfx` (remotion.media).

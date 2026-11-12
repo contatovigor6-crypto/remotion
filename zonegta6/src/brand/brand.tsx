@@ -41,7 +41,7 @@ export const Watermark: React.FC = () => (
 export type Word = {text: string; start: number; end: number; hl?: boolean};
 
 // Legenda palavra a palavra: mostra a frase atual (grupos curtos), destaca a palavra falada.
-export const Captions: React.FC<{words: Word[]}> = ({words}) => {
+export const Captions: React.FC<{words: Word[]; accent?: string; hlColor?: string}> = ({words, accent = C.teal, hlColor = C.yellow}) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 	const t = frame / fps;
@@ -51,7 +51,7 @@ export const Captions: React.FC<{words: Word[]}> = ({words}) => {
 		if (!last || last.length >= 3 || w.start - last[last.length - 1].end > 0.35 || /[.!?…:]$/.test(last[last.length - 1].text)) groups.push([w]);
 		else last.push(w);
 	}
-	const group = groups.find((g) => t >= g[0].start - 0.05 && t < g[g.length - 1].end + 0.25);
+	const group = groups.find((g) => t >= g[0].start - 0.05 && t < g[g.length - 1].end + 0.15);
 	if (!group) return null;
 	const gStart = Math.round(group[0].start * fps);
 	const pop = spring({frame: frame - gStart, fps, config: {damping: 12, mass: 0.5}});
@@ -59,7 +59,7 @@ export const Captions: React.FC<{words: Word[]}> = ({words}) => {
 		<div style={{position: 'absolute', left: 60, right: 60, top: 1380, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0 34px', transform: `scale(${interpolate(pop, [0, 1], [0.8, 1])})`}}>
 			{group.map((w, i) => {
 				const active = t >= w.start && t < w.end + 0.05;
-				const color = w.hl ? C.yellow : active ? C.teal : C.white;
+				const color = w.hl ? hlColor : active ? accent : C.white;
 				return (
 					<span key={i} style={{fontFamily: body, fontWeight: 900, fontSize: w.hl ? 92 : 80, textTransform: 'uppercase', color, WebkitTextStroke: '10px #000', paintOrder: 'stroke fill', transform: `scale(${active ? 1.08 : 1})`, display: 'inline-block', lineHeight: 1.15}}>
 						{w.text.replace(/[,.:]$/, '')}

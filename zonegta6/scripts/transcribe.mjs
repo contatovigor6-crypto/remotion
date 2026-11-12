@@ -1,0 +1,13 @@
+import path from 'node:path';
+import {execSync} from 'node:child_process';
+import {downloadWhisperModel, installWhisperCpp, transcribe, toCaptions} from '@remotion/install-whisper-cpp';
+import {writeFileSync} from 'node:fs';
+const dir = path.resolve('/tmp/claude-0/-home-user-remotion/d251b6d2-f0a1-5561-a165-0f7b7b5ee816/scratchpad/whisper');
+const version = '1.7.6';
+await installWhisperCpp({to: dir, version});
+await downloadWhisperModel({model: 'medium', folder: dir});
+execSync(`ffmpeg -y -v error -i ${process.argv[2]} -ar 16000 -ac 1 /tmp/claude-0/-home-user-remotion/d251b6d2-f0a1-5561-a165-0f7b7b5ee816/scratchpad/voice16.wav`);
+const out = await transcribe({inputPath: '/tmp/claude-0/-home-user-remotion/d251b6d2-f0a1-5561-a165-0f7b7b5ee816/scratchpad/voice16.wav', whisperPath: dir, whisperCppVersion: version, model: 'medium', tokenLevelTimestamps: true, language: 'pt'});
+const {captions} = toCaptions({whisperCppOutput: out});
+writeFileSync(process.argv[3], JSON.stringify(captions, null, 1));
+console.log(captions.map((c) => `${(c.startMs / 1000).toFixed(2)} ${c.text}`).join('\n'));
