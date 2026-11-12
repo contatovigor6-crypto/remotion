@@ -6,12 +6,17 @@
     "render": "remotion render Preload212 out/preload-212gb.mp4"
   },
   "dependencies": {
+    "@react-three/drei": "^10.0.6",
+    "@react-three/fiber": "^9.1.2",
     "@remotion/cli": "4.0.538",
     "@remotion/google-fonts": "4.0.538",
     "@remotion/sfx": "4.0.538",
+    "@remotion/three": "^4.0.538",
+    "@types/three": "^0.170.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "remotion": "4.0.538"
+    "remotion": "4.0.538",
+    "three": "^0.170.0"
   },
   "devDependencies": {
     "@types/react": "19.1.0",

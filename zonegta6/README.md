@@ -19,3 +19,19 @@ e renderize com:
 npm install
 npx remotion render Preload212 out/preload-212gb.mp4 --props='{"narrationSrc":"voice/preload-212.mp3"}'
 ```
+
+## Identidade 3D (padrão a partir de nov/2026)
+
+Todos os fundos e composições são cenas 3D reais (Three.js via `@remotion/three`):
+geometria, materiais PBR, sombras, neblina, iluminação HDRI (Poly Haven, CC0, em `public/hdri/`)
+e câmera animada por frame.
+
+- `src/three/kit.tsx` — objetos 3D procedurais (console, carro, palmeira, prédios, nuvens, céu, figuras ilustrativas).
+- `src/three/rig.tsx` — câmera cinematográfica (keyframes, tremida, roll).
+- `src/xbox-one-3d/` — episódio "GTA 6 no Xbox One?" em 3D: 11 cenários sincronizados à narração.
+
+Render (CPU, sem GPU, usa SwiftShader):
+
+```bash
+npx remotion render XboxOne3D out/xbox3d.mp4 --concurrency=4
+```
