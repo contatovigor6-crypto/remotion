@@ -57,3 +57,9 @@ npm run render:short  # exporta out/zonegta6-contagem-final.mp4
 `src/Background.tsx` passa as imagens uma a uma dentro de cada bloco. Cada imagem tem zoom lento, um travelling lateral sobre o recorte 9:16, entrada com fade e desfoque de movimento, e um tratamento de cor para manter o texto legível. A lista de arquivos por bloco está em `media`, dentro de `src/Short.tsx`. Arquivos `.mp4`, `.webm` ou `.mov` entram automaticamente como vídeo, sem som.
 
 As imagens são capturas oficiais da seção Downloads de rockstargames.com/VI e ficam em `public/media/`. Essa pasta **não vai para o git**, para não redistribuir material da Rockstar. Para renderizar em outra máquina, baixe as capturas de lá e salve com os nomes listados em `media`. O vídeo mostra o crédito "Imagens: Rockstar Games".
+
+## Trilha sonora
+
+`public/music/trilha-zonegta6.mp3` é uma música synthwave original, em Lá menor (Am–F–C–G) a 96 BPM. Ela é gerada por `scripts/music.py` (pad, baixo, arpejo e bateria sintetizados), sem samples nem música de terceiros. A grade de compassos foi alinhada para a batida entrar exatamente em "São **trinta**" (11,83 s). A bateria sai no bloco do rumor e volta no do download. No final fica só o pad, embaixo da logo.
+
+O volume abaixa automaticamente: a música desce enquanto o narrador fala e sobe nas pausas. Os trechos com voz estão em `src/voiceActivity.ts`, medidos na transcrição.

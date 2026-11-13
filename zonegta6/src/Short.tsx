@@ -11,6 +11,7 @@ import {
 import {Grade, Slideshow} from './Background';
 import {Backdrop, Flash, MaskTitle, Panel, Shake, Tag, useIn, Words} from './components';
 import {body, C, display, mono} from './theme';
+import {voiceActivity} from './voiceActivity';
 
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 
@@ -409,6 +410,20 @@ const sfx: Array<[Block, number, string, number]> = [
 	['cta', 180, 'impact', 0.7],
 ];
 
+// Ducking: a música desce para 0,2 enquanto o narrador fala e sobe para 0,5 nas pausas,
+// com rampas de 6 frames para não "bombear".
+const DUCK = 0.2;
+const OPEN = 0.5;
+const RAMP = 6;
+const musicVolume = (f: number) => {
+	let dist = Infinity;
+	for (const [a, b] of voiceActivity) {
+		if (f >= a && f <= b) return DUCK;
+		dist = Math.min(dist, f < a ? a - f : f - b);
+	}
+	return interpolate(dist, [0, RAMP], [DUCK, OPEN], clamp);
+};
+
 export const Short: React.FC = () => {
 	const frame = useCurrentFrame();
 	return (
@@ -428,11 +443,8 @@ export const Short: React.FC = () => {
 			<S k="record"><RecordScene /></S>
 			<S k="cta"><CtaScene /></S>
 			<Hud />
-			{/* Trilha: drone original, abaixada sob a narração (ducking) e solta no fim. */}
-			<Html5Audio
-				src={staticFile('sfx/drone.mp3')}
-				volume={(f) => interpolate(f, [0, 6, T.cta[1] - 40, T.cta[1] - 25, T.cta[1]], [0.4, 0.16, 0.16, 0.4, 0], clamp)}
-			/>
+			{/* Trilha original (scripts/music.py), com ducking automático sob a voz. */}
+			<Html5Audio src={staticFile('music/trilha-zonegta6.mp3')} volume={musicVolume} />
 			<Sequence from={VO_START} name="narracao">
 				<Html5Audio src={staticFile(VO_FILE)} volume={1} />
 			</Sequence>
