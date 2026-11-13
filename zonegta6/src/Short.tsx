@@ -2,6 +2,7 @@ import React from 'react';
 import {
 	AbsoluteFill,
 	Html5Audio,
+	Img,
 	interpolate,
 	random,
 	Sequence,
@@ -327,6 +328,10 @@ const RecordScene: React.FC = () => {
 };
 
 // ── 9. CTA ───────────────────────────────────────────────────
+// Logo do canal no encerramento. Coloque o arquivo em public/ e informe o nome aqui
+// (PNG com fundo transparente funciona melhor). null = logo em texto.
+const LOGO_FILE: string | null = null;
+
 const CtaScene: React.FC = () => {
 	const frame = useCurrentFrame();
 	const logo = useIn(180, 12);
@@ -336,12 +341,13 @@ const CtaScene: React.FC = () => {
 			<Words text="ou a Rockstar compensa no resto?" delay={86} size={88} color={C.pink} every={8} />
 			<Words text="Comenta aqui embaixo ↓" delay={148} size={52} color={C.dim} />
 			<div style={{marginTop: 'auto', marginBottom: 330, textAlign: 'center', opacity: logo, transform: `scale(${0.8 + logo * 0.2})`}}>
-				<div style={{fontFamily: display, fontSize: 140, color: C.white, letterSpacing: 4}}>
-					ZONE<span style={{color: C.pink}}>GTA6</span>
-				</div>
-				<div style={{fontFamily: mono, fontSize: 32, color: C.cyan, letterSpacing: 8}}>
-					INVESTIGAR · DESCOBRIR · REVELAR
-				</div>
+				{LOGO_FILE ? (
+					<Img src={staticFile(LOGO_FILE)} style={{width: 620, maxHeight: 420, objectFit: 'contain'}} />
+				) : (
+					<div style={{fontFamily: display, fontSize: 140, color: C.white, letterSpacing: 4}}>
+						ZONE<span style={{color: C.pink}}>GTA6</span>
+					</div>
+				)}
 				<div style={{fontFamily: mono, fontSize: 22, color: C.dim, marginTop: 30, opacity: interpolate(frame, [230, 240], [0, 1], clamp)}}>
 					Fontes: Rockstar Newswire · Xbox Wire · Take-Two · imprensa especializada
 				</div>
