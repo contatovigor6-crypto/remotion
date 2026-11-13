@@ -1,0 +1,21 @@
+{
+  "name": "zonegta6-motion",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "studio": "remotion studio",
+    "render:short": "remotion render ZoneGTA6-Short out/zonegta6-contagem-final.mp4",
+    "still": "remotion still ZoneGTA6-Short out/thumb.png --frame=60"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.538",
+    "@remotion/google-fonts": "4.0.538",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "remotion": "4.0.538"
+  },
+  "devDependencies": {
+    "@types/react": "19.0.0",
+    "typescript": "5.8.2"
+  }
+}
