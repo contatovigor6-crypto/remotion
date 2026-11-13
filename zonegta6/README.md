@@ -21,7 +21,7 @@ npm run render:short  # exporta out/zonegta6-contagem-final.mp4
 
 ## Narração
 
-Os arquivos ficam em `public/vo/`, um por bloco. A voz foi gerada com o [Piper](https://github.com/OHF-Voice/piper1-gpl), voz `pt_BR-faber-medium`, treinada com um dataset CC0. Recebeu limpeza de silêncios, compressão e EQ de presença. A pronúncia foi conferida transcrevendo cada trecho com o Whisper. As grafias fonéticas ("Gê tê á seis", "São trinta…") evitam que "trinta" seja ouvido como "quarenta". O ElevenLabs não pôde ser usado porque a cota gratuita do mês acabou. Para trocar a voz, basta substituir os .wav e ajustar `blocks` em `src/Short.tsx`.
+`public/vo/narracao-marcio.mp3` traz a voz "Marcio – Viral Hook Narrator" (ElevenLabs), enviada pelo canal. É um arquivo único e contínuo, que entra no frame 4. Cada bloco começa 6 frames antes da primeira palavra dele, e as animações batem com as palavras-chave. Os tempos foram medidos transcrevendo o áudio com o Whisper, palavra por palavra. Os `.wav` antigos do Piper continuam em `public/vo/` como alternativa, mas não são usados.
 
 ## Roteiro (PT-BR, cerca de 58 s com a narração)
 
