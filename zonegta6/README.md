@@ -63,3 +63,17 @@ As imagens são capturas oficiais da seção Downloads de rockstargames.com/VI e
 `public/music/trilha-zonegta6.mp3` é uma música synthwave original, em Lá menor (Am–F–C–G) a 96 BPM. Ela é gerada por `scripts/music.py` (pad, baixo, arpejo e bateria sintetizados), sem samples nem música de terceiros. A grade de compassos foi alinhada para a batida entrar exatamente em "São **trinta**" (11,83 s). A bateria sai no bloco do rumor e volta no do download. No final fica só o pad, embaixo da logo.
 
 O volume abaixa automaticamente: a música desce enquanto o narrador fala e sobe nas pausas. Os trechos com voz estão em `src/voiceActivity.ts`, medidos na transcrição.
+
+### Trilha de suspense (atual)
+
+O vídeo usa `public/music/trilha-suspense.mp3`, gerada por `scripts/music_suspense.py` e também 100% original. Como ela acompanha a história:
+
+- **Introdução:** drone grave dissonante (Ré com Mi bemol), tique-taque de relógio e um batimento cardíaco que acelera.
+- **Antes da revelação:** um riser nos 4 s anteriores, e um "braam" grave em "São **trinta**".
+- **Depois da revelação:** ostinato grave e tambor.
+- **Piada do "cinematográfico":** a música para por um instante, como respiro cômico.
+- **Rumor:** só relógio, coração e um tom agudo fantasma.
+- **Recorde:** um segundo braam.
+- **Final:** um acorde que não resolve, embaixo da logo.
+
+Para voltar à synthwave, troque o arquivo em `src/Short.tsx` por `music/trilha-zonegta6.mp3`.

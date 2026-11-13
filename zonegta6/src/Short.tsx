@@ -443,8 +443,8 @@ export const Short: React.FC = () => {
 			<S k="record"><RecordScene /></S>
 			<S k="cta"><CtaScene /></S>
 			<Hud />
-			{/* Trilha original (scripts/music.py), com ducking automático sob a voz. */}
-			<Html5Audio src={staticFile('music/trilha-zonegta6.mp3')} volume={musicVolume} />
+			{/* Trilha de suspense original (scripts/music_suspense.py), com ducking sob a voz. A synthwave fica em music/trilha-zonegta6.mp3. */}
+			<Html5Audio src={staticFile('music/trilha-suspense.mp3')} volume={musicVolume} />
 			<Sequence from={VO_START} name="narracao">
 				<Html5Audio src={staticFile(VO_FILE)} volume={1} />
 			</Sequence>
