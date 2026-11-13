@@ -8,6 +8,7 @@ import {
 	staticFile,
 	useCurrentFrame,
 } from 'remotion';
+import {Grade, Slideshow} from './Background';
 import {Backdrop, Flash, MaskTitle, Panel, Shake, Tag, useIn, Words} from './components';
 import {body, C, display, mono} from './theme';
 
@@ -37,6 +38,21 @@ export const T = (() => {
 	return out;
 })();
 export const DURATION = T.cta[1];
+
+// Fundo: capturas oficiais de GTA VI (Rockstar Games, seção Downloads do site oficial),
+// trocando de imagem dentro de cada bloco. Ficam em public/media/, fora do git.
+// Para usar clipes de vídeo, basta colocar o .mp4 em public/media/ e listar aqui.
+const media: Record<Block, string[]> = {
+	hook: ['vice_city_01.jpg', 'launch_trailer.jpg'],
+	date: ['pre_load.jpg', 'an_extended_look.jpg', 'hero.jpg'],
+	fps: ['jason_and_lucia_08.jpg', 'jason_and_lucia_09.jpg', 'jason_and_lucia_04.jpg', 'vice_city_06.jpg', 'vice_city_25.jpg'],
+	pro: ['leonida_keys_01.jpg', 'vice_city_08.jpg', 'leonida_keys_04.jpg'],
+	rumor: ['grassrivers_04.jpg', 'port_gellhorn_01.jpg', 'mount_kalaga_national_park_02.jpg'],
+	size: ['vice_city_18.jpg', 'vice_city_19.jpg', 'leonida_keys_01.jpg'],
+	cloud: ['vice_city_23.jpg', 'vice_city_27.jpg'],
+	record: ['vice_city_25.jpg', 'vice_city_06.jpg'],
+	cta: ['jason_and_lucia_01.jpg', 'hero.jpg', 'vice_city_01.jpg'],
+};
 
 // Narração: arquivo por bloco + frame de entrada dentro do bloco.
 const vo: Array<[Block, string, number]> = [
@@ -354,6 +370,9 @@ const Hud: React.FC = () => {
 			<div style={{position: 'absolute', top: 160, right: 80, fontFamily: mono, fontSize: 30, color: C.red, letterSpacing: 3}}>
 				<span style={{opacity: blink ? 1 : 0.2}}>●</span> T-6 DIAS
 			</div>
+			<div style={{position: 'absolute', bottom: 250, left: 80, fontFamily: mono, fontSize: 20, color: C.dim, letterSpacing: 2}}>
+				IMAGENS: ROCKSTAR GAMES · GTA VI
+			</div>
 			<div style={{position: 'absolute', bottom: 230, left: 80, right: 80, height: 6, background: 'rgba(255,255,255,0.12)'}}>
 				<div style={{height: '100%', width: `${(frame / DURATION) * 100}%`, background: `linear-gradient(90deg, ${C.cyan}, ${C.pink})`}} />
 			</div>
@@ -403,7 +422,11 @@ export const Short: React.FC = () => {
 	const frame = useCurrentFrame();
 	return (
 		<AbsoluteFill style={{backgroundColor: C.bg}}>
-			<Backdrop accent={accentAt(frame)} />
+			{(Object.keys(media) as Block[]).map((k) => (
+				<Slideshow key={k} files={media[k]} from={T[k][0]} dur={T[k][1] - T[k][0]} />
+			))}
+			<Grade accent={accentAt(frame)} />
+			<Backdrop accent={accentAt(frame)} overlay />
 			<S k="hook"><Hook /></S>
 			<S k="date"><DateScene /></S>
 			<S k="fps"><FpsScene /></S>

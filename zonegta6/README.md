@@ -51,3 +51,9 @@ Os arquivos ficam em `public/vo/`, um por bloco. A voz foi gerada com o [Piper](
 - `src/components.tsx`: linguagem visual (fundo com grade, painéis HUD, títulos com máscara, etiquetas de verificação, shake, flash)
 - `src/theme.ts`: cores, fontes e o sistema de status (CONFIRMADO / REPORTADO / RUMOR / TEORIA)
 - `public/sfx/`: whoosh, impact, riser, sub drop, tick, glitch e drone, todos sintetizados com ffmpeg, sem direitos de terceiros
+
+## Fundo com imagens de GTA VI
+
+`src/Background.tsx` passa as imagens uma a uma dentro de cada bloco. Cada imagem tem zoom lento, um travelling lateral sobre o recorte 9:16, entrada com fade e desfoque de movimento, e um tratamento de cor para manter o texto legível. A lista de arquivos por bloco está em `media`, dentro de `src/Short.tsx`. Arquivos `.mp4`, `.webm` ou `.mov` entram automaticamente como vídeo, sem som.
+
+As imagens são capturas oficiais da seção Downloads de rockstargames.com/VI e ficam em `public/media/`. Essa pasta **não vai para o git**, para não redistribuir material da Rockstar. Para renderizar em outra máquina, baixe as capturas de lá e salve com os nomes listados em `media`. O vídeo mostra o crédito "Imagens: Rockstar Games".

@@ -19,11 +19,11 @@ export const useIn = (delay = 0, damping = 14) => {
 };
 
 // Fundo vivo: grade em perspectiva + brilho + scanlines + vinheta.
-export const Backdrop: React.FC<{accent: string}> = ({accent}) => {
+export const Backdrop: React.FC<{accent: string; overlay: boolean}> = ({accent, overlay}) => {
 	const frame = useCurrentFrame();
 	const drift = (frame * 2.2) % 120;
 	return (
-		<AbsoluteFill style={{backgroundColor: C.bg, overflow: 'hidden'}}>
+		<AbsoluteFill style={{backgroundColor: overlay ? 'transparent' : C.bg, overflow: 'hidden', opacity: overlay ? 0.35 : 1}}>
 			<AbsoluteFill
 				style={{
 					background: `radial-gradient(ellipse 90% 55% at 50% 38%, ${accent}33 0%, transparent 70%)`,
