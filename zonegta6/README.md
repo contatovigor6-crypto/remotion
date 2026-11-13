@@ -77,3 +77,16 @@ O vídeo usa `public/music/trilha-suspense.mp3`, gerada por `scripts/music_suspe
 - **Final:** um acorde que não resolve, embaixo da logo.
 
 Para voltar à synthwave, troque o arquivo em `src/Short.tsx` por `music/trilha-zonegta6.mp3`.
+
+### Versões por trilha
+
+Cada trilha tem sua própria composição em `src/Root.tsx`, com a mesma edição e o mesmo volume automático sob a voz:
+
+| Composição | Trilha | Gerador |
+|---|---|---|
+| `ZoneGTA6-Short` | Suspense (relógio, coração, braam) | `scripts/music_suspense.py` |
+| `ZoneGTA6-Short-Dramatico` | Suspense dramático (cordas, piano, coro, tímpanos) | `scripts/music_variants.py drama` |
+| `ZoneGTA6-Short-Acao` | Ação e suspense (128 BPM, ostinato, baixo distorcido, bateria, metais) | `scripts/music_variants.py acao` |
+| `ZoneGTA6-Short-Synthwave` | Synthwave | `scripts/music.py` |
+
+Exemplo: `npx remotion render ZoneGTA6-Short-Dramatico out/dramatico.mp4`

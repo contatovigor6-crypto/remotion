@@ -424,7 +424,7 @@ const musicVolume = (f: number) => {
 	return interpolate(dist, [0, RAMP], [DUCK, OPEN], clamp);
 };
 
-export const Short: React.FC = () => {
+export const Short: React.FC<{music: string}> = ({music}) => {
 	const frame = useCurrentFrame();
 	return (
 		<AbsoluteFill style={{backgroundColor: C.bg}}>
@@ -443,8 +443,8 @@ export const Short: React.FC = () => {
 			<S k="record"><RecordScene /></S>
 			<S k="cta"><CtaScene /></S>
 			<Hud />
-			{/* Trilha de suspense original (scripts/music_suspense.py), com ducking sob a voz. A synthwave fica em music/trilha-zonegta6.mp3. */}
-			<Html5Audio src={staticFile('music/trilha-suspense.mp3')} volume={musicVolume} />
+			{/* Trilha original escolhida por composição (ver Root.tsx), com ducking sob a voz. */}
+			<Html5Audio src={staticFile(`music/${music}`)} volume={musicVolume} />
 			<Sequence from={VO_START} name="narracao">
 				<Html5Audio src={staticFile(VO_FILE)} volume={1} />
 			</Sequence>
