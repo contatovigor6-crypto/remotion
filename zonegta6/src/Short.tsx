@@ -13,21 +13,45 @@ import {body, C, display, mono} from './theme';
 
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 
-// Mapa da timeline (30 fps). Cada bloco tem uma função narrativa.
-export const T = {
-	hook: [0, 105], // 0–3,5s  gancho: "6 DIAS" + mistério do número
-	date: [105, 225], // contexto: data confirmada
-	fps: [225, 435], // revelação principal: 30 FPS + alívio cômico
-	pro: [435, 585], // recompensa: o que o PS5 Pro ganha
-	rumor: [585, 705], // separa rumor de fato: modo 40 FPS?
-	size: [705, 855], // tamanho do download + humor
-	cloud: [855, 1005], // Xbox One via nuvem
-	record: [1005, 1110], // recorde de pré-venda
-	cta: [1110, 1260], // pergunta + CTA
+// Mapa da timeline (30 fps). A duração de cada bloco segue a narração
+// (offset de entrada da voz + duração da fala + respiro).
+const blocks = {
+	hook: 108, // gancho: "6 DIAS" + mistério do número
+	date: 157, // contexto: data confirmada
+	fps: 340, // revelação principal: 30 FPS + alívio cômico
+	pro: 196, // recompensa: o que o PS5 Pro ganha
+	rumor: 204, // separa rumor de fato: modo 40 FPS?
+	size: 171, // tamanho do download + humor
+	cloud: 159, // Xbox One via nuvem
+	record: 117, // recorde de pré-venda
+	cta: 282, // pergunta + CTA
 } as const;
-export const DURATION = 1260;
+type Block = keyof typeof blocks;
+export const T = (() => {
+	let at = 0;
+	const out = {} as Record<Block, [number, number]>;
+	for (const k of Object.keys(blocks) as Block[]) {
+		out[k] = [at, at + blocks[k]];
+		at += blocks[k];
+	}
+	return out;
+})();
+export const DURATION = T.cta[1];
 
-const S: React.FC<{k: keyof typeof T; children: React.ReactNode}> = ({k, children}) => (
+// Narração: arquivo por bloco + frame de entrada dentro do bloco.
+const vo: Array<[Block, string, number]> = [
+	['hook', '01-hook', 4],
+	['date', '02-date', 6],
+	['fps', '03-fps', 6],
+	['pro', '04-pro', 4],
+	['rumor', '05-rumor', 4],
+	['size', '06-size', 4],
+	['cloud', '07-cloud', 4],
+	['record', '08-record', 4],
+	['cta', '09-cta', 4],
+];
+
+const S: React.FC<{k: Block; children: React.ReactNode}> = ({k, children}) => (
 	<Sequence from={T[k][0]} durationInFrames={T[k][1] - T[k][0]} name={k}>
 		{children}
 	</Sequence>
@@ -69,7 +93,7 @@ const Hook: React.FC = () => {
 					{g !== 0 ? layer(C.cyan, -g, true) : null}
 				</div>
 				<div style={{width: 860, textAlign: 'center'}}>
-					<Words text="e um único número está dividindo a comunidade." delay={20} size={60} />
+					<Words text="e um único número está dividindo a comunidade." delay={34} size={60} every={4} />
 				</div>
 			</AbsoluteFill>
 		</Shake>
@@ -85,7 +109,7 @@ const DateScene: React.FC = () => {
 			<Panel accent={C.cyan} delay={6}>
 				<div style={{display: 'flex', alignItems: 'baseline', gap: 30}}>
 					<div style={{fontFamily: display, fontSize: 300, color: C.white, lineHeight: 0.9}}>
-						{Math.round(interpolate(frame, [6, 30], [1, 19], clamp))}
+						{Math.round(interpolate(frame, [8, 36], [1, 19], clamp))}
 					</div>
 					<div style={{fontFamily: display, fontSize: 150, color: C.cyan, lineHeight: 0.9}}>NOV</div>
 				</div>
@@ -93,9 +117,9 @@ const DateScene: React.FC = () => {
 					2026 · PS5 · XBOX SERIES X|S
 				</div>
 			</Panel>
-			<Tag status="CONFIRMADO" delay={30} source="ROCKSTAR NEWSWIRE" />
+			<Tag status="CONFIRMADO" delay={40} source="ROCKSTAR NEWSWIRE" />
 			<div style={{marginTop: 20}}>
-				<Words text="Mas o post do pre-load trouxe um detalhe técnico…" delay={50} size={52} />
+				<Words text="Mas o post do pre-load trouxe um detalhe técnico…" delay={76} size={52} every={4} />
 			</div>
 		</Stack>
 	);
@@ -104,15 +128,15 @@ const DateScene: React.FC = () => {
 // ── 3. REVELAÇÃO: 30 FPS ─────────────────────────────────────
 const FpsScene: React.FC = () => {
 	const frame = useCurrentFrame();
-	const n = Math.round(interpolate(frame, [0, 22], [60, 30], {...clamp, easing: (t) => t * t}));
+	const n = Math.round(interpolate(frame, [0, 10], [60, 30], {...clamp, easing: (t) => t * t}));
 	// Freeze dramático + zoom para o momento cômico (frame 120 em diante).
-	const joke = frame >= 120;
-	const zoom = joke ? interpolate(frame, [120, 128], [1, 1.18], clamp) : 1;
+	const joke = frame >= 236;
+	const zoom = joke ? interpolate(frame, [236, 244], [1, 1.18], clamp) : 1;
 	const sat = joke ? 0.25 : 1;
-	const pop = useIn(120, 10);
+	const pop = useIn(236, 10);
 	return (
 		<>
-			<Shake at={22} strength={34}>
+			<Shake at={10} strength={34}>
 				<AbsoluteFill style={{transform: `scale(${zoom})`, filter: `saturate(${sat})`}}>
 					<Stack top={380} gap={30}>
 						<div style={{fontFamily: mono, fontSize: 36, color: C.pink, letterSpacing: 6}}>META DE DESEMPENHO</div>
@@ -130,8 +154,8 @@ const FpsScene: React.FC = () => {
 							</div>
 							<div style={{fontFamily: display, fontSize: 160, color: C.pink}}>FPS</div>
 						</div>
-						<Words text="no PS5, no PS5 Pro e no Xbox Series X|S. Nenhum modo desempenho anunciado." delay={28} size={50} every={2} />
-						<Tag status="CONFIRMADO" delay={60} source="ROCKSTAR · POST DO PRE-LOAD (10/11)" />
+						<Words text="no PS5, no PS5 Pro e no Xbox Series X|S. Nenhum modo desempenho anunciado." delay={66} size={50} every={4} />
+						<Tag status="CONFIRMADO" delay={170} source="ROCKSTAR · POST DO PRE-LOAD (10/11)" />
 					</Stack>
 				</AbsoluteFill>
 			</Shake>
@@ -155,7 +179,7 @@ const FpsScene: React.FC = () => {
 					</div>
 				</AbsoluteFill>
 			) : null}
-			<Flash at={22} />
+			<Flash at={10} />
 		</>
 	);
 };
@@ -171,27 +195,27 @@ const Feature: React.FC<{title: string; desc: string; delay: number; accent: str
 const ProScene: React.FC = () => (
 	<Stack top={400}>
 		<MaskTitle text="E o PS5 Pro?" size={130} />
-		<Words text="Mesmos 30 FPS, mas com dois extras:" delay={10} size={50} color={C.dim} />
-		<Feature title="PSSR" desc="upscaling da Sony para mais nitidez" delay={24} accent={C.cyan} />
-		<Feature title="SOMBRAS COM RAY TRACING" desc="exclusivas do PS5 Pro" delay={44} accent={C.pink} />
-		<Tag status="CONFIRMADO" delay={70} source="ROCKSTAR" />
+		<Words text="Mesmos 30 FPS, mas com dois extras:" delay={30} size={50} color={C.dim} />
+		<Feature title="PSSR" desc="upscaling da Sony para mais nitidez" delay={74} accent={C.cyan} />
+		<Feature title="SOMBRAS COM RAY TRACING" desc="exclusivas do PS5 Pro" delay={128} accent={C.pink} />
+		<Tag status="CONFIRMADO" delay={165} source="ROCKSTAR" />
 	</Stack>
 );
 
 // ── 5. RUMOR: 40 FPS ─────────────────────────────────────────
 const RumorScene: React.FC = () => {
 	const frame = useCurrentFrame();
-	const stamp = useIn(56, 9);
+	const stamp = useIn(182, 9);
 	return (
 		<Stack top={420}>
 			<div style={{fontFamily: mono, fontSize: 36, color: C.amber, letterSpacing: 6}}>LINHA DE INVESTIGAÇÃO</div>
 			<MaskTitle text="Um modo 40 FPS?" size={130} color={C.amber} />
-			<Panel accent={C.amber} delay={14} style={{borderStyle: 'dashed'}}>
+			<Panel accent={C.amber} delay={22} style={{borderStyle: 'dashed'}}>
 				<Words
 					text="Dados minerados da PSN sugerem saída em 120 Hz — o que tornaria um modo 40 FPS possível."
-					delay={18}
+					delay={26}
 					size={46}
-					every={2}
+					every={5}
 				/>
 				<div
 					style={{
@@ -211,7 +235,7 @@ const RumorScene: React.FC = () => {
 					NÃO CONFIRMADO
 				</div>
 			</Panel>
-			<div style={{marginTop: 110, opacity: interpolate(frame, [70, 80], [0, 1], clamp)}}>
+			<div style={{marginTop: 110, opacity: interpolate(frame, [186, 196], [0, 1], clamp)}}>
 				<Tag status="RUMOR" source="DATAMINE · VIA IMPRENSA" />
 			</div>
 		</Stack>
@@ -221,7 +245,7 @@ const RumorScene: React.FC = () => {
 // ── 6. TAMANHO ───────────────────────────────────────────────
 const SizeScene: React.FC = () => {
 	const frame = useCurrentFrame();
-	const fill = interpolate(frame, [10, 60], [0, 0.82], {...clamp, easing: (t) => 1 - Math.pow(1 - t, 3)});
+	const fill = interpolate(frame, [6, 44], [0, 0.82], {...clamp, easing: (t) => 1 - Math.pow(1 - t, 3)});
 	const gb = Math.round(fill / 0.82 * 210);
 	return (
 		<Stack top={430}>
@@ -240,9 +264,9 @@ const SizeScene: React.FC = () => {
 					}}
 				/>
 			</div>
-			<Tag status="REPORTADO" delay={40} source="LISTAGEM DA LOJA XBOX · VIA IMPRENSA" />
+			<Tag status="REPORTADO" delay={50} source="LISTAGEM DA LOJA XBOX · VIA IMPRENSA" />
 			<div style={{marginTop: 40}}>
-				<Words text="Hora de apagar aquele jogo que você jura que um dia vai zerar." delay={70} size={52} color={C.amber} every={2} />
+				<Words text="Hora de apagar aquele jogo que você jura que um dia vai zerar." delay={84} size={52} color={C.amber} every={4} />
 			</div>
 		</Stack>
 	);
@@ -252,8 +276,8 @@ const SizeScene: React.FC = () => {
 const CloudScene: React.FC = () => (
 	<Stack top={420}>
 		<MaskTitle text="Tem Xbox One?" size={140} />
-		<Words text="Dá para jogar no dia 1 — via Xbox Cloud Gaming." delay={12} size={54} />
-		<Panel accent={C.green} delay={30}>
+		<Words text="Dá para jogar no dia 1 — via Xbox Cloud Gaming." delay={44} size={54} every={3} />
+		<Panel accent={C.green} delay={90}>
 			<div style={{fontFamily: mono, fontSize: 34, color: C.dim, letterSpacing: 4}}>LIBERAÇÃO NA NUVEM</div>
 			<div style={{fontFamily: display, fontSize: 150, color: C.green, lineHeight: 1}}>19/11 · 03H</div>
 			<div style={{fontFamily: mono, fontSize: 32, color: C.dim}}>HORÁRIO DE BRASÍLIA (1H ET)</div>
@@ -261,7 +285,7 @@ const CloudScene: React.FC = () => (
 				Jogo vendido à parte · gráficos de Series S no streaming
 			</div>
 		</Panel>
-		<Tag status="CONFIRMADO" delay={55} source="XBOX WIRE (10/11)" />
+		<Tag status="CONFIRMADO" delay={120} source="XBOX WIRE (10/11)" />
 	</Stack>
 );
 
@@ -286,8 +310,8 @@ const RecordScene: React.FC = () => {
 				>
 					O MAIS PRÉ-VENDIDO DA HISTÓRIA
 				</div>
-				<Words text="da Microsoft Store." delay={14} size={60} color={C.amber} />
-				<Tag status="CONFIRMADO" delay={30} source="XBOX WIRE" />
+				<Words text="da Microsoft Store." delay={70} size={60} color={C.amber} />
+				<Tag status="CONFIRMADO" delay={84} source="XBOX WIRE" />
 			</Stack>
 			<Flash at={6} />
 		</Shake>
@@ -297,12 +321,12 @@ const RecordScene: React.FC = () => {
 // ── 9. CTA ───────────────────────────────────────────────────
 const CtaScene: React.FC = () => {
 	const frame = useCurrentFrame();
-	const logo = useIn(70, 12);
+	const logo = useIn(166, 12);
 	return (
 		<AbsoluteFill style={{padding: '420px 80px 0', display: 'flex', flexDirection: 'column', gap: 40}}>
-			<Words text="30 FPS te incomoda" size={88} />
-			<Words text="ou a Rockstar compensa no resto?" delay={14} size={88} color={C.pink} />
-			<Words text="Comenta aqui embaixo ↓" delay={34} size={52} color={C.dim} />
+			<Words text="30 FPS te incomoda" delay={14} size={88} />
+			<Words text="ou a Rockstar compensa no resto?" delay={66} size={88} color={C.pink} />
+			<Words text="Comenta aqui embaixo ↓" delay={130} size={52} color={C.dim} />
 			<div style={{marginTop: 'auto', marginBottom: 330, textAlign: 'center', opacity: logo, transform: `scale(${0.8 + logo * 0.2})`}}>
 				<div style={{fontFamily: display, fontSize: 140, color: C.white, letterSpacing: 4}}>
 					ZONE<span style={{color: C.pink}}>GTA6</span>
@@ -310,7 +334,7 @@ const CtaScene: React.FC = () => {
 				<div style={{fontFamily: mono, fontSize: 32, color: C.cyan, letterSpacing: 8}}>
 					INVESTIGAR · DESCOBRIR · REVELAR
 				</div>
-				<div style={{fontFamily: mono, fontSize: 22, color: C.dim, marginTop: 30, opacity: interpolate(frame, [90, 100], [0, 1], clamp)}}>
+				<div style={{fontFamily: mono, fontSize: 22, color: C.dim, marginTop: 30, opacity: interpolate(frame, [200, 210], [0, 1], clamp)}}>
 					Fontes: Rockstar Newswire · Xbox Wire · Take-Two · imprensa especializada
 				</div>
 			</div>
@@ -352,26 +376,27 @@ const accentAt = (f: number) => {
 
 // ── SOUND DESIGN ─────────────────────────────────────────────
 // Todos os efeitos foram sintetizados com ffmpeg (sem direitos de terceiros).
-const sfx: Array<[number, string, number]> = [
-	[0, 'impact', 1],
-	[0, 'glitch', 0.6],
-	[105, 'whoosh', 0.7],
-	[125, 'tick', 0.5],
-	[165, 'riser', 0.6],
-	[225, 'subdrop', 1],
-	[247, 'impact', 0.9],
-	[345, 'glitch', 0.5],
-	[435, 'whoosh', 0.7],
-	[459, 'tick', 0.5],
-	[479, 'tick', 0.5],
-	[585, 'whoosh', 0.6],
-	[641, 'impact', 0.6],
-	[705, 'whoosh', 0.7],
-	[855, 'whoosh', 0.7],
-	[1005, 'subdrop', 0.8],
-	[1011, 'impact', 0.7],
-	[1110, 'whoosh', 0.6],
-	[1180, 'impact', 0.7],
+const sfx: Array<[Block, number, string, number]> = [
+	['hook', 0, 'impact', 1],
+	['hook', 0, 'glitch', 0.6],
+	['date', 0, 'whoosh', 0.7],
+	['date', 36, 'tick', 0.5],
+	['date', 100, 'riser', 0.55],
+	['fps', 0, 'subdrop', 1],
+	['fps', 10, 'impact', 0.9],
+	['fps', 236, 'glitch', 0.5],
+	['pro', 0, 'whoosh', 0.7],
+	['pro', 74, 'tick', 0.5],
+	['pro', 128, 'tick', 0.5],
+	['rumor', 0, 'whoosh', 0.6],
+	['rumor', 182, 'impact', 0.6],
+	['size', 0, 'whoosh', 0.7],
+	['cloud', 0, 'whoosh', 0.7],
+	['cloud', 90, 'tick', 0.5],
+	['record', 0, 'subdrop', 0.8],
+	['record', 6, 'impact', 0.7],
+	['cta', 0, 'whoosh', 0.6],
+	['cta', 166, 'impact', 0.7],
 ];
 
 export const Short: React.FC = () => {
@@ -389,10 +414,18 @@ export const Short: React.FC = () => {
 			<S k="record"><RecordScene /></S>
 			<S k="cta"><CtaScene /></S>
 			<Hud />
-			{/* Trilha: drone original. Volume baixo para deixar espaço à narração (ducking fixo). */}
-			<Html5Audio src={staticFile('sfx/drone.mp3')} volume={0.35} />
-			{sfx.map(([at, name, vol], i) => (
-				<Sequence key={i} from={at} durationInFrames={90} name={`sfx-${name}`}>
+			{/* Trilha: drone original, abaixada sob a narração (ducking) e solta no fim. */}
+			<Html5Audio
+				src={staticFile('sfx/drone.mp3')}
+				volume={(f) => interpolate(f, [0, 6, T.cta[1] - 40, T.cta[1] - 25, T.cta[1]], [0.4, 0.16, 0.16, 0.4, 0], clamp)}
+			/>
+			{vo.map(([k, file, offset]) => (
+				<Sequence key={file} from={T[k][0] + offset} durationInFrames={T[k][1] - T[k][0] - offset} name={`vo-${file}`}>
+					<Html5Audio src={staticFile(`vo/${file}.wav`)} volume={1} />
+				</Sequence>
+			))}
+			{sfx.map(([k, offset, name, vol], i) => (
+				<Sequence key={i} from={T[k][0] + offset} durationInFrames={90} name={`sfx-${name}`}>
 					<Html5Audio src={staticFile(`sfx/${name}.wav`)} volume={vol} />
 				</Sequence>
 			))}

@@ -19,7 +19,11 @@ npm run render:short  # exporta out/zonegta6-contagem-final.mp4
 | Festival em Miami (21/11) e álbum oficial | 8 | 6 | 6 | 7 | 6 | Agregadores | 62 |
 | Possível modo 40 FPS (datamine) | 9 | 9 | 9 | 6 | 8 | Rumor | entra como **bloco RUMOR**, não como pauta |
 
-## Roteiro (PT-BR, pronto para narração, cerca de 42 s)
+## Narração
+
+Os arquivos ficam em `public/vo/`, um por bloco. A voz foi gerada com o [Piper](https://github.com/OHF-Voice/piper1-gpl), voz `pt_BR-faber-medium`, treinada com um dataset CC0. Recebeu limpeza de silêncios, compressão e EQ de presença. A pronúncia foi conferida transcrevendo cada trecho com o Whisper. As grafias fonéticas ("Gê tê á seis", "São trinta…") evitam que "trinta" seja ouvido como "quarenta". O ElevenLabs não pôde ser usado porque a cota gratuita do mês acabou. Para trocar a voz, basta substituir os .wav e ajustar `blocks` em `src/Short.tsx`.
+
+## Roteiro (PT-BR, cerca de 58 s com a narração)
 
 | Tempo | Bloco | Narração / texto na tela | Status |
 |---|---|---|---|
