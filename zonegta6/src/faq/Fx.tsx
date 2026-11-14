@@ -1,5 +1,5 @@
 import React from 'react';
-import {AbsoluteFill, interpolate, random, spring, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Img, interpolate, random, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {body, C, display, mono} from '../theme';
 
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
@@ -383,3 +383,46 @@ export const Infographic: React.FC<{id: string; a: number; accent: string}> = ({
 	}
 	return null;
 };
+
+// ── Logo do canal (public/logo-zonegta6.jpg) ─────────────────
+export const LOGO = 'logo-zonegta6.jpg';
+
+// Encerramento: a logo entra girando, recortada em círculo, com anel de neon,
+// onda de choque e um brilho que atravessa a imagem.
+export const ChannelLogo: React.FC<{at: number; size: number}> = ({at, size}) => {
+	const frame = useCurrentFrame();
+	const {fps} = useVideoConfig();
+	const p = spring({frame: frame - at, fps, config: {damping: 11, mass: 0.8}});
+	const wave = interpolate(frame, [at, at + 26], [0, 1], clamp);
+	const sweep = interpolate(frame, [at + 10, at + 40], [-40, 140], clamp);
+	if (frame < at) return <div style={{height: size}} />;
+	return (
+		<div style={{position: 'relative', width: size, height: size, margin: '0 auto'}}>
+			<div style={{position: 'absolute', inset: 0, borderRadius: '50%', border: `6px solid ${C.pink}`, transform: `scale(${1 + wave * 0.9})`, opacity: 1 - wave}} />
+			<div
+				style={{
+					position: 'absolute',
+					inset: 0,
+					borderRadius: '50%',
+					overflow: 'hidden',
+					transform: `scale(${interpolate(p, [0, 1], [0.2, 1])}) rotate(${(1 - p) * -90}deg)`,
+					opacity: Math.min(1, p * 2),
+					boxShadow: `0 0 ${50 + 20 * Math.sin(frame / 5)}px ${C.pink}, 0 0 120px ${C.pink}66`,
+				}}
+			>
+				<Img src={staticFile(LOGO)} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+				<div style={{position: 'absolute', inset: 0, background: `linear-gradient(110deg, transparent ${sweep - 12}%, rgba(255,255,255,0.55) ${sweep}%, transparent ${sweep + 12}%)`, mixBlendMode: 'screen'}} />
+			</div>
+		</div>
+	);
+};
+
+// Marca fixa no topo: logo pequena + nome do canal.
+export const HudBrand: React.FC = () => (
+	<div style={{position: 'absolute', top: 132, left: 80, display: 'flex', alignItems: 'center', gap: 18, fontFamily: display, fontSize: 52, color: C.white, letterSpacing: 2}}>
+		<Img src={staticFile(LOGO)} style={{width: 92, height: 92, borderRadius: '50%', objectFit: 'cover', boxShadow: `0 0 22px ${C.pink}aa`}} />
+		<span>
+			ZONE<span style={{color: C.pink}}>GTA6</span>
+		</span>
+	</div>
+);

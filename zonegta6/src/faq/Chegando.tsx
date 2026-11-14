@@ -3,7 +3,7 @@ import {AbsoluteFill, Html5Audio, Img, interpolate, Sequence, spring, staticFile
 import {Grade, Slideshow} from '../Background';
 import {Backdrop, Flash, Panel, Shake, Tag, Words} from '../components';
 import {C, display, mono} from '../theme';
-import {BeatPulse, KineticTitle, LogoSting, Particles, Transition} from './Fx';
+import {BeatPulse, KineticTitle, ChannelLogo, HudBrand, Particles, Transition} from './Fx';
 import timing from './timing-chegando.json';
 
 // Vídeo 4: "GTA 6 está chegando" (roteiro do canal, narrado pelo Marcio).
@@ -12,9 +12,6 @@ import timing from './timing-chegando.json';
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
 export const CHEGANDO_DURATION = timing.duration;
-
-// Logo do canal no encerramento. null = logo em texto animada.
-const LOGO_FILE: string | null = null;
 
 type B = {id: string; from: number; to: number; q: number; a: number};
 const T = Object.fromEntries(timing.blocks.map((b) => [b.id, b])) as Record<string, B>;
@@ -346,8 +343,8 @@ const Cta: React.FC<{b: B}> = ({b}) => {
 					) : null}
 				</Stage>
 			</Shake>
-			<div style={{position: 'absolute', left: 0, right: 0, bottom: 290, textAlign: 'center', opacity: LOGO_FILE ? logo : 1, transform: LOGO_FILE ? `scale(${0.8 + logo * 0.2})` : undefined}}>
-				{LOGO_FILE ? <Img src={staticFile(LOGO_FILE)} style={{width: 620, maxHeight: 300, objectFit: 'contain'}} /> : <LogoSting at={logoAt} />}
+			<div style={{position: 'absolute', left: 0, right: 0, bottom: 290, textAlign: 'center'}}>
+				<ChannelLogo at={logoAt} size={500} />
 				<div style={{fontFamily: mono, fontSize: 22, color: C.dim, marginTop: 20, opacity: interpolate(frame, [len - 50, len - 38], [0, 1], clamp)}}>
 					Fontes: Rockstar Newswire · post do pré-load da Rockstar
 				</div>
@@ -365,9 +362,7 @@ const Hud: React.FC = () => {
 	const blink = Math.floor(frame / 10) % 2 === 0;
 	return (
 		<AbsoluteFill style={{pointerEvents: 'none'}}>
-			<div style={{position: 'absolute', top: 150, left: 80, fontFamily: display, fontSize: 52, color: C.white, letterSpacing: 2}}>
-				ZONE<span style={{color: C.pink}}>GTA6</span>
-			</div>
+			<HudBrand />
 			<div style={{position: 'absolute', top: 160, right: 80, fontFamily: mono, fontSize: 30, color: C.red, letterSpacing: 3}}>
 				<span style={{opacity: blink ? 1 : 0.2}}>●</span> T-5 DIAS
 			</div>

@@ -4,15 +4,12 @@ import {Grade, Slideshow} from '../Background';
 import {Backdrop, Flash, Panel, Shake, Tag, useIn, Words} from '../components';
 import {C, display, mono} from '../theme';
 import {checklist} from './checklist';
-import {BeatPulse, Check, Infographic, KineticTitle, LogoSting, Particles, Transition} from './Fx';
+import {BeatPulse, Check, Infographic, KineticTitle, ChannelLogo, HudBrand, Particles, Transition} from './Fx';
 import {blocks, FaqBlock} from './data';
 import timingChecklist from './timing-checklist.json';
 import timingPerguntas from './timing-perguntas.json';
 
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
-
-// Logo do canal no encerramento. null = logo em texto.
-const LOGO_FILE: string | null = null;
 
 const accents = [C.pink, C.cyan, C.amber, C.pink, C.cyan, C.amber, C.green, C.cyan, C.pink];
 
@@ -190,8 +187,8 @@ const CtaScene: React.FC<{b: Timed; sources: string; items: Timed[]}> = ({b, sou
 				})}
 			</div>
 			<Words text={b.detail} delay={a + 28} size={46} every={5} />
-			<div style={{position: 'absolute', left: 0, right: 0, bottom: 300, textAlign: 'center', opacity: LOGO_FILE ? logo : 1, transform: LOGO_FILE ? `scale(${0.8 + logo * 0.2})` : undefined}}>
-				{LOGO_FILE ? <Img src={staticFile(LOGO_FILE)} style={{width: 620, maxHeight: 300, objectFit: 'contain'}} /> : <LogoSting at={logoAt} />}
+			<div style={{position: 'absolute', left: 0, right: 0, bottom: 285, textAlign: 'center'}}>
+				<ChannelLogo at={logoAt} size={240} />
 				<div style={{fontFamily: mono, fontSize: 22, color: C.dim, marginTop: 20, opacity: interpolate(frame, [len - 50, len - 38], [0, 1], clamp)}}>
 					{sources}
 				</div>
@@ -206,9 +203,7 @@ const Hud: React.FC<{tag: string; duration: number}> = ({tag, duration}) => {
 	const blink = Math.floor(frame / 10) % 2 === 0; // pisca rápido: urgência
 	return (
 		<AbsoluteFill style={{pointerEvents: 'none'}}>
-			<div style={{position: 'absolute', top: 150, left: 80, fontFamily: display, fontSize: 52, color: C.white, letterSpacing: 2}}>
-				ZONE<span style={{color: C.pink}}>GTA6</span>
-			</div>
+			<HudBrand />
 			<div style={{position: 'absolute', top: 160, right: 80, fontFamily: mono, fontSize: 30, color: C.red, letterSpacing: 3}}>
 				<span style={{opacity: blink ? 1 : 0.2}}>●</span> {tag}
 			</div>
