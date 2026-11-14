@@ -1,9 +1,10 @@
 import React from 'react';
-import {AbsoluteFill, Html5Audio, Img, interpolate, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Html5Audio, Img, interpolate, OffthreadVideo, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Grade, Slideshow} from '../Background';
 import {Backdrop, Flash, Panel, Shake, Tag, Words} from '../components';
 import {C, display, mono} from '../theme';
 import {BeatPulse, KineticTitle, ChannelLogo, HudBrand, Particles, Transition} from './Fx';
+import {Bar3D, Box3D, City3D, Extruded, Floor3D, Scene3D} from './Fx3d';
 import timing from './timing-chegando.json';
 
 // Vídeo 4: "GTA 6 está chegando" (roteiro do canal, narrado pelo Marcio).
@@ -17,15 +18,17 @@ type B = {id: string; from: number; to: number; q: number; a: number};
 const T = Object.fromEntries(timing.blocks.map((b) => [b.id, b])) as Record<string, B>;
 const cue = timing.cues;
 
+// Fundos: só material inédito (regra do canal: nunca repetir imagem ou vídeo).
+// "v/..." são clipes oficiais da Rockstar convertidos para 9:16 (public/media/v, fora do git).
 const media: Record<string, string[]> = {
-	hook: ['launch_trailer.jpg', 'vice_city_01.jpg'],
-	espera: ['jason_and_lucia_05.jpg', 'port_gellhorn_02.jpg', 'vice_city_21.jpg', 'grassrivers_01.jpg'],
-	cinco: ['vice_city_27.jpg'],
-	data: ['pre_load.jpg', 'an_extended_look.jpg', 'vice_city_10.jpg'],
-	mundo: ['vice_city_02.jpg', 'jason_and_lucia_10.jpg', 'vice_city_20.jpg', 'vice_city_13.jpg'],
-	predl: ['vice_city_22.jpg', 'vice_city_17.jpg', 'mount_kalaga_national_park_01.jpg'],
-	era: ['vice_city_26.jpg', 'leonida_keys_01.jpg', 'vice_city_16.jpg'],
-	cta: ['jason_and_lucia_01.jpg', 'jason_and_lucia_09.jpg', 'hero.jpg', 'vice_city_01.jpg'],
+	hook: ['v/capa_vi.mp4', 'v/capa_arte.mp4'],
+	espera: ['jason_duval_02.jpg', 'v/jason.mp4', 'v/lucia.mp4', 'jason_and_lucia_13.jpg', 'v/raul.mp4'],
+	cinco: ['v/boobie.mp4'],
+	data: ['v/dre.mp4', 'leonida_keys_05.jpg', 'jason_duval_11.jpg'],
+	mundo: ['v/skyline1.mp4', 'v/carro1.mp4', 'jason_and_lucia_20.jpg', 'lucia_caminos_13.jpg'],
+	predl: ['jason_duval_19.jpg', 'v/brian.mp4', 'real_dimez_02.jpg'],
+	era: ['jason_and_lucia_16.jpg', 'v/carro2.mp4', 'mount_kalaga_national_park_04.jpg'],
+	cta: ['lucia_caminos_10.jpg', 'v/real.mp4', 'jason_and_lucia_18.jpg', 'ambrosia_01.jpg'],
 };
 const accent: Record<string, string> = {hook: C.red, espera: C.cyan, cinco: C.pink, data: C.cyan, mundo: C.amber, predl: C.green, era: C.pink, cta: C.cyan};
 
@@ -136,21 +139,24 @@ const Espera: React.FC<{b: B}> = ({b}) => {
 	);
 };
 
-// ── 3. Faltam apenas 5 dias ──────────────────────────────────
+// ── 3. Faltam apenas 5 dias: número 3D com volume ────────────
 const Cinco: React.FC<{b: B}> = ({b}) => {
 	const frame = useCurrentFrame();
 	const a = b.a - b.from;
 	const n = Math.round(interpolate(frame, [0, a], [9, 5], clamp));
 	const landed = frame >= a;
 	const p = usePop(a, 8);
+	// Antes: o número gira rápido trocando de valor. Depois: trava de frente e balança.
+	const rotY = landed ? interpolate(p, [0, 1], [-90, 0]) + Math.sin((frame - a) / 12) * 16 : frame * 14;
 	return (
 		<>
 			<Shake at={a} strength={44}>
 				<AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
-					{/* Raios girando atrás do número */}
 					<div style={{position: 'absolute', width: 1500, height: 1500, background: `repeating-conic-gradient(${C.pink}33 0deg 6deg, transparent 6deg 18deg)`, transform: `rotate(${frame * 1.5}deg)`, maskImage: 'radial-gradient(circle, black 15%, transparent 65%)', opacity: landed ? 1 : 0.3}} />
 					<Kicker color={C.white}>FALTAM APENAS</Kicker>
-					<div style={{fontFamily: display, fontSize: 820, lineHeight: 0.85, color: landed ? C.white : C.dim, transform: `scale(${landed ? interpolate(p, [0, 1], [1.6, 1]) : 1})`, textShadow: landed ? `0 0 100px ${C.pink}, 0 0 200px ${C.pink}` : undefined}}>{n}</div>
+					<Scene3D width={1080} height={760} perspective={1200} rotateX={-10} rotateY={rotY}>
+						<Extruded text={String(n)} size={820} depth={34} color={landed ? C.white : C.dim} sideColor={landed ? '#b3185f' : '#3a3a48'} glow={landed ? C.pink : undefined} />
+					</Scene3D>
 					<div style={{fontFamily: display, fontSize: 220, lineHeight: 1, color: C.pink, letterSpacing: 20, opacity: landed ? 1 : 0.2}}>DIAS</div>
 				</AbsoluteFill>
 			</Shake>
@@ -159,28 +165,32 @@ const Cinco: React.FC<{b: B}> = ({b}) => {
 	);
 };
 
-// ── 4. 19 de novembro · PS5 e Xbox Series ────────────────────
+// ── 4. 19 de novembro: calendário 3D + consoles ──────────────
 const Data: React.FC<{b: B}> = ({b}) => {
 	const frame = useCurrentFrame();
 	const q = b.q - b.from;
 	const a = b.a - b.from;
 	const x = cue.xbox - b.from;
+	const turn = usePop(q, 13);
+	const day = Math.round(interpolate(frame, [q, q + 22], [1, 19], clamp));
 	const chip = (text: string, at: number, color: string) => {
 		const p = spring({frame: frame - at, fps: 30, config: {damping: 10, mass: 0.6}});
 		return (
-			<div style={{fontFamily: display, fontSize: 84, color: C.bg, background: color, padding: '10px 30px', transform: `scale(${p}) rotate(${(1 - p) * -8}deg)`, opacity: Math.min(1, p * 2), boxShadow: `0 0 50px ${color}88`, alignSelf: 'flex-start'}}>{text}</div>
+			<div style={{fontFamily: display, fontSize: 84, color: C.bg, background: color, padding: '10px 30px', transform: `perspective(900px) rotateX(${(1 - p) * 80}deg) scale(${0.6 + p * 0.4})`, transformOrigin: 'top', opacity: Math.min(1, p * 2), boxShadow: `0 0 50px ${color}88`, alignSelf: 'flex-start'}}>{text}</div>
 		);
 	};
 	return (
-		<Stage top={390}>
+		<Stage top={370} gap={24}>
 			<Kicker color={C.cyan}>DATA DE LANÇAMENTO</Kicker>
-			<Panel accent={C.cyan} delay={q}>
-				<div style={{display: 'flex', alignItems: 'baseline', gap: 30}}>
-					<div style={{fontFamily: display, fontSize: 330, color: C.white, lineHeight: 0.9}}>{Math.round(interpolate(frame, [q, q + 22], [1, 19], clamp))}</div>
-					<div style={{fontFamily: display, fontSize: 170, color: C.cyan, lineHeight: 0.9}}>NOV</div>
-				</div>
-				<div style={{fontFamily: mono, fontSize: 40, color: C.dim, marginTop: 16, letterSpacing: 6}}>2026 · GRAND THEFT AUTO VI</div>
-			</Panel>
+			<Scene3D width={920} height={520} perspective={1300} rotateX={8} rotateY={interpolate(turn, [0, 1], [170, -16]) + Math.sin(frame / 22) * 7}>
+				<Box3D w={700} h={460} d={90} front={{background: C.white, boxShadow: `0 0 80px ${C.cyan}88`}} side={{background: '#9a9ab0'}} top={{background: C.red}}>
+					<div style={{height: 96, background: C.red, color: C.white, fontFamily: mono, fontWeight: 700, fontSize: 44, letterSpacing: 8, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>NOVEMBRO 2026</div>
+					<div style={{display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 24}}>
+						<div style={{fontFamily: display, fontSize: 320, lineHeight: 1.05, color: C.bg}}>{day}</div>
+						<div style={{fontFamily: display, fontSize: 90, color: C.red}}>QUI</div>
+					</div>
+				</Box3D>
+			</Scene3D>
 			<Words text="GTA 6 finalmente chega ao" delay={q + 55} size={56} every={6} color={C.dim} />
 			{chip('PLAYSTATION 5', a, C.white)}
 			{chip('XBOX SERIES X|S', x, C.green)}
@@ -196,9 +206,9 @@ const Mundo: React.FC<{b: B}> = ({b}) => {
 	const frame = useCurrentFrame();
 	const q = b.q - b.from;
 	const cards: Array<[string, string, string, number, string]> = [
-		['EXPLORAR', 'VICE CITY', 'vice_city_01.jpg', b.a - b.from - 8, C.pink],
-		['A HISTÓRIA DE', 'JASON E LUCIA', 'jason_and_lucia_01.jpg', cue.jason - b.from - 4, C.cyan],
-		['TUDO O QUE A', 'ROCKSTAR PREPAROU', 'jason_and_lucia_08.jpg', cue.rockstar - b.from - 4, C.amber],
+		['EXPLORAR', 'VICE CITY', 'v/skyline2.mp4', b.a - b.from - 8, C.pink],
+		['A HISTÓRIA DE', 'JASON E LUCIA', 'jason_and_lucia_15.jpg', cue.jason - b.from - 4, C.cyan],
+		['TUDO O QUE A', 'ROCKSTAR PREPAROU', 'jason_duval_16.jpg', cue.rockstar - b.from - 4, C.amber],
 	];
 	return (
 		<Stage top={370} gap={22}>
@@ -208,8 +218,14 @@ const Mundo: React.FC<{b: B}> = ({b}) => {
 				const p = spring({frame: frame - at, fps: 30, config: {damping: 12, mass: 0.7}});
 				const zoom = interpolate(frame, [at, at + 200], [1.25, 1.05], clamp);
 				return (
-					<div key={file} style={{position: 'relative', height: 300, overflow: 'hidden', border: `3px solid ${color}`, boxShadow: `0 0 40px ${color}66`, opacity: Math.min(1, p * 2), transform: `translateX(${(1 - p) * (i % 2 ? -700 : 700)}px) rotate(${(1 - p) * (i % 2 ? -6 : 6)}deg)`}}>
-						<Img src={staticFile(`media/${file}`)} style={{width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${zoom})`}} />
+					<div key={file} style={{position: 'relative', height: 300, overflow: 'hidden', border: `3px solid ${color}`, boxShadow: `0 0 40px ${color}66`, opacity: Math.min(1, p * 2), transform: `perspective(1100px) translateX(${(1 - p) * (i % 2 ? -700 : 700)}px) rotateY(${(1 - p) * (i % 2 ? 75 : -75) + (i % 2 ? 9 : -9) + Math.sin(frame / 25 + i) * 4}deg)`}}>
+						{file.endsWith('.mp4') ? (
+							<Sequence from={Math.max(0, at)} layout="none">
+								<OffthreadVideo src={staticFile(`media/${file}`)} muted style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+							</Sequence>
+						) : (
+							<Img src={staticFile(`media/${file}`)} style={{width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${zoom})`}} />
+						)}
 						<div style={{position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(6,6,12,0.92) 0%, rgba(6,6,12,0.45) 55%, transparent 100%)'}} />
 						<div style={{position: 'absolute', left: 30, bottom: 24}}>
 							<div style={{fontFamily: mono, fontSize: 28, color, letterSpacing: 5}}>{small}</div>
@@ -258,17 +274,21 @@ const Predl: React.FC<{b: B}> = ({b}) => {
 							))}
 						</div>
 					</div>
-					<div style={{opacity: interpolate(frame, [a + 34, a + 44], [0, 1], clamp)}}>
-						<div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'baseline'}}>
-							<Kicker color={hypeColor}>EXPECTATIVA</Kicker>
-							<div style={{fontFamily: mono, fontSize: 30, color: C.dim}}>MÁX ▼</div>
-						</div>
-						<div style={{position: 'relative', height: 70, background: 'rgba(255,255,255,0.1)', marginTop: 12, marginRight: 150}}>
-							<div style={{height: '100%', width: `${hype * 100}%`, background: `linear-gradient(90deg, ${C.green}, ${C.amber}, ${C.red})`, boxShadow: `0 0 40px ${hypeColor}`}} />
-							<div style={{position: 'absolute', right: 0, top: -10, bottom: -10, width: 4, background: C.white}} />
-						</div>
-						<div style={{marginTop: 20}}>
-							<Slam text="ABSURDA!" at={ab} size={210} color={C.red} rotate={-3} />
+					<div style={{position: 'relative'}}>
+						<Kicker color={hypeColor}>EXPECTATIVA</Kicker>
+						{frame >= a + 30 ? (
+							<Scene3D width={920} height={420} perspective={1100} rotateX={-16} rotateY={-32 + frame * 0.35}>
+								<Floor3D size={900} y={190} color={hypeColor} />
+								<Bar3D w={190} h={hype * 290} ground={190} color={hypeColor} />
+								{/* Plano do "máximo": a coluna atravessa quando a expectativa estoura. */}
+								<div style={{position: 'absolute', width: 460, height: 460, left: -230, top: -230, transform: 'translateY(-100px) rotateX(90deg)', border: `4px solid ${C.white}`, background: 'rgba(255,255,255,0.14)'}} />
+								<div style={{position: 'absolute', transform: 'translate3d(250px, -130px, 0)', fontFamily: mono, fontSize: 34, color: C.white, whiteSpace: 'nowrap'}}>◀ MÁX</div>
+							</Scene3D>
+						) : (
+							<div style={{height: 420}} />
+						)}
+						<div style={{position: 'absolute', left: 0, bottom: -10}}>
+							<Slam text="ABSURDA!" at={ab} size={200} color={C.red} rotate={-3} />
 						</div>
 					</div>
 				</Stage>
@@ -278,35 +298,39 @@ const Predl: React.FC<{b: B}> = ({b}) => {
 	);
 };
 
-// ── 7. Uma nova era de Grand Theft Auto ──────────────────────
+// ── 7. Uma nova era: cenário 3D de cidade neon ───────────────
 const Era: React.FC<{b: B}> = ({b}) => {
 	const frame = useCurrentFrame();
 	const q = b.q - b.from;
 	const a = b.a - b.from;
 	const p = usePop(a, 9);
-	const sweep = interpolate(frame, [a + 4, a + 40], [-30, 130], clamp);
+	const landed = frame >= a;
+	const line = (text: string, y: number, color: string, side: string) => (
+		<div style={{transformStyle: 'preserve-3d', position: 'absolute', transform: `translate3d(0, ${y}px, 60px) scale(${interpolate(p, [0, 1], [2.4, 1])})`}}>
+			<Extruded text={text} size={330} depth={30} color={color} sideColor={side} glow={C.pink} />
+		</div>
+	);
 	return (
 		<>
 			<Shake at={a} strength={40}>
-				<AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', flexDirection: 'column', gap: 20, padding: '0 70px', textAlign: 'center'}}>
-					<div style={{position: 'absolute', width: 1700, height: 1700, background: `repeating-conic-gradient(${C.amber}2a 0deg 4deg, transparent 4deg 14deg)`, transform: `rotate(${frame * 0.8}deg)`, maskImage: 'radial-gradient(circle, black 10%, transparent 60%)', opacity: frame >= a ? 1 : 0}} />
-					<div style={{opacity: interpolate(frame, [a - 5, a], [1, 0.0], clamp), position: 'absolute', top: 700, left: 70, right: 70}}>
+				<AbsoluteFill>
+					{/* Câmera avançando pela avenida; ela vira de leve para os lados. */}
+					<Scene3D width={1080} height={1920} perspective={850} rotateX={-5} rotateY={Math.sin(frame / 45) * 9} z={0}>
+						<City3D frame={frame} ground={520} />
+						{landed ? line('NOVA', -230, C.white, '#b3185f') : null}
+						{landed ? line('ERA', 80, C.pink, '#5a0c30') : null}
+					</Scene3D>
+				</AbsoluteFill>
+				<AbsoluteFill style={{padding: '400px 70px 0'}}>
+					<div style={{opacity: interpolate(frame, [a - 5, a], [1, 0], clamp)}}>
 						<KineticTitle text="Foram anos esperando" delay={q} size={120} />
 						<div style={{marginTop: 20}}>
-							<Words text="e agora estamos a poucos dias de viver" delay={q + 62} size={60} every={7} color={C.dim} />
+							<Words text="e agora estamos a poucos dias de viver" delay={q + 62} size={60} every={7} color={C.white} />
 						</div>
 					</div>
-					{frame >= a ? (
-						<>
-							<Kicker color={C.amber}>UMA</Kicker>
-							<div style={{fontFamily: display, fontSize: 330, lineHeight: 0.88, transform: `scale(${interpolate(p, [0, 1], [2.6, 1])})`, backgroundImage: `linear-gradient(100deg, ${C.pink} ${sweep - 40}%, ${C.white} ${sweep}%, ${C.amber} ${sweep + 40}%)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', filter: `drop-shadow(0 0 50px ${C.pink})`}}>
-								NOVA
-								<br />
-								ERA
-							</div>
-							<div style={{fontFamily: display, fontSize: 96, color: C.white, letterSpacing: 6, opacity: interpolate(frame, [a + 14, a + 24], [0, 1], clamp)}}>DE GRAND THEFT AUTO</div>
-						</>
-					) : null}
+				</AbsoluteFill>
+				<AbsoluteFill style={{justifyContent: 'flex-end', alignItems: 'center', paddingBottom: 380}}>
+					<div style={{fontFamily: display, fontSize: 96, color: C.white, letterSpacing: 6, opacity: interpolate(frame, [a + 14, a + 24], [0, 1], clamp), textShadow: '0 0 30px rgba(0,0,0,0.9)'}}>DE GRAND THEFT AUTO</div>
 				</AbsoluteFill>
 			</Shake>
 			<Flash at={a} />

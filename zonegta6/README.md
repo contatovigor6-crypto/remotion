@@ -119,3 +119,10 @@ Checklist de 7 passos, narrado pelo Marcio (`public/vo/checklist-marcio.mp3`). U
 # Vídeo 4: GTA 6 está chegando (`ZoneGTA6-Chegando`)
 
 Roteiro do canal, narrado pelo Marcio (`public/vo/chegando-marcio.mp3`; a palavra "Roteiro", lida por engano no começo, foi cortada). As cenas ficam em `src/faq/Chegando.tsx`, uma por trecho da fala, e os tempos e marcas de palavras em `src/faq/timing-chegando.json` (`scripts/faq_timing.py <audio> chegando`). A trilha `trilha-urgencia-chegando.mp3` foi gerada a partir desses tempos, e o plano de som usa os efeitos de `public/sfx/v2/`, com no máximo 2 usos de cada.
+
+## Regras de edição do canal (a partir do vídeo 4)
+
+- **Logo:** `public/logo-zonegta6.jpg` entra no encerramento (`ChannelLogo`) e no canto superior (`HudBrand`), ambos em `src/faq/Fx.tsx`.
+- **Nunca repetir fundo:** `python scripts/check_media.py src/faq/<Video>.tsx` falha se o vídeo repetir uma mídia ou usar alguma que outro vídeo já usou.
+- **Vídeos de fundo:** clipes oficiais do pacote de downloads da Rockstar (`GTAVI_Videos.zip`) e do site de GTA VI, convertidos para 9:16 em `public/media/v/` (fora do git, como as imagens).
+- **3D:** `src/faq/Fx3d.tsx` tem palco com câmera, caixas, texto com volume, chão em grade, cidade de neon e coluna de gráfico. É 3D feito com transformações do navegador, sem GPU.
