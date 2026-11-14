@@ -100,8 +100,12 @@ Pesquisado em 14/11/2026. O conteúdo fica em `src/faq/data.ts` (pergunta, respo
 **Fluxo para trocar a narração** (por exemplo, pela voz do Marcio):
 
 1. Salve o áudio em `public/vo/` (um único arquivo com o roteiro inteiro).
-2. `python scripts/faq_timing.py public/vo/<arquivo>`: transcreve, encontra o começo de cada pergunta e de cada resposta e grava `src/faq/timing.json`.
-3. `python scripts/music_urgencia.py src/faq/timing.json public/music/trilha-urgencia.wav` e depois converta para mp3: os impactos da trilha seguem as perguntas.
+2. `python scripts/faq_timing.py public/vo/<arquivo> perguntas`: transcreve, encontra o começo de cada pergunta e de cada resposta e grava `src/faq/timing-perguntas.json`.
+3. `python scripts/music_urgencia.py src/faq/timing-perguntas.json public/music/trilha-urgencia.wav` e depois converta para mp3: os impactos da trilha seguem as perguntas.
 4. `npx remotion render ZoneGTA6-Perguntas out/perguntas.mp4`
 
 A trilha "urgência" é original: 140 BPM em Fá# menor, com relógio, alarme em dois tons, baixo distorcido, bateria de pista e um impacto a cada pergunta.
+
+# Vídeo 3: Faça isso antes de jogar GTA 6 (`ZoneGTA6-Checklist`)
+
+Checklist de 7 passos, narrado pelo Marcio (`public/vo/checklist-marcio.mp3`). Usa a mesma cena do vídeo 2 (`src/faq/Faq.tsx`), com o conteúdo em `src/faq/checklist.ts` e os tempos em `src/faq/timing-checklist.json` (gerados com `scripts/faq_timing.py <audio> checklist`). A trilha `trilha-urgencia-checklist.mp3` foi gerada com `scripts/music_urgencia.py` a partir desses tempos, com um impacto em cada passo.

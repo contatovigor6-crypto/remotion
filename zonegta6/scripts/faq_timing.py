@@ -1,6 +1,6 @@
 """Gera src/faq/timing.json a partir de QUALQUER gravação da narração do vídeo de perguntas.
 
-Uso: python scripts/faq_timing.py public/vo/<narracao>.(wav|mp3) [arquivo usado no vídeo]
+Uso: python scripts/faq_timing.py public/vo/<narracao>.(wav|mp3) <perguntas|checklist>
 
 Transcreve com Whisper (timestamps por palavra), encontra o início de cada pergunta e de
 cada resposta pelas âncoras abaixo e grava os frames. Assim, trocar o narrador é só rodar
@@ -21,7 +21,8 @@ VO_START = 4  # frame em que a narração entra no vídeo
 LEAD = 6  # cada bloco começa 6 frames antes da primeira palavra
 
 # (id, âncora da pergunta, âncora da resposta). As âncoras são as primeiras palavras.
-BLOCKS = [
+SETS = {}
+SETS["perguntas"] = [
     ("hook", "faltam", "estas"),
     ("hora", "que horas", "a rockstar"),
     ("preco", "quanto custa", None),
@@ -32,6 +33,17 @@ BLOCKS = [
     ("download", "ja da", "sim"),
     ("cta", "qual duvida", "comenta"),
 ]
+SETS["checklist"] = [
+    ("hook", "se voce", "faz isso"),
+    ("espaco", "primeiro", "o download|download passa@-1"),
+    ("predownload", "segundo", "quem comprou"),
+    ("bonus", "terceiro", "assim voce|assim"),
+    ("horario", "quarto", "a rockstar"),
+    ("fps", "quinto", "o jogo roda|jogo roda@-1"),
+    ("legendas", "sexto", "o audio|audio e@-1"),
+    ("xboxone", "setimo", "da para|da pra"),
+    ("cta", "e ai", "comenta"),
+]
 
 
 def norm(w):
@@ -40,7 +52,8 @@ def norm(w):
     return re.sub(r"[^a-z0-9]", "", w)
 
 
-audio, video_file = sys.argv[1], (sys.argv[2] if len(sys.argv) > 2 else None)
+audio, set_name = sys.argv[1], sys.argv[2]
+BLOCKS = SETS[set_name]
 pcm = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", audio, "-ac", "1", "-ar", "16000", "-f", "f32le", "-"], capture_output=True).stdout
 model = WhisperModel("small", device="cpu", compute_type="int8")
 segs, _ = model.transcribe(np.frombuffer(pcm, np.float32), language="pt", word_timestamps=True, beam_size=5)
@@ -92,14 +105,14 @@ for i, b in enumerate(out):
     b["to"] = starts[i + 1] if i + 1 < len(out) else end
 
 timing = {
-    "file": video_file or os.path.relpath(audio, "public"),
+    "file": os.path.relpath(audio, "public"),
     "voStart": VO_START,
     "duration": end,
     "blocks": out,
     "voiceActivity": voice,
 }
 os.makedirs("src/faq", exist_ok=True)
-json.dump(timing, open("src/faq/timing.json", "w"), indent=1)
+json.dump(timing, open(f"src/faq/timing-{set_name}.json", "w"), indent=1)
 for b in out:
     print(f"{b['id']:12s} bloco {b['from']:5d}-{b['to']:5d}  pergunta@{b['q']}  resposta@{b['a']}")
 print("duração:", end, "frames =", round(end / FPS, 2), "s")

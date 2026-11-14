@@ -1,6 +1,6 @@
 """Trilha original "urgência" para o vídeo de perguntas, 100% sintetizada.
 
-Uso: python scripts/music_urgencia.py src/faq/timing.json public/music/trilha-urgencia.wav
+Uso: python scripts/music_urgencia.py src/faq/timing-<video>.json public/music/<saida>.wav
 
 140 BPM em Fá# menor. Relógio, alarme em dois tons, baixo distorcido em semicolcheias,
 bateria de pista e um impacto a cada nova pergunta (lido de timing.json). Ou seja: se a
@@ -20,8 +20,8 @@ DUR = timing["duration"] / FPS
 qs = [b["q"] / FPS for b in timing["blocks"]]
 ids = [b["id"] for b in timing["blocks"]]
 T_FIRST_Q = qs[1]  # primeira pergunta: a bateria entra aqui
-T_LAYER = qs[ids.index("plataformas")]  # segunda metade: entra uma camada a mais
-T_CTA = qs[ids.index("cta")]
+T_LAYER = qs[len(qs) // 2]  # segunda metade: entra uma camada a mais
+T_CTA = qs[-1]
 
 BPM = 140
 BEAT = 60 / BPM

@@ -1,7 +1,7 @@
 import {Status} from '../theme';
 
 // Conteúdo do vídeo "7 perguntas sobre GTA 6" (pesquisado em 14/11/2026).
-// Os tempos de cada bloco ficam em timing.json, gerado por scripts/faq_timing.py.
+// Os tempos de cada bloco ficam em timing-perguntas.json, gerado por scripts/faq_timing.py.
 export type FaqBlock = {
 	id: string;
 	question: string; // pergunta na tela
@@ -15,8 +15,8 @@ export type FaqBlock = {
 export const blocks: FaqBlock[] = [
 	{
 		id: 'hook',
-		question: 'Faltam 5 dias',
-		answer: '7 perguntas',
+		question: 'FALTAM|5 DIAS',
+		answer: '7 PERGUNTAS',
 		detail: 'que todo mundo está fazendo, com resposta.',
 		status: null,
 		source: '',

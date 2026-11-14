@@ -1,6 +1,6 @@
 import React from 'react';
 import {Composition} from 'remotion';
-import {Faq, FAQ_DURATION} from './faq/Faq';
+import {Faq, videos} from './faq/Faq';
 import {DURATION, Short} from './Short';
 import {FPS} from './theme';
 
@@ -26,12 +26,21 @@ export const Root: React.FC = () => (
 				height={1920}
 			/>
 		))}
-		{/* Vídeo 2: 7 perguntas sobre GTA 6 (tempos em src/faq/timing.json). */}
+		{/* Vídeos em lista: tempos em src/faq/timing-<id>.json. */}
 		<Composition
 			id="ZoneGTA6-Perguntas"
 			component={Faq}
-			defaultProps={{music: 'trilha-urgencia.mp3'}}
-			durationInFrames={FAQ_DURATION}
+			defaultProps={{music: 'trilha-urgencia.mp3', video: 'perguntas' as const}}
+			durationInFrames={videos.perguntas.timing.duration}
+			fps={FPS}
+			width={1080}
+			height={1920}
+		/>
+		<Composition
+			id="ZoneGTA6-Checklist"
+			component={Faq}
+			defaultProps={{music: 'trilha-urgencia-checklist.mp3', video: 'checklist' as const}}
+			durationInFrames={videos.checklist.timing.duration}
 			fps={FPS}
 			width={1080}
 			height={1920}
