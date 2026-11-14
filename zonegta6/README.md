@@ -109,3 +109,9 @@ A trilha "urgência" é original: 140 BPM em Fá# menor, com relógio, alarme em
 # Vídeo 3: Faça isso antes de jogar GTA 6 (`ZoneGTA6-Checklist`)
 
 Checklist de 7 passos, narrado pelo Marcio (`public/vo/checklist-marcio.mp3`). Usa a mesma cena do vídeo 2 (`src/faq/Faq.tsx`), com o conteúdo em `src/faq/checklist.ts` e os tempos em `src/faq/timing-checklist.json` (gerados com `scripts/faq_timing.py <audio> checklist`). A trilha `trilha-urgencia-checklist.mp3` foi gerada com `scripts/music_urgencia.py` a partir desses tempos, com um impacto em cada passo.
+
+## Edição v2 dos vídeos em lista
+
+- **Efeitos sonoros:** `scripts/sfx.py` gera 44 sons originais em `public/sfx/v2/`. O plano de som fica em `buildSfx` (`src/faq/Faq.tsx`) e é validado: se algum efeito tocar mais de 2 vezes no mesmo vídeo, o render falha.
+- **Visual** (`src/faq/Fx.tsx`): transições em faixas ou flash entre blocos, partículas de neon, pulso de luz no tempo da música, título cinético, infográfico animado por passo, selo de "feito" e recapitulação no encerramento.
+- **Logo:** defina `LOGO_FILE` em `src/faq/Faq.tsx` (arquivo em `public/`). Enquanto for `null`, entra a logo em texto animada.
