@@ -115,3 +115,7 @@ Checklist de 7 passos, narrado pelo Marcio (`public/vo/checklist-marcio.mp3`). U
 - **Efeitos sonoros:** `scripts/sfx.py` gera 44 sons originais em `public/sfx/v2/`. O plano de som fica em `buildSfx` (`src/faq/Faq.tsx`) e é validado: se algum efeito tocar mais de 2 vezes no mesmo vídeo, o render falha.
 - **Visual** (`src/faq/Fx.tsx`): transições em faixas ou flash entre blocos, partículas de neon, pulso de luz no tempo da música, título cinético, infográfico animado por passo, selo de "feito" e recapitulação no encerramento.
 - **Logo:** defina `LOGO_FILE` em `src/faq/Faq.tsx` (arquivo em `public/`). Enquanto for `null`, entra a logo em texto animada.
+
+# Vídeo 4: GTA 6 está chegando (`ZoneGTA6-Chegando`)
+
+Roteiro do canal, narrado pelo Marcio (`public/vo/chegando-marcio.mp3`; a palavra "Roteiro", lida por engano no começo, foi cortada). As cenas ficam em `src/faq/Chegando.tsx`, uma por trecho da fala, e os tempos e marcas de palavras em `src/faq/timing-chegando.json` (`scripts/faq_timing.py <audio> chegando`). A trilha `trilha-urgencia-chegando.mp3` foi gerada a partir desses tempos, e o plano de som usa os efeitos de `public/sfx/v2/`, com no máximo 2 usos de cada.

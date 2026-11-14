@@ -52,6 +52,31 @@ def norm(w):
     return re.sub(r"[^a-z0-9]", "", w)
 
 
+SETS["chegando"] = [
+    ("hook", "gta 6 esta|gta seis esta|gta", "pare tudo|pare"),
+    ("espera", "depois de", "finalmente estamos|finalmente"),
+    ("cinco", "faltam apenas|faltam", "5 dias|cinco dias|dias@-1"),
+    ("data", "no dia 19|no dia dezenove|no dia", "playstation"),
+    ("mundo", "que parece|parece ate", "vice city"),
+    ("predl", "o pre", "a contagem|contagem regressiva@-1"),
+    ("era", "foram anos", "nova era"),
+    ("cta", "e voce", "a espera"),
+]
+# Marcas extras dentro de um bloco: (bloco, nome, âncora). Viram timing["cues"].
+CUES = {
+    "chegando": [
+        ("espera", "trailers", "trailers"),
+        ("espera", "teorias", "teorias"),
+        ("espera", "espec", "especulacoes"),
+        ("data", "xbox", "xbox"),
+        ("mundo", "jason", "jason"),
+        ("mundo", "rockstar", "rockstar"),
+        ("predl", "absurda", "absurda"),
+        ("cta", "preparado", "preparado"),
+        ("cta", "certa", "uma coisa|coisa"),
+    ]
+}
+TAIL = {"chegando": 105}  # frames depois da última palavra (espaço para a logo)
 audio, set_name = sys.argv[1], sys.argv[2]
 BLOCKS = SETS[set_name]
 pcm = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", audio, "-ac", "1", "-ar", "16000", "-f", "f32le", "-"], capture_output=True).stdout
@@ -79,6 +104,7 @@ def frame(t):
 
 
 out = []
+qidx = {}
 cursor = 0
 for bid, qa, aa in BLOCKS:
     qi = find(qa, cursor)
@@ -86,6 +112,7 @@ for bid, qa, aa in BLOCKS:
         ai = find(aa, qi + 1)
     else:  # resposta = primeira palavra depois do "?" da pergunta
         ai = next(i + 1 for i in range(qi, len(words)) if words[i][0].endswith("?"))
+    qidx[bid] = qi
     out.append({"id": bid, "q": frame(words[qi][1]), "a": frame(words[ai][1])})
     cursor = ai
 
@@ -99,7 +126,8 @@ for _, s, e in words:
 
 starts = [b["q"] - LEAD for b in out]
 starts[0] = 0
-end = frame(words[-1][2]) + 45
+end = frame(words[-1][2]) + TAIL.get(set_name, 45)
+cues = {name: frame(words[find(anchor, qidx[bid])][1]) for bid, name, anchor in CUES.get(set_name, [])}
 for i, b in enumerate(out):
     b["from"] = starts[i]
     b["to"] = starts[i + 1] if i + 1 < len(out) else end
@@ -109,6 +137,7 @@ timing = {
     "voStart": VO_START,
     "duration": end,
     "blocks": out,
+    "cues": cues,
     "voiceActivity": voice,
 }
 os.makedirs("src/faq", exist_ok=True)

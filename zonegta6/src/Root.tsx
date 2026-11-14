@@ -1,5 +1,6 @@
 import React from 'react';
 import {Composition} from 'remotion';
+import {Chegando, CHEGANDO_DURATION} from './faq/Chegando';
 import {Faq, videos} from './faq/Faq';
 import {DURATION, Short} from './Short';
 import {FPS} from './theme';
@@ -41,6 +42,15 @@ export const Root: React.FC = () => (
 			component={Faq}
 			defaultProps={{music: 'trilha-urgencia-checklist.mp3', video: 'checklist' as const}}
 			durationInFrames={videos.checklist.timing.duration}
+			fps={FPS}
+			width={1080}
+			height={1920}
+		/>
+		<Composition
+			id="ZoneGTA6-Chegando"
+			component={Chegando}
+			defaultProps={{music: 'trilha-urgencia-chegando.mp3'}}
+			durationInFrames={CHEGANDO_DURATION}
 			fps={FPS}
 			width={1080}
 			height={1920}
