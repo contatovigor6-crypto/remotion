@@ -90,3 +90,18 @@ Cada trilha tem sua própria composição em `src/Root.tsx`, com a mesma ediçã
 | `ZoneGTA6-Short-Synthwave` | Synthwave | `scripts/music.py` |
 
 Exemplo: `npx remotion render ZoneGTA6-Short-Dramatico out/dramatico.mp4`
+
+---
+
+# Vídeo 2: 7 perguntas sobre GTA 6 (`ZoneGTA6-Perguntas`)
+
+Pesquisado em 14/11/2026. O conteúdo fica em `src/faq/data.ts` (pergunta, resposta, status, fonte e imagens) e a cena em `src/faq/Faq.tsx`.
+
+**Fluxo para trocar a narração** (por exemplo, pela voz do Marcio):
+
+1. Salve o áudio em `public/vo/` (um único arquivo com o roteiro inteiro).
+2. `python scripts/faq_timing.py public/vo/<arquivo>`: transcreve, encontra o começo de cada pergunta e de cada resposta e grava `src/faq/timing.json`.
+3. `python scripts/music_urgencia.py src/faq/timing.json public/music/trilha-urgencia.wav` e depois converta para mp3: os impactos da trilha seguem as perguntas.
+4. `npx remotion render ZoneGTA6-Perguntas out/perguntas.mp4`
+
+A trilha "urgência" é original: 140 BPM em Fá# menor, com relógio, alarme em dois tons, baixo distorcido, bateria de pista e um impacto a cada pergunta.

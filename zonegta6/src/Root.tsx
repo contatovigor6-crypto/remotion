@@ -1,5 +1,6 @@
 import React from 'react';
 import {Composition} from 'remotion';
+import {Faq, FAQ_DURATION} from './faq/Faq';
 import {DURATION, Short} from './Short';
 import {FPS} from './theme';
 
@@ -25,5 +26,15 @@ export const Root: React.FC = () => (
 				height={1920}
 			/>
 		))}
+		{/* Vídeo 2: 7 perguntas sobre GTA 6 (tempos em src/faq/timing.json). */}
+		<Composition
+			id="ZoneGTA6-Perguntas"
+			component={Faq}
+			defaultProps={{music: 'trilha-urgencia.mp3'}}
+			durationInFrames={FAQ_DURATION}
+			fps={FPS}
+			width={1080}
+			height={1920}
+		/>
 	</>
 );
