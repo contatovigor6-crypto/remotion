@@ -129,10 +129,12 @@ Roteiro do canal, narrado pelo Marcio (`public/vo/chegando-marcio.mp3`; a palavr
 
 # Vídeo 5: contagem regressiva sem narração (`ZoneGTA6-Edit`)
 
-Fica em `src/edit/Edit.tsx`, no **padrão de edição clássico do canal** (o mesmo dos primeiros vídeos): fundo com troca suave de imagens, painéis, títulos com máscara, texto palavra a palavra e etiqueta de verificação. Estrutura: gancho com os dias que faltam, 8 fatos confirmados (um por compasso da trilha), pergunta e final com a data e a logo. A constante `DAYS` precisa bater com a data de publicação.
+Fica em `src/edit/Edit.tsx`, em **estilo de telejornal**: vinheta de "URGENTE", barra do canal no topo, manchete em terço inferior (faixas que abrem da esquerda), letreiro correndo, enquete e encerramento com a data em cartela e a logo. Estrutura: abertura, 8 manchetes confirmadas (uma por compasso da trilha), enquete e final. A constante `DAYS` precisa bater com a data de publicação.
 
-A trilha `trilha-phonk.mp3` é original, em estilo phonk lento (`scripts/music_phonk.py`), e toca em volume baixo. `ZoneGTA6-Edit-SemMusica` é a mesma edição só com os efeitos, para adicionar uma faixa licenciada pelo app do YouTube Shorts.
+A trilha `trilha-phonk.mp3` é original (`scripts/music_phonk.py`) e toca em volume baixo. `ZoneGTA6-Edit-SemMusica` é a mesma edição só com os efeitos.
 
-## Padrão de edição (decisão do canal em 15/11)
+## Decisões de estilo do canal (15/11)
 
-Usar o estilo clássico dos primeiros vídeos. **Não usar 3D** (`src/faq/Fx3d.tsx` fica só como arquivo) nem estrobo, faixas de cinema e cortes na batida. Continuam valendo: logo no encerramento e no canto, fundos sempre inéditos e nenhum efeito sonoro mais de 2 vezes por vídeo.
+- **Motion:** estilo de telejornal. Sem 3D (`src/faq/Fx3d.tsx` fica só como arquivo).
+- **Efeitos sonoros:** poucos, um por acontecimento, escolhido pelo que aparece na tela (o plano em `sfxPlan` traz o motivo de cada som). Nenhum efeito mais de 2 vezes por vídeo.
+- **Sempre:** logo no encerramento e na barra do canal; fundos inéditos (`scripts/check_media.py`).
