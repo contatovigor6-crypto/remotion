@@ -152,6 +152,13 @@ S["alarm"] = place([(i * 0.16, tone(1244.5 if i % 2 == 0 else 932.3, 0.13, 3, "s
 penta = [523.25, 587.33, 659.25, 783.99, 880, 1046.5, 1174.66]
 S["tally"] = place([(i * 0.2, bell(f, 0.5, 8), 0.5) for i, f in enumerate(penta)] + [(1.25, tone(2093, 0.6, 5), 0.3)], 2.0)
 
+# ── Telejornal ───────────────────────────────────────────────
+# Vinheta de plantão: acorde curto de metais (Ré maior aberto) + tímpano + brilho.
+_t = t_(1.3)
+_brass = sum(tone(f * (1 + dt), 1.3, 3.2, "saw") for f in (146.83, 220.0, 293.66, 369.99, 440.0) for dt in (-0.004, 0.004))
+_brass = band(_brass, 120, 5200) * np.clip(_t / 0.012, 0, 1)
+S["news_sting"] = place([(0, _brass / 10, 1.0), (0, sub(150, 62, 0.9, 5), 0.9), (0, band(noise(0.5), 4000, 12000) * np.exp(-t_(0.5) * 9), 0.25)], 1.3)
+
 for name, s in S.items():
     s = np.asarray(s, dtype=float)
     fade = int(0.004 * SR)

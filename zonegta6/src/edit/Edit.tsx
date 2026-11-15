@@ -166,7 +166,7 @@ const Closing: React.FC = () => {
 type Ev = [name: string, frame: number, volume: number, why: string];
 const sfxPlan = (): Ev[] => {
 	const ev: Ev[] = [
-		['impact_e', 0, 0.75, 'faixa vermelha de URGENTE bate na tela'],
+		['news_sting', 0, 0.7, 'vinheta de plantão quando a faixa URGENTE aparece'],
 		['alarm', 10, 0.3, 'alerta de notícia urgente'],
 		['whoosh_d', BAR - 10, 0.5, 'faixa vermelha sobe e sai'],
 		['swish_f', BAR + 5, 0.45, 'manchete "faltam 4 dias" abre'],
