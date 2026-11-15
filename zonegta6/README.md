@@ -138,3 +138,7 @@ A trilha `trilha-phonk.mp3` é original (`scripts/music_phonk.py`) e toca em vol
 - **Motion:** estilo de telejornal. Sem 3D (`src/faq/Fx3d.tsx` fica só como arquivo).
 - **Efeitos sonoros:** poucos, um por acontecimento, escolhido pelo que aparece na tela (o plano em `sfxPlan` traz o motivo de cada som). Nenhum efeito mais de 2 vezes por vídeo.
 - **Sempre:** logo no encerramento e na barra do canal; fundos inéditos (`scripts/check_media.py`).
+
+# Vídeo 5, versão filme (`ZoneGTA6-Filme`)
+
+A mesma contagem regressiva em linguagem de trailer de cinema (`src/edit/Filme.tsx`): faixas pretas, cartelas de texto sobre preto (fonte Cinzel), planos com aproximação lenta e fusão para o preto, montagem de cortes rápidos, título, data, dias que faltam e a logo com bloco de créditos. A trilha `trilha-trailer.mp3` é original (`scripts/music_trailer.py`) e usa os mesmos marcos de tempo da cena. Só 4 efeitos sonoros, porque a trilha já marca cartelas e cortes. Usa as imagens do vídeo 5, por ser uma versão dele.
