@@ -1,6 +1,6 @@
 import {loadFont} from '@remotion/google-fonts/Cinzel';
 import React from 'react';
-import {AbsoluteFill, Html5Audio, Img, interpolate, random, Sequence, staticFile, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, Html5Audio, Img, interpolate, OffthreadVideo, random, Sequence, staticFile, useCurrentFrame} from 'remotion';
 import {ChannelLogo, LOGO} from '../faq/Fx';
 import {C, mono} from '../theme';
 import timelineData from './filme-timeline.json';
@@ -66,10 +66,15 @@ const Shot: React.FC<{file: string; focus: number; caption?: string | null; dur:
 	return (
 		<AbsoluteFill style={{background: '#000'}}>
 			<div style={{position: 'absolute', left: 0, right: 0, top: BAR_H, height: IMG_H, overflow: 'hidden', opacity: fast ? 1 : fadeInOut(frame, dur, 8)}}>
-				<Img
-					src={staticFile(`media/${file}`)}
-					style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: `${focus * 100}% 50%`, transform: `scale(${scale})`, transformOrigin: `${focus * 100}% 50%`, filter: 'contrast(1.1) saturate(0.95)'}}
-				/>
+				{file.endsWith('.mp4') ? (
+					// Vídeo oficial já recortado para a janela do filme (public/media/vw).
+					<OffthreadVideo muted src={staticFile(`media/${file}`)} style={{width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${fast ? 1.02 : 1 + frame * 0.0004})`, filter: 'contrast(1.08) saturate(0.95)'}} />
+				) : (
+					<Img
+						src={staticFile(`media/${file}`)}
+						style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: `${focus * 100}% 50%`, transform: `scale(${scale})`, transformOrigin: `${focus * 100}% 50%`, filter: 'contrast(1.1) saturate(0.95)'}}
+					/>
+				)}
 				{/* Cor de cinema: sombras azuladas, altas luzes quentes. */}
 				<AbsoluteFill style={{background: 'linear-gradient(180deg, #0a2a3a, #3a1a05)', mixBlendMode: 'soft-light', opacity: 0.4}} />
 				<AbsoluteFill style={{background: 'radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%)'}} />

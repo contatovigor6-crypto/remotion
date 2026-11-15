@@ -77,10 +77,10 @@
  },
  {
   "kind": "shot",
-  "file": "jason_and_lucia_19.jpg",
-  "focus": 0.55,
+  "file": "vw/carro_praia_a.mp4",
+  "focus": 0.5,
   "caption": null,
-  "dur": 70
+  "dur": 90
  },
  {
   "kind": "card",
@@ -92,10 +92,10 @@
  },
  {
   "kind": "shot",
-  "file": "lucia_caminos_02.jpg",
+  "file": "vw/vicecity_aereo.mp4",
   "focus": 0.5,
   "caption": "VICE CITY",
-  "dur": 80
+  "dur": 110
  },
  {
   "kind": "shot",
@@ -158,8 +158,29 @@
  },
  {
   "kind": "shot",
+  "file": "vw/carro_praia_b.mp4",
+  "focus": 0.5,
+  "caption": null,
+  "dur": 80
+ },
+ {
+  "kind": "shot",
+  "file": "vw/clip_jason_duval.mp4",
+  "focus": 0.5,
+  "caption": null,
+  "dur": 12
+ },
+ {
+  "kind": "shot",
   "file": "jason_duval_05.jpg",
   "focus": 0.4,
+  "caption": null,
+  "dur": 12
+ },
+ {
+  "kind": "shot",
+  "file": "vw/clip_lucia_caminos.mp4",
+  "focus": 0.5,
   "caption": null,
   "dur": 12
  },
@@ -172,7 +193,21 @@
  },
  {
   "kind": "shot",
+  "file": "vw/clip_cal_hampton.mp4",
+  "focus": 0.5,
+  "caption": null,
+  "dur": 12
+ },
+ {
+  "kind": "shot",
   "file": "jason_duval_07.jpg",
+  "focus": 0.5,
+  "caption": null,
+  "dur": 12
+ },
+ {
+  "kind": "shot",
+  "file": "vw/clip_drequan_priest.mp4",
   "focus": 0.5,
   "caption": null,
   "dur": 12
@@ -186,8 +221,22 @@
  },
  {
   "kind": "shot",
+  "file": "vw/clip_real_dimez.mp4",
+  "focus": 0.5,
+  "caption": null,
+  "dur": 12
+ },
+ {
+  "kind": "shot",
   "file": "jason_and_lucia_14.jpg",
   "focus": 0.62,
+  "caption": null,
+  "dur": 12
+ },
+ {
+  "kind": "shot",
+  "file": "vw/clip_raul_bautista.mp4",
+  "focus": 0.5,
   "caption": null,
   "dur": 12
  },
@@ -200,29 +249,15 @@
  },
  {
   "kind": "shot",
-  "file": "jason_duval_10.jpg",
-  "focus": 0.45,
-  "caption": null,
-  "dur": 12
- },
- {
-  "kind": "shot",
-  "file": "lucia_caminos_08.jpg",
+  "file": "vw/clip_brian_heder.mp4",
   "focus": 0.5,
   "caption": null,
   "dur": 12
  },
  {
   "kind": "shot",
-  "file": "lucia_caminos_04.jpg",
-  "focus": 0.35,
-  "caption": null,
-  "dur": 12
- },
- {
-  "kind": "shot",
-  "file": "vice_city_12.jpg",
-  "focus": 0.6,
+  "file": "jason_duval_10.jpg",
+  "focus": 0.45,
   "caption": null,
   "dur": 12
  },

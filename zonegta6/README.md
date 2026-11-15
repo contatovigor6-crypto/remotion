@@ -153,3 +153,7 @@ A contagem regressiva em linguagem de trailer de cinema (`src/edit/Filme.tsx`), 
 ### Material oficial mais recente (15/11)
 
 O pacote de screenshots (`GTAVI_Screenshots.zip`, atualizado em 04/11) traz as mesmas 138 imagens da página de downloads, e o pacote de vídeos é de agosto. O material realmente novo são as artes dos posts de novembro do Newswire: arte de lançamento (Jason e Lucia no carro), Vice City de lançamento, capa oficial e arte da trilha original de Justice. Elas ficam em `public/media/nov_*.jpg` (fora do git). As artes quadradas usam o segmento `art` do filme, que mostra a imagem inteira sem corte.
+
+### Vídeos no filme
+
+Os segmentos `shot` aceitam `.mp4`. Os clipes oficiais (pacote de vídeos da Rockstar e os dois vídeos do site de GTA VI) foram recortados para a janela do filme (1080×810) em `public/media/vw/` (fora do git): o voo sobre Vice City, o casal no carro na praia (dois trechos) e 7 clipes de personagem de 12 frames, usados na montagem alternando com imagens. São os mesmos clipes do vídeo 4, mas em enquadramento largo, porque não existe outro vídeo oficial para download.
