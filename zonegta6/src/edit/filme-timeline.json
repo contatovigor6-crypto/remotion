@@ -10,15 +10,15 @@
  },
  {
   "kind": "shot",
-  "file": "ambrosia_04.jpg",
-  "focus": 0.45,
-  "caption": null,
+  "file": "nov_lancamento_carro.jpg",
+  "focus": 0.42,
+  "caption": "ARTE DE LANÇAMENTO",
   "dur": 85
  },
  {
   "kind": "shot",
-  "file": "ambrosia_02.jpg",
-  "focus": 0.5,
+  "file": "nov_lancamento_vicecity.jpg",
+  "focus": 0.55,
   "caption": null,
   "dur": 80
  },
@@ -142,6 +142,12 @@
   "dur": 70
  },
  {
+  "kind": "art",
+  "file": "nov_trilha_justice.jpg",
+  "caption": "TRILHA ORIGINAL: JUSTICE",
+  "dur": 80
+ },
+ {
   "kind": "card",
   "lines": [
    "E UMA ESPERA",
@@ -227,6 +233,12 @@
  {
   "kind": "title",
   "dur": 100
+ },
+ {
+  "kind": "art",
+  "file": "nov_capa_oficial.jpg",
+  "caption": "CAPA OFICIAL",
+  "dur": 85
  },
  {
   "kind": "date",

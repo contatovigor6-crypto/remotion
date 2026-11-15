@@ -149,3 +149,7 @@ A contagem regressiva em linguagem de trailer de cinema (`src/edit/Filme.tsx`), 
 - **Som:** trilha de trailer original e só 4 efeitos sonoros.
 
 **Decisão do canal (15/11): este estilo de filme é o padrão para os próximos vídeos.**
+
+### Material oficial mais recente (15/11)
+
+O pacote de screenshots (`GTAVI_Screenshots.zip`, atualizado em 04/11) traz as mesmas 138 imagens da página de downloads, e o pacote de vídeos é de agosto. O material realmente novo são as artes dos posts de novembro do Newswire: arte de lançamento (Jason e Lucia no carro), Vice City de lançamento, capa oficial e arte da trilha original de Justice. Elas ficam em `public/media/nov_*.jpg` (fora do git). As artes quadradas usam o segmento `art` do filme, que mostra a imagem inteira sem corte.

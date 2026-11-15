@@ -85,6 +85,28 @@ const Shot: React.FC<{file: string; focus: number; caption?: string | null; dur:
 	);
 };
 
+// Arte quadrada oficial (capa, trilha): inteira e centralizada, sem corte, sobre uma
+// versão desfocada dela mesma.
+const Art: React.FC<{file: string; caption?: string | null; dur: number}> = ({file, caption, dur}) => {
+	const frame = useCurrentFrame();
+	const src = staticFile(`media/${file}`);
+	const size = IMG_H + 40;
+	return (
+		<AbsoluteFill style={{background: '#000'}}>
+			<div style={{position: 'absolute', left: 0, right: 0, top: BAR_H, height: IMG_H, overflow: 'hidden', opacity: fadeInOut(frame, dur, 10)}}>
+				<Img src={src} style={{position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', filter: 'blur(40px) brightness(0.45)', transform: 'scale(1.2)'}} />
+				<Img src={src} style={{position: 'absolute', left: (1080 - size) / 2, top: (IMG_H - size) / 2, width: size, height: size, objectFit: 'contain', transform: `scale(${0.92 + frame * 0.0008})`, boxShadow: '0 30px 80px rgba(0,0,0,0.8)'}} />
+			</div>
+			{caption ? (
+				<div style={{position: 'absolute', left: 0, right: 0, top: BAR_H + IMG_H + 44, textAlign: 'center', opacity: fadeInOut(frame, dur, 12)}}>
+					<div style={{height: 2, width: 120, background: '#c9a86a', margin: '0 auto 18px'}} />
+					<div style={{fontFamily: cine, fontWeight: 700, fontSize: 50, color: '#f1ece4', letterSpacing: tracking(frame, dur, 6, 12)}}>{caption}</div>
+				</div>
+			) : null}
+		</AbsoluteFill>
+	);
+};
+
 const Title: React.FC<{dur: number}> = ({dur}) => {
 	const frame = useCurrentFrame();
 	const sweep = interpolate(frame, [8, 60], [-30, 130], clamp);
@@ -160,6 +182,7 @@ export const Filme: React.FC<{music: string | null}> = ({music}) => {
 				<Sequence key={i} from={starts[i]} durationInFrames={seg.dur} name={seg.kind}>
 					{seg.kind === 'card' ? <Card lines={seg.lines ?? []} small={seg.small} dur={seg.dur} /> : null}
 					{seg.kind === 'shot' ? <Shot file={seg.file ?? ''} focus={seg.focus ?? 0.5} caption={seg.caption} dur={seg.dur} index={i} /> : null}
+					{seg.kind === 'art' ? <Art file={seg.file ?? ''} caption={seg.caption} dur={seg.dur} /> : null}
 					{seg.kind === 'title' ? <Title dur={seg.dur} /> : null}
 					{seg.kind === 'date' ? <DateCard dur={seg.dur} /> : null}
 					{seg.kind === 'days' ? <DaysCard dur={seg.dur} /> : null}
