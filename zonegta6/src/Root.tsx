@@ -2,6 +2,7 @@ import React from 'react';
 import {Composition} from 'remotion';
 import {Edit, EDIT_DURATION} from './edit/Edit';
 import {Filme, FILME_DURATION} from './edit/Filme';
+import {Recorde, RECORDE_DURATION} from './edit/Recorde';
 import {Chegando, CHEGANDO_DURATION} from './faq/Chegando';
 import {Faq, videos} from './faq/Faq';
 import {DURATION, Short} from './Short';
@@ -62,5 +63,7 @@ export const Root: React.FC = () => (
 		<Composition id="ZoneGTA6-Edit-SemMusica" component={Edit} defaultProps={{music: null as string | null}} durationInFrames={EDIT_DURATION} fps={FPS} width={1080} height={1920} />
 		{/* Vídeo 5 em linguagem de trailer de cinema. */}
 		<Composition id="ZoneGTA6-Filme" component={Filme} defaultProps={{music: 'trilha-trailer.mp3' as string | null}} durationInFrames={FILME_DURATION} fps={FPS} width={1080} height={1920} />
+		{/* Vídeo 6: Recorde (narrado), em linguagem de trailer de cinema. */}
+		<Composition id="ZoneGTA6-Recorde" component={Recorde} durationInFrames={RECORDE_DURATION} fps={FPS} width={1080} height={1920} />
 	</>
 );

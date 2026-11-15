@@ -10,11 +10,11 @@ import timelineData from './filme-timeline.json';
 // e fusão para o preto, montagem rápida, título e data. Sem narração.
 // Os marcos abaixo são os mesmos de scripts/music_trailer.py.
 
-const cine = loadFont('normal', {weights: ['400', '700', '900'], subsets: ['latin']}).fontFamily;
+export const cine = loadFont('normal', {weights: ['400', '700', '900'], subsets: ['latin']}).fontFamily;
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 const DAYS = 4; // dias até 19/11 na data de publicação (15/11). Ajuste se postar outro dia.
-const IMG_H = 810; // altura da janela de imagem: mostra 75% da largura da foto 16:9
-const BAR_H = (1920 - IMG_H) / 2; // faixas de cinema acima e abaixo
+export const IMG_H = 810; // altura da janela de imagem: mostra 75% da largura da foto 16:9
+export const BAR_H = (1920 - IMG_H) / 2; // faixas de cinema acima e abaixo
 
 // Linha do tempo em src/edit/filme-timeline.json (a trilha lê o mesmo arquivo).
 // `focus` é o ponto de interesse horizontal da imagem (0 = esquerda, 1 = direita):
@@ -25,12 +25,12 @@ const starts = timeline.reduce<number[]>((acc, _seg, i) => [...acc, i === 0 ? 0 
 const startOf = (kind: string) => starts[timeline.findIndex((t) => t.kind === kind)];
 export const FILME_DURATION = starts[starts.length - 1] + timeline[timeline.length - 1].dur;
 
-const tracking = (frame: number, dur: number, from: number, to: number) => interpolate(frame, [0, dur], [from, to], clamp);
-const fadeInOut = (frame: number, dur: number, edge = 10) => Math.min(interpolate(frame, [0, edge], [0, 1], clamp), interpolate(frame, [dur - edge, dur], [1, 0], clamp));
+export const tracking = (frame: number, dur: number, from: number, to: number) => interpolate(frame, [0, dur], [from, to], clamp);
+export const fadeInOut = (frame: number, dur: number, edge = 10) => Math.min(interpolate(frame, [0, edge], [0, 1], clamp), interpolate(frame, [dur - edge, dur], [1, 0], clamp));
 
 // Cartela: texto espaçado sobre preto. As letras surgem uma a uma, saindo do desfoque,
 // enquanto o espaçamento abre devagar; um filete dourado cresce por baixo.
-const Card: React.FC<{lines: string[]; small?: boolean; dur: number}> = ({lines, small, dur}) => {
+export const Card: React.FC<{lines: string[]; small?: boolean; dur: number}> = ({lines, small, dur}) => {
 	const frame = useCurrentFrame();
 	let n = 0;
 	return (
@@ -59,7 +59,7 @@ const Card: React.FC<{lines: string[]; small?: boolean; dur: number}> = ({lines,
 
 // Plano: a imagem ocupa uma janela larga no centro da tela, enquadrada no assunto
 // (focus), com aproximação lenta e fusão para o preto. A legenda fica abaixo dela.
-const Shot: React.FC<{file: string; focus: number; caption?: string | null; dur: number; index: number}> = ({file, focus, caption, dur, index}) => {
+export const Shot: React.FC<{file: string; focus: number; caption?: string | null; dur: number; index: number}> = ({file, focus, caption, dur, index}) => {
 	const frame = useCurrentFrame();
 	const fast = dur <= 12;
 	const scale = fast ? 1.03 + frame * 0.004 : interpolate(frame, [0, dur], index % 2 ? [1.08, 1.0] : [1.0, 1.08]);
@@ -92,7 +92,7 @@ const Shot: React.FC<{file: string; focus: number; caption?: string | null; dur:
 
 // Arte quadrada oficial (capa, trilha): inteira e centralizada, sem corte, sobre uma
 // versão desfocada dela mesma.
-const Art: React.FC<{file: string; caption?: string | null; dur: number}> = ({file, caption, dur}) => {
+export const Art: React.FC<{file: string; caption?: string | null; dur: number}> = ({file, caption, dur}) => {
 	const frame = useCurrentFrame();
 	const src = staticFile(`media/${file}`);
 	const size = IMG_H + 40;
@@ -112,7 +112,7 @@ const Art: React.FC<{file: string; caption?: string | null; dur: number}> = ({fi
 	);
 };
 
-const Title: React.FC<{dur: number}> = ({dur}) => {
+export const Title: React.FC<{dur: number}> = ({dur}) => {
 	const frame = useCurrentFrame();
 	const sweep = interpolate(frame, [8, 60], [-30, 130], clamp);
 	return (
@@ -126,7 +126,7 @@ const Title: React.FC<{dur: number}> = ({dur}) => {
 	);
 };
 
-const DateCard: React.FC<{dur: number}> = ({dur}) => {
+export const DateCard: React.FC<{dur: number}> = ({dur}) => {
 	const frame = useCurrentFrame();
 	return (
 		<AbsoluteFill style={{background: '#000', justifyContent: 'center', alignItems: 'center', opacity: fadeInOut(frame, dur, 10)}}>
@@ -154,7 +154,7 @@ const DaysCard: React.FC<{dur: number}> = ({dur}) => {
 	);
 };
 
-const LogoCard: React.FC<{dur: number}> = ({dur}) => {
+export const LogoCard: React.FC<{dur: number}> = ({dur}) => {
 	const frame = useCurrentFrame();
 	return (
 		<AbsoluteFill style={{background: '#000', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', gap: 44}}>

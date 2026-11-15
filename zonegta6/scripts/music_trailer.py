@@ -1,6 +1,6 @@
 """Trilha original de trailer de cinema, 100% sintetizada.
 
-Uso: python scripts/music_trailer.py public/music/trilha-trailer.wav
+Uso: python scripts/music_trailer.py [timeline.json] public/music/<saida>.wav
 
 Segue a linha do tempo de src/edit/filme-timeline.json (frames a 30 fps): drone grave, notas
 de piano, "braams" nas cartelas, batidas que aceleram na montagem, silêncio antes do
@@ -16,16 +16,19 @@ SR = 48000
 # Marcos lidos da mesma linha do tempo usada pela cena (src/edit/filme-timeline.json).
 import json
 
-_tl = json.load(open("src/edit/filme-timeline.json"))
+_src = json.load(open(sys.argv[1] if len(sys.argv) > 2 else "src/edit/filme-timeline.json"))
+_tl = _src["segments"] if isinstance(_src, dict) else _src
 _starts, _at = [], 0
 for _seg in _tl:
     _starts.append(_at)
     _at += _seg["dur"]
 END = _at
-CARDS = [st for st, seg in zip(_starts, _tl) if seg["kind"] == "card"][1:]  # cartelas (menos a de abertura)
-_fast = [st for st, seg in zip(_starts, _tl) if seg["kind"] == "shot" and seg["dur"] <= 12]
-MONTAGE = (_fast[0], _fast[-1] + 12)  # cortes rápidos (12 frames cada)
-TITLE, DATE, DAYS, LOGO = (next(st for st, seg in zip(_starts, _tl) if seg["kind"] == k) for k in ("title", "date", "days", "logo"))
+_cards = [st for st, seg in zip(_starts, _tl) if seg["kind"] in ("card", "stat")]
+CARDS = _cards[1:] if _tl[0]["kind"] == "card" else _cards  # cartelas (menos uma de abertura)
+_fast = [(st, seg["dur"]) for st, seg in zip(_starts, _tl) if seg["kind"] == "shot" and (seg.get("fast") or seg["dur"] <= 12)]
+MONTAGE = (_fast[0][0], _fast[-1][0] + _fast[-1][1])  # montagem de cortes rápidos
+_find = lambda k: next((st for st, seg in zip(_starts, _tl) if seg["kind"] == k), None)
+TITLE, DATE, DAYS, LOGO = _find("title"), _find("date"), _find("days"), _find("logo")
 
 DUR = END / FPS
 N = int(SR * DUR)
@@ -110,7 +113,7 @@ for fr in CARDS:
     add(braam(0.8), fr, 0, 0.8)
 
 # Montagem: uma batida por corte, cada vez mais forte, com riser por cima.
-cuts = list(range(MONTAGE[0], MONTAGE[1], 12))
+cuts = [st for st, _ in _fast]
 for k, fr in enumerate(cuts):
     add(boom(0.6, 55), fr, 0, 0.45 + 0.07 * k)
 add(riser((MONTAGE[1] - MONTAGE[0]) / FPS), MONTAGE[0], 0, 0.55)
@@ -127,7 +130,8 @@ add(saws([50, 53, 57, 62], d, 100, 1500) * np.clip(t / 0.8, 0, 1) * np.clip((d -
 
 add(boom(2.5, 40), DATE, 0, 0.8)
 add(braam(0.6, 2.5), DATE, 0, 0.6)
-add(boom(2.2, 44), DAYS, 0, 0.7)
+if DAYS is not None:
+    add(boom(2.2, 44), DAYS, 0, 0.7)
 
 # Logo: acorde final em Ré maior (resolve) e batida.
 d = (END - LOGO) / FPS
@@ -151,9 +155,9 @@ L *= fade
 R *= fade
 peak = max(np.abs(L).max(), np.abs(R).max())
 out = (np.stack([L, R], 1) / peak * 0.89 * 32767).astype(np.int16)
-with wave.open(sys.argv[1], "wb") as w:
+with wave.open(sys.argv[-1], "wb") as w:
     w.setnchannels(2)
     w.setsampwidth(2)
     w.setframerate(SR)
     w.writeframes(out.tobytes())
-print("ok", sys.argv[1], f"{DUR:.1f}s")
+print("ok", sys.argv[-1], f"{DUR:.1f}s")

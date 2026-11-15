@@ -9,8 +9,8 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-files = [p for p in Path("src").rglob("*.ts*") if p.name not in ("Background.tsx", "Fx.tsx")]
-used = {p: re.findall(r"'((?:v/)?[\w.-]+\.(?:jpg|png|mp4|webm))'", p.read_text()) for p in files}
+files = [p for p in Path("src").rglob("*") if p.suffix in (".ts", ".tsx", ".json") and p.name not in ("Background.tsx", "Fx.tsx") and not p.name.startswith("timing-")]
+used = {p: re.findall(r"['\"]((?:vw?/)?[\w.-]+\.(?:jpg|png|mp4|webm))['\"]", p.read_text()) for p in files}
 used = {p: [m for m in v if not m.startswith("logo")] for p, v in used.items() if v}
 for p, v in used.items():
     print(f"{p}: {len(v)} usos, {len(set(v))} mídias")

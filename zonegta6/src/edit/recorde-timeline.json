@@ -1,0 +1,1190 @@
+{
+ "voStart": 6,
+ "segments": [
+  {
+   "kind": "shot",
+   "file": "jason_lucia_rooftop_landscape.jpg",
+   "focus": 0.5,
+   "caption": "UMA MARCA HISTÓRICA",
+   "dur": 117
+  },
+  {
+   "kind": "shot",
+   "file": "jason_lucia_lock_and_load_landscape.jpg",
+   "focus": 0.5,
+   "caption": "ANTES DO LANÇAMENTO",
+   "dur": 75
+  },
+  {
+   "kind": "stat",
+   "big": "Nº1",
+   "lines": [
+    "O JOGO MAIS PRÉ-VENDIDO",
+    "DA HISTÓRIA DA PLAYSTATION STORE"
+   ],
+   "status": "CONFIRMADO",
+   "source": "PLAYSTATION BLOG · 10/11",
+   "dur": 120
+  },
+  {
+   "kind": "shot",
+   "file": "jason_duval_17.jpg",
+   "focus": 0.42,
+   "dur": 66
+  },
+  {
+   "kind": "shot",
+   "file": "lucia_caminos_14.jpg",
+   "focus": 0.45,
+   "dur": 69
+  },
+  {
+   "kind": "card",
+   "lines": [
+    "PENSE NISSO."
+   ],
+   "dur": 54
+  },
+  {
+   "kind": "shot",
+   "file": "jason_duval_12.jpg",
+   "focus": 0.62,
+   "dur": 72
+  },
+  {
+   "kind": "shot",
+   "file": "lucia_caminos_12.jpg",
+   "focus": 0.45,
+   "dur": 69
+  },
+  {
+   "kind": "shot",
+   "file": "jason_duval_13.jpg",
+   "focus": 0.5,
+   "caption": "E O JOGO NEM FOI LANÇADO",
+   "dur": 78
+  },
+  {
+   "kind": "card",
+   "lines": [
+    "E EXISTE",
+    "OUTRO DETALHE"
+   ],
+   "dur": 63
+  },
+  {
+   "kind": "stat",
+   "big": "10/11",
+   "lines": [
+    "PRÉ-DOWNLOAD ANTECIPADO",
+    "NOVE DIAS ANTES DO LANÇAMENTO"
+   ],
+   "status": "CONFIRMADO",
+   "source": "ROCKSTAR · PLAYSTATION BLOG",
+   "dur": 111
+  },
+  {
+   "kind": "shot",
+   "file": "jason_duval_03.jpg",
+   "focus": 0.4,
+   "dur": 60
+  },
+  {
+   "kind": "shot",
+   "file": "raul_bautista_02.jpg",
+   "focus": 0.5,
+   "dur": 60
+  },
+  {
+   "kind": "card",
+   "lines": [
+    "FEITO PARA O",
+    "PLAYSTATION 5"
+   ],
+   "dur": 72
+  },
+  {
+   "kind": "shot",
+   "file": "raul_bautista_01.jpg",
+   "focus": 0.55,
+   "dur": 105
+  },
+  {
+   "kind": "shot",
+   "file": "jason_duval_14.jpg",
+   "focus": 0.5,
+   "caption": "GATILHOS ADAPTÁVEIS",
+   "theme": "gatilho",
+   "dur": 54
+  },
+  {
+   "kind": "shot",
+   "file": "lucia_caminos_11.jpg",
+   "focus": 0.55,
+   "caption": "RESPOSTA TÁTIL",
+   "theme": "tatil",
+   "dur": 36
+  },
+  {
+   "kind": "shot",
+   "file": "lucia_caminos_09.jpg",
+   "focus": 0.5,
+   "caption": "CONTROLE DUALSENSE",
+   "dur": 102
+  },
+  {
+   "kind": "card",
+   "lines": [
+    "ÁUDIO 3D",
+    "TEMPEST"
+   ],
+   "theme": "tempest",
+   "dur": 63
+  },
+  {
+   "kind": "shot",
+   "file": "mount_kalaga_national_park_06.jpg",
+   "focus": 0.55,
+   "caption": "SOM POSICIONADO NO AMBIENTE",
+   "dur": 66
+  },
+  {
+   "kind": "shot",
+   "file": "leonida_keys_06.jpg",
+   "focus": 0.6,
+   "dur": 69
+  },
+  {
+   "kind": "shot",
+   "file": "brian_heder_04.jpg",
+   "focus": 0.5,
+   "dur": 54
+  },
+  {
+   "kind": "shot",
+   "file": "cal_hampton_01.jpg",
+   "focus": 0.6,
+   "caption": "NÃO É SÓ VER VICE CITY",
+   "dur": 57
+  },
+  {
+   "kind": "shot",
+   "file": "grassrivers_06.jpg",
+   "focus": 0.55,
+   "caption": "É SENTIR",
+   "dur": 54
+  },
+  {
+   "kind": "shot",
+   "file": "grassrivers_08.jpg",
+   "focus": 0.5,
+   "dur": 60
+  },
+  {
+   "kind": "card",
+   "lines": [
+    "E AGORA",
+    "VEM A PERGUNTA"
+   ],
+   "theme": "pergunta",
+   "dur": 48
+  },
+  {
+   "kind": "shot",
+   "file": "vw/clip_jason_duval.mp4",
+   "focus": 0.5,
+   "dur": 13,
+   "fast": true,
+   "overlay": {
+    "text": [
+     "O QUE VAI ACONTECER",
+     "QUANDO MILHÕES DE JOGADORES",
+     "ENTRAREM NESSE MUNDO?"
+    ],
+    "dur": 273
+   }
+  },
+  {
+   "kind": "shot",
+   "file": "ambrosia_03.jpg",
+   "focus": 0.5,
+   "dur": 13,
+   "fast": true
+  },
+  {
+   "kind": "shot",
+   "file": "cal_hampton_02.jpg",
+   "focus": 0.5,
+   "dur": 13,
+   "fast": true
+  },
+  {
+   "kind": "shot",
+   "file": "vw/clip_lucia_caminos.mp4",
+   "focus": 0.5,
+   "dur": 13,
+   "fast": true
+  },
+  {
+   "kind": "shot",
+   "file": "raul_bautista_03.jpg",
+   "focus": 0.55,
+   "dur": 13,
+   "fast": true
+  },
+  {
+   "kind": "shot",
+   "file": "boobie_ike_01.jpg",
+   "focus": 0.5,
+   "dur": 13,
+   "fast": true
+  },
+  {
+   "kind": "shot",
+   "file": "vw/clip_cal_hampton.mp4",
+   "focus": 0.5,
+   "dur": 13,
+   "fast": true
+  },
+  {
+   "kind": "shot",
+   "file": "drequan_priest_04.jpg",
+   "focus": 0.5,
+   "dur": 13,
+   "fast": true
+  },
+  {
+   "kind": "shot",
+   "file": "real_dimez_01.jpg",
+   "focus": 0.45,
+   "dur": 13,
+   "fast": true
+  },
+  {
+   "kind": "shot",
+   "file": "vw/clip_drequan_priest.mp4",
+   "focus": 0.5,
+   "dur": 13,
+   "fast": true
+  },
+  {
+   "kind": "shot",
+   "file": "raul_bautista_04.jpg",
+   "focus": 0.5,
+   "dur": 13,
+   "fast": true
+  },
+  {
+   "kind": "shot",
+   "file": "brian_heder_01.jpg",
+   "focus": 0.5,
+   "dur": 13,
+   "fast": true
+  },
+  {
+   "kind": "shot",
+   "file": "vw/clip_real_dimez.mp4",
+   "focus": 0.5,
+   "dur": 13,
+   "fast": true
+  },
+  {
+   "kind": "shot",
+   "file": "cal_hampton_04.jpg",
+   "focus": 0.5,
+   "dur": 13,
+   "fast": true
+  },
+  {
+   "kind": "shot",
+   "file": "mount_kalaga_national_park_03.jpg",
+   "focus": 0.5,
+   "dur": 13,
+   "fast": true
+  },
+  {
+   "kind": "shot",
+   "file": "vw/clip_raul_bautista.mp4",
+   "focus": 0.5,
+   "dur": 13,
+   "fast": true
+  },
+  {
+   "kind": "shot",
+   "file": "real_dimez_03.jpg",
+   "focus": 0.6,
+   "dur": 13,
+   "fast": true
+  },
+  {
+   "kind": "shot",
+   "file": "jason_duval_18.jpg",
+   "focus": 0.5,
+   "dur": 13,
+   "fast": true
+  },
+  {
+   "kind": "shot",
+   "file": "vw/clip_brian_heder.mp4",
+   "focus": 0.5,
+   "dur": 13,
+   "fast": true
+  },
+  {
+   "kind": "shot",
+   "file": "ambrosia_05.jpg",
+   "focus": 0.4,
+   "dur": 13,
+   "fast": true
+  },
+  {
+   "kind": "shot",
+   "file": "grassrivers_03.jpg",
+   "focus": 0.4,
+   "dur": 13,
+   "fast": true
+  },
+  {
+   "kind": "date",
+   "dur": 75
+  },
+  {
+   "kind": "title",
+   "dur": 75
+  },
+  {
+   "kind": "logo",
+   "dur": 177
+  }
+ ],
+ "voice": [
+  [
+   0,
+   16
+  ],
+  [
+   16,
+   34
+  ],
+  [
+   34,
+   50
+  ],
+  [
+   50,
+   58
+  ],
+  [
+   58,
+   70
+  ],
+  [
+   70,
+   76
+  ],
+  [
+   76,
+   85
+  ],
+  [
+   85,
+   108
+  ],
+  [
+   120,
+   126
+  ],
+  [
+   126,
+   129
+  ],
+  [
+   129,
+   136
+  ],
+  [
+   136,
+   142
+  ],
+  [
+   142,
+   153
+  ],
+  [
+   153,
+   163
+  ],
+  [
+   163,
+   169
+  ],
+  [
+   169,
+   179
+  ],
+  [
+   195,
+   200
+  ],
+  [
+   200,
+   210
+  ],
+  [
+   210,
+   227
+  ],
+  [
+   227,
+   247
+  ],
+  [
+   247,
+   252
+  ],
+  [
+   252,
+   260
+  ],
+  [
+   260,
+   268
+  ],
+  [
+   268,
+   274
+  ],
+  [
+   274,
+   287
+  ],
+  [
+   287,
+   300
+  ],
+  [
+   300,
+   310
+  ],
+  [
+   310,
+   314
+  ],
+  [
+   314,
+   321
+  ],
+  [
+   321,
+   328
+  ],
+  [
+   328,
+   333
+  ],
+  [
+   333,
+   343
+  ],
+  [
+   343,
+   355
+  ],
+  [
+   355,
+   362
+  ],
+  [
+   362,
+   373
+  ],
+  [
+   373,
+   382
+  ],
+  [
+   382,
+   388
+  ],
+  [
+   388,
+   405
+  ],
+  [
+   405,
+   410
+  ],
+  [
+   410,
+   423
+  ],
+  [
+   423,
+   437
+  ],
+  [
+   453,
+   461
+  ],
+  [
+   461,
+   470
+  ],
+  [
+   470,
+   475
+  ],
+  [
+   475,
+   478
+  ],
+  [
+   478,
+   490
+  ],
+  [
+   504,
+   511
+  ],
+  [
+   511,
+   522
+  ],
+  [
+   522,
+   529
+  ],
+  [
+   529,
+   532
+  ],
+  [
+   532,
+   542
+  ],
+  [
+   542,
+   548
+  ],
+  [
+   548,
+   556
+  ],
+  [
+   556,
+   565
+  ],
+  [
+   565,
+   573
+  ],
+  [
+   573,
+   590
+  ],
+  [
+   590,
+   602
+  ],
+  [
+   602,
+   609
+  ],
+  [
+   609,
+   623
+  ],
+  [
+   623,
+   636
+  ],
+  [
+   636,
+   646
+  ],
+  [
+   646,
+   653
+  ],
+  [
+   653,
+   667
+  ],
+  [
+   667,
+   673
+  ],
+  [
+   673,
+   688
+  ],
+  [
+   688,
+   697
+  ],
+  [
+   697,
+   712
+  ],
+  [
+   727,
+   731
+  ],
+  [
+   731,
+   739
+  ],
+  [
+   739,
+   752
+  ],
+  [
+   752,
+   764
+  ],
+  [
+   764,
+   778
+  ],
+  [
+   786,
+   799
+  ],
+  [
+   799,
+   811
+  ],
+  [
+   811,
+   825
+  ],
+  [
+   825,
+   847
+  ],
+  [
+   847,
+   851
+  ],
+  [
+   851,
+   856
+  ],
+  [
+   856,
+   875
+  ],
+  [
+   875,
+   891
+  ],
+  [
+   891,
+   907
+  ],
+  [
+   907,
+   911
+  ],
+  [
+   911,
+   914
+  ],
+  [
+   914,
+   925
+  ],
+  [
+   925,
+   940
+  ],
+  [
+   940,
+   948
+  ],
+  [
+   948,
+   961
+  ],
+  [
+   961,
+   974
+  ],
+  [
+   974,
+   988
+  ],
+  [
+   988,
+   993
+  ],
+  [
+   993,
+   1007
+  ],
+  [
+   1020,
+   1024
+  ],
+  [
+   1024,
+   1027
+  ],
+  [
+   1027,
+   1038
+  ],
+  [
+   1038,
+   1047
+  ],
+  [
+   1047,
+   1056
+  ],
+  [
+   1056,
+   1074
+  ],
+  [
+   1074,
+   1089
+  ],
+  [
+   1089,
+   1105
+  ],
+  [
+   1105,
+   1119
+  ],
+  [
+   1119,
+   1132
+  ],
+  [
+   1132,
+   1162
+  ],
+  [
+   1162,
+   1166
+  ],
+  [
+   1166,
+   1177
+  ],
+  [
+   1193,
+   1198
+  ],
+  [
+   1198,
+   1210
+  ],
+  [
+   1210,
+   1233
+  ],
+  [
+   1233,
+   1238
+  ],
+  [
+   1238,
+   1240
+  ],
+  [
+   1240,
+   1249
+  ],
+  [
+   1249,
+   1269
+  ],
+  [
+   1269,
+   1273
+  ],
+  [
+   1273,
+   1285
+  ],
+  [
+   1285,
+   1303
+  ],
+  [
+   1303,
+   1322
+  ],
+  [
+   1322,
+   1340
+  ],
+  [
+   1340,
+   1352
+  ],
+  [
+   1352,
+   1355
+  ],
+  [
+   1355,
+   1375
+  ],
+  [
+   1388,
+   1396
+  ],
+  [
+   1396,
+   1407
+  ],
+  [
+   1419,
+   1421
+  ],
+  [
+   1421,
+   1429
+  ],
+  [
+   1429,
+   1443
+  ],
+  [
+   1443,
+   1462
+  ],
+  [
+   1462,
+   1481
+  ],
+  [
+   1481,
+   1501
+  ],
+  [
+   1501,
+   1505
+  ],
+  [
+   1505,
+   1511
+  ],
+  [
+   1511,
+   1516
+  ],
+  [
+   1516,
+   1525
+  ],
+  [
+   1525,
+   1538
+  ],
+  [
+   1538,
+   1553
+  ],
+  [
+   1553,
+   1563
+  ],
+  [
+   1563,
+   1572
+  ],
+  [
+   1585,
+   1594
+  ],
+  [
+   1594,
+   1604
+  ],
+  [
+   1616,
+   1620
+  ],
+  [
+   1620,
+   1624
+  ],
+  [
+   1624,
+   1631
+  ],
+  [
+   1631,
+   1642
+  ],
+  [
+   1642,
+   1664
+  ],
+  [
+   1664,
+   1673
+  ],
+  [
+   1673,
+   1684
+  ],
+  [
+   1697,
+   1702
+  ],
+  [
+   1702,
+   1717
+  ],
+  [
+   1717,
+   1721
+  ],
+  [
+   1721,
+   1727
+  ],
+  [
+   1727,
+   1736
+  ],
+  [
+   1736,
+   1754
+  ],
+  [
+   1754,
+   1762
+  ],
+  [
+   1762,
+   1764
+  ],
+  [
+   1764,
+   1777
+  ],
+  [
+   1777,
+   1782
+  ],
+  [
+   1782,
+   1786
+  ],
+  [
+   1786,
+   1797
+  ],
+  [
+   1811,
+   1815
+  ],
+  [
+   1815,
+   1823
+  ],
+  [
+   1823,
+   1829
+  ],
+  [
+   1829,
+   1831
+  ],
+  [
+   1831,
+   1841
+  ],
+  [
+   1860,
+   1865
+  ],
+  [
+   1865,
+   1874
+  ],
+  [
+   1874,
+   1887
+  ],
+  [
+   1887,
+   1894
+  ],
+  [
+   1894,
+   1902
+  ],
+  [
+   1902,
+   1915
+  ],
+  [
+   1915,
+   1936
+  ],
+  [
+   1936,
+   1947
+  ],
+  [
+   1947,
+   1954
+  ],
+  [
+   1954,
+   1972
+  ],
+  [
+   1984,
+   1987
+  ],
+  [
+   1987,
+   1992
+  ],
+  [
+   1992,
+   1997
+  ],
+  [
+   1997,
+   2012
+  ],
+  [
+   2012,
+   2021
+  ],
+  [
+   2021,
+   2036
+  ],
+  [
+   2036,
+   2045
+  ],
+  [
+   2045,
+   2060
+  ],
+  [
+   2060,
+   2077
+  ],
+  [
+   2077,
+   2098
+  ],
+  [
+   2098,
+   2108
+  ],
+  [
+   2108,
+   2117
+  ],
+  [
+   2134,
+   2138
+  ],
+  [
+   2138,
+   2144
+  ],
+  [
+   2144,
+   2162
+  ],
+  [
+   2162,
+   2170
+  ],
+  [
+   2170,
+   2185
+  ],
+  [
+   2185,
+   2198
+  ],
+  [
+   2198,
+   2207
+  ],
+  [
+   2207,
+   2221
+  ],
+  [
+   2221,
+   2231
+  ],
+  [
+   2231,
+   2238
+  ],
+  [
+   2238,
+   2247
+  ],
+  [
+   2247,
+   2255
+  ],
+  [
+   2255,
+   2265
+  ],
+  [
+   2280,
+   2284
+  ],
+  [
+   2284,
+   2285
+  ],
+  [
+   2285,
+   2293
+  ],
+  [
+   2293,
+   2301
+  ],
+  [
+   2301,
+   2316
+  ],
+  [
+   2316,
+   2323
+  ],
+  [
+   2323,
+   2339
+  ],
+  [
+   2339,
+   2352
+  ],
+  [
+   2352,
+   2373
+  ],
+  [
+   2373,
+   2383
+  ],
+  [
+   2383,
+   2396
+  ]
+ ]
+}

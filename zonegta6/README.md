@@ -157,3 +157,12 @@ O pacote de screenshots (`GTAVI_Screenshots.zip`, atualizado em 04/11) traz as m
 ### Vídeos no filme
 
 Os segmentos `shot` aceitam `.mp4`. Os clipes oficiais (pacote de vídeos da Rockstar e os dois vídeos do site de GTA VI) foram recortados para a janela do filme (1080×810) em `public/media/vw/` (fora do git): o voo sobre Vice City, o casal no carro na praia (dois trechos) e 7 clipes de personagem de 12 frames, usados na montagem alternando com imagens. São os mesmos clipes do vídeo 4, mas em enquadramento largo, porque não existe outro vídeo oficial para download.
+
+# Vídeo 6: Recorde (`ZoneGTA6-Recorde`)
+
+Narrado pelo Marcio (`public/vo/recorde-marcio.mp3`), em linguagem de trailer de cinema. A linha do tempo sai da narração: `scripts/recorde_timeline.py <words.json> src/edit/recorde-timeline.json` posiciona cada imagem, cartela e dado na frase correspondente. A trilha é gerada por `scripts/music_trailer.py src/edit/recorde-timeline.json public/music/trilha-recorde.wav` e baixa sob a voz.
+
+- **Fatos:** recorde de pré-venda e recursos do DualSense e do Tempest 3D, ambos do PlayStation Blog (10/11). O pré-download antecipado foi anunciado pela Rockstar; a narração diz "a Sony decidiu", por isso a fonte na tela é "Rockstar · PlayStation Blog".
+- **Imagens:** 37 imagens oficiais que nunca apareceram em vídeos anteriores. Os 7 clipes de personagem da montagem são os mesmos dos vídeos 4 e 5 (não existe outro vídeo oficial para download).
+- **Som:** cerca de 70 efeitos (`public/sfx/v2` e `public/sfx`), nenhum mais de 2 vezes. Os momentos-chave reservam o som ideal primeiro; transições, cortes e legendas usam o que sobra.
+- `scripts/check_media.py` agora também lê os arquivos `.json` de linha do tempo.
