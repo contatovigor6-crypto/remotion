@@ -127,8 +127,12 @@ Roteiro do canal, narrado pelo Marcio (`public/vo/chegando-marcio.mp3`; a palavr
 - **Vídeos de fundo:** clipes oficiais do pacote de downloads da Rockstar (`GTAVI_Videos.zip`) e do site de GTA VI, convertidos para 9:16 em `public/media/v/` (fora do git, como as imagens).
 - **3D:** `src/faq/Fx3d.tsx` tem palco com câmera, caixas, texto com volume, chão em grade, cidade de neon e coluna de gráfico. É 3D feito com transformações do navegador, sem GPU.
 
-# Vídeo 5: edit de contagem regressiva (`ZoneGTA6-Edit`)
+# Vídeo 5: contagem regressiva sem narração (`ZoneGTA6-Edit`)
 
-Edit sem narração, guiado pela batida (100 BPM: 1 tempo = 18 frames). Fica em `src/edit/Edit.tsx`: intro com o número de dias em 3D, 8 compassos com um fato confirmado cada, quebra com a pergunta e final com a data em 3D na cidade de neon e a logo. A constante `DAYS` precisa bater com a data de publicação.
+Fica em `src/edit/Edit.tsx`, no **padrão de edição clássico do canal** (o mesmo dos primeiros vídeos): fundo com troca suave de imagens, painéis, títulos com máscara, texto palavra a palavra e etiqueta de verificação. Estrutura: gancho com os dias que faltam, 8 fatos confirmados (um por compasso da trilha), pergunta e final com a data e a logo. A constante `DAYS` precisa bater com a data de publicação.
 
 A trilha `trilha-phonk.mp3` é original, em estilo phonk lento (`scripts/music_phonk.py`), e toca em volume baixo. `ZoneGTA6-Edit-SemMusica` é a mesma edição só com os efeitos, para adicionar uma faixa licenciada pelo app do YouTube Shorts.
+
+## Padrão de edição (decisão do canal em 15/11)
+
+Usar o estilo clássico dos primeiros vídeos. **Não usar 3D** (`src/faq/Fx3d.tsx` fica só como arquivo) nem estrobo, faixas de cinema e cortes na batida. Continuam valendo: logo no encerramento e no canto, fundos sempre inéditos e nenhum efeito sonoro mais de 2 vezes por vídeo.
