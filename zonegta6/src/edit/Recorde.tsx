@@ -101,90 +101,78 @@ const Overlay: React.FC<{text: string[]; dur: number}> = ({text, dur}) => {
 	);
 };
 
-// ── Sound design: sempre presente, o melhor som para cada momento ──
-// Biblioteca: public/sfx/v2 (44 sons) + public/sfx (originais do canal). Cada evento
-// tem uma lista de sons em ordem de preferência; entra o primeiro que ainda não tocou
-// 2 vezes. Assim nenhum efeito passa de 2 usos e todo momento tem som.
+// ── Sound design cinematográfico ─────────────────────────────
+// Só sons de trailer (public/sfx/cine, scripts/sfx_cine.py): passagens de ar graves,
+// impactos com corpo, booms, swells invertidos, risers, braams, brilhos suaves e
+// batimento. Nenhum som de interface. Cada efeito toca no máximo 2 vezes.
 type Ev = [src: string, frame: number, volume: number, why: string];
-const V2 = (n: string) => `sfx/v2/${n}.wav`;
-const V1 = (n: string) => `sfx/${n}.wav`;
+const X = (n: string) => `sfx/cine/${n}.wav`;
 const POOLS: Record<string, string[]> = {
-	shotIn: [V2('whoosh_a'), V2('whoosh_c'), V2('swish_f'), V2('whoosh_b'), V1('whoosh'), V2('whoosh_d'), V2('whoosh_e')],
-	cardIn: [V1('subdrop'), V2('impact_d'), V2('reverse_cym'), V2('power_down'), V1('impact')],
-	caption: [V2('blip_a'), V2('blip_c'), V2('check_c'), V2('blip_d'), V2('check_b'), V2('check_d'), V2('blip_b')],
-	cut: [V2('impact_a'), V2('impact_b'), V2('impact_c'), V2('glitch_a'), V2('pop_b'), V2('click_a'), V2('pop_a'), V1('glitch'), V1('tick'), V2('glitch_b'), V2('toggle')],
-	shimmer: [V2('notify'), V2('success'), V2('tally'), V2('check_a')],
+	transition: ['air_a', 'air_c', 'air_b', 'air_f', 'air_d', 'air_e'].map(X),
+	cardIn: ['braam_a', 'braam_b', 'braam_c', 'boom_b'].map(X),
+	caption: ['glint_a', 'glint_b', 'glint_c', 'glint_d'].map(X),
+	cut: ['hit_a', 'hit_b', 'hit_c', 'hit_d', 'hit_e', 'hit_f', 'boom_c'].map(X),
+	swell: ['swell_a', 'swell_b', 'swell_c'].map(X),
 };
 
 const buildSfx = (): Ev[] => {
 	const ev: Ev[] = [];
 	const count: Record<string, number> = {};
+	const use = (src: string, at: number, vol: number, why: string) => {
+		count[src] = (count[src] ?? 0) + 1;
+		ev.push([src, at, vol, why]);
+	};
 	const take = (pool: string, at: number, vol: number, why: string) => {
-		const pick = POOLS[pool].find((s) => (count[s] ?? 0) < 2);
-		if (!pick) return;
-		count[pick] = (count[pick] ?? 0) + 1;
-		ev.push([pick, at, vol, why]);
+		const pick = POOLS[pool].find((x) => (count[x] ?? 0) < 2);
+		if (pick) use(pick, at, vol, why);
 	};
-	// Momento específico: o som ideal primeiro, depois alternativas parecidas.
-	const fixed = (src: string | string[], at: number, vol: number, why: string) => {
-		const pick = (Array.isArray(src) ? src : [src]).find((x) => (count[x] ?? 0) < 2);
-		if (!pick) throw new Error(`Sem efeito disponível para: ${why}`);
-		count[pick] = (count[pick] ?? 0) + 1;
-		ev.push([pick, at, vol, why]);
+	const fixed = (src: string[], at: number, vol: number, why: string) => {
+		const pick = src.map(X).find((x) => (count[x] ?? 0) < 2);
+		if (pick) use(pick, at, vol, why);
 	};
-	fixed(V2('stinger_intro'), 0, 0.5, 'abertura do vídeo');
-	fixed([V2('impact_e'), V1('impact')], 2, 0.55, 'primeira imagem: marca histórica');
-	// 1ª passada: momentos-chave reservam o som ideal antes de tudo.
+	// 1ª passada: momentos-chave.
+	fixed(['boom_a'], 0, 0.55, 'abertura: marca histórica');
 	segs.forEach((s, i) => {
 		const at = starts[i];
 		if (s.kind === 'stat') {
-			fixed(i < 5 ? [V1('riser'), V2('riser_b')] : [V2('riser_b'), V1('riser')], at - 40, 0.35, 'tensão antes do dado');
-			take('cardIn', at, 0.5, 'dado aparece');
-			take('shimmer', at + 34, 0.32, 'selo de verificação');
+			take('swell', at - 30, 0.4, 'sucção antes do dado');
+			fixed(['braam_a', 'braam_b'], at, 0.55, 'dado aparece');
+			take('caption', at + 34, 0.3, 'selo de verificação');
 		}
-		if (s.theme === 'gatilho') fixed([V2('toggle'), V2('click_a')], at + 4, 0.4, 'gatilho adaptável: clique de trava');
-		if (s.theme === 'tatil') fixed(V2('power_up'), at + 2, 0.35, 'resposta tátil: vibração subindo');
-		if (s.theme === 'tempest') {
-			fixed(V2('scan'), at + 6, 0.4, 'áudio 3D: som varrendo de um lado ao outro');
-			fixed(V2('cloud'), at + 26, 0.35, 'áudio 3D: brilho espacial');
-		}
-		if (s.theme === 'pergunta') fixed([V2('riser_a'), V1('riser'), V2('riser_b')], at + 4, 0.4, 'a pergunta: tensão antes da montagem');
-		if (s.overlay) fixed(V2('typing'), at + 6, 0.2, 'letras da pergunta surgindo');
-		if (s.lines?.[0] === 'PENSE NISSO.') fixed(V2('clock'), at + 4, 0.35, 'pausa para pensar: relógio');
-		if (s.kind === 'date') {
-			fixed([V2('whoosh_e'), V2('whoosh_d'), V1('whoosh')], at - 4, 0.4, 'passagem para a data');
-			fixed(V2('download'), at + 30, 0.3, 'linha do pré-download');
-		}
+		if (s.lines?.[0] === 'PENSE NISSO.') fixed(['heartbeat'], at + 2, 0.5, 'pausa dramática: batimento');
+		if (s.theme === 'gatilho') fixed(['hit_e'], at + 4, 0.45, 'gatilho adaptável: impacto seco');
+		if (s.theme === 'tatil') fixed(['boom_c'], at + 2, 0.45, 'resposta tátil: vibração grave');
+		if (s.theme === 'tempest') fixed(['air_d', 'air_f'], at + 4, 0.45, 'áudio 3D: ar atravessando o espaço');
+		if (s.theme === 'pergunta') fixed(['tension'], at, 0.4, 'a pergunta: cordas em tensão');
+		if (s.kind === 'date') fixed(['swell_c', 'swell_b'], at - 30, 0.4, 'sucção antes da data');
 		if (s.kind === 'title') {
-			fixed([V2('reverse_cym'), V2('riser_a'), V1('riser')], at - 24, 0.4, 'sucção antes do título');
-			fixed([V1('impact'), V2('impact_e'), V2('impact_d')], at, 0.6, 'título GRAND THEFT AUTO VI');
+			fixed(['rise_a', 'rise_b'], at - 75, 0.4, 'subida até o título');
+			fixed(['boom_b', 'boom_a'], at, 0.65, 'título GRAND THEFT AUTO VI');
 		}
-		if (s.kind === 'logo') {
-			fixed(V2('stinger_final'), at + 2, 0.7, 'logo do canal');
-			take('shimmer', at + 20, 0.3, 'INSCREVA-SE');
-		}
+		if (s.kind === 'logo') fixed(['finale'], at, 0.6, 'logo do canal: acorde final');
 	});
-
-	// 2ª passada: sons de transição, cortes e legendas com o que sobrou.
+	// 2ª passada: transições, cartelas, legendas e cortes com o que sobrou.
 	segs.forEach((s, i) => {
 		const at = starts[i];
-		if (s.kind === 'shot' && !s.fast && i > 0) take('shotIn', at - 3, 0.36, 'entrada de plano');
-		if (s.kind === 'shot' && s.fast) take('cut', at, 0.42, 'corte da montagem');
-		if (s.caption) take('caption', at + 10, 0.3, `legenda ${s.caption}`);
-		if (s.kind === 'card') take('cardIn', at, 0.42, `cartela ${(s.lines ?? []).join(' ')}`);
+		if (s.kind === 'shot' && !s.fast && i > 0) take('transition', at - 4, 0.32, 'passagem entre planos');
+		if (s.kind === 'shot' && s.fast) take('cut', at, 0.4, 'corte da montagem');
+		if (s.caption) take('caption', at + 10, 0.26, `legenda ${s.caption}`);
+		if (s.kind === 'card' && s.lines?.[0] !== 'PENSE NISSO.') take('cardIn', at, 0.42, `cartela ${(s.lines ?? []).join(' ')}`);
 	});
+	for (const [name, c] of Object.entries(count)) if (c > 2) throw new Error(`Efeito "${name}" usado mais de 2 vezes`);
 	return ev;
 };
 const sfx = buildSfx();
 
-// Trilha abaixa enquanto o narrador fala e respira nas pausas.
+// Trilha épica presente o tempo todo: abaixa só um pouco sob a voz (a mixagem já
+// abre espaço em 1–4 kHz para a narração) e sobe nas pausas.
 const musicVolume = (f: number) => {
 	let dist = Infinity;
 	for (const [a, b] of data.voice) {
-		if (f >= a && f <= b) return 0.3;
+		if (f >= a && f <= b) return 0.55;
 		dist = Math.min(dist, f < a ? a - f : f - b);
 	}
-	return interpolate(dist, [0, 8], [0.3, 0.62], clamp);
+	return interpolate(dist, [0, 8], [0.55, 0.85], clamp);
 };
 
 export const Recorde: React.FC = () => {
@@ -223,7 +211,7 @@ export const Recorde: React.FC = () => {
 				<div style={{fontFamily: cine, fontWeight: 700, fontSize: 30, color: '#f1ece4', letterSpacing: 10}}>ZONE GTA VI</div>
 			</div>
 			<div style={{position: 'absolute', top: 1600, left: 0, right: 0, textAlign: 'center', fontFamily: cine, fontSize: 20, color: '#8d867b', letterSpacing: 6}}>IMAGENS: ROCKSTAR GAMES · GTA VI</div>
-			<Html5Audio src={staticFile('music/trilha-recorde.mp3')} volume={musicVolume} />
+			<Html5Audio src={staticFile('music/trilha-recorde-epica.mp3')} volume={musicVolume} />
 			<Sequence from={data.voStart} name="narracao">
 				<Html5Audio src={staticFile('vo/recorde-marcio.mp3')} volume={1} />
 			</Sequence>

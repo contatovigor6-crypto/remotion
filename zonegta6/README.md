@@ -166,3 +166,8 @@ Narrado pelo Marcio (`public/vo/recorde-marcio.mp3`), em linguagem de trailer de
 - **Imagens:** 37 imagens oficiais que nunca apareceram em vídeos anteriores. Os 7 clipes de personagem da montagem são os mesmos dos vídeos 4 e 5 (não existe outro vídeo oficial para download).
 - **Som:** cerca de 70 efeitos (`public/sfx/v2` e `public/sfx`), nenhum mais de 2 vezes. Os momentos-chave reservam o som ideal primeiro; transições, cortes e legendas usam o que sobra.
 - `scripts/check_media.py` agora também lê os arquivos `.json` de linha do tempo.
+
+### Recorde v2: som de trailer
+
+- **Trilha:** `scripts/music_epic.py <timeline.json> <saida.wav>` gera uma trilha épica com pulso contínuo (ostinato de cordas, taiko, contrabaixo, metais), que cresce até a montagem e pausa na cartela "PENSE NISSO.". A mixagem abre espaço em 1–4 kHz para a voz. No vídeo, ela fica em 55% sob a narração e 85% nas pausas (antes eram 30% e 62%, e a música sumia).
+- **Efeitos:** `scripts/sfx_cine.py` gera 30 sons cinematográficos em `public/sfx/cine/` (passagens de ar graves, impactos, booms, swells, risers, braams, brilhos suaves, batimento, tensão, acorde final). O vídeo usa só esse kit, sem sons de interface.
