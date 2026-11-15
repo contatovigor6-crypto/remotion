@@ -1,5 +1,6 @@
 import React from 'react';
 import {Composition} from 'remotion';
+import {Edit, EDIT_DURATION} from './edit/Edit';
 import {Chegando, CHEGANDO_DURATION} from './faq/Chegando';
 import {Faq, videos} from './faq/Faq';
 import {DURATION, Short} from './Short';
@@ -55,5 +56,8 @@ export const Root: React.FC = () => (
 			width={1080}
 			height={1920}
 		/>
+		{/* Vídeo 5: edit na batida, sem narração. A versão sem música serve para adicionar uma faixa licenciada no app do YouTube. */}
+		<Composition id="ZoneGTA6-Edit" component={Edit} defaultProps={{music: 'trilha-phonk.mp3' as string | null}} durationInFrames={EDIT_DURATION} fps={FPS} width={1080} height={1920} />
+		<Composition id="ZoneGTA6-Edit-SemMusica" component={Edit} defaultProps={{music: null as string | null}} durationInFrames={EDIT_DURATION} fps={FPS} width={1080} height={1920} />
 	</>
 );
