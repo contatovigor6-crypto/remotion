@@ -2,7 +2,7 @@
 
 Uso: python scripts/music_trailer.py public/music/trilha-trailer.wav
 
-Segue a linha do tempo de src/edit/Filme.tsx (frames a 30 fps): drone grave, notas
+Segue a linha do tempo de src/edit/filme-timeline.json (frames a 30 fps): drone grave, notas
 de piano, "braams" nas cartelas, batidas que aceleram na montagem, silêncio antes do
 título, grande impacto no título e acorde final na logo.
 """
@@ -13,14 +13,19 @@ import numpy as np
 
 FPS = 30
 SR = 48000
-# Mesmos marcos de Filme.tsx
-CARDS = [210, 380, 530]  # cartelas de texto
-MONTAGE = (590, 686)  # cortes rápidos (12 frames cada)
-TITLE = 706
-DATE = 796
-DAYS = 886
-LOGO = 946
-END = 1056
+# Marcos lidos da mesma linha do tempo usada pela cena (src/edit/filme-timeline.json).
+import json
+
+_tl = json.load(open("src/edit/filme-timeline.json"))
+_starts, _at = [], 0
+for _seg in _tl:
+    _starts.append(_at)
+    _at += _seg["dur"]
+END = _at
+CARDS = [st for st, seg in zip(_starts, _tl) if seg["kind"] == "card"][1:]  # cartelas (menos a de abertura)
+_fast = [st for st, seg in zip(_starts, _tl) if seg["kind"] == "shot" and seg["dur"] <= 12]
+MONTAGE = (_fast[0], _fast[-1] + 12)  # cortes rápidos (12 frames cada)
+TITLE, DATE, DAYS, LOGO = (next(st for st, seg in zip(_starts, _tl) if seg["kind"] == k) for k in ("title", "date", "days", "logo"))
 
 DUR = END / FPS
 N = int(SR * DUR)
@@ -94,9 +99,11 @@ drone *= 0.8 + 0.2 * np.sin(2 * np.pi * 0.13 * t_all)
 add(drone, 0, -0.15, 0.6)
 add(np.roll(drone, 700), 0, 0.15, 0.6)
 
-# Piano: motivo lento de 4 notas na abertura e entre as cartelas.
-for fr, m in ((10, 62), (60, 65), (110, 64), (160, 57), (290, 62), (330, 69), (450, 65), (490, 64)):
-    add(piano(m), fr, 0.2, 0.22)
+# Piano: motivo lento de 4 notas, repetido até a montagem (sem tocar em cima dos braams).
+_motif = [62, 65, 64, 57, 62, 69, 65, 64]
+for _k, _fr in enumerate(range(10, MONTAGE[0] - 30, 52)):
+    if all(abs(_fr - c) > 20 for c in CARDS):
+        add(piano(_motif[_k % 8]), _fr, 0.2, 0.22)
 
 # Braams nas cartelas.
 for fr in CARDS:

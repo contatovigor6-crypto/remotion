@@ -1,0 +1,243 @@
+[
+ {
+  "kind": "card",
+  "lines": [
+   "ZONE GTA VI",
+   "APRESENTA"
+  ],
+  "small": true,
+  "dur": 80
+ },
+ {
+  "kind": "shot",
+  "file": "ambrosia_04.jpg",
+  "focus": 0.45,
+  "caption": null,
+  "dur": 85
+ },
+ {
+  "kind": "shot",
+  "file": "ambrosia_02.jpg",
+  "focus": 0.5,
+  "caption": null,
+  "dur": 80
+ },
+ {
+  "kind": "card",
+  "lines": [
+   "DEPOIS DE ANOS",
+   "DE ESPERA"
+  ],
+  "small": false,
+  "dur": 75
+ },
+ {
+  "kind": "shot",
+  "file": "jason_duval_01.jpg",
+  "focus": 0.7,
+  "caption": "JASON DUVAL",
+  "dur": 80
+ },
+ {
+  "kind": "shot",
+  "file": "jason_duval_06.jpg",
+  "focus": 0.6,
+  "caption": null,
+  "dur": 70
+ },
+ {
+  "kind": "shot",
+  "file": "lucia_caminos_01.jpg",
+  "focus": 0.58,
+  "caption": "LUCIA CAMINOS",
+  "dur": 80
+ },
+ {
+  "kind": "shot",
+  "file": "lucia_caminos_03.jpg",
+  "focus": 0.42,
+  "caption": null,
+  "dur": 70
+ },
+ {
+  "kind": "card",
+  "lines": [
+   "DOIS",
+   "PROTAGONISTAS"
+  ],
+  "small": false,
+  "dur": 70
+ },
+ {
+  "kind": "shot",
+  "file": "jason_and_lucia_17.jpg",
+  "focus": 0.48,
+  "caption": null,
+  "dur": 75
+ },
+ {
+  "kind": "shot",
+  "file": "jason_and_lucia_19.jpg",
+  "focus": 0.55,
+  "caption": null,
+  "dur": 70
+ },
+ {
+  "kind": "card",
+  "lines": [
+   "UMA CIDADE"
+  ],
+  "small": false,
+  "dur": 65
+ },
+ {
+  "kind": "shot",
+  "file": "lucia_caminos_02.jpg",
+  "focus": 0.5,
+  "caption": "VICE CITY",
+  "dur": 80
+ },
+ {
+  "kind": "shot",
+  "file": "jason_duval_04.jpg",
+  "focus": 0.45,
+  "caption": null,
+  "dur": 65
+ },
+ {
+  "kind": "card",
+  "lines": [
+   "UM ESTADO",
+   "INTEIRO"
+  ],
+  "small": false,
+  "dur": 65
+ },
+ {
+  "kind": "shot",
+  "file": "grassrivers_05.jpg",
+  "focus": 0.5,
+  "caption": "GRASSRIVERS",
+  "dur": 75
+ },
+ {
+  "kind": "shot",
+  "file": "leonida_keys_07.jpg",
+  "focus": 0.5,
+  "caption": "LEONIDA KEYS",
+  "dur": 70
+ },
+ {
+  "kind": "shot",
+  "file": "port_gellhorn_06.jpg",
+  "focus": 0.5,
+  "caption": "PORT GELLHORN",
+  "dur": 70
+ },
+ {
+  "kind": "shot",
+  "file": "mount_kalaga_national_park_05.jpg",
+  "focus": 0.45,
+  "caption": "MOUNT KALAGA",
+  "dur": 70
+ },
+ {
+  "kind": "card",
+  "lines": [
+   "E UMA ESPERA",
+   "QUE CHEGA AO FIM"
+  ],
+  "small": false,
+  "dur": 70
+ },
+ {
+  "kind": "shot",
+  "file": "jason_duval_05.jpg",
+  "focus": 0.4,
+  "caption": null,
+  "dur": 12
+ },
+ {
+  "kind": "shot",
+  "file": "lucia_caminos_07.jpg",
+  "focus": 0.68,
+  "caption": null,
+  "dur": 12
+ },
+ {
+  "kind": "shot",
+  "file": "jason_duval_07.jpg",
+  "focus": 0.5,
+  "caption": null,
+  "dur": 12
+ },
+ {
+  "kind": "shot",
+  "file": "jason_duval_09.jpg",
+  "focus": 0.55,
+  "caption": null,
+  "dur": 12
+ },
+ {
+  "kind": "shot",
+  "file": "jason_and_lucia_14.jpg",
+  "focus": 0.62,
+  "caption": null,
+  "dur": 12
+ },
+ {
+  "kind": "shot",
+  "file": "jason_duval_08.jpg",
+  "focus": 0.6,
+  "caption": null,
+  "dur": 12
+ },
+ {
+  "kind": "shot",
+  "file": "jason_duval_10.jpg",
+  "focus": 0.45,
+  "caption": null,
+  "dur": 12
+ },
+ {
+  "kind": "shot",
+  "file": "lucia_caminos_08.jpg",
+  "focus": 0.5,
+  "caption": null,
+  "dur": 12
+ },
+ {
+  "kind": "shot",
+  "file": "lucia_caminos_04.jpg",
+  "focus": 0.35,
+  "caption": null,
+  "dur": 12
+ },
+ {
+  "kind": "shot",
+  "file": "vice_city_12.jpg",
+  "focus": 0.6,
+  "caption": null,
+  "dur": 12
+ },
+ {
+  "kind": "black",
+  "dur": 20
+ },
+ {
+  "kind": "title",
+  "dur": 100
+ },
+ {
+  "kind": "date",
+  "dur": 100
+ },
+ {
+  "kind": "days",
+  "dur": 70
+ },
+ {
+  "kind": "logo",
+  "dur": 120
+ }
+]

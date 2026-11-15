@@ -139,6 +139,13 @@ A trilha `trilha-phonk.mp3` é original (`scripts/music_phonk.py`) e toca em vol
 - **Efeitos sonoros:** poucos, um por acontecimento, escolhido pelo que aparece na tela (o plano em `sfxPlan` traz o motivo de cada som). Nenhum efeito mais de 2 vezes por vídeo.
 - **Sempre:** logo no encerramento e na barra do canal; fundos inéditos (`scripts/check_media.py`).
 
-# Vídeo 5, versão filme (`ZoneGTA6-Filme`)
+# Vídeo 5, versão filme (`ZoneGTA6-Filme`) — padrão do canal
 
-A mesma contagem regressiva em linguagem de trailer de cinema (`src/edit/Filme.tsx`): faixas pretas, cartelas de texto sobre preto (fonte Cinzel), planos com aproximação lenta e fusão para o preto, montagem de cortes rápidos, título, data, dias que faltam e a logo com bloco de créditos. A trilha `trilha-trailer.mp3` é original (`scripts/music_trailer.py`) e usa os mesmos marcos de tempo da cena. Só 4 efeitos sonoros, porque a trilha já marca cartelas e cortes. Usa as imagens do vídeo 5, por ser uma versão dele.
+A contagem regressiva em linguagem de trailer de cinema (`src/edit/Filme.tsx`), com 66,5 s. A linha do tempo fica em `src/edit/filme-timeline.json` e é lida tanto pela cena quanto pela trilha (`scripts/music_trailer.py`), então mudar a duração de um plano mantém música e imagem alinhadas.
+
+- **Planos:** a imagem ocupa uma janela larga no centro (75% da largura da foto 16:9 visível) e é enquadrada pelo campo `focus` de cada plano, para o assunto principal aparecer. Aproximação lenta, fusão para o preto, cor de película e grão.
+- **Cartelas:** texto em Cinzel sobre preto, com as letras surgindo uma a uma.
+- **Estrutura:** apresentação, protagonistas, cidade, regiões do estado, montagem de cortes rápidos, título, data, dias que faltam e logo com bloco de créditos.
+- **Som:** trilha de trailer original e só 4 efeitos sonoros.
+
+**Decisão do canal (15/11): este estilo de filme é o padrão para os próximos vídeos.**
