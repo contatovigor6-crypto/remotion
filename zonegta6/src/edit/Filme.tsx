@@ -170,14 +170,68 @@ const LogoCard: React.FC<{dur: number}> = ({dur}) => {
 	);
 };
 
-// Sound design mínimo: a trilha já marca cartelas, cortes e título.
+// ── Sound design: um som para cada acontecimento da tela ─────
+// Efeitos de public/sfx/v2 (scripts/sfx.py). Regra do canal: nenhum efeito toca mais
+// de 2 vezes no vídeo; o plano é validado e o render falha se a regra for quebrada.
 type Ev = [name: string, frame: number, volume: number, why: string];
-const sfx: Ev[] = [
-	['reverse_cym', startOf('title') - 24, 0.4, 'sucção antes do título'],
-	['impact_e', startOf('title'), 0.6, 'título GRAND THEFT AUTO VI aparece'],
-	['whoosh_d', startOf('date') - 4, 0.4, 'passagem para a data'],
-	['stinger_final', startOf('logo') + 2, 0.7, 'logo do canal entra'],
-];
+const CARD_IN = ['whoosh_d', 'whoosh_b', 'whoosh_d', 'whoosh_b', 'whoosh_e', 'whoosh_e']; // cartela surge do preto
+const CARD_LINE = ['blip_b', 'blip_b', 'notify', 'notify', 'check_b', 'check_b']; // filete dourado cresce
+const SHOT_IN = ['whoosh_a', 'whoosh_c', 'swish_f', 'whoosh_a', 'whoosh_c', 'swish_f']; // entrada de plano
+const CAPTION = ['blip_a', 'blip_c', 'blip_d', 'check_a', 'check_c', 'blip_a', 'blip_c', 'blip_d', 'check_a', 'check_c']; // legenda aparece
+const CUT = ['impact_a', 'impact_b', 'impact_c', 'glitch_a', 'pop_b', 'toggle', 'click_a', 'impact_a', 'impact_b', 'impact_c', 'glitch_a', 'pop_b', 'toggle', 'click_a']; // cortes da montagem
+// Sons temáticos ligados ao conteúdo do plano: [efeito, frames após o início, motivo].
+const THEMED: Record<string, [string, number, string]> = {
+	'nov_lancamento_carro.jpg': ['scan', 6, 'arte de lançamento se revela'],
+	'jason_duval_01.jpg': ['power_up', 4, 'Jason na moto: ronco subindo'],
+	'vw/vicecity_aereo.mp4': ['cloud', 6, 'voo sobre a cidade: brilho no ar'],
+	'jason_and_lucia_17.jpg': ['impact_d', 2, 'Jason e Lucia com arma em punho'],
+	'nov_capa_oficial.jpg': ['success', 8, 'capa oficial aparece'],
+};
+
+const buildSfx = (): Ev[] => {
+	const ev: Ev[] = [];
+	let card = 0;
+	let shot = 0;
+	let cap = 0;
+	let cut = 0;
+	timeline.forEach((seg, i) => {
+		const at = starts[i];
+		if (seg.kind === 'card') {
+			if (card === 0) ev.push(['typing', at + 4, 0.25, 'letras de ZONE GTA VI APRESENTA'], ['stinger_intro', at, 0.35, 'abertura do vídeo']);
+			ev.push([CARD_IN[card % 6], at - 2, 0.4, 'cartela surge do preto'], [CARD_LINE[card % 6], at + 12, 0.3, 'filete dourado da cartela']);
+			card++;
+		}
+		if (seg.kind === 'shot' && seg.dur > 12) {
+			if (shot < SHOT_IN.length) ev.push([SHOT_IN[shot], at - 3, 0.38, 'entrada de plano']);
+			shot++;
+		}
+		if ((seg.kind === 'shot' || seg.kind === 'art') && seg.caption) ev.push([CAPTION[cap++ % CAPTION.length], at + 12, 0.32, `legenda ${seg.caption}`]);
+		if (seg.kind === 'shot' && seg.dur <= 12) ev.push([CUT[cut++ % CUT.length], at, 0.5, 'corte da montagem']);
+		const th = seg.file ? THEMED[seg.file] : undefined;
+		if (th) ev.push([th[0], at + th[1], 0.42, th[2]]);
+	});
+	const title = startOf('title');
+	ev.push(
+		['power_down', startOf('black'), 0.45, 'montagem acaba e tudo apaga'],
+		['riser_a', title - 45, 0.4, 'tensão antes do título'],
+		['reverse_cym', title - 24, 0.45, 'sucção antes do título'],
+		['impact_e', title, 0.65, 'título GRAND THEFT AUTO VI aparece'],
+		['glitch_b', title + 4, 0.25, 'brilho passando no VI'],
+		['reverse_cym', startOf('date') - 20, 0.35, 'sucção antes da data'],
+		['download', startOf('date') + 30, 0.35, 'linha PRÉ-DOWNLOAD JÁ DISPONÍVEL'],
+		['clock', startOf('days'), 0.45, 'FALTAM 4 DIAS'],
+		['riser_a', startOf('logo') - 45, 0.4, 'preparação para a logo'],
+		['stinger_final', startOf('logo') + 2, 0.7, 'logo do canal entra'],
+		['tally', startOf('logo') + 20, 0.3, 'INSCREVA-SE NO CANAL'],
+	);
+	const count: Record<string, number> = {};
+	for (const [name] of ev) {
+		count[name] = (count[name] ?? 0) + 1;
+		if (count[name] > 2) throw new Error(`Efeito "${name}" usado mais de 2 vezes`);
+	}
+	return ev;
+};
+const sfx = buildSfx();
 
 export const Filme: React.FC<{music: string | null}> = ({music}) => {
 	const frame = useCurrentFrame();
