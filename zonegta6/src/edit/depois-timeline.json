@@ -31,6 +31,7 @@
    "kind": "question",
    "file": "ultimate_edition_01.jpg",
    "focus": 0.5,
+   "fx": "parallax",
    "text": [
     "O QUE A ROCKSTAR",
     "VAI FAZER DEPOIS?"
@@ -50,6 +51,7 @@
    "kind": "shot",
    "file": "brian_heder_03.jpg",
    "focus": 0.55,
+   "fx": "parallax",
    "caption": "APRESENTAÇÃO A INVESTIDORES · 9/11",
    "dur": 72
   },
@@ -97,6 +99,7 @@
    "kind": "shot",
    "file": "nov_online_9.jpg",
    "focus": 0.5,
+   "fx": "whip",
    "caption": "ATUALIZAÇÕES · CONTEÚDOS · EVENTOS",
    "dur": 71
   },
@@ -104,6 +107,7 @@
    "kind": "shot",
    "file": "nov_online_6.jpg",
    "focus": 0.5,
+   "fx": "parallax",
    "caption": "UMA COMUNIDADE ENORME",
    "dur": 66
   },
@@ -111,12 +115,15 @@
    "kind": "shot",
    "file": "nov_online_4.jpg",
    "focus": 0.5,
+   "fx": "whip",
+   "dir": -1,
    "dur": 72
   },
   {
    "kind": "shot",
    "file": "nov_online_1.jpg",
    "focus": 0.45,
+   "fx": "dolly",
    "caption": "NÃO É O FIM DE UMA ERA",
    "dur": 96
   },
@@ -124,12 +131,14 @@
    "kind": "shot",
    "file": "ultimate_edition_squalo_01.jpg",
    "focus": 0.45,
+   "fx": "whip",
    "dur": 104
   },
   {
    "kind": "shot",
    "file": "ultimate_edition_grotti_cheetah_01.jpg",
    "focus": 0.5,
+   "fx": "parallax",
    "caption": "MESMO DEPOIS DO LANÇAMENTO",
    "dur": 108
   },
@@ -153,30 +162,34 @@
    "dur": 173
   },
   {
-   "kind": "shot",
-   "file": "ultimate_edition_electric_fang_01.jpg",
-   "focus": 0.45,
-   "caption": "NOVIDADES?",
-   "dur": 28
-  },
-  {
-   "kind": "shot",
-   "file": "ultimate_edition_stock_305_01.jpg",
-   "focus": 0.5,
-   "caption": "EVENTOS?",
-   "dur": 36
-  },
-  {
-   "kind": "shot",
-   "file": "vintage_vice_city_pack_01.jpg",
-   "focus": 0.5,
-   "caption": "EXPANSÕES?",
-   "dur": 68
+   "kind": "triptych",
+   "panels": [
+    {
+     "file": "ultimate_edition_electric_fang_01.jpg",
+     "focus": 0.45,
+     "label": "NOVIDADES?",
+     "at": 0
+    },
+    {
+     "file": "ultimate_edition_stock_305_01.jpg",
+     "focus": 0.5,
+     "label": "EVENTOS?",
+     "at": 31
+    },
+    {
+     "file": "vintage_vice_city_pack_01.jpg",
+     "focus": 0.5,
+     "label": "EXPANSÕES?",
+     "at": 67
+    }
+   ],
+   "dur": 132
   },
   {
    "kind": "shot",
    "file": "ultimate_edition_wyman_car_collection_01.jpg",
    "focus": 0.35,
+   "fx": "dolly",
    "caption": "UMA INCÓGNITA",
    "dur": 39
   },
@@ -192,18 +205,23 @@
    "kind": "shot",
    "file": "ultimate_edition_vice_city_style_01.jpg",
    "focus": 0.5,
+   "fx": "parallax",
    "dur": 110
   },
   {
    "kind": "shot",
    "file": "vintage_vice_city_pack_vapid_stanier_01.jpg",
    "focus": 0.5,
+   "fx": "whip",
+   "dir": -1,
    "dur": 45
   },
   {
    "kind": "shot",
    "file": "ultimate_edition_rideout_customs_01.jpg",
    "focus": 0.55,
+   "fx": "parallax",
+   "open": true,
    "caption": "O PRÓXIMO GRANDE CAPÍTULO",
    "dur": 95
   },

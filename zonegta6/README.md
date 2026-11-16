@@ -180,3 +180,16 @@ Narrado pelo Marcio (`public/vo/depois-marcio.mp3`). Cenas em `src/edit/Depois.t
 - **Final de marca:** a logo entra com feixes de luz girando, "ZONE GTA VI" abre o espaçamento, a frase final entra na palavra "essa", vem o convite "INSCREVA-SE · ATIVE AS NOTIFICAÇÕES" num quadro dourado, depois os créditos e o fade para o preto.
 - **Fatos:** "19/11 mantido" e "pré-vendas extraordinárias" vêm da teleconferência da Take-Two de 9/11 (CONFIRMADO). O suporte ao GTA Online vem de declarações do CEO em teleconferências anteriores de 2026 (REPORTADO), e não da apresentação de novembro, como a narração sugere. Planos pós-lançamento: sem anúncio oficial até 16/11.
 - **Imagens novas:** 4 imagens de GTA Online publicadas pela Rockstar em novembro, artes da Edição Ultimate e do Pacote Vintage Vice City, e as últimas capturas inéditas de GTA VI.
+
+### Gramática de cinema (vídeo 7 em diante)
+
+`src/edit/Cine.tsx` reúne técnicas de filme; cada plano recebe a sua pelo campo `fx` da linha do tempo:
+
+- `parallax`: 2.5D. O fundo desfoca devagar (troca de foco) e o assunto, recortado por `scripts/plates.py` (rembg, local), avança na frente em outra velocidade.
+- `dolly`: efeito vertigo. O fundo se afasta enquanto o assunto se aproxima.
+- `whip`: chicote de câmera, com o plano entrando de lado com rastro de movimento.
+- `open: true`: as faixas pretas recolhem e a imagem toma a tela inteira (mudança de proporção).
+- `triptych`: tela dividida em três, com cada painel entrando no momento em que é citado.
+- Transições sobrepostas: vazamento de luz na entrada dos dados, queima de película antes das viradas, reflexo anamórfico no título e aberração cromática nos impactos.
+
+Os recortes ficam em `public/media/cut/` (fora do git).

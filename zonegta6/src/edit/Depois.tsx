@@ -4,6 +4,7 @@ import {ChannelLogo, LOGO} from '../faq/Fx';
 import {C, mono, Status, statusColor} from '../theme';
 import {BAR_H, Card, cine, DateCard, IMG_H, Title} from './Filme';
 import {Shot, Stat} from './Recorde';
+import {FilmBurn, Flare, Layered, LightLeak, Triptych, Whip} from './Cine';
 import data from './depois-timeline.json';
 
 // Vídeo 7: "Depois do lançamento" — narrado pelo Marcio, em linguagem de trailer.
@@ -30,6 +31,10 @@ type Seg = {
 	dropAt?: number;
 	subAt?: number;
 	tagAt?: number;
+	fx?: string;
+	dir?: 1 | -1;
+	open?: boolean;
+	panels?: Array<{file: string; focus: number; label: string; at: number}>;
 };
 const segs = data.segments as unknown as Seg[];
 const starts = segs.reduce<number[]>((acc, _s, i) => [...acc, i === 0 ? 0 : acc[i - 1] + segs[i - 1].dur], []);
@@ -109,7 +114,7 @@ const Question: React.FC<{s: Seg; index: number}> = ({s, index}) => {
 	let delay = 4;
 	return (
 		<AbsoluteFill>
-			<Shot s={{...s, caption: null}} index={index} />
+			{s.fx === 'parallax' ? <Layered file={s.file ?? ''} focus={s.focus ?? 0.5} dur={s.dur} mode="parallax" /> : <Shot s={{...s, caption: null}} index={index} />}
 			<AbsoluteFill style={{background: 'rgba(0,0,0,0.35)', opacity: interpolate(frame, [0, 10], [0, 1], clamp)}} />
 			<AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
 				{lines.map((l, i) => {
@@ -220,6 +225,7 @@ const buildSfx = (): Ev[] => {
 			take('caption', at + 40, 0.28, 'selo de verificação');
 		}
 		if (s.kind === 'date') fixed(['rise_b'], at - 70, 0.35, 'subida até a data');
+		if (s.kind === 'triptych') (s.panels ?? []).forEach((pn, k) => fixed([['hit_b', 'hit_d', 'hit_f'][k], 'hit_a', 'hit_c'], at + pn.at, 0.45, `painel ${pn.label}`));
 		if (s.kind === 'title') fixed(['boom_c', 'hit_f'], at, 0.6, 'título: começa uma nova era');
 		if (s.kind === 'logo') {
 			fixed(['rise_a'], at - 80, 0.35, 'subida até a logo');
@@ -249,23 +255,53 @@ const musicVolume = (f: number) => {
 	return interpolate(dist, [0, 8], [0.55, 0.85], clamp);
 };
 
+// Transições de lente: vazamento de luz na entrada dos dados, queima de película antes
+// das viradas e reflexo anamórfico no título e na revelação final.
+const fxOverlays: Array<[string, number]> = segs.flatMap((s, i): Array<[string, number]> => {
+	const at = starts[i];
+	if (s.kind === 'stat') return [['leak', at - 12]];
+	if (s.kind === 'card' && (s.lines?.[0] === 'UMA COISA' || s.lines?.[0] === 'O FUTURO')) return [['burn', at - 11]];
+	if (s.kind === 'date') return [['burn', at - 11]];
+	if (s.kind === 'title') return [['flare', at + 2]];
+	if (s.open) return [['flareLow', at + 20]];
+	if (s.kind === 'triptych') return [['leak', at - 8]];
+	return [];
+});
+
+// Aberração cromática (franja vermelha/azul) por poucos frames nos impactos.
+const impacts = [0, ...(segs[0].flashes ?? []).map(([, at]) => at), ...segs.flatMap((s, i) => (['stat', 'quote', 'question', 'title'].includes(s.kind) ? [starts[i]] : []))];
+const aberration = (f: number) => {
+	const d = impacts.map((at) => f - at).filter((x) => x >= 0 && x < 7)[0];
+	if (d === undefined) return undefined;
+	const k = (1 - d / 7) * 9;
+	return `drop-shadow(${k}px 0 0 rgba(255,0,70,0.55)) drop-shadow(${-k}px 0 0 rgba(0,190,255,0.55))`;
+};
+
 export const Depois: React.FC = () => {
 	const frame = useCurrentFrame();
 	const fullScreen = frame < startOf('question');
 	return (
-		<AbsoluteFill style={{backgroundColor: '#000'}}>
+		<AbsoluteFill style={{backgroundColor: '#000', filter: aberration(frame)}}>
 			{segs.map((s, i) => (
 				<Sequence key={i} from={starts[i]} durationInFrames={s.dur} name={s.file ?? s.kind}>
 					{s.kind === 'hook' ? <Hook s={s} /> : null}
 					{s.kind === 'hook2' ? <Hook2 s={s} /> : null}
 					{s.kind === 'question' ? <Question s={s} index={i} /> : null}
-					{s.kind === 'shot' ? <Shot s={s} index={i} /> : null}
+					{s.kind === 'shot' && (s.fx === 'parallax' || s.fx === 'dolly') ? <Layered file={s.file ?? ''} focus={s.focus ?? 0.5} dur={s.dur} mode={s.fx === 'dolly' ? 'dolly' : 'parallax'} open={s.open} caption={s.caption} /> : null}
+					{s.kind === 'shot' && s.fx === 'whip' ? <Whip file={s.file ?? ''} focus={s.focus ?? 0.5} dur={s.dur} dir={s.dir ?? 1} caption={s.caption} /> : null}
+					{s.kind === 'shot' && !s.fx ? <Shot s={s} index={i} /> : null}
+					{s.kind === 'triptych' ? <Triptych panels={s.panels ?? []} dur={s.dur} /> : null}
 					{s.kind === 'card' ? <Card lines={s.lines ?? []} small={s.small} dur={s.dur} /> : null}
 					{s.kind === 'stat' ? <Stat s={s} /> : null}
 					{s.kind === 'quote' ? <Quote s={s} /> : null}
 					{s.kind === 'date' ? <DateCard dur={s.dur} /> : null}
 					{s.kind === 'title' ? <Title dur={s.dur} /> : null}
 					{s.kind === 'logo' ? <Outro s={s} /> : null}
+				</Sequence>
+			))}
+			{fxOverlays.map(([kind, at], k) => (
+				<Sequence key={`fx${k}`} from={Math.max(0, at)} durationInFrames={40} name={`fx-${kind}`}>
+					{kind === 'leak' ? <LightLeak /> : kind === 'burn' ? <FilmBurn /> : <Flare y={kind === 'flareLow' ? 1300 : 960} />}
 				</Sequence>
 			))}
 			<AbsoluteFill style={{pointerEvents: 'none', opacity: 0.08, mixBlendMode: 'overlay'}}>
