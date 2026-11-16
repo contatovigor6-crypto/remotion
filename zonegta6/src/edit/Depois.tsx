@@ -6,6 +6,7 @@ import {BAR_H, Card, cine, DateCard, GOLD, IMG_H, Lux, Title} from './Filme';
 import {Shot, Stat} from './Recorde';
 import {Flare, GoldDust, GoldFrame, GoldWipe, Layered, LightLeak, Sheen, Triptych, Whip} from './Cine';
 import data from './depois-timeline.json';
+import {Countdown, CutLines, findTags, HudTags, Reticle, Ripple, Subtitles, Timecode, Word} from './Motion';
 
 // Vídeo 7: "Depois do lançamento" — narrado pelo Marcio, em linguagem de trailer.
 // Foco no gancho (primeiros 8 s) e num encerramento de marca profissional.
@@ -280,6 +281,24 @@ const aberration = (f: number) => {
 	return `drop-shadow(${k}px 0 0 rgba(255,0,70,0.55)) drop-shadow(${-k}px 0 0 rgba(0,190,255,0.55))`;
 };
 
+// ── Camada de motion graphics ────────────────────────────────
+const words = data.words as unknown as Word[];
+const hudTags = findTags(words, [
+	{label: 'ROCKSTAR GAMES', match: ['rockstar']},
+	{label: 'TAKE-TWO INTERACTIVE', match: ['take']},
+	{label: 'INVESTIDORES · 9/11', match: ['investidores']},
+	{label: 'LANÇAMENTO · 19/11', match: ['19'], after: 800},
+	{label: 'PRÉ-VENDAS ↑', match: ['acima']},
+	{label: 'GTA ONLINE', match: ['gta', 'online']},
+	{label: 'COMUNIDADE ATIVA', match: ['comunidade']},
+	{label: 'PÓS-LANÇAMENTO', match: ['periodo']},
+	{label: 'NOVA ERA', match: ['nova', 'era'], after: 2500},
+]);
+const windowSegs = segs.map((s, i) => ({s, i})).filter(({s}) => s.kind === 'shot' || s.kind === 'question');
+// Sem legenda onde a tela já mostra a mesma frase em destaque ou onde ela cobriria a tela dividida.
+const noSubs = segs.flatMap((s, i): Array<[number, number]> => (['question', 'triptych', 'title', 'date'].includes(s.kind) ? [[starts[i], starts[i] + s.dur]] : []));
+const rippleAt = segs.flatMap((s, i) => (['stat', 'quote', 'question', 'title', 'triptych'].includes(s.kind) ? [starts[i]] : []));
+
 export const Depois: React.FC = () => {
 	const frame = useCurrentFrame();
 	const fullScreen = frame < startOf('question');
@@ -311,6 +330,21 @@ export const Depois: React.FC = () => {
 				) : null,
 			)}
 			{!fullScreen ? <GoldDust /> : null}
+			{windowSegs.map(({s, i}) => (
+				<Sequence key={`mo${i}`} from={starts[i]} durationInFrames={s.dur} name="motion-plano">
+					<Reticle focus={s.focus ?? 0.5} dur={s.dur} open={s.open} />
+					{!s.open ? <Timecode start={starts[i]} /> : null}
+					<CutLines />
+				</Sequence>
+			))}
+			{rippleAt.map((at, k) => (
+				<Sequence key={`rp${k}`} from={at} durationInFrames={40} name="onda">
+					<Ripple />
+				</Sequence>
+			))}
+			<HudTags tags={hudTags} />
+			<Subtitles words={words} from={startOf('question')} to={startOf('logo')} hide={noSubs} />
+			{!fullScreen && frame < startOf('logo') ? <Countdown days={3} /> : null}
 			{fxOverlays.map(([kind, at], k) => (
 				<Sequence key={`fx${k}`} from={Math.max(0, at)} durationInFrames={40} name={`fx-${kind}`}>
 					{kind === 'leak' ? <LightLeak /> : kind === 'wipe' ? <GoldWipe /> : kind === 'sheen' ? <Sheen /> : <Flare y={kind === 'flareLow' ? 1300 : 960} />}
@@ -335,7 +369,7 @@ export const Depois: React.FC = () => {
 					<div style={{position: 'absolute', top: BAR_H + IMG_H + 235, left: 0, right: 0, textAlign: 'center', fontFamily: cine, fontSize: 20, color: '#8d867b', letterSpacing: 6}}>IMAGENS: ROCKSTAR GAMES · GTA VI E GTA ONLINE</div>
 				</>
 			) : null}
-			<Html5Audio src={staticFile('music/trilha-depois-lux.mp3')} volume={musicVolume} />
+			<Html5Audio src={staticFile('music/trilha-depois-motion.mp3')} volume={musicVolume} />
 			<Sequence from={data.voStart} name="narracao">
 				<Html5Audio src={staticFile('vo/depois-marcio.mp3')} volume={1} />
 			</Sequence>

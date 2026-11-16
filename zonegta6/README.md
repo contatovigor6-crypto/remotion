@@ -198,3 +198,12 @@ Os recortes ficam em `public/media/cut/` (fora do git).
 
 - **Trilha:** `scripts/music_lux.py` ("luxury cinematic", 76 BPM: cordas, piano elétrico com acordes de sétima e nona, 808 com deslize, palma suave, chimbal com swing e harpa de vidro). Arquivo `public/music/trilha-depois-lux.mp3`.
 - **Visual:** `Lux` (contexto em `src/edit/Filme.tsx`) transforma os textos principais em folha de ouro. Em `src/edit/Cine.tsx`, `GoldFrame` é a moldura dourada que se desenha em volta da imagem, `GoldDust` a poeira dourada flutuando, `Sheen` o brilho de vitrine passando sobre cada plano e `GoldWipe` a transição por fio dourado, no lugar da queima de película.
+
+### Vídeo 7, versão filme + motion
+
+- `src/edit/Motion.tsx` é a camada de motion graphics, guiada pelos tempos de cada palavra (`words` em `depois-timeline.json`):
+  - legendas animadas de até 3 palavras, com a palavra falada em ouro (somem onde a tela já mostra a frase ou a tela dividida);
+  - etiquetas de HUD nos nomes-chave;
+  - mira de foco sobre o assunto, código de tempo e REC;
+  - ondas douradas nos impactos, linhas nos cortes e contador D-3.
+- **Trilha:** `scripts/music_motion.py` ("hybrid motion", 100 BPM): baixo pulsando com sidechain, arpejo de pluck, cordas em staccato e bateria cinematográfica. Arquivo `public/music/trilha-depois-motion.mp3`.

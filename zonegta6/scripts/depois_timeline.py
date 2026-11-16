@@ -59,7 +59,7 @@ for k, (t, seg) in enumerate(S):
 assert all(s["dur"] > 15 for s in out), [(s["kind"], s["dur"]) for s in out if s["dur"] <= 15]
 files = [s["file"] for s in out if "file" in s] + [f for s in out for f, _ in s.get("flashes", [])] + [p["file"] for s in out for p in s.get("panels", [])]
 assert len(files) == len(set(files)), "mídia repetida"
-json.dump({"voStart": VO, "segments": out, "voice": [[fr(s), fr(e)] for _, s, e in words]}, open(sys.argv[2], "w"), indent=1, ensure_ascii=False)
+json.dump({"voStart": VO, "segments": out, "voice": [[fr(s), fr(e)] for _, s, e in words], "words": [[w, fr(s), fr(e)] for w, s, e in words]}, open(sys.argv[2], "w"), indent=1, ensure_ascii=False)
 print(len(out), "segmentos,", sum(s["dur"] for s in out), "frames =", round(sum(s["dur"] for s in out) / FPS, 1), "s")
 for s in out[:4]:
     print(s["kind"], s["dur"])
