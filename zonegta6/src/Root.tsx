@@ -5,6 +5,8 @@ import {Filme, FILME_DURATION} from './edit/Filme';
 import {Recorde, RECORDE_DURATION} from './edit/Recorde';
 import {Depois, DEPOIS_DURATION} from './edit/Depois';
 import {DepoisMotion, DEPOIS_MOTION_DURATION} from './edit/DepoisMotion';
+import {depoisCfg} from './style/videos';
+import {ZoneVideo, zoneDuration} from './style/ZoneStyle';
 import {Chegando, CHEGANDO_DURATION} from './faq/Chegando';
 import {Faq, videos} from './faq/Faq';
 import {DURATION, Short} from './Short';
@@ -71,5 +73,7 @@ export const Root: React.FC = () => (
 		<Composition id="ZoneGTA6-Depois" component={Depois} durationInFrames={DEPOIS_DURATION} fps={FPS} width={1080} height={1920} />
 		{/* Vídeo 7, versão motion puro (texto cinético como protagonista). */}
 		<Composition id="ZoneGTA6-Depois-Motion" component={DepoisMotion} durationInFrames={DEPOIS_MOTION_DURATION} fps={FPS} width={1080} height={1920} />
+		{/* ESTILO ZONEGTA6 (modelo fixo do canal). */}
+		<Composition id="ZoneGTA6-Estilo-Depois" component={ZoneVideo} defaultProps={{cfg: depoisCfg}} durationInFrames={zoneDuration(depoisCfg.data)} fps={FPS} width={1080} height={1920} />
 	</>
 );

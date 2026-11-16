@@ -211,3 +211,21 @@ Os recortes ficam em `public/media/cut/` (fora do git).
 ### Vídeo 7, versão motion puro (`ZoneGTA6-Depois-Motion`)
 
 `src/edit/DepoisMotion.tsx`: o texto é o protagonista. A narração aparece gigante (fonte Anton), em blocos de 1 a 3 palavras, cada bloco com uma animação diferente (impacto, subida, divisão lateral, inclinação, empilhamento). As palavras-chave ganham tarja dourada; há formas de acento (barra, anel, colchetes, pontos, seta para cima em "acima" e um "?" gigante nas perguntas), transições em faixas douradas a cada troca de trecho e selos de verificação animados. As imagens ficam como fundo escurecido, com grade animada. O gancho, o final de marca, a trilha "hybrid motion" e o kit de efeitos cinematográficos são os mesmos da versão de filme.
+
+---
+
+# ESTILO ZONEGTA6 — padrão fixo do canal (decisão de 16/11)
+
+Modelo único de edição, para não precisar mudar a cada vídeo: `src/style/ZoneStyle.tsx` (componente `ZoneVideo`). Cada vídeo é só uma configuração em `src/style/videos.ts` mais uma linha do tempo gerada da narração.
+
+**Identidade:**
+- O texto é o protagonista: a narração aparece gigante (Anton), em blocos de 1 a 3 palavras, num ciclo de 5 animações (impacto, subida, divisão, inclinação, empilhamento).
+- Paleta fixa: preto profundo, **ouro** (palavras-chave com tarja e sombra rosa) e **rosa Vice** (acentos, brilhos, faixa do gancho, botão de inscrição).
+- **Assinatura:** transição em **Z** (zigue-zague dourado com contorno rosa, como o Z da logo) a cada troca de trecho.
+- Imagens oficiais como fundo escurecido, com grade animada e luz rosa.
+- Selos de verificação (CONFIRMADO / REPORTADO / SEM ANÚNCIO) carimbando com a fonte.
+- Gancho: flashes de imagem nas palavras, número ou palavra gigante em ouro, faixa rosa. Virada seca em preto, com duas linhas e tarja dourada.
+- Encerramento: a logo entra girando com anel rosa, "ZONE GTA VI" em ouro, a frase final e o botão "INSCREVA-SE".
+- Som: trilha original sob a voz (55% na fala, 85% nas pausas) e kit `public/sfx/cine`, com no máximo 2 usos por efeito.
+
+**Para um vídeo novo:** (1) transcrever a narração; (2) gerar a linha do tempo (segmentos com imagem, `status`/`source` nos dados e palavras com tempo); (3) adicionar a configuração em `videos.ts` (gancho, virada, dias, música); (4) registrar em `Root.tsx`; (5) renderizar.
