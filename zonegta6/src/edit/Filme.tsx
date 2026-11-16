@@ -10,6 +10,14 @@ import timelineData from './filme-timeline.json';
 // e fusão para o preto, montagem rápida, título e data. Sem narração.
 // Os marcos abaixo são os mesmos de scripts/music_trailer.py.
 
+// Edição de luxo: quando ativa, os textos principais viram folha de ouro.
+export const Lux = React.createContext(false);
+export const GOLD: React.CSSProperties = {
+	backgroundImage: 'linear-gradient(180deg, #fff3cf 0%, #f0d48a 30%, #c9a24e 55%, #f5dc98 75%, #a8803a 100%)',
+	WebkitBackgroundClip: 'text',
+	WebkitTextFillColor: 'transparent',
+};
+
 export const cine = loadFont('normal', {weights: ['400', '700', '900'], subsets: ['latin']}).fontFamily;
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 const DAYS = 4; // dias até 19/11 na data de publicação (15/11). Ajuste se postar outro dia.
@@ -32,6 +40,7 @@ export const fadeInOut = (frame: number, dur: number, edge = 10) => Math.min(int
 // enquanto o espaçamento abre devagar; um filete dourado cresce por baixo.
 export const Card: React.FC<{lines: string[]; small?: boolean; dur: number}> = ({lines, small, dur}) => {
 	const frame = useCurrentFrame();
+	const lux = React.useContext(Lux);
 	let n = 0;
 	return (
 		<AbsoluteFill style={{background: '#000', justifyContent: 'center', alignItems: 'center', opacity: interpolate(frame, [dur - 12, dur], [1, 0], clamp)}}>
@@ -44,7 +53,7 @@ export const Card: React.FC<{lines: string[]; small?: boolean; dur: number}> = (
 							const o = interpolate(frame, [4 + n * 1.3, 14 + n * 1.3], [0, 1], clamp);
 							n++;
 							return (
-								<span key={k} style={{opacity: o, filter: `blur(${(1 - o) * 8}px)`, display: 'inline-block', transform: `translateY(${(1 - o) * 10}px)`}}>
+								<span key={k} style={{opacity: o, filter: `blur(${(1 - o) * 8}px)`, display: 'inline-block', transform: `translateY(${(1 - o) * 10}px)`, ...(lux && (i === 0 || !small) ? GOLD : {})}}>
 									{ch}
 								</span>
 							);
@@ -128,11 +137,12 @@ export const Title: React.FC<{dur: number}> = ({dur}) => {
 
 export const DateCard: React.FC<{dur: number}> = ({dur}) => {
 	const frame = useCurrentFrame();
+	const lux = React.useContext(Lux);
 	return (
 		<AbsoluteFill style={{background: '#000', justifyContent: 'center', alignItems: 'center', opacity: fadeInOut(frame, dur, 10)}}>
 			<div style={{textAlign: 'center', transform: `scale(${1 + frame * 0.0008})`}}>
 				<div style={{fontFamily: cine, fontSize: 40, color: '#c9a86a', letterSpacing: 16}}>NOS CONSOLES</div>
-				<div style={{fontFamily: cine, fontWeight: 900, fontSize: 78, color: '#f1ece4', letterSpacing: tracking(frame, dur, 2, 6), lineHeight: 1.3, whiteSpace: 'nowrap'}}>19 DE NOVEMBRO</div>
+				<div style={{fontFamily: cine, fontWeight: 900, fontSize: 78, color: '#f1ece4', letterSpacing: tracking(frame, dur, 2, 6), lineHeight: 1.3, whiteSpace: 'nowrap', ...(lux ? GOLD : {})}}>19 DE NOVEMBRO</div>
 				<div style={{height: 2, width: interpolate(frame, [6, 40], [0, 520], clamp), background: '#c9a86a', margin: '10px auto 26px'}} />
 				<div style={{fontFamily: cine, fontSize: 44, color: '#f1ece4', letterSpacing: 10}}>PS5 · XBOX SERIES X|S</div>
 				<div style={{fontFamily: mono, fontSize: 26, color: '#b9b2a6', letterSpacing: 6, marginTop: 30, opacity: interpolate(frame, [30, 42], [0, 1], clamp)}}>PRÉ-DOWNLOAD JÁ DISPONÍVEL</div>

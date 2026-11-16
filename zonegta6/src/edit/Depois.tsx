@@ -2,9 +2,9 @@ import React from 'react';
 import {AbsoluteFill, Html5Audio, Img, interpolate, random, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {ChannelLogo, LOGO} from '../faq/Fx';
 import {C, mono, Status, statusColor} from '../theme';
-import {BAR_H, Card, cine, DateCard, IMG_H, Title} from './Filme';
+import {BAR_H, Card, cine, DateCard, GOLD, IMG_H, Lux, Title} from './Filme';
 import {Shot, Stat} from './Recorde';
-import {FilmBurn, Flare, Layered, LightLeak, Triptych, Whip} from './Cine';
+import {Flare, GoldDust, GoldFrame, GoldWipe, Layered, LightLeak, Sheen, Triptych, Whip} from './Cine';
 import data from './depois-timeline.json';
 
 // Vídeo 7: "Depois do lançamento" — narrado pelo Marcio, em linguagem de trailer.
@@ -44,12 +44,15 @@ const startOf = (kind: string) => starts[segs.findIndex((s) => s.kind === kind)]
 // Letras surgindo do desfoque, uma a uma.
 const Letters: React.FC<{text: string; at: number; speed?: number; style: React.CSSProperties}> = ({text, at, speed = 1.4, style}) => {
 	const frame = useCurrentFrame();
+	// Gradiente de texto (folha de ouro) precisa ir em cada letra, pois elas animam separadas.
+	const {backgroundImage, WebkitBackgroundClip, WebkitTextFillColor, ...rest} = style;
+	const gold: React.CSSProperties = backgroundImage ? {backgroundImage, WebkitBackgroundClip, WebkitTextFillColor} : {};
 	return (
-		<div style={{whiteSpace: 'pre', ...style}}>
+		<div style={{whiteSpace: 'pre', ...rest}}>
 			{text.split('').map((ch, k) => {
 				const o = interpolate(frame, [at + k * speed, at + k * speed + 8], [0, 1], clamp);
 				return (
-					<span key={k} style={{opacity: o, filter: `blur(${(1 - o) * 8}px)`, display: 'inline-block', transform: `translateY(${(1 - o) * 12}px)`}}>
+					<span key={k} style={{opacity: o, filter: `blur(${(1 - o) * 8}px)`, display: 'inline-block', transform: `translateY(${(1 - o) * 12}px)`, ...gold}}>
 						{ch}
 					</span>
 				);
@@ -136,7 +139,7 @@ const Quote: React.FC<{s: Seg}> = ({s}) => {
 			<div style={{position: 'absolute', width: 1100, height: 560, background: 'radial-gradient(ellipse, rgba(201,168,106,0.18) 0%, transparent 65%)'}} />
 			<div style={{textAlign: 'center', transform: `scale(${1 + frame * 0.0007})`}}>
 				{(s.lines ?? []).map((l, i) => (
-					<Letters key={l} text={l} at={4 + i * 22} speed={1} style={{fontFamily: cine, fontWeight: 700, fontSize: 72, color: '#f1ece4', letterSpacing: 4, lineHeight: 1.35}} />
+					<Letters key={l} text={l} at={4 + i * 22} speed={1} style={{fontFamily: cine, fontWeight: 700, fontSize: 72, color: '#f1ece4', letterSpacing: 4, lineHeight: 1.35, ...GOLD}} />
 				))}
 				<div style={{height: 2, width: interpolate(frame, [30, 60], [0, 460], clamp), background: 'linear-gradient(90deg, transparent, #c9a86a, transparent)', margin: '30px auto'}} />
 				<div style={{display: 'inline-flex', alignItems: 'center', gap: 16, opacity: interpolate(frame, [44, 54], [0, 1], clamp)}}>
@@ -165,7 +168,7 @@ const Outro: React.FC<{s: Seg}> = ({s}) => {
 			<div style={{position: 'absolute', width: 900, height: 900, background: 'radial-gradient(circle, rgba(255,46,136,0.20) 0%, transparent 60%)'}} />
 			<div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 34, marginTop: -60}}>
 				<ChannelLogo at={2} size={520} />
-				<div style={{fontFamily: cine, fontWeight: 900, fontSize: 92, color: '#f1ece4', letterSpacing: interpolate(name, [0, 1], [2, 16]), opacity: name, textShadow: '0 0 40px rgba(226,194,125,0.35)'}}>ZONE GTA VI</div>
+				<div style={{fontFamily: cine, fontWeight: 900, fontSize: 92, color: '#f1ece4', letterSpacing: interpolate(name, [0, 1], [2, 16]), opacity: name, ...GOLD}}>ZONE GTA VI</div>
 				<Letters text="ESSA HISTÓRIA ESTÁ APENAS COMEÇANDO" at={tagAt} speed={0.8} style={{fontFamily: cine, fontSize: 32, color: '#c9a86a', letterSpacing: 5}} />
 				<div style={{marginTop: 16, opacity: sub, transform: `translateY(${(1 - sub) * 30}px)`, border: '2px solid #c9a86a', padding: '14px 30px', fontFamily: cine, fontWeight: 700, fontSize: 30, color: '#f1ece4', letterSpacing: 5, whiteSpace: 'nowrap', boxShadow: `0 0 ${20 + 10 * Math.sin(frame / 6)}px rgba(226,194,125,0.35)`}}>
 					INSCREVA-SE · ATIVE AS NOTIFICAÇÕES
@@ -260,8 +263,8 @@ const musicVolume = (f: number) => {
 const fxOverlays: Array<[string, number]> = segs.flatMap((s, i): Array<[string, number]> => {
 	const at = starts[i];
 	if (s.kind === 'stat') return [['leak', at - 12]];
-	if (s.kind === 'card' && (s.lines?.[0] === 'UMA COISA' || s.lines?.[0] === 'O FUTURO')) return [['burn', at - 11]];
-	if (s.kind === 'date') return [['burn', at - 11]];
+	if (s.kind === 'card' || s.kind === 'date') return [['wipe', at - 9]];
+	if (s.kind === 'shot' || s.kind === 'question') return [['sheen', at + 16]];
 	if (s.kind === 'title') return [['flare', at + 2]];
 	if (s.open) return [['flareLow', at + 20]];
 	if (s.kind === 'triptych') return [['leak', at - 8]];
@@ -281,6 +284,7 @@ export const Depois: React.FC = () => {
 	const frame = useCurrentFrame();
 	const fullScreen = frame < startOf('question');
 	return (
+		<Lux.Provider value>
 		<AbsoluteFill style={{backgroundColor: '#000', filter: aberration(frame)}}>
 			{segs.map((s, i) => (
 				<Sequence key={i} from={starts[i]} durationInFrames={s.dur} name={s.file ?? s.kind}>
@@ -299,9 +303,17 @@ export const Depois: React.FC = () => {
 					{s.kind === 'logo' ? <Outro s={s} /> : null}
 				</Sequence>
 			))}
+			{segs.map((s, i) =>
+				(s.kind === 'shot' && !s.open) || s.kind === 'question' ? (
+					<Sequence key={`gf${i}`} from={starts[i]} durationInFrames={s.dur} name="moldura">
+						<GoldFrame dur={s.dur} />
+					</Sequence>
+				) : null,
+			)}
+			{!fullScreen ? <GoldDust /> : null}
 			{fxOverlays.map(([kind, at], k) => (
 				<Sequence key={`fx${k}`} from={Math.max(0, at)} durationInFrames={40} name={`fx-${kind}`}>
-					{kind === 'leak' ? <LightLeak /> : kind === 'burn' ? <FilmBurn /> : <Flare y={kind === 'flareLow' ? 1300 : 960} />}
+					{kind === 'leak' ? <LightLeak /> : kind === 'wipe' ? <GoldWipe /> : kind === 'sheen' ? <Sheen /> : <Flare y={kind === 'flareLow' ? 1300 : 960} />}
 				</Sequence>
 			))}
 			<AbsoluteFill style={{pointerEvents: 'none', opacity: 0.08, mixBlendMode: 'overlay'}}>
@@ -318,12 +330,12 @@ export const Depois: React.FC = () => {
 				<>
 					<div style={{position: 'absolute', top: 300, left: 0, right: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 18, opacity: 0.9}}>
 						<Img src={staticFile(LOGO)} style={{width: 70, height: 70, borderRadius: '50%', objectFit: 'cover'}} />
-						<div style={{fontFamily: cine, fontWeight: 700, fontSize: 30, color: '#f1ece4', letterSpacing: 10}}>ZONE GTA VI</div>
+						<div style={{fontFamily: cine, fontWeight: 700, fontSize: 30, color: '#f1ece4', letterSpacing: 10, ...GOLD}}>ZONE GTA VI</div>
 					</div>
 					<div style={{position: 'absolute', top: BAR_H + IMG_H + 235, left: 0, right: 0, textAlign: 'center', fontFamily: cine, fontSize: 20, color: '#8d867b', letterSpacing: 6}}>IMAGENS: ROCKSTAR GAMES · GTA VI E GTA ONLINE</div>
 				</>
 			) : null}
-			<Html5Audio src={staticFile('music/trilha-depois.mp3')} volume={musicVolume} />
+			<Html5Audio src={staticFile('music/trilha-depois-lux.mp3')} volume={musicVolume} />
 			<Sequence from={data.voStart} name="narracao">
 				<Html5Audio src={staticFile('vo/depois-marcio.mp3')} volume={1} />
 			</Sequence>
@@ -333,5 +345,6 @@ export const Depois: React.FC = () => {
 				</Sequence>
 			))}
 		</AbsoluteFill>
+		</Lux.Provider>
 	);
 };

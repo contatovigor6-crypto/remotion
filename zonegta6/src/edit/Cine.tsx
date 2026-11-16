@@ -1,6 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, Img, interpolate, random, staticFile, useCurrentFrame} from 'remotion';
-import {BAR_H, cine, fadeInOut, IMG_H, tracking} from './Filme';
+import {BAR_H, cine, fadeInOut, GOLD, IMG_H, Lux, tracking} from './Filme';
 
 // Gramática de cinema do ZoneGTA6: cada plano pode usar uma técnica diferente.
 // Recortes dos assuntos (public/media/cut/<nome>_cut.png) vêm de scripts/plates.py.
@@ -26,10 +26,11 @@ const Window: React.FC<{dur: number; open?: boolean; fade?: boolean; children: R
 
 export const Caption: React.FC<{text: string; dur: number; low?: boolean}> = ({text, dur, low}) => {
 	const frame = useCurrentFrame();
+	const lux = React.useContext(Lux);
 	return (
 		<div style={{position: 'absolute', left: 0, right: 0, top: low ? 1560 : BAR_H + IMG_H + 44, textAlign: 'center', opacity: fadeInOut(frame, dur, 10)}}>
 			<div style={{height: 2, width: 120, background: '#c9a86a', margin: '0 auto 18px'}} />
-			<div style={{fontFamily: cine, fontWeight: 700, fontSize: text.length > 20 ? 42 : 52, color: '#f1ece4', letterSpacing: tracking(frame, dur, 6, 11), padding: '0 40px', textShadow: '0 4px 20px #000'}}>{text}</div>
+			<div style={{fontFamily: cine, fontWeight: 700, fontSize: text.length > 20 ? 42 : 52, color: '#f1ece4', letterSpacing: tracking(frame, dur, 6, 11), padding: '0 40px', ...(lux ? GOLD : {textShadow: '0 4px 20px #000'})}}>{text}</div>
 		</div>
 	);
 };
@@ -134,6 +135,74 @@ export const Flare: React.FC<{y?: number; len?: number}> = ({y = 960, len = 30})
 		<AbsoluteFill style={{pointerEvents: 'none', mixBlendMode: 'screen', opacity: o}}>
 			<div style={{position: 'absolute', left: -200, right: -200, top: y - 3, height: 6, background: 'linear-gradient(90deg, transparent, rgba(120,190,255,0.9), #fff, rgba(120,190,255,0.9), transparent)', filter: 'blur(2px)', transform: `translateX(${(p - 0.5) * 300}px)`}} />
 			<div style={{position: 'absolute', left: `${20 + p * 60}%`, top: y - 160, width: 320, height: 320, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(120,190,255,0.35) 25%, transparent 60%)'}} />
+		</AbsoluteFill>
+	);
+};
+
+// ── Camada de luxo ───────────────────────────────────────────
+
+// Moldura dourada fina em volta da janela de imagem, com cantos ornamentados; os
+// filetes se desenham na entrada do plano.
+export const GoldFrame: React.FC<{dur: number}> = ({dur}) => {
+	const frame = useCurrentFrame();
+	const draw = interpolate(frame, [2, 22], [0, 1], {...clamp, easing: easeInOut});
+	const o = fadeInOut(frame, dur, 8);
+	const inset = 26;
+	const line = (style: React.CSSProperties) => <div style={{position: 'absolute', background: 'linear-gradient(90deg, #a8803a, #f5dc98, #a8803a)', ...style}} />;
+	const top = BAR_H + inset;
+	const h = IMG_H - inset * 2;
+	return (
+		<AbsoluteFill style={{pointerEvents: 'none', opacity: o * 0.9}}>
+			{line({left: 540 - 515 * draw, width: 1030 * draw, top, height: 1.5})}
+			{line({left: 540 - 515 * draw, width: 1030 * draw, top: top + h, height: 1.5})}
+			{line({left: inset - 1, top: top + h / 2 - (h / 2) * draw, height: h * draw, width: 1.5})}
+			{line({left: 1080 - inset - 1, top: top + h / 2 - (h / 2) * draw, height: h * draw, width: 1.5})}
+			{[0, 1, 2, 3].map((k) => (
+				<div key={k} style={{position: 'absolute', left: k % 2 ? 1080 - inset - 9 : inset - 9, top: k < 2 ? top - 9 : top + h - 9, width: 18, height: 18, transform: `rotate(45deg) scale(${draw})`, border: '1.5px solid #f0d48a', background: '#000'}} />
+			))}
+		</AbsoluteFill>
+	);
+};
+
+// Poeira dourada: partículas quentes flutuando devagar, com brilho suave.
+export const GoldDust: React.FC = () => {
+	const frame = useCurrentFrame();
+	return (
+		<AbsoluteFill style={{pointerEvents: 'none', mixBlendMode: 'screen'}}>
+			{Array.from({length: 46}).map((_, i) => {
+				const sp = 0.25 + random(`gd${i}`) * 0.9;
+				const size = 2 + random(`gs${i}`) * 6;
+				const y = 1920 - ((frame * sp + random(`gy${i}`) * 1920) % 2000);
+				const x = random(`gx${i}`) * 1080 + Math.sin(frame / 50 + i) * 24;
+				const tw = 0.35 + 0.65 * Math.abs(Math.sin(frame / (18 + i) + i));
+				return <div key={i} style={{position: 'absolute', left: x, top: y, width: size, height: size, borderRadius: size, background: '#f5dc98', opacity: 0.28 * tw, filter: `blur(${size > 5 ? 2 : 0.6}px)`, boxShadow: `0 0 ${size * 3}px #e2b85a`}} />;
+			})}
+		</AbsoluteFill>
+	);
+};
+
+// Brilho de vitrine: uma faixa de luz macia passa na diagonal sobre a imagem.
+export const Sheen: React.FC<{len?: number}> = ({len = 40}) => {
+	const frame = useCurrentFrame();
+	const p = interpolate(frame, [0, len], [-40, 140], {...clamp, easing: easeInOut});
+	return (
+		<div style={{position: 'absolute', left: 0, right: 0, top: BAR_H, height: IMG_H, overflow: 'hidden', pointerEvents: 'none', mixBlendMode: 'screen'}}>
+			<div style={{position: 'absolute', top: -200, bottom: -200, width: 220, left: `${p}%`, background: 'linear-gradient(90deg, transparent, rgba(255,240,200,0.28), transparent)', transform: 'skewX(-20deg)'}} />
+		</div>
+	);
+};
+
+// Fio dourado: uma linha cresce no centro, abre como cortina e revela o próximo plano.
+export const GoldWipe: React.FC<{len?: number}> = ({len = 20}) => {
+	const frame = useCurrentFrame();
+	const grow = interpolate(frame, [0, len * 0.45], [0, 1], {...clamp, easing: easeInOut});
+	const open = interpolate(frame, [len * 0.45, len], [0, 1], {...clamp, easing: easeInOut});
+	const cover = 1 - open;
+	return (
+		<AbsoluteFill style={{pointerEvents: 'none'}}>
+			<div style={{position: 'absolute', left: 0, right: 0, top: 0, height: `${50 * (frame < len * 0.45 ? grow : cover)}%`, background: '#000'}} />
+			<div style={{position: 'absolute', left: 0, right: 0, bottom: 0, height: `${50 * (frame < len * 0.45 ? grow : cover)}%`, background: '#000'}} />
+			<div style={{position: 'absolute', left: 540 - 540 * grow, width: 1080 * grow, top: 959, height: 2, background: 'linear-gradient(90deg, transparent, #f5dc98, #fff8e0, #f5dc98, transparent)', boxShadow: '0 0 24px #e2b85a', opacity: 1 - open}} />
 		</AbsoluteFill>
 	);
 };

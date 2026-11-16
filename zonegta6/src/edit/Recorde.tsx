@@ -2,7 +2,7 @@ import React from 'react';
 import {AbsoluteFill, Html5Audio, Img, interpolate, OffthreadVideo, random, Sequence, staticFile, useCurrentFrame} from 'remotion';
 import {LOGO} from '../faq/Fx';
 import {C, mono, statusColor, Status} from '../theme';
-import {BAR_H, Card, cine, DateCard, fadeInOut, IMG_H, LogoCard, Title, tracking} from './Filme';
+import {BAR_H, Card, cine, DateCard, fadeInOut, GOLD, IMG_H, LogoCard, Lux, Title, tracking} from './Filme';
 import data from './recorde-timeline.json';
 
 // Vídeo 6: "Recorde" — narrado pelo Marcio, em linguagem de trailer de cinema.
@@ -30,6 +30,7 @@ export const RECORDE_DURATION = starts[starts.length - 1] + segs[segs.length - 1
 // Plano: janela de cinema centrada no assunto; aceita imagem ou vídeo.
 export const Shot: React.FC<{s: Seg; index: number}> = ({s, index}) => {
 	const frame = useCurrentFrame();
+	const lux = React.useContext(Lux);
 	const fast = Boolean(s.fast);
 	const focus = s.focus ?? 0.5;
 	const scale = fast ? 1.03 + frame * 0.004 : interpolate(frame, [0, s.dur], index % 2 ? [1.08, 1.0] : [1.0, 1.08]);
@@ -45,7 +46,7 @@ export const Shot: React.FC<{s: Seg; index: number}> = ({s, index}) => {
 			{s.caption ? (
 				<div style={{position: 'absolute', left: 0, right: 0, top: BAR_H + IMG_H + 44, textAlign: 'center', opacity: fadeInOut(frame, s.dur, 10)}}>
 					<div style={{height: 2, width: 120, background: '#c9a86a', margin: '0 auto 18px'}} />
-					<div style={{fontFamily: cine, fontWeight: 700, fontSize: s.caption.length > 20 ? 42 : 52, color: '#f1ece4', letterSpacing: tracking(frame, s.dur, 6, 11), padding: '0 40px'}}>{s.caption}</div>
+					<div style={{fontFamily: cine, fontWeight: 700, fontSize: s.caption.length > 20 ? 42 : 52, color: '#f1ece4', letterSpacing: tracking(frame, s.dur, 6, 11), padding: '0 40px', ...(lux ? GOLD : {})}}>{s.caption}</div>
 				</div>
 			) : null}
 		</AbsoluteFill>
@@ -55,6 +56,7 @@ export const Shot: React.FC<{s: Seg; index: number}> = ({s, index}) => {
 // Cartela de dado: número grande dourado, texto em duas linhas e selo de verificação.
 export const Stat: React.FC<{s: Seg}> = ({s}) => {
 	const frame = useCurrentFrame();
+	const lux = React.useContext(Lux);
 	const glow = interpolate(frame, [0, 8, 40], [0, 1, 0.5], clamp);
 	const big = interpolate(frame, [0, 14], [1.25, 1], {...clamp, easing: (t) => 1 - Math.pow(1 - t, 3)});
 	const col = statusColor[(s.status ?? 'CONFIRMADO') as Status] ?? C.amber;
@@ -64,7 +66,7 @@ export const Stat: React.FC<{s: Seg}> = ({s}) => {
 			<div style={{textAlign: 'center'}}>
 				<div style={{fontFamily: cine, fontWeight: 900, fontSize: s.big && s.big.length > 3 ? 230 : 300, lineHeight: 1.05, transform: `scale(${big})`, backgroundImage: 'linear-gradient(180deg, #fff3d6 0%, #c9a86a 55%, #8a6a35 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>{s.big}</div>
 				{(s.lines ?? []).map((l, i) => (
-					<div key={l} style={{fontFamily: cine, fontWeight: i === 0 ? 700 : 400, fontSize: i === 0 ? 56 : 38, color: i === 0 ? '#f1ece4' : '#b9b2a6', letterSpacing: tracking(frame, s.dur, 4, 8), lineHeight: 1.5, opacity: interpolate(frame, [10 + i * 8, 22 + i * 8], [0, 1], clamp), whiteSpace: 'nowrap'}}>
+					<div key={l} style={{fontFamily: cine, fontWeight: i === 0 ? 700 : 400, fontSize: i === 0 ? 56 : 38, color: i === 0 ? '#f1ece4' : '#b9b2a6', ...(lux && i === 0 ? GOLD : {}), letterSpacing: tracking(frame, s.dur, 4, 8), lineHeight: 1.5, opacity: interpolate(frame, [10 + i * 8, 22 + i * 8], [0, 1], clamp), whiteSpace: 'nowrap'}}>
 						{l}
 					</div>
 				))}

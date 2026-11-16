@@ -193,3 +193,8 @@ Narrado pelo Marcio (`public/vo/depois-marcio.mp3`). Cenas em `src/edit/Depois.t
 - Transições sobrepostas: vazamento de luz na entrada dos dados, queima de película antes das viradas, reflexo anamórfico no título e aberração cromática nos impactos.
 
 Os recortes ficam em `public/media/cut/` (fora do git).
+
+### Vídeo 7, versão luxo
+
+- **Trilha:** `scripts/music_lux.py` ("luxury cinematic", 76 BPM: cordas, piano elétrico com acordes de sétima e nona, 808 com deslize, palma suave, chimbal com swing e harpa de vidro). Arquivo `public/music/trilha-depois-lux.mp3`.
+- **Visual:** `Lux` (contexto em `src/edit/Filme.tsx`) transforma os textos principais em folha de ouro. Em `src/edit/Cine.tsx`, `GoldFrame` é a moldura dourada que se desenha em volta da imagem, `GoldDust` a poeira dourada flutuando, `Sheen` o brilho de vitrine passando sobre cada plano e `GoldWipe` a transição por fio dourado, no lugar da queima de película.
