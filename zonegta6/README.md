@@ -171,3 +171,12 @@ Narrado pelo Marcio (`public/vo/recorde-marcio.mp3`), em linguagem de trailer de
 
 - **Trilha:** `scripts/music_epic.py <timeline.json> <saida.wav>` gera uma trilha épica com pulso contínuo (ostinato de cordas, taiko, contrabaixo, metais), que cresce até a montagem e pausa na cartela "PENSE NISSO.". A mixagem abre espaço em 1–4 kHz para a voz. No vídeo, ela fica em 55% sob a narração e 85% nas pausas (antes eram 30% e 62%, e a música sumia).
 - **Efeitos:** `scripts/sfx_cine.py` gera 30 sons cinematográficos em `public/sfx/cine/` (passagens de ar graves, impactos, booms, swells, risers, braams, brilhos suaves, batimento, tensão, acorde final). O vídeo usa só esse kit, sem sons de interface.
+
+# Vídeo 7: Depois do lançamento (`ZoneGTA6-Depois`)
+
+Narrado pelo Marcio (`public/vo/depois-marcio.mp3`). Cenas em `src/edit/Depois.tsx`, linha do tempo gerada da narração por `scripts/depois_timeline.py`, trilha por `scripts/music_epic.py` e efeitos do kit `public/sfx/cine`.
+
+- **Gancho (0–8 s):** abre em tela cheia, com três flashes de imagem nas palavras "faltam / três / dias", o "3" dourado gigante batendo com tremor e um feixe de luz cruzando. Depois vem o corte seco para o preto: a música para, entra um batimento e aparece "MAS EXISTE UMA PERGUNTA". Em seguida, "O QUE A ROCKSTAR VAI FAZER DEPOIS?" letra por letra sobre a imagem.
+- **Final de marca:** a logo entra com feixes de luz girando, "ZONE GTA VI" abre o espaçamento, a frase final entra na palavra "essa", vem o convite "INSCREVA-SE · ATIVE AS NOTIFICAÇÕES" num quadro dourado, depois os créditos e o fade para o preto.
+- **Fatos:** "19/11 mantido" e "pré-vendas extraordinárias" vêm da teleconferência da Take-Two de 9/11 (CONFIRMADO). O suporte ao GTA Online vem de declarações do CEO em teleconferências anteriores de 2026 (REPORTADO), e não da apresentação de novembro, como a narração sugere. Planos pós-lançamento: sem anúncio oficial até 16/11.
+- **Imagens novas:** 4 imagens de GTA Online publicadas pela Rockstar em novembro, artes da Edição Ultimate e do Pacote Vintage Vice City, e as últimas capturas inéditas de GTA VI.

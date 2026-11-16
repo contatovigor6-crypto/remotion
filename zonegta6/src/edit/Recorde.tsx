@@ -28,7 +28,7 @@ const starts = segs.reduce<number[]>((acc, _s, i) => [...acc, i === 0 ? 0 : acc[
 export const RECORDE_DURATION = starts[starts.length - 1] + segs[segs.length - 1].dur;
 
 // Plano: janela de cinema centrada no assunto; aceita imagem ou vídeo.
-const Shot: React.FC<{s: Seg; index: number}> = ({s, index}) => {
+export const Shot: React.FC<{s: Seg; index: number}> = ({s, index}) => {
 	const frame = useCurrentFrame();
 	const fast = Boolean(s.fast);
 	const focus = s.focus ?? 0.5;
@@ -53,11 +53,11 @@ const Shot: React.FC<{s: Seg; index: number}> = ({s, index}) => {
 };
 
 // Cartela de dado: número grande dourado, texto em duas linhas e selo de verificação.
-const Stat: React.FC<{s: Seg}> = ({s}) => {
+export const Stat: React.FC<{s: Seg}> = ({s}) => {
 	const frame = useCurrentFrame();
 	const glow = interpolate(frame, [0, 8, 40], [0, 1, 0.5], clamp);
 	const big = interpolate(frame, [0, 14], [1.25, 1], {...clamp, easing: (t) => 1 - Math.pow(1 - t, 3)});
-	const col = statusColor[(s.status ?? 'CONFIRMADO') as Status];
+	const col = statusColor[(s.status ?? 'CONFIRMADO') as Status] ?? C.amber;
 	return (
 		<AbsoluteFill style={{background: '#000', justifyContent: 'center', alignItems: 'center', opacity: interpolate(frame, [s.dur - 10, s.dur], [1, 0], clamp)}}>
 			<div style={{position: 'absolute', width: 1100, height: 600, background: 'radial-gradient(ellipse, rgba(201,168,106,0.22) 0%, transparent 65%)', opacity: glow}} />
@@ -79,7 +79,7 @@ const Stat: React.FC<{s: Seg}> = ({s}) => {
 };
 
 // Texto da pergunta por cima da montagem, letra a letra, na faixa inferior.
-const Overlay: React.FC<{text: string[]; dur: number}> = ({text, dur}) => {
+export const Overlay: React.FC<{text: string[]; dur: number}> = ({text, dur}) => {
 	const frame = useCurrentFrame();
 	let n = 0;
 	return (

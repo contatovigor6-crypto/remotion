@@ -31,9 +31,9 @@ find = lambda k: next((sec(st) for st, s in zip(starts, tl) if s["kind"] == k), 
 TITLE, DATE, LOGO = find("title"), find("date"), find("logo")
 fast = [(sec(st), sec(s["dur"])) for st, s in zip(starts, tl) if s.get("fast")]
 MONT = (fast[0][0], fast[-1][0] + fast[-1][1]) if fast else (DUR, DUR)
-hits = [sec(st) for st, s in zip(starts, tl) if s["kind"] in ("stat", "card")]
+hits = [sec(st) for st, s in zip(starts, tl) if s["kind"] in ("stat", "card", "quote", "question")]
 # Pausas: cartelas curtas de reflexão tiram o pulso (respiro dramático).
-rests = [(sec(st), sec(st + s["dur"])) for st, s in zip(starts, tl) if s["kind"] == "card" and s.get("lines") == ["PENSE NISSO."]]
+rests = [(sec(st), sec(st + s["dur"])) for st, s in zip(starts, tl) if s.get("rest") or (s["kind"] == "card" and s.get("lines") == ["PENSE NISSO."])]
 question = next((sec(st) for st, s in zip(starts, tl) if s.get("theme") == "pergunta"), MONT[0] - 1.5)
 
 N = int(SR * DUR)
