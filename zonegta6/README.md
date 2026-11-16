@@ -207,3 +207,7 @@ Os recortes ficam em `public/media/cut/` (fora do git).
   - mira de foco sobre o assunto, código de tempo e REC;
   - ondas douradas nos impactos, linhas nos cortes e contador D-3.
 - **Trilha:** `scripts/music_motion.py` ("hybrid motion", 100 BPM): baixo pulsando com sidechain, arpejo de pluck, cordas em staccato e bateria cinematográfica. Arquivo `public/music/trilha-depois-motion.mp3`.
+
+### Vídeo 7, versão motion puro (`ZoneGTA6-Depois-Motion`)
+
+`src/edit/DepoisMotion.tsx`: o texto é o protagonista. A narração aparece gigante (fonte Anton), em blocos de 1 a 3 palavras, cada bloco com uma animação diferente (impacto, subida, divisão lateral, inclinação, empilhamento). As palavras-chave ganham tarja dourada; há formas de acento (barra, anel, colchetes, pontos, seta para cima em "acima" e um "?" gigante nas perguntas), transições em faixas douradas a cada troca de trecho e selos de verificação animados. As imagens ficam como fundo escurecido, com grade animada. O gancho, o final de marca, a trilha "hybrid motion" e o kit de efeitos cinematográficos são os mesmos da versão de filme.

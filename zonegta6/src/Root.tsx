@@ -4,6 +4,7 @@ import {Edit, EDIT_DURATION} from './edit/Edit';
 import {Filme, FILME_DURATION} from './edit/Filme';
 import {Recorde, RECORDE_DURATION} from './edit/Recorde';
 import {Depois, DEPOIS_DURATION} from './edit/Depois';
+import {DepoisMotion, DEPOIS_MOTION_DURATION} from './edit/DepoisMotion';
 import {Chegando, CHEGANDO_DURATION} from './faq/Chegando';
 import {Faq, videos} from './faq/Faq';
 import {DURATION, Short} from './Short';
@@ -68,5 +69,7 @@ export const Root: React.FC = () => (
 		<Composition id="ZoneGTA6-Recorde" component={Recorde} durationInFrames={RECORDE_DURATION} fps={FPS} width={1080} height={1920} />
 		{/* Vídeo 7: Depois do lançamento (narrado), estilo trailer, com gancho e encerramento de marca. */}
 		<Composition id="ZoneGTA6-Depois" component={Depois} durationInFrames={DEPOIS_DURATION} fps={FPS} width={1080} height={1920} />
+		{/* Vídeo 7, versão motion puro (texto cinético como protagonista). */}
+		<Composition id="ZoneGTA6-Depois-Motion" component={DepoisMotion} durationInFrames={DEPOIS_MOTION_DURATION} fps={FPS} width={1080} height={1920} />
 	</>
 );

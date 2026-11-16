@@ -43,7 +43,7 @@ export const DEPOIS_DURATION = starts[starts.length - 1] + segs[segs.length - 1]
 const startOf = (kind: string) => starts[segs.findIndex((s) => s.kind === kind)];
 
 // Letras surgindo do desfoque, uma a uma.
-const Letters: React.FC<{text: string; at: number; speed?: number; style: React.CSSProperties}> = ({text, at, speed = 1.4, style}) => {
+export const Letters: React.FC<{text: string; at: number; speed?: number; style: React.CSSProperties}> = ({text, at, speed = 1.4, style}) => {
 	const frame = useCurrentFrame();
 	// Gradiente de texto (folha de ouro) precisa ir em cada letra, pois elas animam separadas.
 	const {backgroundImage, WebkitBackgroundClip, WebkitTextFillColor, ...rest} = style;
@@ -65,7 +65,7 @@ const Letters: React.FC<{text: string; at: number; speed?: number; style: React.
 // ── GANCHO 1: "Faltam apenas TRÊS DIAS" ──────────────────────
 // Tela cheia (sem faixas), três flashes de imagem nos tempos de "faltam / três / dias",
 // número dourado gigante batendo com tremor e um feixe de luz cruzando.
-const Hook: React.FC<{s: Seg}> = ({s}) => {
+export const Hook: React.FC<{s: Seg}> = ({s}) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 	const flashes = s.flashes ?? [];
@@ -98,7 +98,7 @@ const Hook: React.FC<{s: Seg}> = ({s}) => {
 };
 
 // ── GANCHO 2: corte seco para o preto, "MAS EXISTE UMA PERGUNTA" ──
-const Hook2: React.FC<{s: Seg}> = ({s}) => {
+export const Hook2: React.FC<{s: Seg}> = ({s}) => {
 	const frame = useCurrentFrame();
 	return (
 		<AbsoluteFill style={{background: '#000', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', gap: 30, opacity: interpolate(frame, [s.dur - 8, s.dur], [1, 0], clamp)}}>
@@ -156,7 +156,7 @@ const Quote: React.FC<{s: Seg}> = ({s}) => {
 // Feixes de luz giram atrás da logo, nome do canal abre o espaçamento, a frase final
 // entra na palavra "essa", o convite para se inscrever surge num quadro dourado e a
 // tela fecha no preto com o crédito.
-const Outro: React.FC<{s: Seg}> = ({s}) => {
+export const Outro: React.FC<{s: Seg}> = ({s}) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 	const name = spring({frame: frame - 18, fps, config: {damping: 14}});
