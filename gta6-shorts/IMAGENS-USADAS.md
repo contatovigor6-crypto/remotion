@@ -133,3 +133,6 @@ artes de personagens/lugares (boobie, brian, cal, dimez, drequan, jason, lucia, 
 
 ## Short (série) — GTA 6 bate recorde histórico de pré-venda na PlayStation Store
 - img/cheetah-night.jpg, img/dolphin.jpg, img/keyart-date.jpg, img/vc-day.jpg, img/vc-night-v.jpg, serie/ps-store-recorde/dualsense.jpg, serie/ps-store-recorde/dualsense_Black.jpg, serie/ps-store-recorde/dualsense_Black_001.jpg, serie/ps-store-recorde/dualsense_Black_002.jpg, serie/ps-store-recorde/dualsense_Black_003.jpg, serie/ps-store-recorde/dualsense_Black_004.jpg, serie/ps-store-recorde/dualsense_White.jpg, serie/ps-store-recorde/dualsense_White_001.jpg, serie/ps-store-recorde/dualsense_White_002.jpg, serie/ps-store-recorde/dualsense_White_003.jpg, serie/ps-store-recorde/dualsense_White_004.jpg
+
+## Short (série) — GTA 6 bate recorde histórico de pré-venda na PlayStation Store (v2 ação)
+- v16/Grassrivers_07.jpg, v16/Grassrivers_08.jpg, v16/Jason_Duval_11.jpg, v16/Jason_Duval_13.jpg, v16/Jason_Duval_15.jpg, v16/Jason_Duval_17.jpg, v16/Jason_Duval_19.jpg, v16/Jason_and_Lucia_14.jpg, v16/Jason_and_Lucia_15.jpg, v16/Jason_and_Lucia_16.jpg, v16/Jason_and_Lucia_19.jpg, v16/Jason_and_Lucia_20.jpg, v16/Leonida_Keys_07.jpg, v16/Lucia_Caminos_13.jpg, v16/Vice_City_13.jpg, v16/Vice_City_15.jpg, v16/Vice_City_17.jpg, v16/Vice_City_26.jpg, v16/Vice_City_27.jpg

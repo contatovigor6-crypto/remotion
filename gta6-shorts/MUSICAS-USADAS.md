@@ -38,3 +38,4 @@ Vetadas para próximos vídeos: todas acima.
 | **Short (série) — GTA 6 em mídia física vem SEM disco** | **Funkorama** | Kevin MacLeod, CC BY 4.0 |
 | **Short (série) — GTA 6 em mídia física vem SEM disco (versão motion agressivo)** | **Run Amok** | Kevin MacLeod, CC BY 4.0 |
 | **Short (série) — GTA 6 bate recorde histórico de pré-venda na PlayStation Store** | **Jaunty Gumption** | Kevin MacLeod, CC BY 4.0 |
+| **Short (série) — GTA 6 bate recorde histórico de pré-venda na PlayStation Store (v2 ação)** | **Interloper** | Kevin MacLeod, CC BY 4.0 |
