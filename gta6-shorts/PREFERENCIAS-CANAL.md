@@ -68,3 +68,7 @@
 - Nunca repetir imagens/vídeos: as cartelas carregam o vídeo quando faltar mídia oficial inédita.
 - (11/11) NUNCA usar o som de transição "schuuu" (sfx-whoosh / whoosh-rev) nos cortes. A esteira remove qualquer whoosh do spec.
   Para trocar só o áudio de um vídeo pronto: `python3 scripts/serie.py plans/<slug>.json --etapa audio`.
+- (17/11) ESTILO ANTIGO de volta (sem cartelas/agressivo por padrão) + SEMPRE INOVAR NOS SFX: a esteira gera um pacote de
+  efeitos sonoros NOVO para cada vídeo (scripts/sfx_pack.py: impacto, pop, ding, riser, drop, clique, sino… com receita e timbre
+  sorteados por vídeo) — nunca o mesmo som de vídeo para vídeo. Áudio do dono com mais de 60 s: não cortar (max_dur no plano).
+- Fotos de produto 16:9 (controles, capas): `"fit": true` mostra a imagem inteira sobre fundo desfocado.

@@ -100,6 +100,12 @@ export const ShotView: React.FC<{shot: Shot}> = ({shot}) => {
 
 	const media = shot.video ? (
 		<OffthreadVideo src={staticFile(shot.src)} muted style={mediaStyle} startFrom={f(shot.startFrom ?? 0)} playbackRate={shot.rate ?? 1} />
+	) : shot.fit ? (
+		// imagem inteira (ex.: foto de produto 16:9) sobre a mesma imagem ampliada e desfocada
+		<>
+			<Img src={staticFile(shot.src)} style={{...mediaStyle, objectFit: 'cover', filter: 'blur(40px) brightness(0.55) saturate(1.3)', transform: 'scale(1.15)'}} />
+			<Img src={staticFile(shot.src)} style={{position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, width: '100%', height: '100%', objectFit: 'contain', transform: 'scale(1.38)', filter: 'drop-shadow(0 30px 40px rgba(0,0,0,0.6))'}} />
+		</>
 	) : (
 		<Img src={staticFile(shot.src)} style={mediaStyle} />
 	);

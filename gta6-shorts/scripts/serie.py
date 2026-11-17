@@ -139,9 +139,11 @@ print(f'alinhamento: {len(words)} palavras, {miss} não reconhecidas pelo whispe
 line_words = [[w for w, (_, li) in zip(words, toks) if li == i] for i in range(len(lines))]
 
 # ------------------------------------------------------------------ 3. montagem automática
-com = next((w for w in line_words[-1] if norm(w['text']).startswith('comenta')), line_words[-1][0])
+ow = norm(P.get('outro_word', 'comenta'))
+com = next((w for w in line_words[-1] if norm(w['text']).startswith(ow)), None) or next((w for w in reversed(words) if norm(w['text']).startswith(ow)), line_words[-1][0])
 outro_at = round(com['start'] - 0.05, 2)
-duration = round(min(MAX_DUR, max(outro_at + 9.0, vdur + 1.0)), 2)
+# Shorts aceitam até 3 min; padrão do canal ≤ 59,5 s, mas áudio enviado pelo dono nunca é cortado (max_dur no plano)
+duration = round(min(P.get('max_dur', MAX_DUR), max(outro_at + 9.0, vdur + 1.0)), 2)
 kw_extra = {norm(k) for k in P.get('keywords', [])}
 keywords = set()
 for i, lw in enumerate(line_words):
@@ -256,6 +258,19 @@ gain = round(10 ** ((-36 + 14.4 - band) / 20), 3)
 gain = round(gain * P['music'].get('ajuste', 1.0), 3)
 
 sfx = [x for x in sfx if 'whoosh' not in x['file']]
+if P.get('sfx_novos', True):
+    # pacote de SFX inédito para este vídeo (receitas/timbres sorteados) — "sempre inovar nos efeitos sonoros"
+    sh(['python3', 'scripts/sfx_pack.py', slug])
+    MAPA = {'sfx-impact': 'hit', 'sfx-pop': 'pop', 'sfx-subdrop': 'drop', 'sfx-tick': 'click', 'sfx-notify': 'bell', 'sfx-glitch': 'stutter'}
+    for x in sfx:
+        if x['file'] in MAPA:
+            x['file'] = f"serie-{slug}-{MAPA[x['file']]}"
+    for tg in tags:
+        if tg['kind'] == 'big':
+            sfx.append({'at': round(tg['at'] + 0.05, 2), 'file': f'serie-{slug}-ding', 'vol': 0.32})
+        if tg['kind'] == 'stamp' and tg['at'] > 1.4:
+            sfx.append({'at': round(tg['at'] - 1.2, 2), 'file': f'serie-{slug}-rise', 'vol': 0.28})
+    sfx.sort(key=lambda x: x['at'])
 spec = {'slug': slug, 'duration': duration, 'outroAt': outro_at, 'voice': f'serie/{slug}/voice.mp3', 'music': f'serie/{slug}/music.wav', 'musicGain': gain,
         'words': words, 'keywords': sorted(keywords), 'hidden': [[outro_at, duration]], 'shots': shots, 'sfx': sfx, 'shakes': shakes, 'tags': tags, 'cards': cards, 'cutFx': [round(x, 2) for x in cutfx],
         'credit': P.get('credit', 'Imagens: Rockstar Games')}
