@@ -1,0 +1,313 @@
+{
+ "slug": "ps-store-recorde-v2",
+ "tema": "GTA 6 bate recorde histórico de pré-venda na PlayStation Store (v2 ação)",
+ "voice_file": "public/serie/ps-store-recorde/marcio.mp3",
+ "outro_word": "ZoneGTAVI",
+ "max_dur": 90,
+ "music": {
+  "name": "Interloper",
+  "file": "Interloper.mp3",
+  "offset": 80
+ },
+ "credit": "Imagens: Rockstar Games",
+ "keywords": [
+  "histórica",
+  "PlayStation",
+  "pré-vendas",
+  "Store.",
+  "superou",
+  "Sony",
+  "antecipar",
+  "pré-carregamento",
+  "PlayStation",
+  "gatilhos",
+  "tátil",
+  "DualSense",
+  "Tempest",
+  "3D",
+  "Vice",
+  "sentir",
+  "recordes",
+  "milhões",
+  "19",
+  "novembro"
+ ],
+ "lines": [
+  {
+   "text": "GTA 6 acaba de alcançar uma marca histórica, e o jogo ainda nem chegou às lojas.",
+   "media": [
+    {
+     "src": "v16/Jason_Duval_11.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "histórica",
+     "text": "MARCA HISTÓRICA",
+     "kind": "big",
+     "color": "yellow"
+    }
+   ],
+   "impact": true
+  },
+  {
+   "text": "A própria PlayStation confirmou que Grand Theft Auto 6 se tornou o jogo com o maior número de pré-vendas da história da PlayStation Store.",
+   "media": [
+    {
+     "src": "v16/Jason_and_Lucia_15.jpg"
+    },
+    {
+     "src": "v16/Vice_City_27.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "confirmou",
+     "text": "CONFIRMADO PELA PLAYSTATION",
+     "kind": "pill",
+     "color": "cyan"
+    },
+    {
+     "word": "história",
+     "text": "RECORDE NA PS STORE",
+     "kind": "big",
+     "color": "yellow"
+    }
+   ],
+   "impact": true
+  },
+  {
+   "text": "Pense nisso por um instante.",
+   "media": [
+    {
+     "src": "v16/Lucia_Caminos_13.jpg"
+    }
+   ],
+   "tags": [],
+   "impact": false
+  },
+  {
+   "text": "Estamos falando de um jogo que ainda não foi lançado e já superou todos os outros títulos da plataforma nesse indicador.",
+   "media": [
+    {
+     "src": "v16/Vice_City_17.jpg"
+    },
+    {
+     "src": "v16/Grassrivers_08.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "superou",
+     "text": "SUPEROU TODOS OS JOGOS DA PS STORE",
+     "kind": "pill",
+     "color": "yellow"
+    }
+   ],
+   "impact": false
+  },
+  {
+   "text": "E existe outro detalhe importante.",
+   "media": [
+    {
+     "src": "v16/Jason_Duval_15.jpg"
+    }
+   ],
+   "tags": [],
+   "impact": false
+  },
+  {
+   "text": "A Sony decidiu antecipar o pré-carregamento justamente para que os jogadores consigam deixar tudo pronto antes da estreia.",
+   "media": [
+    {
+     "src": "v16/Jason_Duval_13.jpg"
+    },
+    {
+     "src": "v16/Vice_City_26.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "antecipar",
+     "text": "PRÉ-DOWNLOAD ANTECIPADO",
+     "kind": "stamp",
+     "color": "green"
+    }
+   ],
+   "impact": false
+  },
+  {
+   "text": "Mas a experiência no PlayStation 5 também promete aproveitar recursos específicos do console.",
+   "media": [
+    {
+     "src": "v16/Jason_Duval_17.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "específicos",
+     "text": "RECURSOS DO PS5",
+     "kind": "pill",
+     "color": "cyan"
+    }
+   ],
+   "impact": false
+  },
+  {
+   "text": "Os gatilhos adaptáveis e a resposta tátil do controle DualSense serão utilizados durante a jogabilidade.",
+   "media": [
+    {
+     "src": "v16/Jason_and_Lucia_19.jpg"
+    },
+    {
+     "src": "v16/Jason_Duval_19.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "gatilhos",
+     "text": "GATILHOS ADAPTÁVEIS",
+     "kind": "pill",
+     "color": "purple"
+    },
+    {
+     "word": "tátil",
+     "text": "RESPOSTA TÁTIL (HAPTIC)",
+     "kind": "pill",
+     "color": "pink"
+    }
+   ],
+   "impact": false
+  },
+  {
+   "text": "Além disso, o áudio Tempest 3D promete posicionar os sons de maneira mais precisa pelo ambiente.",
+   "media": [
+    {
+     "src": "v16/Vice_City_13.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "Tempest",
+     "text": "ÁUDIO TEMPEST 3D 🎧",
+     "kind": "pill",
+     "color": "orange"
+    }
+   ],
+   "impact": false
+  },
+  {
+   "text": "Ou seja, não é apenas sobre enxergar Vice City.",
+   "media": [
+    {
+     "src": "v16/Vice_City_15.jpg"
+    }
+   ],
+   "tags": [],
+   "impact": false
+  },
+  {
+   "text": "A proposta é fazer você sentir o que acontece ao seu redor.",
+   "media": [
+    {
+     "src": "v16/Jason_and_Lucia_14.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "sentir",
+     "text": "SENTIR O JOGO",
+     "kind": "big",
+     "color": "pink"
+    }
+   ],
+   "impact": false
+  },
+  {
+   "text": "E agora vem a pergunta.",
+   "media": [
+    {
+     "src": "v16/Grassrivers_07.jpg"
+    }
+   ],
+   "tags": [],
+   "impact": true
+  },
+  {
+   "text": "Se GTA 6 já está quebrando recordes antes do lançamento, o que vai acontecer quando milhões de jogadores finalmente entrarem nesse mundo?",
+   "media": [
+    {
+     "src": "v16/Jason_and_Lucia_20.jpg"
+    },
+    {
+     "src": "v16/Jason_and_Lucia_16.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "recordes",
+     "text": "QUEBRANDO RECORDES",
+     "kind": "pill",
+     "color": "yellow"
+    }
+   ],
+   "impact": false
+  },
+  {
+   "text": "No dia 19 de novembro, começa uma nova era para Grand Theft Auto, e a ZoneGTAVI vai acompanhar cada segundo dessa história.",
+   "media": [
+    {
+     "src": "v16/Leonida_Keys_07.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "19",
+     "text": "19/11",
+     "kind": "big",
+     "color": "yellow"
+    }
+   ],
+   "impact": true
+  }
+ ],
+ "thumb": {
+  "bg": "v16/Jason_and_Lucia_19.jpg",
+  "pos": "62% 50%",
+  "top": "GTA 6 BATEU",
+  "hl": "RECORDE",
+  "hlColor": "yellow",
+  "bottom": "MAIS PRÉ-VENDAS DA PS STORE 🏆",
+  "credit": "IMAGEM OFICIAL: ROCKSTAR GAMES"
+ },
+ "pub": {
+  "titulo": "GTA 6 bateu RECORDE na PlayStation antes de lançar 🏆 #GTA6",
+  "alternativas": [
+   "GTA 6 lançou? Ainda não, mas já quebrou recorde no PS5 😳 #GTA6",
+   "O recorde histórico de GTA 6 na PS Store (confirmado pela Sony) #GTA6"
+  ],
+  "descricao": "GTA 6 lançou? Ainda não (sai dia 19 de novembro) — mas já entrou para a história da PlayStation. 🏆\n\n📢 A Sony confirmou no PlayStation Blog que GTA 6 é o jogo mais encomendado da história da PlayStation Store.\n⏬ Por causa da demanda \"sem precedentes\", a Sony e a Rockstar anteciparam o pré-download, liberado em 10/11.\n🎮 No PS5, o jogo usa a resposta tátil (haptic feedback) e os gatilhos adaptáveis do DualSense, com resistência dinâmica.\n🎧 O áudio Tempest 3D promete posicionar os sons com mais precisão pelo mundo do jogo.\n🕹️ E no dia 19 também chegam os controles DualSense edição limitada de GTA 6, nas versões preta e branca.\nℹ️ O recorde vale para a PlayStation Store; números oficiais de vendas ainda não foram divulgados.\n\n💬 O que vai acontecer quando milhões de jogadores entrarem em Vice City no dia 19? Comenta!\n🔔 Segue o ZoneGTAVI: vamos acompanhar cada segundo do lançamento.",
+  "fontes": "PlayStation Blog (Sony, 10/11/2026), IBTimes UK, TechRadar, Push Square, Gematsu.",
+  "imagens": "screenshots oficiais de GTA VI (Launch Gallery) — Rockstar Games.",
+  "hashtags": [
+   "#GTA6",
+   "#PS5GTA6",
+   "#GTA6PS5",
+   "#PlayStation",
+   "#DualSense",
+   "#LançamentoGTA6",
+   "#GTA6Lançou",
+   "#QuandoLançaOGTA6",
+   "#QueDiaLançaOGTA6",
+   "#BaixarGTA6",
+   "#GTA6Xbox",
+   "#GTA6Gold",
+   "#GTA6PC",
+   "#Shorts"
+  ],
+  "hashtags_curtas": "#GTA6 #PS5 #PlayStation #DualSense #GTAVI #Shorts",
+  "tags": "GTA 6, GTA 6 recorde, GTA 6 PlayStation Store, GTA 6 pré-venda, GTA 6 mais vendido, GTA 6 PS5, PS5 GTA 6, GTA 6 DualSense, GTA 6 gatilhos adaptáveis, GTA 6 resposta tátil, GTA 6 Tempest 3D, GTA 6 controle edição limitada, GTA 6 pré-download, GTA 6 lançou, quando lança o gta 6, que dia lança o gta 6, lançamento GTA 6, GTA 6 19 de novembro, GTA VI, Grand Theft Auto VI, GTA 6 shorts, ZoneGTAVI",
+  "fixado": "🏆 GTA 6 já é o jogo mais encomendado da história da PS Store.\nNo dia 19 você vai jogar no:\n🎮 A — PS5\n🟢 B — Xbox\n⏳ C — Vou esperar a versão de PC\nComenta A, B ou C 👇",
+  "quando": "- Hoje, entre 18h e 20h (Brasília) — faltam 2 dias para o lançamento.\n- Vídeo com 1min25 (Shorts aceita até 3 min).\n- Responder os primeiros comentários na primeira hora."
+ }
+}
