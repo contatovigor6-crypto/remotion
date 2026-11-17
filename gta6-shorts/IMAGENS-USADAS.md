@@ -130,3 +130,6 @@ artes de personagens/lugares (boobie, brian, cal, dimez, drequan, jason, lucia, 
 
 ## Short (série) — GTA 6 em mídia física vem SEM disco (versão motion agressivo)
 - serie/midia-fisica-v2/carro-neon.jpg, serie/midia-fisica-v2/casal.jpg, serie/midia-fisica-v2/cd-duplo.jpg, serie/midia-fisica-v2/dupla-assalto.jpg, serie/midia-fisica-v2/hidroaviao.jpg
+
+## Short (série) — GTA 6 bate recorde histórico de pré-venda na PlayStation Store
+- img/cheetah-night.jpg, img/dolphin.jpg, img/keyart-date.jpg, img/vc-day.jpg, img/vc-night-v.jpg, serie/ps-store-recorde/dualsense.jpg, serie/ps-store-recorde/dualsense_Black.jpg, serie/ps-store-recorde/dualsense_Black_001.jpg, serie/ps-store-recorde/dualsense_Black_002.jpg, serie/ps-store-recorde/dualsense_Black_003.jpg, serie/ps-store-recorde/dualsense_Black_004.jpg, serie/ps-store-recorde/dualsense_White.jpg, serie/ps-store-recorde/dualsense_White_001.jpg, serie/ps-store-recorde/dualsense_White_002.jpg, serie/ps-store-recorde/dualsense_White_003.jpg, serie/ps-store-recorde/dualsense_White_004.jpg
