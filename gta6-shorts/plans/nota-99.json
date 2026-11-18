@@ -1,0 +1,264 @@
+{
+ "slug": "nota-99",
+ "tema": "GTA 6 estreia com nota 99 no Metacritic (recorde)",
+ "music": {
+  "name": "Wallpaper",
+  "file": "Wallpaper.mp3",
+  "offset": 0
+ },
+ "credit": "Imagens: Rockstar Games",
+ "keywords": [
+  "história...",
+  "Brasil.",
+  "99",
+  "Metacritic.",
+  "maior",
+  "Zelda:",
+  "150",
+  "nenhuma",
+  "98,",
+  "Zelândia,",
+  "agora",
+  "meia-noite",
+  "19,",
+  "30",
+  "fraco:"
+ ],
+ "lines": [
+  {
+   "text": "GTA 6 acabou de fazer história... e o jogo ainda nem liberou aqui no Brasil.",
+   "rate": "+6%",
+   "pitch": "+2Hz",
+   "impact": true,
+   "media": [
+    {
+     "src": "v16/Jason_and_Lucia_17.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "história...",
+     "text": "FEZ HISTÓRIA",
+     "kind": "big",
+     "color": "yellow"
+    }
+   ]
+  },
+  {
+   "text": "As análises saíram hoje, e GTA 6 estreou com nota 99 no Metacritic.",
+   "say": "As análises saíram hoje, e GTA 6 estreou com nota noventa e nove no Méta crítique.",
+   "rate": "+8%",
+   "impact": true,
+   "media": [
+    {
+     "src": "v16/Vice_City_14.jpg"
+    },
+    {
+     "card": {
+      "type": "progress",
+      "label": "NOTA NO METACRITIC",
+      "value": 99,
+      "unit": "",
+      "sub": "análises da crítica · 18/11",
+      "color": "green",
+      "color2": "yellow",
+      "bg": "burst"
+     }
+    }
+   ]
+  },
+  {
+   "text": "É a maior nota da história do site, empatada com Zelda: Ocarina of Time.",
+   "say": "É a maior nota da história do site, empatada com Zelda: Ocarina of Táime.",
+   "rate": "+8%",
+   "media": [
+    {
+     "src": "v16/Jason_Duval_12.jpg"
+    },
+    {
+     "src": "v16/Lucia_Caminos_11.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "empatada",
+     "text": "EMPATOU O RECORDE DO SITE",
+     "kind": "pill",
+     "color": "yellow"
+    }
+   ]
+  },
+  {
+   "text": "Foram mais de 150 análises da crítica... e nenhuma nota mista ou negativa.",
+   "say": "Foram mais de cento e cinquenta análises da crítica... e nenhuma nota mista ou negativa.",
+   "rate": "+8%",
+   "media": [
+    {
+     "src": "v16/Vice_City_19.jpg"
+    },
+    {
+     "card": {
+      "type": "slam",
+      "words": [
+       "0 NOTAS",
+       "NEGATIVAS"
+      ],
+      "color": "red",
+      "color2": "purple",
+      "bg": "stripes"
+     }
+    }
+   ]
+  },
+  {
+   "text": "Até hoje, o recorde da própria Rockstar era 98, com GTA 4.",
+   "say": "Até hoje, o recorde da própria Rockstar era noventa e oito, com GTA quatro.",
+   "rate": "+8%",
+   "media": [
+    {
+     "src": "v16/Port_Gellhorn_07.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "98,",
+     "text": "GTA IV: 98 → GTA VI: 99",
+     "kind": "pill",
+     "color": "cyan"
+    }
+   ]
+  },
+  {
+   "text": "E tem mais: na Nova Zelândia, o jogo já liberou, e tem gente jogando agora mesmo.",
+   "rate": "+10%",
+   "impact": true,
+   "media": [
+    {
+     "src": "v16/Vice_City_20.jpg"
+    },
+    {
+     "src": "v16/Jason_Duval_14.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "Zelândia,",
+     "text": "JÁ LIBEROU NA NOVA ZELÂNDIA",
+     "kind": "stamp",
+     "color": "green"
+    }
+   ]
+  },
+  {
+   "text": "No Brasil, GTA 6 libera à meia-noite do dia 19, no horário local.",
+   "say": "No Brasil, GTA 6 libera à meia-noite do dia dezenove, no horário local.",
+   "rate": "+8%",
+   "media": [
+    {
+     "card": {
+      "type": "date",
+      "label": "19 NOV",
+      "sub": "À MEIA-NOITE (HORÁRIO LOCAL)",
+      "color": "red",
+      "color2": "purple",
+      "bg": "grid"
+     }
+    },
+    {
+     "src": "v16/Vice_City_21.jpg"
+    }
+   ]
+  },
+  {
+   "text": "A crítica elogiou o mundo aberto, a dupla Jason e Lucia e as rádios.",
+   "rate": "+10%",
+   "media": [
+    {
+     "src": "v16/Vice_City_22.jpg"
+    },
+    {
+     "src": "v16/Jason_and_Lucia_18.jpg"
+    },
+    {
+     "src": "v16/Lucia_Caminos_12.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "mundo",
+     "text": "MUNDO ABERTO · JASON E LUCIA · RÁDIOS",
+     "kind": "pill",
+     "color": "yellow"
+    }
+   ]
+  },
+  {
+   "text": "Mas tem um ponto fraco: o jogo roda a 30 quadros por segundo, sem modo desempenho.",
+   "say": "Mas tem um ponto fraco: o jogo roda a trinta quadros por segundo, sem modo desempenho.",
+   "rate": "+8%",
+   "pitch": "-2Hz",
+   "media": [
+    {
+     "src": "v16/Jason_Duval_16.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "30",
+     "text": "30 FPS · SEM MODO DESEMPENHO",
+     "kind": "stamp",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "text": "E você, vai virar a noite jogando? Comenta, e segue o ZoneGTAVI.",
+   "say": "E você, vai virar a noite jogando? Comenta, e segue o Zone GTA Six.",
+   "rate": "+8%",
+   "pitch": "+2Hz",
+   "media": [
+    {
+     "src": "v16/Vice_City_24.jpg"
+    }
+   ]
+  }
+ ],
+ "thumb": {
+  "bg": "v16/Jason_and_Lucia_17.jpg",
+  "pos": "55% 50%",
+  "top": "GTA 6 TIROU",
+  "hl": "NOTA 99",
+  "hlColor": "green",
+  "bottom": "RECORDE NO METACRITIC 🏆",
+  "credit": "IMAGEM OFICIAL: ROCKSTAR GAMES"
+ },
+ "pub": {
+  "titulo": "GTA 6 tirou NOTA 99 e empatou o RECORDE histórico 😱 #GTA6",
+  "alternativas": [
+   "GTA 6 lançou? Já tem gente jogando… e a nota é 99 🏆 #GTA6",
+   "A nota de GTA 6 saiu: 99 no Metacritic (recorde) #GTA6"
+  ],
+  "descricao": "GTA 6 lançou? Na Nova Zelândia, já! No Brasil, libera à meia-noite do dia 19 (horário local). E as análises saíram: GTA 6 estreou com NOTA 99 no Metacritic. 🏆😱\n\n📊 Metacritic: 99, com mais de 150 análises da crítica — nenhuma mista ou negativa (contagem de 18/11; a nota ainda pode mudar com novas análises).\n🥇 É a maior nota da história do site, empatada com The Legend of Zelda: Ocarina of Time.\n🎮 O maior recorde anterior da Rockstar era 98, com GTA IV (GTA V tem 97).\n📈 No OpenCritic, a nota é 98, com 100% de recomendação.\n🌏 Na Nova Zelândia o jogo já liberou; no resto do mundo, à meia-noite do dia 19, no horário local (no PS5, vale a região da loja).\n👍 Elogios: o mundo aberto mais reativo da Rockstar, Jason e Lucia, as rádios e o tiroteio.\n👎 Críticas: 30 fps sem modo desempenho (com quedas em algumas cenas) e um começo mais lento.\n\n💬 Você vai virar a noite jogando? Comenta!\n🔔 Segue o ZoneGTAVI: cobertura do lançamento de GTA 6 a noite toda.",
+  "fontes": "Metacritic, OpenCritic, Insider Gaming, Output Lag, TechRadar, Tom's Guide (18/11/2026).",
+  "imagens": "screenshots oficiais de GTA VI (Launch Gallery) — Rockstar Games.",
+  "hashtags": [
+   "#GTA6",
+   "#GTA6Lançou",
+   "#LançamentoGTA6",
+   "#GTA6Nota",
+   "#Metacritic",
+   "#QuandoLançaOGTA6",
+   "#QueDiaLançaOGTA6",
+   "#BaixarGTA6",
+   "#PS5GTA6",
+   "#GTA6Xbox",
+   "#GTA6PC",
+   "#GTA6Gold",
+   "#Shorts"
+  ],
+  "hashtags_curtas": "#GTA6 #GTA6Lançou #Metacritic #GTAVI #Shorts",
+  "tags": "GTA 6, GTA 6 nota, GTA 6 Metacritic, GTA 6 nota 99, GTA 6 review, GTA 6 análise, GTA 6 recorde, GTA 6 Ocarina of Time, GTA 6 lançou, GTA 6 lançamento, lançamento GTA 6, GTA 6 já lançou, GTA 6 Nova Zelândia, GTA 6 meia-noite, que horas lança GTA 6, quando lança o gta 6, que dia lança o gta 6, GTA 6 19 de novembro, GTA 6 30 fps, GTA VI, Grand Theft Auto VI, GTA 6 shorts, ZoneGTAVI",
+  "fixado": "🏆 GTA 6 estreou com 99 no Metacritic. E aí?\n🔥 A — Merece o 99\n🤔 B — Exagero, quero jogar primeiro\nE você vai virar a noite jogando? Comenta 👇",
+  "quando": "- AGORA (urgente): a notícia é de hoje (18/11) e todo mundo está buscando \"GTA 6 lançou?\" e a nota.\n- Fixar o comentário e responder na primeira hora; repostar nos Stories/Comunidade perto da meia-noite."
+ }
+}
