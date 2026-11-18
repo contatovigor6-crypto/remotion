@@ -136,3 +136,6 @@ artes de personagens/lugares (boobie, brian, cal, dimez, drequan, jason, lucia, 
 
 ## Short (série) — GTA 6 bate recorde histórico de pré-venda na PlayStation Store (v2 ação)
 - v16/Grassrivers_07.jpg, v16/Grassrivers_08.jpg, v16/Jason_Duval_11.jpg, v16/Jason_Duval_13.jpg, v16/Jason_Duval_15.jpg, v16/Jason_Duval_17.jpg, v16/Jason_Duval_19.jpg, v16/Jason_and_Lucia_14.jpg, v16/Jason_and_Lucia_15.jpg, v16/Jason_and_Lucia_16.jpg, v16/Jason_and_Lucia_19.jpg, v16/Jason_and_Lucia_20.jpg, v16/Leonida_Keys_07.jpg, v16/Lucia_Caminos_13.jpg, v16/Vice_City_13.jpg, v16/Vice_City_15.jpg, v16/Vice_City_17.jpg, v16/Vice_City_26.jpg, v16/Vice_City_27.jpg
+
+## Short (série) — GTA 6 estreia com nota 99 no Metacritic (recorde)
+- v16/Jason_Duval_12.jpg, v16/Jason_Duval_14.jpg, v16/Jason_Duval_16.jpg, v16/Jason_and_Lucia_17.jpg, v16/Jason_and_Lucia_18.jpg, v16/Lucia_Caminos_11.jpg, v16/Lucia_Caminos_12.jpg, v16/Port_Gellhorn_07.jpg, v16/Vice_City_14.jpg, v16/Vice_City_19.jpg, v16/Vice_City_20.jpg, v16/Vice_City_21.jpg, v16/Vice_City_22.jpg, v16/Vice_City_24.jpg
