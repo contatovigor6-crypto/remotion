@@ -1,0 +1,264 @@
+{
+ "slug": "lancou-numeros",
+ "tema": "GTA 6 lançou: os números assustadores do primeiro dia",
+ "music": {
+  "name": "Hard Boiled",
+  "file": "Hard_Boiled.mp3",
+  "offset": 45
+ },
+ "credit": "Imagens: Rockstar Games",
+ "keywords": [
+  "lançou...",
+  "assustadores.",
+  "Sensor",
+  "19",
+  "milhões",
+  "1,84",
+  "bilhão",
+  "Twitch,",
+  "3,3",
+  "Valorant",
+  "1,7",
+  "50",
+  "5",
+  "Reino",
+  "recorde",
+  "duas",
+  "trapaça",
+  "zera",
+  "história.",
+  "horas"
+ ],
+ "lines": [
+  {
+   "text": "GTA 6 finalmente lançou... e os números do primeiro dia são assustadores.",
+   "rate": "+6%",
+   "pitch": "+2Hz",
+   "impact": true,
+   "media": [
+    {
+     "src": "v16/Jason_Duval_18.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "lançou...",
+     "text": "GTA 6 LANÇOU!",
+     "kind": "big",
+     "color": "yellow"
+    }
+   ]
+  },
+  {
+   "text": "Segundo a Sensor Tower, o jogo já teria vendido 19 milhões de cópias, contando a pré-venda.",
+   "say": "Segundo a Sensor Tower, o jogo já teria vendido dezenove milhões de cópias, contando a pré-venda.",
+   "rate": "+10%",
+   "media": [
+    {
+     "src": "v16/Vice_City_18.jpg"
+    },
+    {
+     "src": "v19/v-grupo2.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "19",
+     "text": "19 MILHÕES DE CÓPIAS (ESTIMATIVA)",
+     "kind": "pill",
+     "color": "yellow"
+    }
+   ]
+  },
+  {
+   "text": "Isso daria 1,84 bilhão de dólares.",
+   "say": "Isso daria um bilhão e oitocentos e quarenta milhões de dólares.",
+   "rate": "+8%",
+   "impact": true,
+   "media": [
+    {
+     "card": {
+      "type": "slam",
+      "words": [
+       "US$ 1,84",
+       "BILHÃO"
+      ],
+      "color": "green",
+      "color2": "yellow",
+      "bg": "burst"
+     }
+    }
+   ]
+  },
+  {
+   "text": "Na Twitch, as lives de GTA 6 passaram de 3,3 milhões de pessoas assistindo ao mesmo tempo.",
+   "say": "Na Twitch, as lives de GTA 6 passaram de três milhões e trezentas mil pessoas assistindo ao mesmo tempo.",
+   "rate": "+10%",
+   "impact": true,
+   "media": [
+    {
+     "src": "v16/Lucia_Caminos_14.jpg"
+    },
+    {
+     "src": "v16/Vice_City_23.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "3,3",
+     "text": "3,3 MILHÕES AO VIVO",
+     "kind": "big",
+     "color": "purple"
+    }
+   ]
+  },
+  {
+   "text": "O recorde do Valorant era 1,7 milhão.",
+   "say": "O recorde do Valorant era um milhão e setecentos mil.",
+   "rate": "+8%",
+   "media": [
+    {
+     "src": "v19/l-cheetah.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "Valorant",
+     "text": "VALORANT (2020): 1,7 MILHÃO",
+     "kind": "pill",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "text": "E já são mais de 50 milhões de horas assistidas... mais de 5 mil anos.",
+   "say": "E já são mais de cinquenta milhões de horas assistidas... mais de cinco mil anos.",
+   "rate": "+10%",
+   "media": [
+    {
+     "card": {
+      "type": "slam",
+      "words": [
+       "50 MILHÕES",
+       "DE HORAS",
+       "NA TWITCH"
+      ],
+      "color": "purple",
+      "color2": "cyan",
+      "bg": "stripes"
+     }
+    },
+    {
+     "src": "v16/Vice_City_25.jpg"
+    }
+   ]
+  },
+  {
+   "text": "No Reino Unido, uma operadora de internet bateu recorde de downloads... duas vezes.",
+   "rate": "+10%",
+   "media": [
+    {
+     "src": "v19/v-tempesta.jpg"
+    },
+    {
+     "src": "v19/l-coquette.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "recorde",
+     "text": "RECORDE DE DOWNLOAD · 2 VEZES",
+     "kind": "pill",
+     "color": "cyan"
+    }
+   ]
+  },
+  {
+   "text": "E uma curiosidade: segundo a imprensa, os códigos de trapaça só liberam depois que você zera a história.",
+   "rate": "+10%",
+   "impact": true,
+   "media": [
+    {
+     "card": {
+      "type": "cross",
+      "icon": "🎮",
+      "label": "SEM CHEATS ATÉ ZERAR",
+      "color": "red",
+      "color2": "purple",
+      "bg": "dots"
+     }
+    },
+    {
+     "src": "v19/v-emerus.jpg"
+    }
+   ]
+  },
+  {
+   "text": "E zerar não é rápido: são cerca de 50 horas de missões.",
+   "say": "E zerar não é rápido: são cerca de cinquenta horas de missões.",
+   "rate": "+8%",
+   "media": [
+    {
+     "src": "v19/l-manana.jpg"
+    }
+   ],
+   "tags": [
+    {
+     "word": "50",
+     "text": "~50 HORAS DE HISTÓRIA",
+     "kind": "stamp",
+     "color": "yellow"
+    }
+   ]
+  },
+  {
+   "text": "E aí, você já está jogando ou ainda está baixando? Comenta, e segue o ZoneGTAVI.",
+   "say": "E aí, você já está jogando ou ainda está baixando? Comenta, e segue o Zone GTA Six.",
+   "rate": "+8%",
+   "pitch": "+2Hz",
+   "media": [
+    {
+     "src": "v19/v-grupo1.jpg"
+    }
+   ]
+  }
+ ],
+ "thumb": {
+  "bg": "v16/Jason_Duval_18.jpg",
+  "pos": "55% 50%",
+  "top": "GTA 6 LANÇOU",
+  "hl": "3,3 MILHÕES",
+  "hlColor": "purple",
+  "bottom": "ASSISTINDO AO VIVO 😱",
+  "credit": "IMAGEM OFICIAL: ROCKSTAR GAMES"
+ },
+ "pub": {
+  "titulo": "GTA 6 LANÇOU: 3,3 milhões assistindo ao vivo e 19 milhões de cópias 😱 #GTA6",
+  "alternativas": [
+   "GTA 6 lançou? Sim! E os números do 1º dia são ASSUSTADORES #GTA6",
+   "GTA 6 quebrou a Twitch: 3,3 milhões ao vivo 🔴 #GTA6"
+  ],
+  "descricao": "GTA 6 lançou! O jogo saiu à meia-noite do dia 19 de novembro (horário local) no PS5 e no Xbox Series X|S — e os números do primeiro dia são assustadores. 😱\n\n💰 Segundo estimativa da Sensor Tower, GTA 6 já teria vendido cerca de 19 milhões de cópias (contando a pré-venda) e gerado US$ 1,84 bilhão. (Números não oficiais — a Rockstar ainda não divulgou vendas.)\n🔴 Na Twitch, as lives de GTA 6 passaram de 3,3 milhões de espectadores ao mesmo tempo (pico de 18/11). O recorde do Valorant, de 2020, era 1,7 milhão.\n⏱️ Já são mais de 50 milhões de horas assistidas na Twitch — mais de 5 mil anos.\n🇬🇧 No Reino Unido, a operadora Virgin Media bateu recorde de downloads duas vezes.\n🎮 Curiosidade: segundo a imprensa, os códigos de trapaça só liberam depois que você termina a história.\n🕒 E a campanha leva cerca de 50 horas (estimativa da Insider Gaming).\n\n💬 Você já está jogando ou ainda está baixando? Comenta!\n🔔 Segue o ZoneGTAVI: cobertura do lançamento de GTA 6.",
+  "fontes": "Engadget (live do lançamento, dados da Twitch, 19/11/2026), CBS News (Sensor Tower, Insider Gaming, 19/11/2026).",
+  "imagens": "screenshots e imagens oficiais de GTA VI — Rockstar Games.",
+  "hashtags": [
+   "#GTA6",
+   "#GTA6Lançou",
+   "#LançamentoGTA6",
+   "#GTA6Twitch",
+   "#Twitch",
+   "#QuandoLançaOGTA6",
+   "#QueDiaLançaOGTA6",
+   "#BaixarGTA6",
+   "#PS5GTA6",
+   "#GTA6Xbox",
+   "#GTA6PC",
+   "#GTA6Gold",
+   "#Shorts"
+  ],
+  "hashtags_curtas": "#GTA6 #GTA6Lançou #Twitch #GTAVI #Shorts",
+  "tags": "GTA 6, GTA 6 lançou, GTA 6 lançamento, lançamento GTA 6, GTA 6 já lançou, GTA 6 vendas, GTA 6 19 milhões, GTA 6 Twitch, GTA 6 live, GTA 6 recorde, GTA 6 espectadores, GTA 6 Valorant, GTA 6 cheats, GTA 6 códigos, GTA 6 quantas horas, GTA 6 duração, GTA 6 download, baixar GTA 6, GTA 6 PS5, GTA 6 Xbox, GTA VI, Grand Theft Auto VI, GTA 6 shorts, ZoneGTAVI",
+  "fixado": "🔴 GTA 6 lançou! E você?\n🎮 A — Já estou jogando\n⏬ B — Ainda baixando (212 GB…)\n😭 C — Não comprei ainda\nComenta A, B ou C 👇",
+  "quando": "- AGORA (dia do lançamento, 19/11): todo mundo está buscando \"GTA 6 lançou\".\n- Fixar o comentário e responder na primeira hora."
+ }
+}
