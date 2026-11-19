@@ -139,3 +139,6 @@ artes de personagens/lugares (boobie, brian, cal, dimez, drequan, jason, lucia, 
 
 ## Short (série) — GTA 6 estreia com nota 99 no Metacritic (recorde)
 - v16/Jason_Duval_12.jpg, v16/Jason_Duval_14.jpg, v16/Jason_Duval_16.jpg, v16/Jason_and_Lucia_17.jpg, v16/Jason_and_Lucia_18.jpg, v16/Lucia_Caminos_11.jpg, v16/Lucia_Caminos_12.jpg, v16/Port_Gellhorn_07.jpg, v16/Vice_City_14.jpg, v16/Vice_City_19.jpg, v16/Vice_City_20.jpg, v16/Vice_City_21.jpg, v16/Vice_City_22.jpg, v16/Vice_City_24.jpg
+
+## Short (série) — GTA 6 lançou: os números assustadores do primeiro dia
+- v16/Jason_Duval_18.jpg, v16/Lucia_Caminos_14.jpg, v16/Vice_City_18.jpg, v16/Vice_City_23.jpg, v16/Vice_City_25.jpg, v19/l-cheetah.jpg, v19/l-coquette.jpg, v19/l-manana.jpg, v19/v-emerus.jpg, v19/v-grupo1.jpg, v19/v-grupo2.jpg, v19/v-tempesta.jpg
